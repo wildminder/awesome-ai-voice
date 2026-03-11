@@ -67,6 +67,9 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 
 ## Text-to-Speech (TTS) Models
 
+<details id="fish-audio-s2-pro">
+  <summary>Fish Audio S2 Pro</summary>
+  
 ### Fish Audio S2 Pro
 
 **Description:** Fish Audio S2 Pro is a leading text-to-speech model with fine-grained inline control of prosody and emotion. It combines reinforcement learning alignment with a dual-autoregressive architecture for high-quality speech synthesis.
@@ -89,6 +92,7 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 [![GitHub](https://img.shields.io/badge/GitHub-fishaudio/fish--speech-black?logo=github&style=flat)](https://github.com/fishaudio/fish-speech)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-fishaudio/s2--pro-yellow?logo=huggingface&style=flat)](https://huggingface.co/fishaudio/s2-pro)
 
+</details>
 ---
 
 ### KittenTTS
