@@ -8,6 +8,7 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 
 - [Text-to-Speech (TTS) Models](#text-to-speech-tts-models)
 - [Music Generation Models](#music-generation-models)
+- [Anything to Audio](#anything-to-audio)
 - [Audio Restoration & Enhancement](#audio-restoration--enhancement)
 - [Speech Recognition (ASR)](#speech-recognition-asr)
 - [Additional Resources](#additional-resources)
@@ -1020,7 +1021,6 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 | [Foundation-1](#foundation-1) | ✅ (Samples) | - | ❌ | Stability AI |
 | [Music Flamingo](#music-flamingo) | ❌ | - | - | Apache-2.0 |
 | [Magenta Realtime](#magenta-realtime) | ✅ | - | ✅ | Apache-2.0/CC-BY-4.0 |
-| [AudioX](#audiox) | ✅ | - | ✅ | Apache-2.0 |
 | [Uni-MoE (Audio)](#uni-moe-audio) | ✅ | - | ✅ | Apache-2.0 |
 
 <details id="ace-step-15">
@@ -1159,6 +1159,66 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 
 </details>
 
+<details id="soulx-singer-music">
+<summary>SoulX-Singer</summary>
+
+### SoulX-Singer
+
+*(Already listed in TTS - singing voice synthesis)*
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | - |
+| **Singing Generation** | ✅ |
+| **Zero-shot** | ✅ |
+| **Melody Control** | ✅ (F0/MIDI) |
+| **Languages** | Mandarin, English, Cantonese |
+| **License** | Apache-2.0 |
+
+</details>
+
+<details id="uni-moe-audio">
+<summary>Uni-MoE (Audio)</summary>
+
+### Uni-MoE (Audio)
+
+**Description:** MoE-based omnimodal model with voice cloning, TTS, T2M (text-to-music), and V2M (video-to-music).
+
+**Release Date:** October 16, 2025 (Uni-MoE-Audio)
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | - |
+| **Voice Cloning** | ✅ |
+| **TTS** | ✅ |
+| **Text-to-Music** | ✅ |
+| **Video-to-Music** | ✅ |
+| **Dynamic Routing** | ✅ |
+| **License** | Apache-2.0 |
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-HITsz--TMG/Uni--MoE-black?logo=github&style=flat)](https://github.com/HITsz-TMG/Uni-MoE)
+[![arXiv](https://img.shields.io/badge/arXiv-2510.13344-red&style=flat)](https://arxiv.org/abs/2510.13344)
+
+</details>
+
+---
+
+## Anything to Audio
+
+Models that can generate audio from multiple input modalities (video, text, image, audio). These are unified frameworks for multimodal audio synthesis.
+
+### Anything to Audio Quick Comparison
+
+| Model | Text | Video | Image | Audio | License |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| [PrismAudio](#prismaudio) | ❌ | ✅ | ❌ | ❌ | Apache-2.0 |
+| [ThinkSound](#thinksound) | ✅ | ✅ | ❌ | ✅ | Apache-2.0 |
+| [HunyuanVideo-Foley](#hunyuanvideo-foley) | ✅ | ✅ | ❌ | ❌ | Research Only |
+| [MMAudio](#mmaudio) | ✅ | ✅ | ✅ | ❌ | Apache-2.0 |
+| [AudioX](#audiox) | ✅ | ✅ | ✅ | ✅ | Apache-2.0 |
+| [Uni-MoE (Audio)](#uni-moe-audio-any2audio) | ✅ | ✅ | ❌ | ✅ | Apache-2.0 |
+
 <details id="audiox">
 <summary>AudioX</summary>
 
@@ -1185,25 +1245,123 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 
 </details>
 
-<details id="soulx-singer-music">
-<summary>SoulX-Singer</summary>
+<details id="mmaudio">
+<summary>MMAudio</summary>
 
-### SoulX-Singer
+### MMAudio
 
-*(Already listed in TTS - singing voice synthesis)*
+**Description:** Multimodal joint training framework for high-quality synchronized audio generation from video and/or text inputs. State-of-the-art open source model for generating sounds for videos, images, and text prompts.
+
+**Release Date:** December 2024 (CVPR 2025)
 
 | Feature | Value |
 |---------|-------|
 | **Parameters** | - |
-| **Singing Generation** | ✅ |
-| **Zero-shot** | ✅ |
-| **Melody Control** | ✅ (F0/MIDI) |
-| **Languages** | Mandarin, English, Cantonese |
+| **Video-to-Audio** | ✅ |
+| **Text-to-Audio** | ✅ |
+| **Image-to-Audio** | ✅ |
+| **Synchronized Audio** | ✅ |
+| **Multimodal Joint Training** | ✅ |
 | **License** | Apache-2.0 |
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-hkchengrex/MMAudio-black?logo=github&style=flat)](https://github.com/hkchengrex/MMAudio)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-hkchengrex/MMAudio-yellow?logo=huggingface&style=flat)](https://huggingface.co/hkchengrex/MMAudio)
+[![Demo](https://img.shields.io/badge/Demo-HF%20Spaces-blue&style=flat)](https://huggingface.co/spaces/hkchengrex/MMAudio)
+[![arXiv](https://img.shields.io/badge/arXiv-2412.15322-red&style=flat)](https://arxiv.org/abs/2412.15322)
 
 </details>
 
-<details id="uni-moe-audio">
+<details id="hunyuanvideo-foley">
+<summary>HunyuanVideo-Foley</summary>
+
+### HunyuanVideo-Foley
+
+**Description:** Tencent's end-to-end video sound effect generation model for professional-grade AI Foley sound generation. Analyzes footage and creates immersive audio that matches the visual content perfectly.
+
+**Release Date:** 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | - |
+| **Video-to-Audio (Foley)** | ✅ |
+| **Text-to-Audio** | ✅ |
+| **High-Quality Foley** | ✅ |
+| **Context-Aware** | ✅ |
+| **Output Quality** | 48 kHz |
+| **License** | Research & Non-commercial only |
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-Tencent--Hunyuan/HunyuanVideo--Foley-black?logo=github&style=flat)](https://github.com/Tencent-Hunyuan/HunyuanVideo-Foley)
+[![Demo](https://img.shields.io/badge/Demo-HF%20Spaces-blue&style=flat)](https://huggingface.co/spaces/tencent/HunyuanVideo-Foley)
+[![Website](https://img.shields.io/badge/Website-hunyuanvideofoley.org-blue&style=flat)](https://www.hunyuanvideofoley.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-2508.16930-red&style=flat)](https://arxiv.org/abs/2508.16930)
+
+</details>
+
+<details id="thinksound">
+<summary>ThinkSound</summary>
+
+### ThinkSound
+
+**Description:** Unified Any2Audio generation framework with flow matching guided by Chain-of-Thought (CoT) reasoning. Supports generating or editing audio from video, text, audio, or their combinations. Accepted to NeurIPS 2025.
+
+**Release Date:** 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | - |
+| **Video-to-Audio** | ✅ (SOTA) |
+| **Text-to-Audio** | ✅ |
+| **Audio-to-Audio** | ✅ |
+| **Audio Editing** | ✅ |
+| **CoT-Driven Reasoning** | ✅ |
+| **Interactive Object-centric Editing** | ✅ |
+| **License** | Apache-2.0 (Research only) |
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-FunAudioLLM/ThinkSound-black?logo=github&style=flat)](https://github.com/FunAudioLLM/ThinkSound)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-liuHuadai/ThinkSound-yellow?logo=huggingface&style=flat)](https://huggingface.co/liuHuadai/ThinkSound)
+[![Demo](https://img.shields.io/badge/Demo-HF%20Spaces-blue&style=flat)](https://huggingface.co/spaces/FunAudioLLM/ThinkSound)
+
+</details>
+
+<details id="prismaudio">
+<summary>PrismAudio</summary>
+
+### PrismAudio
+
+**Description:** Video-to-Audio generation framework with Reinforcement Learning and specialized Chain-of-Thought (CoT) planning. Decomposes reasoning into four specialized modules (Semantic, Temporal, Aesthetic, Spatial CoT) for comprehensive video understanding. Built upon ThinkSound.
+
+**Release Date:** 2025 (ICLR 2026)
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 518M |
+| **Video-to-Audio** | ✅ |
+| **CoT Planning** | ✅ (4 modules) |
+| **Multi-Dimensional RL** | ✅ |
+| **Fast-GRPO** | ✅ (Hybrid ODE-SDE) |
+| **Inference Time** | 0.63 seconds |
+| **License** | Apache-2.0 |
+
+**Performance Benchmarks:**
+
+| Metric | VGGSound | AudioCanvas |
+|--------|----------|-------------|
+| Semantic (CLAP) | 0.47 | 0.52 |
+| Temporal (DeSync↓) | 0.41 | 0.36 |
+| Aesthetic (MOS-Q) | 4.21±0.35 | 4.12±0.28 |
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-FunAudioLLM/ThinkSound-black?logo=github&style=flat)](https://github.com/FunAudioLLM/ThinkSound/tree/prismaudio)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FunAudioLLM/PrismAudio-yellow?logo=huggingface&style=flat)](https://huggingface.co/FunAudioLLM/PrismAudio)
+[![Demo](https://img.shields.io/badge/Demo-HF%20Spaces-blue&style=flat)](https://huggingface.co/spaces/FunAudioLLM/PrismAudio)
+[![arXiv](https://img.shields.io/badge/arXiv-2511.18833-red&style=flat)](https://arxiv.org/abs/2511.18833)
+
+</details>
+
+<details id="uni-moe-audio-any2audio">
 <summary>Uni-MoE (Audio)</summary>
 
 ### Uni-MoE (Audio)
