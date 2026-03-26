@@ -1203,6 +1203,7 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 </details>
 
 ---
+| [voicetoinstrument.com](https://voicetoinstrument.com) | ✅ (Tracks) | Multi | ❌ | Proprietary |
 
 ## Anything to Audio
 
