@@ -23,6 +23,7 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [LongCat-AudioDiT](#longcat-audiodit) | ✅ | ❌ | Zh/En | ❌ | MIT |
 | [Fish Audio S2 Pro](#fish-audio-s2-pro) | ✅ | ❌ | 80+ | ✅ | Research License |
 | [KittenTTS](#kittenTTS) | ✅ | ❌ | En+ | ✅ | Apache-2.0 |
 | [MOSS-TTS](#moss-tts) | ✅ | ❌ | 20 | ✅ | Apache-2.0 |
@@ -57,6 +58,36 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 | [MiMo-Audio](#mimo-audio) | ✅ | ✅ | Multi | ✅ | Apache-2.0 |
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi | ✅ | MIT/Apache-2.0 |
 | [ZipVoice](#zipvoice) | ✅ | ❌ | Zh/En | ✅ | Apache-2.0 |
+
+<details id="longcat-audiodit">
+<summary>LongCat-AudioDiT</summary>
+
+### LongCat-AudioDiT
+
+**Description:** State-of-the-art diffusion-based TTS model operating directly in waveform latent space. Developed by Meituan's LongCat team, it requires only a Waveform VAE and Diffusion backbone, effectively mitigating compounding errors.
+
+**Release Date:** March 30, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 1B / 3.5B |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ❌ |
+| **Emotion Control** | ❌ |
+| **Languages** | Chinese, English |
+| **Streaming** | ❌ |
+| **Sample Rate** | 24000 Hz |
+| **License** | MIT |
+
+**Key Innovation:** Adaptive Projection Guidance (APG) replaces traditional classifier-free guidance for elevated generation quality. Outperforms Seed-TTS on zero-shot voice cloning benchmarks.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-meituan--longcat/LongCat--AudioDiT-black?logo=github&style=flat)](https://github.com/meituan-longcat/LongCat-AudioDiT)
+[![Hugging Face 1B](https://img.shields.io/badge/Hugging%20Face-1B-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-1B)
+[![Hugging Face 3.5B](https://img.shields.io/badge/Hugging%20Face-3.5B-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-3.5B)
+
+</details>
 
 <details id="fish-audio-s2-pro">
 <summary>Fish Audio S2 Pro</summary>
