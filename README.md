@@ -2,6 +2,8 @@
 
 A curated list of open-source Text-to-Speech (TTS), voice cloning, and music generation models. Models are sorted by release date (newest first).
 
+![logo-tts](https://github.com/user-attachments/assets/3aa82d9a-0d9e-4369-b65c-c563e0d98ebf)
+
 ---
 
 ## Table of Contents
