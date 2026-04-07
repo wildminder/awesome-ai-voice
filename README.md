@@ -24,6 +24,8 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
 | [LongCat-AudioDiT](#longcat-audiodit) | ✅ | ❌ | Zh/En | ❌ | MIT |
+| [Voxtral-4B-TTS](#voxtral-4b-tts) | ✅ | ❌ | 9 | ✅ | CC BY-NC 4.0 |
+| [Irodori-TTS-500M-v2](#irodori-tts-500m-v2) | ✅ | ❌ | Jp | ❌ | MIT |
 | [Fish Audio S2 Pro](#fish-audio-s2-pro) | ✅ | ❌ | 80+ | ✅ | Research License |
 | [KittenTTS](#kittenTTS) | ✅ | ❌ | En+ | ✅ | Apache-2.0 |
 | [MOSS-TTS](#moss-tts) | ✅ | ❌ | 20 | ✅ | Apache-2.0 |
@@ -86,6 +88,64 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 [![GitHub](https://img.shields.io/badge/GitHub-meituan--longcat/LongCat--AudioDiT-black?logo=github&style=flat)](https://github.com/meituan-longcat/LongCat-AudioDiT)
 [![Hugging Face 1B](https://img.shields.io/badge/Hugging%20Face-1B-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-1B)
 [![Hugging Face 3.5B](https://img.shields.io/badge/Hugging%20Face-3.5B-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-3.5B)
+
+</details>
+
+<details id="voxtral-4b-tts">
+<summary>Voxtral-4B-TTS</summary>
+
+### Voxtral-4B-TTS
+
+**Description:** Frontier, open-weights text-to-speech model developed by Mistral AI. Designed to be fast, instantly adaptable, and produces lifelike speech with natural prosody and emotional range.
+
+**Release Date:** March 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 4B |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ❌ |
+| **Emotion Control** | ✅ (expressive speech) |
+| **Languages** | 9 (En, Fr, Es, De, It, Pt, Nl, Ar, Hi) |
+| **Streaming** | ✅ (RTF 0.103 at concurrency 1) |
+| **Audio Output** | 24 kHz |
+| **License** | CC BY-NC 4.0 |
+
+**Links:**
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Voxtral--4B--TTS--2603-yellow?logo=huggingface&style=flat)](https://huggingface.co/mistralai/Voxtral-4B-TTS-2603)
+[![Demo](https://img.shields.io/badge/Demo-Mistral%20AI%20Studio-blue?logo=steam&style=flat&cc=wildminder)](https://console.mistral.ai/build/audio/text-to-speech)
+[![Blog](https://img.shields.io/badge/Blog-Mistral%20AI-red?logo=blogger&style=flat)](https://mistral.ai/news/voxtral-tts)
+
+</details>
+
+<details id="irodori-tts-500m-v2">
+<summary>Irodori-TTS-500M-v2</summary>
+
+### Irodori-TTS-500M-v2
+
+**Description:** Japanese Text-to-Speech model based on Rectified Flow Diffusion Transformer. Features emoji-based style and sound effect control by embedding emojis in input text for expressive speech generation.
+
+**Release Date:** 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 500M |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ❌ |
+| **Emotion Control** | ✅ (emoji-based) |
+| **Languages** | Japanese |
+| **Streaming** | ❌ |
+| **Output Quality** | 48kHz waveform |
+| **License** | MIT |
+
+**Key Feature:** Emoji annotation control - insert specific emojis into text to control speaking styles, emotions, and sound effects.
+
+**Links:**
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Irodori--TTS--500M--v2-yellow?logo=huggingface&style=flat&cc=wildminder)](https://huggingface.co/Aratako/Irodori-TTS-500M-v2)
+[![GitHub](https://img.shields.io/badge/GitHub-Aratako/Irodori--TTS-black?logo=github&style=flat)](https://github.com/Aratako/Irodori-TTS)
+[![Demo](https://img.shields.io/badge/Demo-Space-blue?logo=open&style=flat)](https://huggingface.co/spaces/Aratako/Irodori-TTS-500M-v2-Demo)
 
 </details>
 
@@ -1513,8 +1573,43 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Languages | Streaming | License |
 | :--- | :--- | :---: | :--- |
+| [Cohere Transcribe](#cohere-transcribe) | 14 | ✅ | Apache-2.0 |
 | [VibeVoice-ASR](#vibevoice-asr) | 50+ | ✅ | MIT |
 | [FunASR](#funasr) | 50+ | ✅ | MIT |
+
+<details id="cohere-transcribe">
+<summary>Cohere Transcribe</summary>
+
+### Cohere Transcribe
+
+**Description:** Open-source automatic speech recognition (ASR) model developed by Cohere. A 2 billion parameter dedicated audio-in, text-out model that ranks #1 on the English ASR leaderboard.
+
+**Release Date:** March 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 2B |
+| **Architecture** | Conformer-based encoder-decoder |
+| **ASR** | ✅ |
+| **Languages** | 14 (En, Fr, De, It, Es, Pt, Gr, Nl, Pl, Zh, Jp, Ko, Vi, Ar) |
+| **Streaming** | ✅ |
+| **RTFx** | Up to 3x faster than comparable models |
+| **License** | Apache-2.0 |
+
+**Key Features:**
+- Long-form transcription with automatic chunking (>35 seconds)
+- Optional punctuation control
+- Batched inference support
+- vLLM integration for production serving
+- Apple Silicon support via mlx-audio
+- WebGPU browser deployment via transformers.js
+
+**Links:**
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Cohere--Transcribe-yellow?logo=huggingface&cc=wildminder&style=flat)](https://huggingface.co/CohereLabs/cohere-transcribe-03-2026)
+[![Demo](https://img.shields.io/badge/Demo-Space-blue?logo=open&style=flat)](https://huggingface.co/spaces/CohereLabs/cohere-transcribe-03-2026)
+[![Blog](https://img.shields.io/badge/Blog-Cohere-blue?logo=blogger&style=flat)](https://cohere.com/blog/transcribe)
+
+</details>
 
 <details id="vibevoice-asr">
 <summary>VibeVoice-ASR</summary>
