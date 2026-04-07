@@ -1572,35 +1572,11 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 ### ComfyUI Integrations
 
-### ASR Leaderboard
+### Leaderboard
 
-| Resource | Description |
-|---------|-------------|
-| **Open ASR Leaderboard** | Hugging Face leaderboard for comparing ASR model performance across languages and metrics. |
-
-**Links:**
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Open%20ASR%20Leaderboard-yellow?logo=huggingface&style=flat)](https://huggingface.co/spaces/hf-audio/open_asr_leaderboard)
-
----
-
-## Legend
-
-**Symbols:** ✅ = Supported | ❌ = Not Supported | - = N/A
-
-**Languages:** En = English | Zh = Chinese | Jp = Japanese | Ko = Korean | Vi = Vietnamese | EU = European | Canto = Cantonese
-
----
-
-## License Notes
-
-Different models have different licenses:
-- **Apache-2.0:** Most common open-source license
-- **MIT:** KugelAudio, Chatterbox, Kimi-Audio
-- **CC-BY-NC-SA-4.0:** Echo-TTS (research and non-commercial)
-- **LFM Open License:** MioTTS, LFM2-Audio
-- **Model-specific:** Some models have additional restrictions
-
-*Please check each model's license before commercial use.*
+| Resource | Description | Link |
+|---------|-------------| :--: |
+| **Open ASR Leaderboard** | Hugging Face leaderboard for comparing ASR model performance across languages and metrics. | [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Open%20ASR%20Leaderboard-yellow?logo=huggingface&style=flat)](https://huggingface.co/spaces/hf-audio/open_asr_leaderboard) |
 
 ---
 
