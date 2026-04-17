@@ -24,6 +24,13 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
 | [LongCat-AudioDiT](#longcat-audiodit) | ✅ | ❌ | Zh/En | ❌ | MIT |
+| [VoxCPM2](#voxcpm2) | ✅ | ❌ | 30 | ✅ | Apache-2.0 |
+| [MOSS-TTS-Nano](#moss-tts-nano) | ✅ | ❌ | 20 | ✅ | Apache-2.0 |
+| [T5Gemma-TTS](#t5gemma-tts) | ✅ | ❌ | En/Zh/Jp | ❌ | MIT |
+| [TinyTTS](#tinytts) | ❌ | ❌ | En | ✅ | Apache-2.0 |
+| [LEMAS-TTS](#lemas-tts) | ✅ | ❌ | 10 | ❌ | Apache-2.0 |
+| [OmniVoice](#omnivoice) | ✅ | ❌ | 600+ | ❌ | Apache-2.0 |
+| [LongCat-Next](#longcat-next) | ✅ | ✅ | Zh/En | ✅ | MIT |
 | [Voxtral-4B-TTS](#voxtral-4b-tts) | ✅ | ❌ | 9 | ✅ | CC BY-NC 4.0 |
 | [Irodori-TTS-500M-v2](#irodori-tts-500m-v2) | ✅ | ❌ | Jp | ❌ | MIT |
 | [Fish Audio S2 Pro](#fish-audio-s2-pro) | ✅ | ❌ | 80+ | ✅ | Research License |
@@ -88,6 +95,214 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 [![GitHub](https://img.shields.io/badge/GitHub-meituan--longcat/LongCat--AudioDiT-black?logo=github&style=flat)](https://github.com/meituan-longcat/LongCat-AudioDiT)
 [![Hugging Face 1B](https://img.shields.io/badge/Hugging%20Face-1B-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-1B)
 [![Hugging Face 3.5B](https://img.shields.io/badge/Hugging%20Face-3.5B-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-3.5B)
+
+</details>
+
+<details id="voxcpm2">
+<summary>VoxCPM2</summary>
+
+### VoxCPM2
+
+**Description:** OpenBMB's next-generation tokenizer-free diffusion autoregressive TTS model with 2 billion parameters. Supports 30 languages with automatic detection, voice design from text descriptions, and high-fidelity voice cloning.
+
+**Release Date:** 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 2B |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ✅ |
+| **Emotion Control** | ✅ (Voice Design) |
+| **Languages** | 30 (+ 9 Chinese dialects) |
+| **Streaming** | ✅ (RTF ~0.3) |
+| **Audio Output** | 48 kHz |
+| **License** | Apache-2.0 |
+
+**Key Innovation:** Tokenizer-free design with LocEnc → TSLM → RALM → LocDiT pipeline. Built-in super-resolution via AudioVAE V2 for 48kHz output.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-OpenBMB/VoxCPM-black?logo=github&style=flat)](https://github.com/OpenBMB/VoxCPM)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-openbmb/VoxCPM2-yellow?logo=huggingface&style=flat)](https://huggingface.co/openbmb/VoxCPM2)
+[![Demo](https://img.shields.io/badge/Demo-Space-blue?logo=open&style=flat)](https://huggingface.co/spaces/OpenBMB/VoxCPM-Demo)
+
+</details>
+
+<details id="moss-tts-nano">
+<summary>MOSS-TTS-Nano</summary>
+
+### MOSS-TTS-Nano
+
+**Description:** Ultra-lightweight open-source multilingual speech generation model with only 0.1B parameters. Designed for realtime speech generation that runs directly on CPU without GPU.
+
+**Release Date:** 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 0.1B |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ❌ |
+| **Emotion Control** | ❌ |
+| **Languages** | 20 |
+| **Streaming** | ✅ (CPU-friendly) |
+| **Audio Output** | 48 kHz Stereo |
+| **License** | Apache-2.0 |
+
+**Key Innovation:** Pure autoregressive architecture with MOSS-Audio-Tokenizer-Nano. Compresses audio to 12.5 Hz token stream using RVQ with 16 codebooks. Runs on 4-core CPU.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-OpenMOSS/MOSS--TTS--Nano-black?logo=github&style=flat)](https://github.com/OpenMOSS/MOSS-TTS-Nano)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-OpenMOSS--Team/MOSS--TTS--Nano--100M-yellow?logo=huggingface&style=flat)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M)
+[![Demo](https://img.shields.io/badge/Demo-Space-blue?logo=open&style=flat)](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTS-Nano)
+
+</details>
+
+<details id="t5gemma-tts">
+<summary>T5Gemma-TTS</summary>
+
+### T5Gemma-TTS
+
+**Description:** Multilingual TTS model with voice cloning and duration control, built on the T5Gemma encoder-decoder LLM architecture. Supports batch generation for multiple audio variations.
+
+**Release Date:** 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 2B-2B |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ✅ |
+| **Emotion Control** | ❌ |
+| **Languages** | English, Chinese, Japanese |
+| **Streaming** | ❌ |
+| **VRAM** | 7.6-10.6 GB |
+| **License** | MIT |
+
+**Key Innovation:** PM-RoPE positional encoding with XCodec2 audio codec. Low-VRAM options with CPU offloading. Batch inference efficiency with single encoder pass.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-Aratako/T5Gemma--TTS-black?logo=github&style=flat)](https://github.com/Aratako/T5Gemma-TTS)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Aratako/T5Gemma--TTS--2b--2b-yellow?logo=huggingface&style=flat)](https://huggingface.co/Aratako/T5Gemma-TTS-2b-2b)
+[![Demo](https://img.shields.io/badge/Demo-Space-blue?logo=open&style=flat)](https://huggingface.co/spaces/Aratako/T5Gemma-TTS-Demo)
+
+</details>
+
+<details id="tinytts">
+<summary>TinyTTS</summary>
+
+### TinyTTS
+
+**Description:** The smallest English TTS model with only 1.6 million parameters. End-to-end neural network achieving ~53x real-time synthesis speed on CPU via ONNX optimization.
+
+**Release Date:** 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 1.6M |
+| **Zero-shot Voice Cloning** | ❌ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ✅ |
+| **Emotion Control** | ❌ |
+| **Languages** | English |
+| **Streaming** | ✅ (~53x RTF) |
+| **Model Size** | ~3.4 MB (ONNX FP16) |
+| **License** | Apache-2.0 |
+
+**Key Innovation:** Ultra-compact architecture optimized for CPU-only deployment. Multi-platform support via Python and Node.js APIs. Works on laptops, edge devices, and embedded systems.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-tronghieuit/tiny--tts-black?logo=github&style=flat)](https://github.com/tronghieuit/tiny-tts)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-backtracking/tiny--tts-yellow?logo=huggingface&style=flat)](https://huggingface.co/backtracking/tiny-tts)
+[![Demo](https://img.shields.io/badge/Demo-Space-blue?logo=open&style=flat)](https://huggingface.co/spaces/backtracking/tiny-tts-demo)
+
+</details>
+
+<details id="lemas-tts">
+<summary>LEMAS-TTS</summary>
+
+### LEMAS-TTS
+
+**Description:** Part of the LEMAS (Large-scale Extensible Multilingual Audio Suite) project. Zero-shot multilingual TTS with 0.3B parameters supporting 10 languages with word-level precise editing capabilities.
+
+**Release Date:** 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 0.3B |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ✅ |
+| **Emotion Control** | ✅ |
+| **Languages** | 10 (zh/en/de/fr/es/pt/it/ru/id/vi) |
+| **Streaming** | ❌ |
+| **Special Feature** | Word-level editing (LEMAS-Edit) |
+| **License** | Apache-2.0 |
+
+**Key Innovation:** Built on 150,000+ hours of multilingual speech data with word-level timestamps. Includes LEMAS-Edit for precise word-level speech editing via masked token infilling.
+
+**Links:**
+[![Website](https://img.shields.io/badge/Website-LEMAS%20Project-blue&style=flat)](https://lemas-project.github.io/LEMAS-Project/)
+[![Hugging Face TTS](https://img.shields.io/badge/Hugging%20Face-LEMAS--Project/LEMAS--TTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/LEMAS-Project/LEMAS-TTS)
+[![Hugging Face Edit](https://img.shields.io/badge/Hugging%20Face-LEMAS--Project/LEMAS--Edit-yellow?logo=huggingface&style=flat)](https://huggingface.co/LEMAS-Project/LEMAS-Edit)
+
+</details>
+
+<details id="omnivoice">
+<summary>OmniVoice</summary>
+
+### OmniVoice
+
+**Description:** Massive multilingual zero-shot TTS model scaling to 600+ languages. Uses diffusion language model-style discrete non-autoregressive architecture with single-stage text-to-acoustic mapping.
+
+**Release Date:** 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | - |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ❌ |
+| **Pronunciation Control** | ✅ (Pinyin/CMU) |
+| **Emotion Control** | ✅ (Voice Design) |
+| **Languages** | 600+ |
+| **Streaming** | ❌ |
+| **Training Data** | 581k hours |
+| **License** | Apache-2.0 |
+
+**Key Innovation:** Simplified single-stage architecture vs conventional two-stage pipelines. Full-codebook random masking strategy with LLM initialization for superior intelligibility. Noise-robust prompt processing.
+
+**Links:**
+[![Website](https://img.shields.io/badge/Website-OmniVoice-blue&style=flat)](https://zhu-han.github.io/omnivoice/)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-k2--fsa/OmniVoice-yellow?logo=huggingface&style=flat)](https://huggingface.co/k2-fsa/OmniVoice)
+
+</details>
+
+<details id="longcat-next">
+<summary>LongCat-Next</summary>
+
+### LongCat-Next
+
+**Description:** Native multimodal foundation model by Meituan LongCat Team processing text, vision, and audio under a single autoregressive objective. Industrial-strength model with strong speech synthesis and voice cloning.
+
+**Release Date:** March 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 3B (MoE A3B) |
+| **Zero-shot Voice Cloning** | ✅ |
+| **ASR** | ✅ |
+| **Pronunciation Control** | ✅ |
+| **Emotion Control** | ✅ |
+| **Languages** | Chinese, English |
+| **Streaming** | ✅ (Low latency) |
+| **Audio Output** | 24 kHz |
+| **License** | MIT |
+
+**Key Innovation:** Discrete Native Autoregression Paradigm (DiNA) unifying modalities in shared discrete token space. Combines visual understanding, generation, and audio processing in single model.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-meituan-longcat/LongCat--Next-black?logo=github&style=flat)](https://github.com/meituan-longcat/LongCat-Next)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-meituan-longcat/LongCat--Next-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-Next)
 
 </details>
 
@@ -867,13 +1082,13 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 </details>
 
 <details id="audio-flamingo-3">
-<summary>Audio Flamingo 3 (AF3)</summary>
+<summary>Audio Flamingo 3 (AF3) / Audio Flamingo Next</summary>
 
-### Audio Flamingo 3 (AF3)
+### Audio Flamingo 3 (AF3) / Audio Flamingo Next
 
-**Description:** Fully open-source Large Audio Language Model from NVIDIA ADLR with state-of-the-art audio understanding.
+**Description:** NVIDIA ADLR's fully open-source Large Audio Language Model with state-of-the-art audio understanding. Audio Flamingo Next (AF-Next) is the latest generation featuring stronger general audio understanding, longer context support, and timestamp-grounded reasoning.
 
-**Release Date:** July 9, 2025
+**Release Date:** July 2025 (AF3), 2026 (AF-Next)
 
 | Feature | Value |
 |---------|-------|
@@ -884,12 +1099,15 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 | **Emotion Control** | ✅ |
 | **Languages** | Multi-lingual |
 | **Streaming** | ✅ |
-| **Context** | 10 minutes |
+| **Context** | Up to 30 minutes |
 | **License** | Apache-2.0 |
+
+**Key Innovation (AF-Next):** Staged curriculum training with GRPO-based RL post-training. Three specialized checkpoints: Instruct, Think (reasoning), and Captioner. Temporal Audio Chain-of-Thought grounding intermediate reasoning to timestamps.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-NVIDIA/audio--flamingo-black?logo=github&style=flat)](https://github.com/NVIDIA/audio-flamingo)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-nvidia/audio--flamingo--3-yellow?logo=huggingface&style=flat)](https://huggingface.co/nvidia/audio-flamingo-3)
+[![Hugging Face AF3](https://img.shields.io/badge/Hugging%20Face-nvidia/audio--flamingo--3-yellow?logo=huggingface&style=flat)](https://huggingface.co/nvidia/audio-flamingo-3)
+[![Website AF-Next](https://img.shields.io/badge/Website-AF--Next-blue&style=flat)](https://afnext-umd-nvidia.github.io/)
 
 </details>
 
@@ -1305,6 +1523,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Text | Video | Image | Audio | License |
 | :--- | :---: | :---: | :---: | :---: | :--- |
+| [Woosh](#woosh) | ✅ | ✅ | ❌ | ✅ | Apache-2.0 |
 | [PrismAudio](#prismaudio) | ❌ | ✅ | ❌ | ❌ | Apache-2.0 |
 | [ThinkSound](#thinksound) | ✅ | ✅ | ❌ | ✅ | Apache-2.0 |
 | [HunyuanVideo-Foley](#hunyuanvideo-foley) | ✅ | ✅ | ❌ | ❌ | Research Only |
@@ -1313,28 +1532,33 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [Uni-MoE (Audio)](#uni-moe-audio-any2audio) | ✅ | ✅ | ❌ | ✅ | Apache-2.0 |
 
 <details id="audiox">
-<summary>AudioX</summary>
+<summary>AudioX / Audio-Omni</summary>
 
-### AudioX
+### AudioX / Audio-Omni
 
-**Description:** Unified framework for anything-to-audio generation integrating text, video, image, and audio conditions. Accepted to ICLR 2026.
+**Description:** Audio-Omni is the first end-to-end framework unifying understanding, generation, and editing across general sound, music, and speech domains. Presented at SIGGRAPH 2026. AudioX is a unified framework integrating text, video, image, and audio conditions.
 
-**Release Date:** March 2025
+**Release Date:** March 2025 (AudioX), 2026 (Audio-Omni)
 
 | Feature | Value |
 |---------|-------|
 | **Parameters** | - |
 | **Text-to-Audio** | ✅ |
 | **Text-to-Music** | ✅ |
-| **Video-to-Audio** | ✅ |
-| **Audio Inpainting** | ✅ |
-| **Music Completion** | ✅ |
-| **License** | Apache-2.0 |
+| **Text-to-Speech** | ✅ |
+| **Video-to-Audio/Music** | ✅ |
+| **Audio Editing** | ✅ (Add/Remove/Extract/Style) |
+| **Voice Conversion** | ✅ |
+| **License** | Apache-2.0 / CC-BY-NC-4.0 |
+
+**Key Innovation:** First unified framework covering all three audio domains. Combines frozen multimodal LLM (Qwen2.5-Omni) with trainable Diffusion Transformer for high-fidelity synthesis. Any-to-any audio processing.
 
 **Links:**
-[![GitHub](https://img.shields.io/badge/GitHub-ZeyueT/AudioX-black?logo=github&style=flat)](https://github.com/ZeyueT/AudioX)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-HKUSTAudio/audiox-yellow?logo=huggingface&style=flat)](https://huggingface.co/collections/HKUSTAudio/audiox)
-[![arXiv](https://img.shields.io/badge/arXiv-2503.10522-red&style=flat)](https://arxiv.org/abs/2503.10522)
+[![GitHub AudioX](https://img.shields.io/badge/GitHub-ZeyueT/AudioX-black?logo=github&style=flat)](https://github.com/ZeyueT/AudioX)
+[![GitHub Audio-Omni](https://img.shields.io/badge/GitHub-Audio--Omni-black?logo=github&style=flat)](https://github.com/ZeyueT/Audio-Omni)
+[![Hugging Face AudioX](https://img.shields.io/badge/Hugging%20Face-HKUSTAudio/audiox-yellow?logo=huggingface&style=flat)](https://huggingface.co/collections/HKUSTAudio/audiox)
+[![Hugging Face Audio-Omni](https://img.shields.io/badge/Hugging%20Face-HKUSTAudio/Audio--Omni-yellow?logo=huggingface&style=flat)](https://huggingface.co/HKUSTAudio/Audio-Omni)
+[![arXiv AudioX](https://img.shields.io/badge/arXiv-2503.10522-red&style=flat)](https://arxiv.org/abs/2503.10522)
 
 </details>
 
@@ -1416,6 +1640,32 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![GitHub](https://img.shields.io/badge/GitHub-FunAudioLLM/ThinkSound-black?logo=github&style=flat)](https://github.com/FunAudioLLM/ThinkSound)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-liuHuadai/ThinkSound-yellow?logo=huggingface&style=flat)](https://huggingface.co/liuHuadai/ThinkSound)
 [![Demo](https://img.shields.io/badge/Demo-HF%20Spaces-blue&style=flat)](https://huggingface.co/spaces/FunAudioLLM/ThinkSound)
+
+</details>
+
+<details id="woosh">
+<summary>Woosh</summary>
+
+### Woosh
+
+**Description:** Sony AI's sound effect foundation model for text-to-audio and video-to-audio generation. Includes Woosh-AE (audio encoder/decoder), Woosh-Flow/DFlow (T2A), and Woosh-VFlow/DVFlow (V2A) with distilled fast inference variants.
+
+**Release Date:** 2026
+
+| Feature | Value |
+|---------|-------|
+| **Text-to-Audio** | ✅ |
+| **Video-to-Audio** | ✅ |
+| **Audio Encoding** | ✅ |
+| **Fast Inference** | ✅ (Distilled models) |
+| **Architecture** | Flow-based generative models |
+| **License** | Apache-2.0 |
+
+**Key Innovation:** Optimized for sound effects (not general audio) with both public and private model versions. Video-conditioned generation without requiring captions. Competitive with Stable Audio Open and TangoFlux.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-SonyResearch/Woosh--SFX-black?logo=github&style=flat)](https://github.com/SonyResearch/Woosh-SFX)
+[![arXiv](https://img.shields.io/badge/arXiv-2604.01929-red&style=flat)](https://arxiv.org/abs/2604.01929)
 
 </details>
 
