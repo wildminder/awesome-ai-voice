@@ -1333,7 +1333,7 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 |---------|-------|
 | **Parameters** | 66M |
 | **Zero-shot Cloning** | ✅ |
-| **Languages** | Multi-lingual (mixed in one utterance) |
+| **Languages** | En/Es/It/De/He (mixed in one utterance) |
 | **Realtime** | ~1500× GPU, ~35× CPU |
 | **License** | MIT |
 
