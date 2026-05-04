@@ -67,6 +67,7 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 | [MiMo-Audio](#mimo-audio) | ✅ | ✅ | Multi | ✅ | Apache-2.0 |
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi | ✅ | MIT/Apache-2.0 |
 | [ZipVoice](#zipvoice) | ✅ | ❌ | Zh/En | ✅ | Apache-2.0 |
+| [BlueTTS](#bluetts) | ✅ | ❌ | En/Es/It/De/He | ❌ | MIT |
 
 <details id="longcat-audiodit">
 <summary>LongCat-AudioDiT</summary>
@@ -1316,6 +1317,29 @@ A curated list of open-source Text-to-Speech (TTS), voice cloning, and music gen
 [![GitHub](https://img.shields.io/badge/GitHub-k2--fsa/ZipVoice-black?logo=github&style=flat)](https://github.com/k2-fsa/ZipVoice)
 [![Website](https://img.shields.io/badge/Website-zipvoice.github.io-blue&style=flat)](https://zipvoice.github.io/)
 [![arXiv](https://img.shields.io/badge/arXiv-2506.13053-red&style=flat)](https://arxiv.org/abs/2506.13053)
+
+</details>
+
+<details id="bluetts">
+<summary>BlueTTS</summary>
+
+### BlueTTS
+
+**Description:** Fast multilingual speech TTS via ONNX Runtime (optional CUDA, OpenVINO, or TensorRT). Supports zero-shot voice conversion from a reference clip and mixed-language utterances; speech-focused—not singing.
+
+**Release Date:** April 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 66M |
+| **Zero-shot Cloning** | ✅ |
+| **Languages** | Multi-lingual (mixed in one utterance) |
+| **Realtime** | ~1500× GPU, ~35× CPU |
+| **License** | MIT |
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-maxmelichov/BlueTTS-black?logo=github&style=flat)](https://github.com/maxmelichov/BlueTTS)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-notmax123/BlueV2-yellow?logo=huggingface&style=flat)](https://huggingface.co/spaces/notmax123/BlueV2)
 
 </details>
 
