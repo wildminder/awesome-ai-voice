@@ -1914,6 +1914,10 @@ Models that can generate audio from multiple input modalities (video, text, imag
 ---
 
 ## Additional Resources
+## Agent Identity & Trust
+
+- [TWZRD Agent Intel](https://intel.twzrd.xyz) - Trust scoring MCP for AI agents on Solana. Verify agent wallet identity and autonomy score before authorizing x402 micropayments in voice AI pipelines. Free MCP: `{"mcpServers":{"twzrd-agent-intel":{"url":"https://intel.twzrd.xyz/mcp"}}}`
+
 
 ### ComfyUI Integrations
 
