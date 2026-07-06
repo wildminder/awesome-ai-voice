@@ -12,6 +12,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 - [Anything to Audio](#anything-to-audio)
 - [Audio Restoration & Enhancement](#audio-restoration--enhancement)
 - [Speech Recognition (ASR)](#speech-recognition-asr)
+- [Audio Codecs & Tokenizers](#audio-codecs--tokenizers)
 - [Additional Resources](#additional-resources)
 
 ---
@@ -23,12 +24,21 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
 | [Higgs Audio v3 TTS](#higgs-audio-v3-tts) | ✅ | ❌ | 102 | ✅ | ![Research Only][license-research-only] |
+| [dots.tts](#dots-tts) | ✅ | ❌ | Multilingual | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [Confucius4-TTS](#confucius4-tts) | ✅ | ❌ | 14 | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [WavTTS](#wavtts) | ✅ | ❌ | English, Chinese | ❌ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| [MOSS-TTS](#moss-tts) | ✅ | ❌ | 31 | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [Miso TTS](#misotts) | ✅ | ❌ | English | ❌ | ![MIT][license-mit] |
+| [OronTTS](#oron-tts) | ✅ | ❌ | Mongolian, Kazakh | ❌ | ![MIT][license-mit] |
+| [Supertonic 3](#supertonic-3) | ✅ | ❌ | 31 | ✅ | ![OpenRAIL-M][license-openrail-m] |
+| [Dramabox](#dramabox) | ✅ | ❌ | English | ❌ | ![Unknown][license-unknown] |
+| [Sarashina2.2-TTS](#sarashina22-tts) | ✅ | ❌ | Japanese, English | ❌ | ![Research Only][license-research-only] |
 | [LongCat-AudioDiT](#longcat-audiodit) | ✅ | ❌ | Chinese, English | ❌ | ![MIT][license-mit] |
 | [Fish Audio S2 Pro](#fish-audio-s2-pro) | ✅ | ❌ | 80+ | ✅ | ![Research Only][license-research-only] |
 | [LongCat-Next](#longcat-next) | ✅ | ✅ | Chinese, English | ✅ | ![MIT][license-mit] |
 | [Voxtral-4B-TTS](#voxtral-4b-tts) | ✅ | ❌ | 9 | ✅ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [KittenTTS](#kittenTTS) | ✅ | ❌ | English, Multiple | ✅ | ![Apache 2.0][license-apache-2.0] |
-| [MOSS-TTS](#moss-tts) | ✅ | ❌ | 20 languages | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [Ming-omni-tts](#ming-omni-tts) | ✅ | ❌ | Chinese, English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [SoulX-Singer](#soulx-singer) | ✅ | ❌ | Mandarin, English, Cantonese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [SoproTTS](#soprotts) | ✅ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Qwen3-TTS](#qwen3-tts) | ✅ | ❌ | 10 | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -39,7 +49,6 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [MOSS-TTS-Nano](#moss-tts-nano) | ✅ | ❌ | 20 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [NeuTTS](#neutts) | ✅ | ❌ | English, Spanish, German, French | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [OmniVoice](#omnivoice) | ✅ | ❌ | 600+ | ❌ | ![Apache 2.0][license-apache-2.0] |
-| [Supertonic 2](#supertonic-2) | ❌ | ❌ | English, Korean, Spanish, Portuguese, French | ✅ | ![OpenRAIL-M][license-openrail-m] |
 | [T5Gemma-TTS](#t5gemma-tts) | ✅ | ❌ | English, Chinese, Japanese | ❌ | ![MIT][license-mit] |
 | [TinyTTS](#tinytts) | ❌ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [VoxCPM2](#voxcpm2) | ✅ | ❌ | 30 | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -54,8 +63,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [FireRedTTS2](#fireredtts2) | ✅ | ❌ | EN, ZH, JP, KO, FR, DE, RU | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Audio Flamingo 3 (AF3) / Audio Flamingo Next](#audio-flamingo-3) | ❌ | ✅ | Multi-lingual | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [ZipVoice](#zipvoice) | — | — | Chinese, English | — | ![Apache 2.0][license-apache-2.0] |
-| [Chatterbox](#chatterbox) | ✅ | ❌ | 23+ | ✅ | ![MIT][license-mit] |
 | [Fish Speech](#fish-speech) | ✅ | ❌ | 8 | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [Chatterbox](#chatterbox) | ✅ | ❌ | 23+ | ❌ | ![MIT][license-mit] |
 | [Orpheus-TTS](#orpheus-tts) | ✅ | ❌ | Multilingual | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [MegaTTS3](#megatts3) | ✅ | ❌ | Chinese, English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Spark-TTS](#spark-tts) | ✅ | ❌ | Chinese, English | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -67,6 +76,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [SoulX-Podcast](#soulx-podcast) | ✅ | ❌ | Mandarin, English, Cantonese, Sichuanese, Henanese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [VieNeu-TTS](#vieneu-tts) | ✅ | ❌ | Vietnamese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Dia](#dia) | ✅ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [MeloTTS](#melotts) | ❌ | ❌ | English, Spanish, French, Chinese, Japanese, Korean | ❌ | ![MIT][license-mit] |
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 
 <!-- MODEL:higgs-audio-v3-tts.md -->
@@ -92,7 +102,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Audio Output** | 24 kHz |
 | **License** | ![Research Only][license-research-only] |
 
-**Innovation:** Interleaved text/audio token modelling with a delay-pattern multi-codebook embedding/head: a single autoregressive stack emits both modalities and supports inline `<|category:value|>` control tags (emotion/style/sfx/prosody) inserted at any point in the target text.
+**Features:** Interleaved text/audio token modelling with a delay-pattern multi-codebook embedding/head: a single autoregressive stack emits both modalities and supports inline `<|category:value|>` control tags (emotion/style/sfx/prosody) inserted at any point in the target text.
 
 **Links:**
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-higgs--audio--v3--tts--4b-yellow?logo=huggingface&style=flat)](https://huggingface.co/bosonai/higgs-audio-v3-tts-4b)
@@ -100,8 +110,305 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![Blog](https://img.shields.io/badge/Blog-higgs--audio--v3--tts-blue&style=flat)](https://www.boson.ai/blog/higgs-audio-v3-tts)
 [![Demo](https://img.shields.io/badge/Demo-higgs--audio--v3--tts-blue&style=flat)](https://huggingface.co/spaces/multimodalart/higgs-audio-v3-tts)
 
+
 </details>
 <!-- /MODEL:higgs-audio-v3-tts.md -->
+<!-- MODEL:dots-tts.md -->
+<details id="dots-tts">
+<summary>dots.tts</summary>
+
+### dots.tts
+
+**Description:** dots.tts is a 2B-parameter fully continuous, end-to-end autoregressive TTS system from Rednote-HiLab. The backbone pairs a semantic encoder, an LLM, and an autoregressive flow-matching acoustic head over a 48 kHz AudioVAE, with no discrete tokens anywhere in the pipeline. It achieves the best average performance on Seed-TTS-Eval (WER 0.94 / 1.30 / 6.60 on zh / en / zh-hard) and the highest speaker similarity on a 24-language MiniMax multilingual benchmark, with broad cross-lingual voice cloning.
+
+**Release Date:** June 3, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 2B (semantic encoder + LLM + AR flow-matching acoustic head) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | Multilingual (24+ languages; zh / en focus) |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Sample Rate** | 48 kHz |
+| **Tokenizer** | 48 kHz AudioVAE (continuous, no discrete tokens) |
+
+**Features:** A fully continuous autoregressive pipeline that keeps generation in waveform-latent space end-to-end (no discrete-code phase), pairing an LLM-side semantic encoder with an autoregressive flow-matching acoustic head over a 48 kHz AudioVAE — yielding SOTA seed-TTS-Eval scores and the strongest speaker-similarity number (83.9 avg) on the 24-language MiniMax multilingual benchmark.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-dots.tts--base-yellow?logo=huggingface&style=flat)](https://huggingface.co/rednote-hilab/dots.tts-base)
+[![GitHub](https://img.shields.io/badge/GitHub-dots.tts-black?logo=github&style=flat)](https://github.com/rednote-hilab/dots.tts)
+[![Website](https://img.shields.io/badge/Website-dots.tts--demo-blue&style=flat)](https://rednote-hilab.github.io/dots.tts-demo/)
+[![Demo](https://img.shields.io/badge/Demo-dots.tts-blue&style=flat)](https://huggingface.co/spaces/rednote-hilab/dots.tts)
+
+
+</details>
+<!-- /MODEL:dots-tts.md -->
+<!-- MODEL:confucius4-tts.md -->
+<details id="confucius4-tts">
+<summary>Confucius4-TTS</summary>
+
+### Confucius4-TTS
+
+**Description:** Confucius4-TTS is an LLM-based text-to-speech system from NetEase Youdao designed for multilingual and cross-lingual synthesis. It uses a speech encoder + LLM (Text2Semantic) + flow-matching Semantic2Acoustic architecture that allows zero-shot voice cloning without a required reference transcript and explicit cross-lingual voice transfer with unaccented output across languages. Covers Chinese, English, Japanese, Korean, German, French, Spanish, Indonesian, Italian, Thai, Portuguese, Russian, Malay, and Vietnamese with code-switching and emotion transfer.
+
+**Release Date:** June 2, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Languages** | 14 (zh, en, ja, ko, de, fr, es, id, vi, th, pt, it, ru, ms) |
+| **Streaming** | ❌ |
+| **License** | ![Unknown][license-unknown] |
+| **Architecture** | speech encoder + LLM (T2S) + flow-matching head (S2A) |
+
+**Features:** Cross-lingual voice transfer without accent drift: the same reference voice stays consistent when the speaker switches languages — backed by a speech encoder + LLM backbone pipeline (T2S) with a flow-matching acoustic decoder (S2A) and training that bundles 14 languages with code-switched, emotion-preserving decoding.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Confucius4--TTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/netease-youdao/Confucius4-TTS)
+[![GitHub](https://img.shields.io/badge/GitHub-Confucius4--TTS-black?logo=github&style=flat)](https://github.com/netease-youdao/Confucius4-TTS)
+[![Demo](https://img.shields.io/badge/Demo-gradio-blue&style=flat)](https://confucius4-tts.youdao.com/gradio)
+
+
+</details>
+<!-- /MODEL:confucius4-tts.md -->
+<!-- MODEL:wavtts.md -->
+<details id="wavtts">
+<summary>WavTTS</summary>
+
+### WavTTS
+
+**Description:** WavTTS is an end-to-end zero-shot TTS framework that synthesizes speech directly in the raw waveform space — explicitly skipping the intermediate mel-spectrogram, VAE-latent, or codec-token representations that most modern TTS stacks use. It is built on a flow-matching diffusion transformer (DiT) with waveform patchification, multi-scale mel-spectrogram supervision, and an optimized noise schedule. Forked from F5-TTS at the codebase level but replaces the whole acoustic pipeline.
+
+**Release Date:** May 28, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | English, Chinese |
+| **Streaming** | ❌ |
+| **License** | ![CC BY-NC 4.0][license-cc-by-nc-4.0]<br>![MIT][license-mit] |
+| **Sample Rate** | 16 kHz |
+| **Training Data** | Emilia |
+| **Architecture** | Flow-matching DiT, raw waveform patchification, multi-scale mel supervision |
+| **Training Steps** | 1.2M |
+
+**Features:** Skip every intermediate waveform representation (no mel, no VAE, no codec tokens): a flow-matching DiT produces raw-waveform patches directly, supervised at multiple mel scales and an optimized noise schedule — yielding high-quality zero-shot TTS at 16 kHz from a single end-to-end stack.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-WavTTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/worstchan/WavTTS)
+[![GitHub](https://img.shields.io/badge/GitHub-WavTTS-black?logo=github&style=flat)](https://github.com/cwx-worst-one/WavTTS)
+[![Demo](https://img.shields.io/badge/Demo-wavtts.github.io-blue&style=flat)](https://wavtts.github.io/)
+[![Paper](https://img.shields.io/badge/Paper-2606.03455-red&style=flat)](https://arxiv.org/abs/2606.03455)
+
+
+</details>
+<!-- /MODEL:wavtts.md -->
+<!-- MODEL:moss-tts.md -->
+<details id="moss-tts">
+<summary>MOSS-TTS</summary>
+
+### MOSS-TTS
+
+**Description:** MOSS-TTS is a production-grade Text-to-Speech foundation model developed by the OpenMOSS Team and MOSI.AI. The current public v1.5 release preserves the original 1.0 capabilities — zero-shot voice cloning, long-form speech generation, token-level duration control, Pinyin/IPA pronunciation supervision, multilingual synthesis, and code-switching — and extends multilingual continued training from 20 languages to **31 languages** including Cantonese, Dutch, Finnish, Hindi, Macedonian, Malay, Romanian, Swahili, Tagalog, Thai, and Vietnamese. v1.5 improves speaker similarity, reduces cloning variance on long-reference / short-text scenarios, follows punctuation-driven prosody more reliably, and adds explicit inline pause markers (e.g., `[pause 3.2s]`).
+
+**Release Date:** May 25, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 8B (Delay), 1.7B (Local) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Pronunciation** | ✅ |
+| **Emotion Control** | ✅ |
+| **Languages** | 31 (extended from v1.0's 20) |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Max-Duration** | 1 hour |
+| **Pause Control** | yes (inline markers like `[pause 3.2s]`) |
+| **Lang Tag Control** | yes (set `language=` in user message) |
+
+**Features:** v1.5 widens MOSS-TTS from 20 → 31 languages with stronger per-language multilingual synthesis (control via a language tag in the user message), more stable cloning under long-reference / short-text conditions, punctuation-driven prosody that holds up across long sentences, and explicit inline pause tokens (`[pause 3.2s]`) for scripted narration control.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-MOSS--TTS--v1.5-yellow?logo=huggingface&style=flat)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5)
+[![GitHub](https://img.shields.io/badge/GitHub-MOSS--TTS-black?logo=github&style=flat)](https://github.com/OpenMOSS/MOSS-TTS)
+[![Website](https://img.shields.io/badge/Website-#models-blue&style=flat)](https://mosi.cn/#models)
+[![Paper](https://img.shields.io/badge/Paper-2603.18090-red&style=flat)](https://arxiv.org/abs/2603.18090)
+[![Demo](https://img.shields.io/badge/Demo-studio.mosi.cn-blue&style=flat)](https://studio.mosi.cn)
+
+
+</details>
+<!-- /MODEL:moss-tts.md -->
+<!-- MODEL:misotts.md -->
+<details id="misotts">
+<summary>Miso TTS</summary>
+
+### Miso TTS
+
+**Description:** Miso TTS 8B is a text-to-speech model from Miso Labs built on the Sesame Conversational Speech Model (CSM) architecture. A large Llama-3.2-style backbone consumes text/audio-frame embeddings and predicts codebook 0 of the Mimi audio token stream, while a smaller 300M autoregressive audio decoder predicts codebooks 1–31 in codebook depth. The model is designed for high-quality conversational speech and voice continuation from a short prompt audio clip.
+
+**Release Date:** May 21, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 8B (backbone llama-3.2-style) + 300M (audio decoder) = 8.3B |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | English |
+| **Streaming** | ❌ |
+| **License** | ![Unknown][license-unknown] |
+| **Architecture** | Sesame-style CSM (two transformer stack: backbone + audio decoder) |
+| **Audio Tokenizer** | Mimi (32 codebooks, vocab 2051, max seq 2048) |
+| **Library** | pytorch |
+
+**Features:** A two-transformer Sesame-style CSM (Llama 8B backbone consumes text + audio frames and produces backbone codebook-0 prediction; a 300M audio decoder autoregresses over codebook depth via Mimi's 32-codebook stack) — letting the larger backbone spend capacity on linguistic / speaker conditioning while a leaner decoder handles fine-grained codebook-by-codebook generation.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-MisoTTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/MisoLabs/MisoTTS)
+[![GitHub](https://img.shields.io/badge/GitHub-MisoTTS-black?logo=github&style=flat)](https://github.com/MisoLabsAI/MisoTTS)
+[![Website](https://img.shields.io/badge/Website-misolabs.ai-blue&style=flat)](https://misolabs.ai)
+
+
+</details>
+<!-- /MODEL:misotts.md -->
+<!-- MODEL:oron-tts.md -->
+<details id="oron-tts">
+<summary>OronTTS</summary>
+
+### OronTTS
+
+**Description:** OronTTS is a non-autoregressive text-to-speech model from `btsee`, an F5-TTS fork specialized for Mongolian (Khalkha Cyrillic) and Kazakh (Cyrillic). It uses Flow Matching + Diffusion Transformer + Vocos (dim 1024, depth 22, 16 heads, vocab 65, 24 kHz sample rate), trained on the btsee/mbspeech_mn corpus (3,846 Mongolian speech samples) and outputs zero-shot synthesis from a short reference audio + language tag.
+
+**Release Date:** May 16, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | (not stated) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | Mongolian (Khalkha Cyrillic), Kazakh (Cyrillic) |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | F5-TTS (OT-CFM + DiT + Vocos) |
+| **Dim** | 1024 |
+| **Depth** | 22 |
+| **Heads** | 16 |
+| **Vocab Size** | 65 |
+| **Sample Rate** | 24000 Hz |
+| **Mel Bins** | 100 |
+| **Training Data** | btsee/mbspeech_mn (3,846 Mongolian speech samples) |
+
+**Features:** F5-TTS re-purposed for low-resource Cyrillic languages (Mongolian + Kazakh) — non-autoregressive flow-matching DiT over a tight 65-word vocab. Trained on a small (~3.8k sample) Mongolian corpus; the architecture is small enough that Khalkha Cyrillic and Kazakh Cyrillic share the same checkpoint via the `lang` tag at inference time.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-oron--tts-yellow?logo=huggingface&style=flat)](https://huggingface.co/btsee/oron-tts)
+
+
+</details>
+<!-- /MODEL:oron-tts.md -->
+<!-- MODEL:supertonic-3.md -->
+<details id="supertonic-3">
+<summary>Supertonic 3</summary>
+
+### Supertonic 3
+
+**Description:** Supertonic 3 is the third-generation open-weight release from Supertone. It is a lightweight, on-device text-to-speech system that runs with ONNX Runtime entirely on the user's machine (no network, no API call) and ships as a Python SDK (`pip install supertonic`). Compared with the Supertonic 2 base (5 languages, 66 M params), v3 expands to **31 languages** and adds expression tags (`<laugh>`, `<breath>`, `<sigh>`), more stable reading on long utterances, and higher speaker similarity across the core language set.
+
+**Release Date:** May 6, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | (not stated on card; Supertonic 2 baseline 66 M — likely similar or smaller weight class) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Languages** | 31 (expanded from Supertonic 2's 5) |
+| **Streaming** | ✅ |
+| **License** | ![OpenRAIL-M][license-openrail-m] |
+| **On Device** | yes (ONNX Runtime, no cloud call) |
+| **Expression Tags** | yes (`<laugh>`, `<breath>`, `<sigh>`) |
+
+**Features:** A more compact on-device multilingual TTS: ONNX-Runtime inference everywhere, 31 languages from a single small open-weight encoder, and discrete expression tags that the decoder interprets inline — without a separate speaker-emotion control path or a cloud-rendered audio round-trip.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-supertonic--3-yellow?logo=huggingface&style=flat)](https://huggingface.co/Supertone/supertonic-3)
+[![GitHub](https://img.shields.io/badge/GitHub-supertonic-black?logo=github&style=flat)](https://github.com/supertone-inc/supertonic)
+[![Demo](https://img.shields.io/badge/Demo-supertonic--3-blue&style=flat)](https://huggingface.co/spaces/Supertone/supertonic-3)
+[![PyPI](https://img.shields.io/badge/PyPI-supertonic-blue&style=flat)](https://pypi.org/project/supertonic/)
+
+
+</details>
+<!-- /MODEL:supertonic-3.md -->
+<!-- MODEL:dramabox.md -->
+<details id="dramabox">
+<summary>Dramabox</summary>
+
+### Dramabox
+
+**Description:** Dramabox is Resemble AI's expressive TTS, distributed under the LTX-2 Community License. It is an IC-LoRA fine-tune of the LTX-2.3 3.3B audio-only branch (Diffusion Transformer + flow matching), conditioned on Gemma 3 12B text embeddings. Generation is **prompt-driven**: speaker identity, emotion, delivery, laughs, sighs, breaths, pauses, and transitions are all expressed inside a natural-language description, with an optional 10-second voice reference that clones the target timbre.
+
+**Release Date:** April 17, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 3.3B (LTX-2.3 audio backbone, IC-LoRA fine-tune) + 12B Gemma 3 text encoder (conditioning only) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Languages** | English |
+| **Streaming** | ❌ |
+| **License** | ![Unknown][license-unknown] |
+| **Base Model** | Lightricks/LTX-2.3 (audio branch) |
+| **Architecture** | DiT + flow matching, IC-LoRA fine-tune, Gemma 3 12B text embeddings |
+| **Inference Time** | ~2.5 s / generation (warm server) |
+
+**Features:** IC-LoRA fine-tune of LTX-2.3's audio branch leaves the heavy text-understanding work to Gemma 3 12B and lets the DiT do the expressive rendering — so what's normally multimodal-stage orchestration collapses into a single prompt-driven TTS where speaker identity, emotion, and delivery are encoded in the prompt itself, and the timbre comes from a 10-second voice reference when present.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Dramabox-yellow?logo=huggingface&style=flat)](https://huggingface.co/ResembleAI/Dramabox)
+[![GitHub](https://img.shields.io/badge/GitHub-DramaBox-black?logo=github&style=flat)](https://github.com/resemble-ai/DramaBox)
+[![Demo](https://img.shields.io/badge/Demo-Dramabox-blue&style=flat)](https://huggingface.co/spaces/ResembleAI/Dramabox)
+[![Website](https://img.shields.io/badge/Website-dramabox-blue&style=flat)](https://www.resemble.ai/learn/models/dramabox)
+
+
+</details>
+<!-- /MODEL:dramabox.md -->
+<!-- MODEL:sarashina22-tts.md -->
+<details id="sarashina22-tts">
+<summary>Sarashina2.2-TTS</summary>
+
+### Sarashina2.2-TTS
+
+**Description:** Sarashina2.2-TTS is a Japanese-centric text-to-speech system from SB Intuitions built on a large language model. It supports both Japanese and English, delivers strong pronunciation accuracy on Japanese text through large-scale end-to-end training, and reproduces a speaker's voice, speaking style, and acoustic characteristics from a short reference clip (zero-shot). Training data is sourced exclusively from legitimately acquired, properly licensed speech archives per the Sarashina Model NonCommercial License Agreement v2.0 (released April 24, 2026).
+
+**Release Date:** April 16, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Languages** | Japanese, English |
+| **Streaming** | ❌ |
+| **License** | ![Research Only][license-research-only] |
+| **Base Model** | sbintuitions/sarashina2.2-0.5b-instruct-v0.1 |
+| **Cross Lingual** | yes (Japanese ↔ English, code switching) |
+
+**Features:** Japanese-optimized TTS fine-tuned on responsibly-licensed Japanese training corpora with explicit cross-lingual code-switching to English in a single utterance; reference audio carries speaking style and speaker identity together, so the same prompt yields narration, broadcast, conversation, or customer-service delivery without separate style conditioning.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-sarashina2.2--tts-yellow?logo=huggingface&style=flat)](https://huggingface.co/sbintuitions/sarashina2.2-tts)
+[![GitHub](https://img.shields.io/badge/GitHub-sarashina2.2--tts-black?logo=github&style=flat)](https://github.com/sbintuitions/sarashina2.2-tts)
+[![Paper](https://img.shields.io/badge/Paper-2606.25369-red&style=flat)](https://arxiv.org/abs/2606.25369)
+
+
+</details>
+<!-- /MODEL:sarashina22-tts.md -->
 <!-- MODEL:longcat-audiodit.md -->
 <details id="longcat-audiodit">
 <summary>LongCat-AudioDiT</summary>
@@ -124,12 +431,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Audio Output** | 24000 Hz |
 | **License** | ![MIT][license-mit] |
 
-**Innovation:** Adaptive Projection Guidance (APG) replaces traditional classifier-free guidance for elevated generation quality. Outperforms Seed-TTS on zero-shot voice cloning benchmarks.
+**Features:** Adaptive Projection Guidance (APG) replaces traditional classifier-free guidance for elevated generation quality. Outperforms Seed-TTS on zero-shot voice cloning benchmarks.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-LongCat--AudioDiT-black?logo=github&style=flat)](https://github.com/meituan-longcat/LongCat-AudioDiT)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-LongCat--AudioDiT--1B-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-1B)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-LongCat--AudioDiT--3.5B-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-3.5B)
+
 
 </details>
 <!-- /MODEL:longcat-audiodit.md -->
@@ -158,6 +466,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-fish--speech-black?logo=github&style=flat)](https://github.com/fishaudio/fish-speech)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-s2--pro-yellow?logo=huggingface&style=flat)](https://huggingface.co/fishaudio/s2-pro)
 
+
 </details>
 <!-- /MODEL:fish-audio-s2-pro.md -->
 <!-- MODEL:longcat-next.md -->
@@ -182,11 +491,12 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Audio Output** | 24 kHz |
 | **License** | ![MIT][license-mit] |
 
-**Innovation:** Discrete Native Autoregression Paradigm (DiNA) unifying modalities in shared discrete token space. Combines visual understanding, generation, and audio processing in single model.
+**Features:** Discrete Native Autoregression Paradigm (DiNA) unifying modalities in shared discrete token space. Combines visual understanding, generation, and audio processing in single model.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-LongCat--Next-black?logo=github&style=flat)](https://github.com/meituan-longcat/LongCat-Next)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-LongCat--Next-yellow?logo=huggingface&style=flat)](https://huggingface.co/meituan-longcat/LongCat-Next)
+
 
 </details>
 <!-- /MODEL:longcat-next.md -->
@@ -217,6 +527,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![Demo](https://img.shields.io/badge/Demo-text--to--speech-blue&style=flat)](https://console.mistral.ai/build/audio/text-to-speech)
 [![Blog](https://img.shields.io/badge/Blog-voxtral--tts-blue&style=flat)](https://mistral.ai/news/voxtral-tts)
 
+
 </details>
 <!-- /MODEL:voxtral-4b-tts.md -->
 <!-- MODEL:kittenTTS.md -->
@@ -244,37 +555,39 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-KittenTTS-black?logo=github&style=flat)](https://github.com/KittenML/KittenTTS)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-KittenTTS--Demo-yellow?logo=huggingface&style=flat)](https://huggingface.co/spaces/KittenML/KittenTTS-Demo)
 
+
 </details>
 <!-- /MODEL:kittenTTS.md -->
-<!-- MODEL:moss-tts.md -->
-<details id="moss-tts">
-<summary>MOSS-TTS</summary>
+<!-- MODEL:ming-omni-tts.md -->
+<details id="ming-omni-tts">
+<summary>Ming-omni-tts</summary>
 
-### MOSS-TTS
+### Ming-omni-tts
 
-**Description:** MOSS-TTS is a production-grade Text-to-Speech foundation model developed by OpenMOSS Team and MOSI.AI. Features state-of-the-art evaluation performance on Seed-TTS-eval benchmark with zero-shot voice cloning.
+**Description:** Ming-omni-tts is a high-performance unified audio generation model in the Ming 2.0 series. It uses a custom 12.5 Hz continuous tokenizer and a Patch-by-Patch compression strategy that drives the LLM inference frame rate down to 3.1 Hz, enabling fine-grained control over speech rate, pitch, volume, emotion, and dialect (notably Cantonese at ~93 % accuracy). It supports 100+ premium built-in voices plus zero-shot voice design from natural-language prompts and is the first autoregressive model that jointly generates speech, ambient sound, and music in a single channel.
 
-**Release Date:** February 10, 2026
+**Release Date:** February 11, 2026
 
 | Feature | Value |
 |---------|-------|
-| **Parameters** | 8B (Delay), 1.7B (Local) |
+| **Parameters** | 16.8B (3B active, MoE; A3B) |
 | **Voice Cloning** | ✅ |
 | **Asr** | ❌ |
-| **Pronunciation** | ✅ |
 | **Emotion Control** | ✅ |
-| **Languages** | 20 languages |
-| **Streaming** | ✅ |
+| **Languages** | Chinese, English, Cantonese |
+| **Streaming** | ❌ |
 | **License** | ![Apache 2.0][license-apache-2.0] |
-| **Max-Duration** | 1 hour |
+
+**Features:** Patch-by-Patch compression drives the inference frame rate to 3.1 Hz, drastically cutting LLM-side latency for podcast-style audio while preserving naturalness. A custom 12.5 Hz continuous tokenizer plus a DiT head jointly produce speech, ambient sound, and music in a single output channel — an "in-the-scene" listening experience rather than TTS-on-top-of-a-track.
 
 **Links:**
-[![GitHub](https://img.shields.io/badge/GitHub-MOSS--TTS-black?logo=github&style=flat)](https://github.com/OpenMOSS/MOSS-TTS)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-MOSS--TTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS)
-[![Website](https://img.shields.io/badge/Website-moss--tts-blue&style=flat)](https://mosi.cn/models/moss-tts)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Ming--omni--tts--16.8B--A3B-yellow?logo=huggingface&style=flat)](https://huggingface.co/inclusionAI/Ming-omni-tts-16.8B-A3B)
+[![GitHub](https://img.shields.io/badge/GitHub-Ming--omni--tts-black?logo=github&style=flat)](https://github.com/inclusionAI/Ming-omni-tts)
+[![Website](https://img.shields.io/badge/Website-Ming--omni--tts-blue&style=flat)](https://xqacmer.github.io/Ming-omni-tts/)
+
 
 </details>
-<!-- /MODEL:moss-tts.md -->
+<!-- /MODEL:ming-omni-tts.md -->
 <!-- MODEL:soulx-singer.md -->
 <details id="soulx-singer">
 <summary>SoulX-Singer</summary>
@@ -300,6 +613,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-SoulX--Singer-black?logo=github&style=flat)](https://github.com/Soul-AILab/SoulX-Singer)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-SoulX--Singer-yellow?logo=huggingface&style=flat)](https://huggingface.co/spaces/Soul-AILab/SoulX-Singer)
 [![arXiv](https://img.shields.io/badge/arXiv-2602.07803-red&style=flat)](https://arxiv.org/abs/2602.07803)
+
 
 </details>
 <!-- /MODEL:soulx-singer.md -->
@@ -330,6 +644,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-sopro-black?logo=github&style=flat)](https://github.com/samuel-vitorino/sopro)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-sopro-yellow?logo=huggingface&style=flat)](https://huggingface.co/samuel-vitorino/sopro)
 
+
 </details>
 <!-- /MODEL:soprotts.md -->
 <!-- MODEL:qwen3-tts.md -->
@@ -358,6 +673,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-qwen3--tts-yellow?logo=huggingface&style=flat)](https://huggingface.co/collections/Qwen/qwen3-tts)
 [![arXiv](https://img.shields.io/badge/arXiv-2601.15621-red&style=flat)](https://arxiv.org/abs/2601.15621)
 
+
 </details>
 <!-- /MODEL:qwen3-tts.md -->
 <!-- MODEL:irodori-tts-500m-v2.md -->
@@ -382,12 +698,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Audio Output** | 48kHz waveform |
 | **License** | ![MIT][license-mit] |
 
-**Innovation:** **Key Feature:** Emoji annotation control - insert specific emojis into text to control speaking styles, emotions, and sound effects.
+**Features:** **Key Feature:** Emoji annotation control - insert specific emojis into text to control speaking styles, emotions, and sound effects.
 
 **Links:**
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Irodori--TTS--500M--v2-yellow?logo=huggingface&style=flat)](https://huggingface.co/Aratako/Irodori-TTS-500M-v2)
 [![GitHub](https://img.shields.io/badge/GitHub-Irodori--TTS-black?logo=github&style=flat)](https://github.com/Aratako/Irodori-TTS)
 [![Demo](https://img.shields.io/badge/Demo-Irodori--TTS--500M--v2--Demo-blue&style=flat)](https://huggingface.co/spaces/Aratako/Irodori-TTS-500M-v2-Demo)
+
 
 </details>
 <!-- /MODEL:irodori-tts-500m-v2.md -->
@@ -417,6 +734,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-kugelaudio--0--open-yellow?logo=huggingface&style=flat)](https://huggingface.co/kugelaudio/kugelaudio-0-open)
 [![Website](https://img.shields.io/badge/Website-kugelaudio.com-blue&style=flat)](https://kugelaudio.com)
 
+
 </details>
 <!-- /MODEL:kugelaudio.md -->
 <!-- MODEL:lemas-tts.md -->
@@ -441,12 +759,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **License** | ![Apache 2.0][license-apache-2.0] |
 | **Special-Feature** | Word-level editing (LEMAS-Edit) |
 
-**Innovation:** Built on 150,000+ hours of multilingual speech data with word-level timestamps. Includes LEMAS-Edit for precise word-level speech editing via masked token infilling.
+**Features:** Built on 150,000+ hours of multilingual speech data with word-level timestamps. Includes LEMAS-Edit for precise word-level speech editing via masked token infilling.
 
 **Links:**
 [![Website](https://img.shields.io/badge/Website-LEMAS--Project-blue&style=flat)](https://lemas-project.github.io/LEMAS-Project/)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-LEMAS--TTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/LEMAS-Project/LEMAS-TTS)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-LEMAS--Edit-yellow?logo=huggingface&style=flat)](https://huggingface.co/LEMAS-Project/LEMAS-Edit)
+
 
 </details>
 <!-- /MODEL:lemas-tts.md -->
@@ -476,6 +795,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-MioTTS--2.6B-yellow?logo=huggingface&style=flat)](https://huggingface.co/Aratako/MioTTS-2.6B)
 [![GitHub](https://img.shields.io/badge/GitHub-MioTTS--Inference-black?logo=github&style=flat)](https://github.com/Aratako/MioTTS-Inference)
 
+
 </details>
 <!-- /MODEL:miotts-26b.md -->
 <!-- MODEL:moss-tts-nano.md -->
@@ -500,12 +820,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Audio Output** | 48 kHz Stereo |
 | **License** | ![Apache 2.0][license-apache-2.0] |
 
-**Innovation:** Pure autoregressive architecture with MOSS-Audio-Tokenizer-Nano. Compresses audio to 12.5 Hz token stream using RVQ with 16 codebooks. Runs on 4-core CPU.
+**Features:** Pure autoregressive architecture with MOSS-Audio-Tokenizer-Nano. Compresses audio to 12.5 Hz token stream using RVQ with 16 codebooks. Runs on 4-core CPU.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-MOSS--TTS--Nano-black?logo=github&style=flat)](https://github.com/OpenMOSS/MOSS-TTS-Nano)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-MOSS--TTS--Nano--100M-yellow?logo=huggingface&style=flat)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M)
 [![Demo](https://img.shields.io/badge/Demo-MOSS--TTS--Nano-blue&style=flat)](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTS-Nano)
+
 
 </details>
 <!-- /MODEL:moss-tts-nano.md -->
@@ -536,6 +857,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-neutts--air-yellow?logo=huggingface&style=flat)](https://huggingface.co/neuphonic/neutts-air)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-neutts--nano-yellow?logo=huggingface&style=flat)](https://huggingface.co/neuphonic/neutts-nano)
 
+
 </details>
 <!-- /MODEL:neutts.md -->
 <!-- MODEL:omnivoice.md -->
@@ -560,53 +882,15 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **License** | ![Apache 2.0][license-apache-2.0] |
 | **Training-Data** | 581k hours |
 
-**Innovation:** Simplified single-stage architecture vs conventional two-stage pipelines. Full-codebook random masking strategy with LLM initialization for superior intelligibility. Noise-robust prompt processing.
+**Features:** Simplified single-stage architecture vs conventional two-stage pipelines. Full-codebook random masking strategy with LLM initialization for superior intelligibility. Noise-robust prompt processing.
 
 **Links:**
 [![Website](https://img.shields.io/badge/Website-omnivoice-blue&style=flat)](https://zhu-han.github.io/omnivoice/)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-OmniVoice-yellow?logo=huggingface&style=flat)](https://huggingface.co/k2-fsa/OmniVoice)
 
+
 </details>
 <!-- /MODEL:omnivoice.md -->
-<!-- MODEL:supertonic-2.md -->
-<details id="supertonic-2">
-<summary>Supertonic 2</summary>
-
-### Supertonic 2
-
-**Description:** Lightning-fast, on-device text-to-speech system designed for extreme performance with minimal computational overhead. Powered by ONNX Runtime, it runs entirely on-device—no cloud, no API calls, no privacy concerns. Outperforms ElevenLabs Flash v2.5 by up to 42× in speed benchmarks.
-
-**Release Date:** 2026
-
-| Feature | Value |
-|---------|-------|
-| **Parameters** | 66M |
-| **Voice Cloning** | ❌ |
-| **Asr** | ❌ |
-| **Pronunciation** | ❌ |
-| **Emotion Control** | ❌ |
-| **Languages** | English, Korean, Spanish, Portuguese, French |
-| **Streaming** | ✅ |
-| **License** | ![OpenRAIL-M][license-openrail-m] |
-| **Rtf** | 0.001-0.015 (up to 167× realtime) |
-| **On-Device** | yes (ONNX Runtime) |
-
-**Innovation:** **Performance Comparison:**
-
-| System | Speed (chars/sec) | RTF |
-|--------|-------------------|-----|
-| Supertonic 2 (RTX 4090) | 12,164 | 0.001 |
-| Supertonic 2 (M4 Pro CPU) | 1,263 | 0.012 |
-| ElevenLabs Flash v2.5 | 287 | 0.5 |
-| Kokoro (Open-source) | 117 | 1.3 |
-
-**Links:**
-[![GitHub](https://img.shields.io/badge/GitHub-supertonic-black?logo=github&style=flat)](https://github.com/supertone-inc/supertonic)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-supertonic--2-yellow?logo=huggingface&style=flat)](https://huggingface.co/Supertone/supertonic-2)
-[![Demo](https://img.shields.io/badge/Demo-supertonic--2-blue&style=flat)](https://huggingface.co/spaces/Supertone/supertonic-2)
-
-</details>
-<!-- /MODEL:supertonic-2.md -->
 <!-- MODEL:t5gemma-tts.md -->
 <details id="t5gemma-tts">
 <summary>T5Gemma-TTS</summary>
@@ -629,12 +913,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **License** | ![MIT][license-mit] |
 | **Vram** | 7.6-10.6 GB |
 
-**Innovation:** PM-RoPE positional encoding with XCodec2 audio codec. Low-VRAM options with CPU offloading. Batch inference efficiency with single encoder pass.
+**Features:** PM-RoPE positional encoding with XCodec2 audio codec. Low-VRAM options with CPU offloading. Batch inference efficiency with single encoder pass.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-T5Gemma--TTS-black?logo=github&style=flat)](https://github.com/Aratako/T5Gemma-TTS)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-T5Gemma--TTS--2b--2b-yellow?logo=huggingface&style=flat)](https://huggingface.co/Aratako/T5Gemma-TTS-2b-2b)
 [![Demo](https://img.shields.io/badge/Demo-T5Gemma--TTS--Demo-blue&style=flat)](https://huggingface.co/spaces/Aratako/T5Gemma-TTS-Demo)
+
 
 </details>
 <!-- /MODEL:t5gemma-tts.md -->
@@ -659,12 +944,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Streaming** | ✅ |
 | **License** | ![Apache 2.0][license-apache-2.0] |
 
-**Innovation:** Ultra-compact architecture optimized for CPU-only deployment. Multi-platform support via Python and Node.js APIs. Works on laptops, edge devices, and embedded systems.
+**Features:** Ultra-compact architecture optimized for CPU-only deployment. Multi-platform support via Python and Node.js APIs. Works on laptops, edge devices, and embedded systems.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-tiny--tts-black?logo=github&style=flat)](https://github.com/tronghieuit/tiny-tts)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-tiny--tts-yellow?logo=huggingface&style=flat)](https://huggingface.co/backtracking/tiny-tts)
 [![Demo](https://img.shields.io/badge/Demo-tiny--tts--demo-blue&style=flat)](https://huggingface.co/spaces/backtracking/tiny-tts-demo)
+
 
 </details>
 <!-- /MODEL:tinytts.md -->
@@ -690,12 +976,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Audio Output** | 48 kHz |
 | **License** | ![Apache 2.0][license-apache-2.0] |
 
-**Innovation:** Tokenizer-free design with LocEnc → TSLM → RALM → LocDiT pipeline. Built-in super-resolution via AudioVAE V2 for 48kHz output.
+**Features:** Tokenizer-free design with LocEnc → TSLM → RALM → LocDiT pipeline. Built-in super-resolution via AudioVAE V2 for 48kHz output.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-VoxCPM-black?logo=github&style=flat)](https://github.com/OpenBMB/VoxCPM)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-VoxCPM2-yellow?logo=huggingface&style=flat)](https://huggingface.co/openbmb/VoxCPM2)
 [![Demo](https://img.shields.io/badge/Demo-VoxCPM--Demo-blue&style=flat)](https://huggingface.co/spaces/OpenBMB/VoxCPM-Demo)
+
 
 </details>
 <!-- /MODEL:voxcpm2.md -->
@@ -725,6 +1012,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-GLM--TTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/zai-org/GLM-TTS)
 [![arXiv](https://img.shields.io/badge/arXiv-2512.14291-red&style=flat)](https://arxiv.org/abs/2512.14291)
 
+
 </details>
 <!-- /MODEL:glm-tts.md -->
 <!-- MODEL:vibevoice-realtime.md -->
@@ -752,6 +1040,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-VibeVoice-black?logo=github&style=flat)](https://github.com/microsoft/VibeVoice)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-VibeVoice--Realtime--0.5B-yellow?logo=huggingface&style=flat)](https://huggingface.co/microsoft/VibeVoice-Realtime-0.5B)
+
 
 </details>
 <!-- /MODEL:vibevoice-realtime.md -->
@@ -781,6 +1070,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Fun--CosyVoice3--0.5B--2512-yellow?logo=huggingface&style=flat)](https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512)
 [![arXiv](https://img.shields.io/badge/arXiv-2505.17589-red&style=flat)](https://arxiv.org/abs/2505.17589)
 
+
 </details>
 <!-- /MODEL:fun-cosyvoice-30.md -->
 <!-- MODEL:lfm2-audio-15b.md -->
@@ -806,6 +1096,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-LFM2--Audio--1.5B-yellow?logo=huggingface&style=flat)](https://huggingface.co/LiquidAI/LFM2-Audio-1.5B)
 [![Website](https://img.shields.io/badge/Website-lfm-blue&style=flat)](https://docs.liquid.ai/lfm)
+
 
 </details>
 <!-- /MODEL:lfm2-audio-15b.md -->
@@ -835,6 +1126,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-Comfyui--Index--TTS2-black?logo=github&style=flat)](https://github.com/xuchenxu168/Comfyui-Index-TTS2)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-IndexTTS--2-yellow?logo=huggingface&style=flat)](https://huggingface.co/IndexTeam/IndexTTS-2)
 
+
 </details>
 <!-- /MODEL:indextts2.md -->
 <!-- MODEL:maya1.md -->
@@ -861,6 +1153,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-maya1-yellow?logo=huggingface&style=flat)](https://huggingface.co/maya-research/maya1)
 [![Website](https://img.shields.io/badge/Website-mayaresearch.ai-blue&style=flat)](https://mayaresearch.ai)
+
 
 </details>
 <!-- /MODEL:maya1.md -->
@@ -889,6 +1182,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Step--Audio--EditX-yellow?logo=huggingface&style=flat)](https://huggingface.co/stepfun-ai/Step-Audio-EditX)
 [![arXiv](https://img.shields.io/badge/arXiv-2511.03601-red&style=flat)](https://arxiv.org/abs/2511.03601)
 
+
 </details>
 <!-- /MODEL:step-audio-editx.md -->
 <!-- MODEL:voxcpm.md -->
@@ -916,6 +1210,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-VoxCPM-black?logo=github&style=flat)](https://github.com/OpenBMB/VoxCPM)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-VoxCPM--0.5B-yellow?logo=huggingface&style=flat)](https://huggingface.co/openbmb/VoxCPM-0.5B)
 [![arXiv](https://img.shields.io/badge/arXiv-2509.24650-red&style=flat)](https://arxiv.org/abs/2509.24650)
+
 
 </details>
 <!-- /MODEL:voxcpm.md -->
@@ -947,6 +1242,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-FireRedTTS2-yellow?logo=huggingface&style=flat)](https://huggingface.co/FireRedTeam/FireRedTTS2)
 [![arXiv](https://img.shields.io/badge/arXiv-2509.02020-red&style=flat)](https://arxiv.org/abs/2509.02020)
 
+
 </details>
 <!-- /MODEL:fireredtts2.md -->
 <!-- MODEL:audio-flamingo-3.md -->
@@ -970,12 +1266,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **License** | ![Apache 2.0][license-apache-2.0] |
 | **Context** | Up to 30 minutes |
 
-**Innovation:** **Key Innovation (AF-Next):** Staged curriculum training with GRPO-based RL post-training. Three specialized checkpoints: Instruct, Think (reasoning), and Captioner. Temporal Audio Chain-of-Thought grounding intermediate reasoning to timestamps.
+**Features:** **Key Innovation (AF-Next):** Staged curriculum training with GRPO-based RL post-training. Three specialized checkpoints: Instruct, Think (reasoning), and Captioner. Temporal Audio Chain-of-Thought grounding intermediate reasoning to timestamps.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-audio--flamingo-black?logo=github&style=flat)](https://github.com/NVIDIA/audio-flamingo)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-audio--flamingo--3-yellow?logo=huggingface&style=flat)](https://huggingface.co/nvidia/audio-flamingo-3)
 [![Website](https://img.shields.io/badge/Website-afnext--umd--nvidia.github.io-blue&style=flat)](https://afnext-umd-nvidia.github.io/)
+
 
 </details>
 <!-- /MODEL:audio-flamingo-3.md -->
@@ -1002,35 +1299,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![Website](https://img.shields.io/badge/Website-zipvoice.github.io-blue&style=flat)](https://zipvoice.github.io/)
 [![arXiv](https://img.shields.io/badge/arXiv-2506.13053-red&style=flat)](https://arxiv.org/abs/2506.13053)
 
+
 </details>
 <!-- /MODEL:zipvoice.md -->
-<!-- MODEL:chatterbox.md -->
-<details id="chatterbox">
-<summary>Chatterbox</summary>
-
-### Chatterbox
-
-**Description:** Family of SOTA open-source TTS models by Resemble AI with zero-shot voice cloning and multilingual synthesis.
-
-**Release Date:** June 13, 2025 (v0.1.2)
-
-| Feature | Value |
-|---------|-------|
-| **Parameters** | 350M-500M |
-| **Voice Cloning** | ✅ |
-| **Asr** | ❌ |
-| **Pronunciation** | ✅ |
-| **Emotion Control** | ✅ |
-| **Languages** | 23+ |
-| **Streaming** | ✅ |
-| **License** | ![MIT][license-mit] |
-
-**Links:**
-[![GitHub](https://img.shields.io/badge/GitHub-chatterbox-black?logo=github&style=flat)](https://github.com/resemble-ai/chatterbox)
-[![Website](https://img.shields.io/badge/Website-resemble.ai-blue&style=flat)](https://resemble.ai/)
-
-</details>
-<!-- /MODEL:chatterbox.md -->
 <!-- MODEL:fish-speech.md -->
 <details id="fish-speech">
 <summary>Fish Speech</summary>
@@ -1057,8 +1328,41 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-fish--speech-black?logo=github&style=flat)](https://github.com/fishaudio/fish-speech)
 [![Website](https://img.shields.io/badge/Website-fish.audio-blue&style=flat)](https://fish.audio/)
 
+
 </details>
 <!-- /MODEL:fish-speech.md -->
+<!-- MODEL:chatterbox.md -->
+<details id="chatterbox">
+<summary>Chatterbox</summary>
+
+### Chatterbox
+
+**Description:** Family of SOTA open-source TTS models by Resemble AI, covering a single-language English line plus a multilingual V3 release that brings broader language coverage, more consistent speaker similarity, reduced hallucinations, and more natural conversational speech across 23+ languages.
+
+**Release Date:** April 24, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 500M (Llama backbone, 0.5B) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Pronunciation** | ✅ |
+| **Emotion Control** | ✅ |
+| **Languages** | 23+ |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+
+**Features:** First open-source TTS model with explicit **emotion exaggeration control**, plus an alignment-informed inference pipeline and a watermarked decoder. Multilingual V3 narrows the quality gap to closed systems like ElevenLabs on cross-language voice cloning while staying under 1B parameters.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-chatterbox-yellow?logo=huggingface&style=flat)](https://huggingface.co/ResembleAI/chatterbox)
+[![GitHub](https://img.shields.io/badge/GitHub-chatterbox-black?logo=github&style=flat)](https://github.com/resemble-ai/chatterbox)
+[![Website](https://img.shields.io/badge/Website-resemble.ai-blue&style=flat)](https://resemble.ai/)
+[![Demo](https://img.shields.io/badge/Demo-Chatterbox--Multilingual--TTS--V3-blue&style=flat)](https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-V3)
+
+
+</details>
+<!-- /MODEL:chatterbox.md -->
 <!-- MODEL:orpheus-tts.md -->
 <details id="orpheus-tts">
 <summary>Orpheus-TTS</summary>
@@ -1083,6 +1387,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-Orpheus--TTS-black?logo=github&style=flat)](https://github.com/canopyai/Orpheus-TTS)
 [![Website](https://img.shields.io/badge/Website-model--releases-blue&style=flat)](https://canopylabs.ai/model-releases)
+
 
 </details>
 <!-- /MODEL:orpheus-tts.md -->
@@ -1112,6 +1417,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-MegaTTS3-yellow?logo=huggingface&style=flat)](https://huggingface.co/spaces/ByteDance/MegaTTS3)
 [![arXiv](https://img.shields.io/badge/arXiv-2502.18924-red&style=flat)](https://arxiv.org/abs/2502.18924)
 
+
 </details>
 <!-- /MODEL:megatts3.md -->
 <!-- MODEL:spark-tts.md -->
@@ -1140,6 +1446,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Spark--TTS--0.5B-yellow?logo=huggingface&style=flat)](https://huggingface.co/SparkAudio/Spark-TTS-0.5B)
 [![arXiv](https://img.shields.io/badge/arXiv-2503.01710-red&style=flat)](https://arxiv.org/abs/2503.01710)
 
+
 </details>
 <!-- /MODEL:spark-tts.md -->
 <!-- MODEL:step-audio.md -->
@@ -1167,6 +1474,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-Step--Audio-black?logo=github&style=flat)](https://github.com/stepfun-ai/Step-Audio)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-stepfun--ai-yellow?logo=huggingface&style=flat)](https://huggingface.co/stepfun-ai)
 [![arXiv](https://img.shields.io/badge/arXiv-2502.11946-red&style=flat)](https://arxiv.org/abs/2502.11946)
+
 
 </details>
 <!-- /MODEL:step-audio.md -->
@@ -1198,6 +1506,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Kokoro--82M-yellow?logo=huggingface&style=flat)](https://huggingface.co/hexgrad/Kokoro-82M)
 [![Demo](https://img.shields.io/badge/Demo-Kokoro--TTS-blue&style=flat)](https://hf.co/spaces/hexgrad/Kokoro-TTS)
 
+
 </details>
 <!-- /MODEL:kokoro-82m.md -->
 <!-- MODEL:kokoclone.md -->
@@ -1225,6 +1534,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-kokoclone-black?logo=github&style=flat)](https://github.com/Ashish-Patnaik/kokoclone)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-kokoclone-yellow?logo=huggingface&style=flat)](https://huggingface.co/PatnaikAshish/kokoclone)
 [![Demo](https://img.shields.io/badge/Demo-kokoclone-blue&style=flat)](https://huggingface.co/spaces/PatnaikAshish/kokoclone)
+
 
 </details>
 <!-- /MODEL:kokoclone.md -->
@@ -1255,6 +1565,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-LuxTTS-black?logo=github&style=flat)](https://github.com/ysharma3501/LuxTTS)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-LuxTTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/YatharthS/LuxTTS)
 
+
 </details>
 <!-- /MODEL:luxtts.md -->
 <!-- MODEL:mimo-audio.md -->
@@ -1280,6 +1591,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-MiMo--Audio-black?logo=github&style=flat)](https://github.com/XiaomiMiMo/MiMo-Audio)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-mimo--audio--68cc7202692c27dae881cce0-yellow?logo=huggingface&style=flat)](https://huggingface.co/collections/XiaomiMiMo/mimo-audio-68cc7202692c27dae881cce0)
+
 
 </details>
 <!-- /MODEL:mimo-audio.md -->
@@ -1310,6 +1622,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-soulx--podcast-yellow?logo=huggingface&style=flat)](https://huggingface.co/collections/Soul-AILab/soulx-podcast)
 [![arXiv](https://img.shields.io/badge/arXiv-2510.23541-red&style=flat)](https://arxiv.org/abs/2510.23541)
 
+
 </details>
 <!-- /MODEL:soulx-podcast.md -->
 <!-- MODEL:vieneu-tts.md -->
@@ -1336,6 +1649,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-VieNeu--TTS-yellow?logo=huggingface&style=flat)](https://huggingface.co/pnnbao-ump/VieNeu-TTS)
 [![GitHub](https://img.shields.io/badge/GitHub-VieNeu--TTS-black?logo=github&style=flat)](https://github.com/pnnbao97/VieNeu-TTS)
+
 
 </details>
 <!-- /MODEL:vieneu-tts.md -->
@@ -1364,8 +1678,38 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![GitHub](https://img.shields.io/badge/GitHub-dia-black?logo=github&style=flat)](https://github.com/nari-labs/dia)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Dia--1.6B--0626-yellow?logo=huggingface&style=flat)](https://huggingface.co/nari-labs/Dia-1.6B-0626)
 
+
 </details>
 <!-- /MODEL:dia.md -->
+<!-- MODEL:melotts.md -->
+<details id="melotts">
+<summary>MeloTTS</summary>
+
+### MeloTTS
+
+**Description:** MeloTTS is a high-quality multi-lingual text-to-speech library from MyShell.ai in collaboration with MIT, supporting English (American, British, Indian, Australian, and a default accent), Spanish, French, Chinese (with mixed Chinese–English capability), Japanese, and Korean. Built on VITS / VITS2 / Bert-VITS2 family work and packaged with both a Python API and a Web UI, it runs fast enough for CPU real-time inference.
+
+**Release Date:** February 19, 2024
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | English (American, British, Indian, Australian, Default), Spanish, French, Chinese, Japanese, Korean |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Base** | VITS / VITS2 / Bert-VITS2 family |
+| **Mixed Chinese English** | yes |
+
+**Features:** A multi-accent multilingual TTS library that ships both a Python API and a Web UI on top of the VITS-style architecture, with explicit English-accent coverage (American, British, Indian, Australian, Default) and mixed Chinese–English output — designed for fast CPU real-time inference without requiring GPU servers.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-MeloTTS-black?logo=github&style=flat)](https://github.com/myshell-ai/MeloTTS)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-myshell--ai-yellow?logo=huggingface&style=flat)](https://huggingface.co/myshell-ai)
+
+
+</details>
+<!-- /MODEL:melotts.md -->
 <!-- MODEL:kimi-audio.md -->
 <details id="kimi-audio">
 <summary>Kimi-Audio</summary>
@@ -1389,6 +1733,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-Kimi--Audio-black?logo=github&style=flat)](https://github.com/MoonshotAI/Kimi-Audio)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Kimi--Audio--7B-yellow?logo=huggingface&style=flat)](https://huggingface.co/moonshotai/Kimi-Audio-7B)
+
 
 </details>
 <!-- /MODEL:kimi-audio.md -->
@@ -1430,11 +1775,12 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | **Audio-Encoding** | yes |
 | **Fast-Inference** | yes (Distilled models) |
 
-**Innovation:** Optimized for sound effects (not general audio) with both public and private model versions. Video-conditioned generation without requiring captions. Competitive with Stable Audio Open and TangoFlux.
+**Features:** Optimized for sound effects (not general audio) with both public and private model versions. Video-conditioned generation without requiring captions. Competitive with Stable Audio Open and TangoFlux.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-Woosh--SFX-black?logo=github&style=flat)](https://github.com/SonyResearch/Woosh-SFX)
 [![arXiv](https://img.shields.io/badge/arXiv-2604.01929-red&style=flat)](https://arxiv.org/abs/2604.01929)
+
 
 </details>
 <!-- /MODEL:woosh.md -->
@@ -1461,6 +1807,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![GitHub](https://img.shields.io/badge/GitHub-Uni--MoE-black?logo=github&style=flat)](https://github.com/HITsz-TMG/Uni-MoE)
 [![arXiv](https://img.shields.io/badge/arXiv-2510.13344-red&style=flat)](https://arxiv.org/abs/2510.13344)
 
+
 </details>
 <!-- /MODEL:uni-moe-audio-any2audio.md -->
 <!-- MODEL:audiox.md -->
@@ -1481,7 +1828,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | **Audio** | ✅ |
 | **License** | ![Apache 2.0][license-apache-2.0]<br>![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 
-**Innovation:** First unified framework covering all three audio domains. Combines frozen multimodal LLM (Qwen2.5-Omni) with trainable Diffusion Transformer for high-fidelity synthesis. Any-to-any audio processing.
+**Features:** First unified framework covering all three audio domains. Combines frozen multimodal LLM (Qwen2.5-Omni) with trainable Diffusion Transformer for high-fidelity synthesis. Any-to-any audio processing.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-AudioX-black?logo=github&style=flat)](https://github.com/ZeyueT/AudioX)
@@ -1489,6 +1836,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-audiox-yellow?logo=huggingface&style=flat)](https://huggingface.co/collections/HKUSTAudio/audiox)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Audio--Omni-yellow?logo=huggingface&style=flat)](https://huggingface.co/HKUSTAudio/Audio-Omni)
 [![arXiv](https://img.shields.io/badge/arXiv-2503.10522-red&style=flat)](https://arxiv.org/abs/2503.10522)
+
 
 </details>
 <!-- /MODEL:audiox.md -->
@@ -1518,6 +1866,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![Website](https://img.shields.io/badge/Website-www.hunyuanvideofoley.org-blue&style=flat)](https://www.hunyuanvideofoley.org/)
 [![arXiv](https://img.shields.io/badge/arXiv-2508.16930-red&style=flat)](https://arxiv.org/abs/2508.16930)
 
+
 </details>
 <!-- /MODEL:hunyuanvideo-foley.md -->
 <!-- MODEL:prismaudio.md -->
@@ -1540,7 +1889,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | **Fast-Grpo** | yes (Hybrid ODE-SDE) |
 | **Inference-Time** | 0.63 seconds |
 
-**Innovation:** **Performance Benchmarks:**
+**Features:** **Performance Benchmarks:**
 
 | Metric | VGGSound | AudioCanvas |
 |--------|----------|-------------|
@@ -1553,6 +1902,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-PrismAudio-yellow?logo=huggingface&style=flat)](https://huggingface.co/FunAudioLLM/PrismAudio)
 [![Demo](https://img.shields.io/badge/Demo-PrismAudio-blue&style=flat)](https://huggingface.co/spaces/FunAudioLLM/PrismAudio)
 [![arXiv](https://img.shields.io/badge/arXiv-2511.18833-red&style=flat)](https://arxiv.org/abs/2511.18833)
+
 
 </details>
 <!-- /MODEL:prismaudio.md -->
@@ -1579,6 +1929,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![GitHub](https://img.shields.io/badge/GitHub-ThinkSound-black?logo=github&style=flat)](https://github.com/FunAudioLLM/ThinkSound)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-ThinkSound-yellow?logo=huggingface&style=flat)](https://huggingface.co/liuHuadai/ThinkSound)
 [![Demo](https://img.shields.io/badge/Demo-ThinkSound-blue&style=flat)](https://huggingface.co/spaces/FunAudioLLM/ThinkSound)
+
 
 </details>
 <!-- /MODEL:thinksound.md -->
@@ -1607,6 +1958,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-MMAudio-yellow?logo=huggingface&style=flat)](https://huggingface.co/hkchengrex/MMAudio)
 [![Demo](https://img.shields.io/badge/Demo-MMAudio-blue&style=flat)](https://huggingface.co/spaces/hkchengrex/MMAudio)
 [![arXiv](https://img.shields.io/badge/arXiv-2412.15322-red&style=flat)](https://arxiv.org/abs/2412.15322)
+
 
 </details>
 <!-- /MODEL:mmaudio.md -->
@@ -1646,6 +1998,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![GitHub](https://img.shields.io/badge/GitHub-ComfyUI--AudioSR-black?logo=github&style=flat)](https://github.com/Saganaki22/ComfyUI-AudioSR)
 [![arXiv](https://img.shields.io/badge/arXiv-2309.07314-red&style=flat)](https://arxiv.org/abs/2309.07314)
 
+
 </details>
 <!-- /MODEL:audiosr.md -->
 <!-- MODEL:novasr.md -->
@@ -1670,6 +2023,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-NovaSR-black?logo=github&style=flat)](https://github.com/ysharma3501/NovaSR)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-NovaSR-yellow?logo=huggingface&style=flat)](https://huggingface.co/YatharthS/NovaSR)
+
 
 </details>
 <!-- /MODEL:novasr.md -->
@@ -1698,6 +2052,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-audio_to_audio_schrodinger_bridge-yellow?logo=huggingface&style=flat)](https://huggingface.co/nvidia/audio_to_audio_schrodinger_bridge)
 [![arXiv](https://img.shields.io/badge/arXiv-2501.11311-red&style=flat)](https://arxiv.org/abs/2501.11311)
 
+
 </details>
 <!-- /MODEL:nvidia-a2sb.md -->
 
@@ -1709,10 +2064,50 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Languages | Streaming | License |
 | :--- | :--- | :---: | :--- |
+| [Mega-ASR](#mega-asr) | English, Chinese | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Cohere Transcribe](#cohere-transcribe) | 14 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [VibeVoice-ASR](#vibevoice-asr) | 50+ | ✅ | ![MIT][license-mit] |
-| [FunASR](#funasr) | 50+ | — | ![MIT][license-mit] |
+| [SYMPHONY-ASR](#symphony-asr) | English, Korean | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [Fun-ASR](#fun-asr) | 31 | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [SYMPHONY](#symphony) | English, Korean | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Unknown][license-unknown] |
+| [FunASR](#funasr) | 50+ | ✅ | ![MIT][license-mit] |
 
+<!-- MODEL:mega-asr.md -->
+<details id="mega-asr">
+<summary>Mega-ASR</summary>
+
+### Mega-ASR
+
+**Description:** Mega-ASR is a robust ASR foundation model trained to withstand the full spectrum of real-world acoustic degradation: 7 atomic acoustic conditions (reverberation, echo, additive noise, far-field, frequency dropout, bandwidth limitation, clipping distortion) and 54 compound environmental scenarios built on top. The inference stack combines Qwen3-ASR-1.7B as backbone, Mega-ASR adaptation weights, and an audio-quality router that picks per-utterance between the robust Mega-ASR path and the base path to preserve clean-speech quality. Robustness is trained via A2S-SFT plus DG-WGPO reinforcement learning, with reported gains up to ~30 % over leading open- and closed-source SOTA models on adversarial acoustic samples.
+
+**Release Date:** May 19, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 1.7B (Qwen3-ASR backbone) + Mega-ASR adapter + audio-quality router |
+| **Languages** | English, Chinese |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | Qwen3-ASR-1.7B base + adaptation weights + audio-quality router |
+| **Training Data** | ~2.4M samples (Voices-in-the-Wild-2M) |
+| **Robustness Atoms** | 7 (reverb, echo, additive noise, far-field, freq dropout, bandwidth limit, clipping) |
+| **Robustness Compound Scenarios** | 54 |
+| **Training** | A2S-SFT + DG-WGPO RL |
+| **Base Model** | Qwen/Qwen3-ASR-1.7B |
+
+**Features:** The first foundation ASR explicitly trained to handle **full-scenario in-the-wild** acoustic conditions (7 atomic effects, 54 compound scenarios, 2.4 M samples), combined with a routed inference path that switches between a robust Mega-ASR adapter and the base Qwen3-ASR backbone via an audio-quality classifier — delivering up to ~30 % WER gains over SOTA while staying fully open under Apache-2.0.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Mega--ASR-yellow?logo=huggingface&style=flat)](https://huggingface.co/zhifeixie/Mega-ASR)
+[![GitHub](https://img.shields.io/badge/GitHub-Mega--ASR-black?logo=github&style=flat)](https://github.com/xzf-thu/Mega-ASR)
+[![Website](https://img.shields.io/badge/Website-Mega--ASR-blue&style=flat)](https://xzf-thu.github.io/Mega-ASR/)
+[![Paper](https://img.shields.io/badge/Paper-2605.19833-red&style=flat)](https://arxiv.org/abs/2605.19833)
+[![Demo](https://img.shields.io/badge/Demo-Mega--ASR-blue&style=flat)](https://huggingface.co/spaces/zhifeixie/Mega-ASR)
+
+
+</details>
+<!-- /MODEL:mega-asr.md -->
 <!-- MODEL:cohere-transcribe.md -->
 <details id="cohere-transcribe">
 <summary>Cohere Transcribe</summary>
@@ -1733,7 +2128,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | **License** | ![Apache 2.0][license-apache-2.0] |
 | **Rtfx** | Up to 3x faster than comparable models |
 
-**Innovation:** - Long-form transcription with automatic chunking (>35 seconds)
+**Features:** - Long-form transcription with automatic chunking (>35 seconds)
 - Optional punctuation control
 - Batched inference support
 - vLLM integration for production serving
@@ -1744,6 +2139,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-cohere--transcribe--03--2026-yellow?logo=huggingface&style=flat)](https://huggingface.co/CohereLabs/cohere-transcribe-03-2026)
 [![Demo](https://img.shields.io/badge/Demo-cohere--transcribe--03--2026-blue&style=flat)](https://huggingface.co/spaces/CohereLabs/cohere-transcribe-03-2026)
 [![Blog](https://img.shields.io/badge/Blog-transcribe-blue&style=flat)](https://cohere.com/blog/transcribe)
+
 
 </details>
 <!-- /MODEL:cohere-transcribe.md -->
@@ -1769,20 +2165,147 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![GitHub](https://img.shields.io/badge/GitHub-VibeVoice-black?logo=github&style=flat)](https://github.com/microsoft/VibeVoice)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-VibeVoice--ASR-yellow?logo=huggingface&style=flat)](https://huggingface.co/microsoft/VibeVoice-ASR)
 
+
 </details>
 <!-- /MODEL:vibevoice-asr.md -->
+<!-- MODEL:symphony-asr.md -->
+<details id="symphony-asr">
+<summary>SYMPHONY-ASR</summary>
+
+### SYMPHONY-ASR
+
+**Description:** SYMPHONY-ASR is Okestro AI Lab's ASR-specialized speech-recognition model built from the earlier SYMPHONY base. It is an LLM-ASR design using **Qwen3-4B** as the language head, an HFQ-Former audio frontend (hierarchically compressing high-frame-rate audio features), and an audio-text-to-text interface that supports both Korean and English in a single model. The architecture is deliberately ASR-specialized rather than multi-task, allowing it to land anywhere the standard long-form benchmarks (AMI, Earnings-22, GigaSpeech, LibriSpeech clean & other, VoxPopuli, TedLium-3, SPGI Speech) are tracked, with public WER numbers reported on the model card.
+
+**Release Date:** January 12, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 4B (Qwen3-4B backbone) |
+| **Languages** | English, Korean |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | HFQ-Former audio encoder + Qwen3-4B LLM adapter + ASR head |
+| **Base Model** | Qwen/Qwen3-4B |
+| **Pipeline Tag** | audio-text-to-text |
+| **Wer Benchmarks** | AMI 9.56, Earnings-22 9.45, GigaSpeech 9.96, LS-clean 1.91, LS-other 4.43, VoxPopuli-en 6.30, TedLium-3 3.39, SPGI 2.29 |
+
+**Features:** An ASR-specialized cut of LLM-ASR (Qwen3-4B backbone + HFQ-Former + Adapter) that explicitly trades generalist audio-text flexibility for tighter ASR performance: pinned public WER scores across the canonical long-form English benchmarks plus Korean support in the same model.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-SYMPHONY--ASR-yellow?logo=huggingface&style=flat)](https://huggingface.co/okestro-ai-lab/SYMPHONY-ASR)
+[![GitHub](https://img.shields.io/badge/GitHub-(not%20stated%20on%20this%20card)-black?logo=github&style=flat)]((not stated on this card))
+[![Predecessor](https://img.shields.io/badge/Predecessor-SYMPHONY-blue&style=flat)](https://huggingface.co/okestro-ai-lab/SYMPHONY)
+
+
+</details>
+<!-- /MODEL:symphony-asr.md -->
+<!-- MODEL:fun-asr.md -->
+<details id="fun-asr">
+<summary>Fun-ASR</summary>
+
+### Fun-ASR
+
+**Description:** Fun-ASR (Fun-ASR-Nano-2512) is an end-to-end speech recognition large model from Tongyi Lab / FunAudioLLM, trained on tens of millions of hours of real speech data. The Nano variant covers 31 languages including Chinese with multiple dialects (Wu, Cantonese, Min, Hakka, Gan, Xiang, Jin) and 26 regional accents plus English/Japanese, with optional lyric / rap recognition. vLLM-based batch inference is 3-5× faster than baseline, and a llama.cpp / GGUF runtime brings the model to CPU/edge with built-in VAD.
+
+**Release Date:** December 15, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 800M |
+| **Languages** | 31 |
+| **Streaming** | ✅ |
+| **Vad** | ✅ |
+| **Punctuation** | ✅ |
+| **Diarization** | ✅ |
+| **Timestamps** | yes |
+| **Hotwords** | yes |
+| **Quant** | GGUF (~484MB q-form) |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+
+**Features:** Far-field, high-noise end-to-end ASR (conference rooms, in-vehicle, industrial) without the "hallucination" generation and language confusion common to Whisper-class models, plus a vLLM WebSocket streaming SDK that delivers sub-second transcription at scale and a llama.cpp / GGUF edge runtime.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Fun--ASR--Nano--2512-yellow?logo=huggingface&style=flat)](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)
+[![GitHub](https://img.shields.io/badge/GitHub-Fun--ASR-black?logo=github&style=flat)](https://github.com/FunAudioLLM/Fun-ASR)
+
+
+</details>
+<!-- /MODEL:fun-asr.md -->
+<!-- MODEL:symphony.md -->
+<details id="symphony">
+<summary>SYMPHONY</summary>
+
+### SYMPHONY
+
+**Description:** SYMPHONY is the earlier LLM-ASR design from Okestro AI Lab that pre-dates the ASR-specialized SYMPHONY-ASR. It uses the same Qwen3-4B backbone, an HFQ-Former audio frontend, and an audio-text-to-text interface for Korean + English. The model card self-identifies SYMPHONY-ASR as the `new_version`, and the SYMPHONY card itself is now minimal (auto-generated stub after the successor was published). Public WER numbers on the older release are slightly behind SYMPHONY-ASR — e.g. LibriSpeech-clean 2.26 vs 1.91, TedLium-3 3.97 vs 3.39.
+
+**Release Date:** October 27, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 4B (Qwen3-4B backbone) |
+| **Languages** | English, Korean |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | HFQ-Former audio encoder + Qwen3-4B LLM adapter |
+| **Base Model** | Qwen/Qwen3-4B |
+| **Pipeline Tag** | audio-text-to-text |
+| **Status** | superseded by SYMPHONY-ASR (Jan 12, 2026) |
+
+**Features:** An earlier general-purpose LLM-ASR recipe (Qwen3-4B + HFQ-Former + Adapter) on the Korean + English bilingual target — preserved here as the version-history parent of the ASR-specialized SYMPHONY-ASR successor.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-SYMPHONY-yellow?logo=huggingface&style=flat)](https://huggingface.co/okestro-ai-lab/SYMPHONY)
+[![Successor](https://img.shields.io/badge/Successor-SYMPHONY--ASR-blue&style=flat)](https://huggingface.co/okestro-ai-lab/SYMPHONY-ASR)
+
+
+</details>
+<!-- /MODEL:symphony.md -->
+<!-- MODEL:sensevoice.md -->
+<details id="sensevoice">
+<summary>SenseVoice</summary>
+
+### SenseVoice
+
+**Description:** SenseVoice is a speech foundation model that combines automatic speech recognition (ASR), spoken-language identification (LID), speech-emotion recognition (SER), and audio-event detection (AED) in a single non-autoregressive architecture. The Small variant processes 10 s of audio in roughly 70 ms, runs CPU/edge via a llama.cpp-compatible GGUF runtime, and is trained on over 400 k hours of data spanning 50+ languages.
+
+**Release Date:** July 3, 2024
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | ~230M (SenseVoice-Small) |
+| **Languages** | 50+ (multilingual) |
+| **Streaming** | ✅ |
+| **Vad** | ✅ |
+| **Punctuation** | ✅ |
+| **Diarization** | ✅ |
+| **Timestamps** | yes |
+| **Emotion Recognition** | yes |
+| **Audio Event Detection** | yes |
+| **License** | ![Unknown][license-unknown] |
+
+**Features:** A non-autoregressive end-to-end architecture that runs at 15× the speed of Whisper-Large while bundling ASR + LID + SER + AED in one model, plus a GGUF/llama.cpp path that brings the whole pipeline to CPU/edge devices without Python at runtime.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-SenseVoiceSmall-yellow?logo=huggingface&style=flat)](https://huggingface.co/FunAudioLLM/SenseVoiceSmall)
+[![GitHub](https://img.shields.io/badge/GitHub-SenseVoice-black?logo=github&style=flat)](https://github.com/FunAudioLLM/SenseVoice)
+
+
+</details>
+<!-- /MODEL:sensevoice.md -->
 <!-- MODEL:funasr.md -->
 <details id="funasr">
 <summary>FunASR</summary>
 
 ### FunASR
 
-**Description:** Fundamental end-to-end speech recognition toolkit with SOTA pretrained models.
+**Description:** Industrial-grade end-to-end speech recognition toolkit with SOTA pretrained models, supporting ASR, VAD, punctuation, language modeling, speaker verification, speaker diarization, and multi-talker ASR across 50+ languages. Architectures are updated frequently and the project tracks upstream ModelScope releases.
 
 **Release Date:** Ongoing (First: 2023)
 
 | Feature | Value |
 |---------|-------|
+| **Parameters** | ~220M (Paraformer-large) |
 | **Asr** | ✅ |
 | **Languages** | 50+ |
 | **Vad** | ✅ |
@@ -1790,14 +2313,76 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | **Diarization** | ✅ |
 | **Timestamps** | yes |
 | **Emotion** | yes |
+| **Streaming** | ✅ |
 | **License** | ![MIT][license-mit] |
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-FunASR-black?logo=github&style=flat)](https://github.com/modelscope/FunASR)
 [![Website](https://img.shields.io/badge/Website-www.funasr.com-blue&style=flat)](https://www.funasr.com)
 
+
 </details>
 <!-- /MODEL:funasr.md -->
+
+---
+
+## Audio Codecs & Tokenizers
+
+Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms into compact continuous or discrete tokens — the substrate for downstream TTS, music, and a2a generators.
+
+### Audio Codecs & Tokenizers Quick Comparison
+
+| Model | Type | Sample Rate | Latent Dim | Modalities | License |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [KVAE-Audio](#kvae-audio) | Audio VAE | 48 kHz | 64 | Speech, Music, Sound | ![MIT][license-mit] |
+
+<!-- MODEL:kvae-audio.md -->
+<details id="kvae-audio">
+<summary>KVAE-Audio</summary>
+
+### KVAE-Audio
+
+**Description:** KVAE-Audio is a continuous, full-band (48 kHz) audio autoencoder by Kandinsky Lab / SberBank. It compresses raw waveforms into compact continuous latents (64-dim) and reconstructs them with high fidelity across speech, music, and general sound. The model is intended both for reconstruction and as a latent space for downstream generative models — internal ablations show that swapping the autoencoder under a fixed generator (same DiT, same data, same steps) consistently improves generative quality.
+
+**Release Date:** June 29, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 166.9M |
+| **Sample Rate** | 48 kHz full-band |
+| **Latent Dim** | 64 |
+| **Modalities** | speech, music, sound |
+| **Reconstruction Quality** | beats MMAudio/DACVAE/SAME-L on AudioCaps FAD |
+| **Architecture** | VAE (continuous latents) |
+| **Related Papers** | 2412.15322, 2410.13720, 2605.18613 |
+| **License** | ![MIT][license-mit] |
+
+**Features:** Full-band 48 kHz continuous audio VAE with a comparatively tiny 64-dimensional latent space, designed as a drop-in replacement for prior codec/VAEs for *generative* pipelines — internal benchmarks show lower FAD on AudioCaps and Song Describer than MMAudio, DACVAE (MovieGen), and SAME-L under a fixed generator.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-KVAE--Audio-yellow?logo=huggingface&style=flat)](https://huggingface.co/kandinskylab/KVAE-Audio)
+[![GitHub](https://img.shields.io/badge/GitHub-kvae--audio-black?logo=github&style=flat)](https://github.com/kandinskylab/kvae-audio)
+[![Website](https://img.shields.io/badge/Website-kandinskylab.ai-blue&style=flat)](https://kandinskylab.ai/)
+
+
+</details>
+<!-- /MODEL:kvae-audio.md -->
+
+---
+
+## Additional Resources
+
+Community-maintained leaderboards for tracking and comparing speech models across providers and benchmarks.
+
+### Text-to-Speech
+
+- [Artificial Analysis — Text-to-Speech Leaderboard](https://artificialanalysis.ai/text-to-speech/leaderboard) — Elo-based speech arena ranking TTS models on each provider's native voices, with API pricing and arena voice counts.
+
+### Speech-to-Text (ASR)
+
+- [🤗 Open ASR Leaderboard](https://huggingface.co/spaces/hf-audio/open_asr_leaderboard) — Hugging Face community benchmark ranking open and proprietary ASR models by average WER and RTFx across English and multilingual datasets.
+- [Artificial Analysis — Speech-to-Text (Streaming) Leaderboard](https://artificialanalysis.ai/speech-to-text/streaming) — Compares streaming STT models and providers on the AA-WER Streaming index, latency, and pricing.
+- [FFASR Leaderboard (Treble Technologies)](https://huggingface.co/spaces/treble-technologies/ffasr) — Far-field ASR multi-condition benchmark reporting WER and RTFx across noisy, reverberant, and SNR-stratified scenarios (measured & simulated RIRs).
 
 ---
 
@@ -1811,10 +2396,10 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
-[license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
-[license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
-[license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
-[license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
-[license-nvidia-noncommercial]: https://img.shields.io/badge/NVIDIA_NC-yellow?style=flat-square&logo=nvidia "NVIDIA NC"
 [license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
+[license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
+[license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
+[license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
+[license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
+[license-nvidia-noncommercial]: https://img.shields.io/badge/NVIDIA_NC-yellow?style=flat-square&logo=nvidia "NVIDIA NC"
