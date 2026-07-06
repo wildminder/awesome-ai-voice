@@ -13,6 +13,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 - [Audio Restoration & Enhancement](#audio-restoration--enhancement)
 - [Speech Recognition (ASR)](#speech-recognition-asr)
 - [Audio Codecs & Tokenizers](#audio-codecs--tokenizers)
+- [Audio Transcription Models](#audio-transcription-models)
 - [Additional Resources](#additional-resources)
 
 ---
@@ -31,6 +32,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Miso TTS](#misotts) | ✅ | ❌ | English | ❌ | ![MIT][license-mit] |
 | [OronTTS](#oron-tts) | ✅ | ❌ | Mongolian, Kazakh | ❌ | ![MIT][license-mit] |
 | [Supertonic 3](#supertonic-3) | ✅ | ❌ | 31 | ✅ | ![OpenRAIL-M][license-openrail-m] |
+| [Scenema Audio](#scenema-audio) | ✅ | ❌ | English, German, French, Spanish, Italian, Portuguese, Japanese, Chinese, Korean, Russian, Arabic, Hindi, Swahili | ❌ | ![Unknown][license-unknown] |
 | [Dramabox](#dramabox) | ✅ | ❌ | English | ❌ | ![Unknown][license-unknown] |
 | [Sarashina2.2-TTS](#sarashina22-tts) | ✅ | ❌ | Japanese, English | ❌ | ![Research Only][license-research-only] |
 | [LongCat-AudioDiT](#longcat-audiodit) | ✅ | ❌ | Chinese, English | ❌ | ![MIT][license-mit] |
@@ -42,6 +44,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [SoulX-Singer](#soulx-singer) | ✅ | ❌ | Mandarin, English, Cantonese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [SoproTTS](#soprotts) | ✅ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Qwen3-TTS](#qwen3-tts) | ✅ | ❌ | 10 | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [TADA](#tada-1b) | ❌ | ❌ | English | ❌ | ![Unknown][license-unknown] |
 | [Irodori-TTS-500M-v2](#irodori-tts-500m-v2) | ✅ | ❌ | Japanese | ❌ | ![MIT][license-mit] |
 | [KugelAudio](#kugelaudio) | ✅ | ❌ | 23 European languages | ✅ | ![MIT][license-mit] |
 | [LEMAS-TTS](#lemas-tts) | ✅ | ❌ | 10 | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -344,6 +347,40 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 </details>
 <!-- /MODEL:supertonic-3.md -->
+<!-- MODEL:scenema-audio.md -->
+<details id="scenema-audio">
+<summary>Scenema Audio</summary>
+
+### Scenema Audio
+
+**Description:** Scenema Audio is a zero-shot expressive voice cloning and speech generation model from ScenemaAI. It is built on an audio diffusion transformer extracted from the audio branch of Lightricks' LTX 2.3 (a 22B audiovisual model) — keeping the in-the-wild acoustic quality the bigger model learned while specializing for speech output. Generation is **prompt-driven**: a `<speak>` tag carries a `voice` description, `gender`, optional `scene` (ambient audio around the voice), and `language`; an `<action>` tag shifts emotional state mid-generation. Action tags cover rage, grief, joy, fear, exhaustion; voice prompt can describe timbre/pitch/breathiness/rasp/resonance plus character archetypes ("Tony Soprano having a breakdown"). Supports zero-shot voice cloning from 10-20 seconds of reference audio with some emotional variability, automatic long-form narration by splitting text and maintaining voice continuity, and 13 multilingual built-ins.
+
+**Release Date:** April 26, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | (audio diffusion transformer of LTX 2.3, weights ~9.8 GB bf16 / ~4.9 GB INT8 + ~6.7 GB pipeline) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Languages** | 13 (en, de, fr, es, it, pt, ja, zh, ko, ru, ar, hi, sw) |
+| **Streaming** | ❌ |
+| **License** | ![Unknown][license-unknown] |
+| **Parent Model** | Lightricks LTX-2.3 (audio branch) |
+| **Prompt Format** | `<speak voice=… gender=… scene=… language=…>` XML with `<action>` tag for shifting emotion |
+| **Long Form Narration** | yes (auto-splits text while preserving voice continuity) |
+| **Quantized** | yes (INT8 weights at ~4.9 GB, identical quality) |
+
+**Features:** A standalone audio diffusion transformer extracted from a much bigger multimodal source: the model inherits how people actually sound in real scenes (angry, laughing, whispering, crying, exhausted, terrified) and exposes that capacity through a `<speak>` + `<action>` prompt interface — emotional state shifts within a single generation, instead of being a token-level or speaker-level conditioning problem.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-scenema--audio-yellow?logo=huggingface&style=flat)](https://huggingface.co/ScenemaAI/scenema-audio)
+[![GitHub](https://img.shields.io/badge/GitHub-scenema--audio-black?logo=github&style=flat)](https://github.com/ScenemaAI/scenema-audio)
+[![Website](https://img.shields.io/badge/Website-audio-blue&style=flat)](https://scenema.ai/audio)
+
+
+</details>
+<!-- /MODEL:scenema-audio.md -->
 <!-- MODEL:dramabox.md -->
 <details id="dramabox">
 <summary>Dramabox</summary>
@@ -676,6 +713,42 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 </details>
 <!-- /MODEL:qwen3-tts.md -->
+<!-- MODEL:tada-1b.md -->
+<details id="tada-1b">
+<summary>TADA</summary>
+
+### TADA
+
+**Description:** TADA is a unified speech-language model from Hume AI built around a *Text-Acoustic Dual-Alignment* tokenizer: for every text/subword token there is exactly one corresponding speech vector, so the audio stream stays 1:1 aligned with text. As a TTS model, each autoregressive step covers one text token and dynamically determines the duration and prosody for that token, breaking the fixed-frames-per-second constraint that drives most modern TTS backbones. As a speech-language model, it generates a text token and the speech for the preceding token in the same dual step.
+
+**Release Date:** January 12, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 1B (Llama 3.2 1B base) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Languages** | English |
+| **Streaming** | ❌ |
+| **License** | ![Unknown][license-unknown] |
+| **Base Model** | meta-llama/Llama-3.2-1B |
+| **Tokenization** | 1:1 text–acoustic dual alignment (one speech vector per text token) |
+| **Dynamic Duration** | yes (each autoregressive step covers one text token, duration is determined per-token) |
+
+**Features:** A dual-alignment speech–text tokenizer that decouples autoregression from a fixed audio frame rate: each text token owns exactly one speech vector, and the model synthesizes the *whole segment for that token* in one step, regardless of how long the spoken form is — eliminating transcript hallucination and the latency overhead of constant-frame-rate codecs while staying as compact as Llama 3.2 1B.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-tada--1b-yellow?logo=huggingface&style=flat)](https://huggingface.co/HumeAI/tada-1b)
+[![GitHub](https://img.shields.io/badge/GitHub-tada-black?logo=github&style=flat)](https://github.com/HumeAI/tada)
+[![Demo](https://img.shields.io/badge/Demo-tada-blue&style=flat)](https://huggingface.co/spaces/HumeAI/tada)
+[![PyPI](https://img.shields.io/badge/PyPI-hume--tada-blue&style=flat)](https://pypi.org/project/hume-tada/)
+[![Paper](https://img.shields.io/badge/Paper-2602.23068-red&style=flat)](https://arxiv.org/abs/2602.23068)
+[![Blog](https://img.shields.io/badge/Blog-opensource--tada-blue&style=flat)](https://www.hume.ai/blog/opensource-tada)
+
+
+</details>
+<!-- /MODEL:tada-1b.md -->
 <!-- MODEL:irodori-tts-500m-v2.md -->
 <details id="irodori-tts-500m-v2">
 <summary>Irodori-TTS-500M-v2</summary>
@@ -2070,6 +2143,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [SYMPHONY-ASR](#symphony-asr) | English, Korean | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Fun-ASR](#fun-asr) | 31 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [SYMPHONY](#symphony) | English, Korean | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [Moonshine](#moonshine) | English | ❌ | ![MIT][license-mit] |
 | [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Unknown][license-unknown] |
 | [FunASR](#funasr) | 50+ | ✅ | ![MIT][license-mit] |
 
@@ -2261,6 +2335,39 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 </details>
 <!-- /MODEL:symphony.md -->
+<!-- MODEL:moonshine.md -->
+<details id="moonshine">
+<summary>Moonshine</summary>
+
+### Moonshine
+
+**Description:** Moonshine is a tiny automatic-speech-recognition family from Useful Sensors, designed for real-time speech transcription on severely memory- and compute-constrained hardware. The release ships two checkpoints (tiny 27M, base 61M), both English-only ASR trained on 200,000 hours of audio + transcript pairs collected from the internet and open HuggingFace datasets. It is the smallest practical Wh-class model family for edge / microcontroller-class deployment among those with public benchmarks against standard ASR datasets.
+
+**Release Date:** September 26, 2024
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 27M (tiny), 61M (base) |
+| **Asr** | ✅ |
+| **Languages** | English |
+| **Streaming** | ✅ |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | sequence-to-sequence ASR |
+| **Training Data** | 200,000 hours (internet + open HF datasets) |
+| **Target Hardware** | low-cost / edge / MCU-class |
+| **Variants English Only** | yes |
+
+**Features:** A purpose-built tiny ASR (27M–61M parameters) ranging far below the smallest Whisper-class models while remaining competitive on standard ASR datasets — built specifically so a microcontroller / low-cost hardware developer can run real-time English transcription with usable accuracy, rather than shipping a quantized-down Whisper clone.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-moonshine-yellow?logo=huggingface&style=flat)](https://huggingface.co/UsefulSensors/moonshine)
+[![GitHub](https://img.shields.io/badge/GitHub-moonshine-black?logo=github&style=flat)](https://github.com/usefulsensors/moonshine)
+[![Blog](https://img.shields.io/badge/Blog-introducing--moonshine--the--new--state--of--the--art--for--speech--to--text-blue&style=flat)](https://petewarden.com/2024/10/21/introducing-moonshine-the-new-state-of-the-art-for-speech-to-text/)
+[![Paper](https://img.shields.io/badge/Paper-2410.15608-red&style=flat)](https://arxiv.org/abs/2410.15608)
+
+
+</details>
+<!-- /MODEL:moonshine.md -->
 <!-- MODEL:sensevoice.md -->
 <details id="sensevoice">
 <summary>SenseVoice</summary>
@@ -2370,6 +2477,51 @@ Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms 
 
 ---
 
+## Audio Transcription Models
+
+Multi-stance audio annotators — specialized models that transcribe not just speech but also musical audio (lyrics, song structure). Often used to label training data for downstream speech or music generation.
+
+### Audio Transcription Models Quick Comparison
+
+| Model | Use Case | Input | Languages | Base Model | License |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [ACE-Step Transcriber](#acestep-transcriber) | Music data labeling | Audio | 50+ | Qwen2.5 Omni 7B | ![MIT][license-mit] |
+
+<!-- MODEL:acestep-transcriber.md -->
+<details id="acestep-transcriber">
+<summary>ACE-Step Transcriber</summary>
+
+### ACE-Step Transcriber
+
+**Description:** ACE-Step Transcriber is the **annotation model** that ACE-Step used to label its v1.5 music-generation training data. It is a multilingual audio annotation model built on **Qwen2.5 Omni 7B** that transcribes both **speech** and **singing voice** with high accuracy, then automatically identifies song structural elements (verse, chorus, bridge, intro, outro, pre/post-chorus, instrumental interludes). Output is structured: `# Languages` + `# Lyrics` blocks with `[Section Tag - Optional Instrument]` markers.
+
+**Release Date:** January 23, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Asr** | ✅ |
+| **Languages** | 50+ |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | Qwen2.5 Omni 7B base, multi-modal audio-text-to-text |
+| **Pipeline Tag** | audio-text-to-text |
+| **Target Output** | structured `# Languages` + `# Lyrics` with `[Section Tag]` markers (verse, chorus, bridge, intro, outro, pre-chorus, post-chorus, intro/outro, guiter interlude, instrumental, spoken) |
+| **Training Role** | annotation / labeling model for ACE-Step v1.5 music data |
+| **Modalities** | speech + singing voice + musical structure |
+| **Datasets** | multilingual (50+), music + speech corpora |
+
+**Features:** A *specialized audio annotator* that bridges speech recognition and music-structure understanding: it labels both what is being said and how the song is organized (verse/chorus/bridge and instrumental boundaries) in one pass — built specifically to label the training corpus of the ACE-Step v1.5 music model, but usable as a stand-alone multilingual lyrics / audio-structure transcriber.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-acestep--transcriber-yellow?logo=huggingface&style=flat)](https://huggingface.co/ACE-Step/acestep-transcriber)
+[![Paper](https://img.shields.io/badge/Paper-2602.00744-red&style=flat)](https://arxiv.org/abs/2602.00744)
+
+
+</details>
+<!-- /MODEL:acestep-transcriber.md -->
+
+---
+
 ## Additional Resources
 
 Community-maintained leaderboards for tracking and comparing speech models across providers and benchmarks.
@@ -2395,11 +2547,11 @@ This list is continuously evolving. If you have any models to add or updates to 
 *Last Updated: July 2026*
 
 <!-- MARKDOWN LINKS & IMAGES -->
+[license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
 [license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
-[license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
 [license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
 [license-nvidia-noncommercial]: https://img.shields.io/badge/NVIDIA_NC-yellow?style=flat-square&logo=nvidia "NVIDIA NC"
