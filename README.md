@@ -231,7 +231,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Languages** | 31 (extended from v1.0's 20) |
 | **Streaming** | ✅ |
 | **License** | ![Apache 2.0][license-apache-2.0] |
-| **Max-Duration** | 1 hour |
+| **Max Duration** | 1 hour |
 | **Pause Control** | yes (inline markers like `[pause 3.2s]`) |
 | **Lang Tag Control** | yes (set `language=` in user message) |
 
@@ -1108,7 +1108,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Languages** | Multilingual |
 | **Streaming** | ✅ |
 | **License** | ![MIT][license-mit] |
-| **Max-Duration** | ~10 minutes |
+| **Max Duration** | ~10 minutes |
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-VibeVoice-black?logo=github&style=flat)](https://github.com/microsoft/VibeVoice)
@@ -1308,7 +1308,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Streaming** | ✅ |
 | **License** | ![Apache 2.0][license-apache-2.0] |
 | **Multi-Speaker** | yes (4 speakers) |
-| **Max-Duration** | 3 minutes |
+| **Max Duration** | 3 minutes |
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-FireRedTTS2-black?logo=github&style=flat)](https://github.com/FireRedTeam/FireRedTTS2)
@@ -1688,7 +1688,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Languages** | Mandarin, English, Cantonese, Sichuanese, Henanese |
 | **Streaming** | ✅ |
 | **License** | ![Apache 2.0][license-apache-2.0] |
-| **Max-Duration** | 90+ minutes |
+| **Max Duration** | 90+ minutes |
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-SoulX--Podcast-black?logo=github&style=flat)](https://github.com/Soul-AILab/SoulX-Podcast)
@@ -1819,16 +1819,126 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 ### Anything to Audio Quick Comparison
 
-| Model | Text | Video | Image | Audio | License |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| [Woosh](#woosh) | ✅ | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
-| [Uni-MoE (Audio)](#uni-moe-audio-any2audio) | ✅ | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
-| [AudioX / Audio-Omni](#audiox) | ✅ | ✅ | — | ✅ | ![Apache 2.0][license-apache-2.0]<br>![CC BY-NC 4.0][license-cc-by-nc-4.0] |
-| [HunyuanVideo-Foley](#hunyuanvideo-foley) | ✅ | ✅ | — | — | ![Unknown][license-unknown] |
-| [PrismAudio](#prismaudio) | — | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
-| [ThinkSound](#thinksound) | ✅ | — | — | ✅ | ![Apache 2.0][license-apache-2.0] |
-| [MMAudio](#mmaudio) | ✅ | ✅ | ✅ | — | ![Apache 2.0][license-apache-2.0] |
+| Model | Text | Video | Audio | Max Duration | Sample Rate | License |
+| :--- | :---: | :---: | :---: | :--- | :--- | :--- |
+| [MOSS-SoundEffect](#moss-soundeffect) | ✅ | — | — | 30 s | 48 kHz | ![Apache 2.0][license-apache-2.0] |
+| [Omni2Sound (Omni2Audio)](#omni2sound) | ✅ | ✅ | ✅ | — | — | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| [ControlFoley](#controlfoley) | ✅ | ✅ | ✅ | — | (not stated) | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| [Woosh](#woosh) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
+| [Uni-MoE (Audio)](#uni-moe-audio-any2audio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
+| [AudioX / Audio-Omni](#audiox) | ✅ | ✅ | ✅ | — | — | ![Apache 2.0][license-apache-2.0]<br>![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| [HunyuanVideo-Foley](#hunyuanvideo-foley) | ✅ | ✅ | — | — | 48 kHz | ![Unknown][license-unknown] |
+| [PrismAudio](#prismaudio) | — | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
+| [ThinkSound](#thinksound) | ✅ | — | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
+| [MMAudio](#mmaudio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:moss-soundeffect.md -->
+<details id="moss-soundeffect">
+<summary>MOSS-SoundEffect</summary>
+
+### MOSS-SoundEffect
+
+**Description:** MOSS-SoundEffect is the dedicated **text-to-sound** model in the OpenMOSS / MOSI.AI MOSS-TTS family. It turns natural-language captions into high-fidelity non-speech audio (ambience, urban scenes, creatures, human actions, and short music-like clips).
+
+**Release Date:** May 25, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Type** | Text-to-Sound / SFX generation |
+| **Conditioning** | Text |
+| **Max Duration** | 30 seconds |
+| **Sample Rate** | 48 kHz |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | DiT + Flow Matching + DAC VAE + Qwen3 text encoder |
+| **Parameters** | 1.3B (DiT variant 1.3B) |
+| **Languages** | English, Chinese |
+| **Inference Defaults** | 100 flow-match steps, cfg 4.0, sigma_shift 5.0 |
+| **Library** | diffusers |
+
+**Features:** Replaces the discrete-token autoregressive v1 (which bottlenecked on vocabulary) with a continuous-latent DiT + Flow Matching paired with a DAC VAE — yielding **30 s** stable audio, bilingual English + Chinese prompts, and a clean CFG/sigma-shift inference schedule (cfg 4.0, shift 5.0) that works straight out of the box on the `diffusers` library.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-MOSS--SoundEffect--v2.0-yellow?logo=huggingface&style=flat)](https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-MOSS--SoundEffect%20(legacy%20v1%20checkpoint)-yellow?logo=huggingface&style=flat)](https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect (legacy v1 checkpoint))
+[![GitHub](https://img.shields.io/badge/GitHub-moss_soundeffect_v2-black?logo=github&style=flat)](https://github.com/OpenMOSS/MOSS-TTS/tree/main/moss_soundeffect_v2)
+
+
+</details>
+<!-- /MODEL:moss-soundeffect.md -->
+<!-- MODEL:omni2sound.md -->
+<details id="omni2sound">
+<summary>Omni2Sound (Omni2Audio)</summary>
+
+### Omni2Sound (Omni2Audio)
+
+**Description:** Omni2Sound — also written **Omni2Audio** on the project page — is a unified VT2A / V2A / T2A framework and a CVPR 2026 Highlight. A single Diffusion Transformer (DiT) backbone with a decoupled two-branch conditioning design:
+
+**Release Date:** April 20, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Conditioning** | Text / Video / Text+Video |
+| **Modalities** | Video, Audio |
+| **Asr** | ❌ |
+| **Voice Cloning** | ❌ |
+| **Text** | ✅ |
+| **Video** | ✅ |
+| **Image** | ❌ |
+| **Audio** | ✅ |
+| **License** | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| **Tasks** | VT2A, V2A, T2A (single model) |
+| **Architecture** | DiT + decoupled Semantic / Temporal branches + 3-stage progressive training |
+| **Pipeline Tag** | text-to-audio |
+
+**Features:** One **single model** that is SOTA on three distinct tasks (VT2A, V2A, T2A) without a separate model per mode — decoupled semantic and temporal conditioning let the same DiT backbone handle text-only, video-only, and text+video conditioning by cleanly omitting the missing modality rather than padding it, which is what most prior unified VA models had to do.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Omni2Sound-yellow?logo=huggingface&style=flat)](https://huggingface.co/Dalision/Omni2Sound)
+[![GitHub](https://img.shields.io/badge/GitHub-Omni2Sound-black?logo=github&style=flat)](https://github.com/omni2sound/Omni2Sound)
+[![Website](https://img.shields.io/badge/Website-omni2sound.github.io-blue&style=flat)](https://omni2sound.github.io/)
+[![Paper](https://img.shields.io/badge/Paper-2601.02731-red&style=flat)](https://arxiv.org/abs/2601.02731)
+[![Benchmark](https://img.shields.io/badge/Benchmark-Omni2Sound_Benchmark-blue&style=flat)](https://huggingface.co/datasets/Dalision/Omni2Sound_Benchmark)
+
+
+</details>
+<!-- /MODEL:omni2sound.md -->
+<!-- MODEL:controlfoley.md -->
+<details id="controlfoley">
+<summary>ControlFoley</summary>
+
+### ControlFoley
+
+**Description:** ControlFoley (Xiaomi MiLM Plus) is a unified video-to-audio generation model built to handle the *cross-modal conflict* problem — the situation where a video shows a dog barking but the text prompt asks for a cat — by routing which modality controls what at inference time. It supports text-controlled video→audio, audio-controlled video→audio, and text+video→audio conditioning. Built on `diffusers` / DiT; trained and released in April 2026 with a project page, code, and online demo.
+
+**Release Date:** April 13, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Conditioning** | Text / Video / Text+Video |
+| **Modalities** | Video (visual), Audio (foley) |
+| **Asr** | ❌ |
+| **Voice Cloning** | ❌ |
+| **Text** | ✅ |
+| **Video** | ✅ |
+| **Image** | ❌ |
+| **Audio** | ✅ |
+| **Sample Rate** | (not stated) |
+| **License** | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| **Pipeline Tag** | text-to-audio |
+| **Library** | diffusers |
+
+**Features:** Cross-modal conflict handling: when a video and a text prompt disagree (visually obvious but textually wrong), the model routes control to the modality the user explicitly trusts so the wrong modality doesn't dominate the generated foley. Unifies three conditioning modes (text-controlled VA, audio-controlled VA, and text+video VA) under one generative stack.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-ControlFoley-yellow?logo=huggingface&style=flat)](https://huggingface.co/YJX-Xiaomi/ControlFoley)
+[![GitHub](https://img.shields.io/badge/GitHub-controlfoley-black?logo=github&style=flat)](https://github.com/xiaomi-research/controlfoley)
+[![Website](https://img.shields.io/badge/Website-ControlFoley-blue&style=flat)](https://yjx-research.github.io/ControlFoley/)
+[![Demo](https://img.shields.io/badge/Demo-ControlFoley_web_page-blue&style=flat)](https://yjx-research.github.io/ControlFoley_web_page/)
+[![Paper](https://img.shields.io/badge/Paper-2604.15086-red&style=flat)](https://arxiv.org/abs/2604.15086)
+
+
+</details>
+<!-- /MODEL:controlfoley.md -->
 <!-- MODEL:woosh.md -->
 <details id="woosh">
 <summary>Woosh</summary>
@@ -1926,7 +2036,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | Feature | Value |
 |---------|-------|
 | **Parameters** | - |
-| **Audio Output** | 48 kHz |
+| **Sample Rate** | 48 kHz |
 | **Text** | ✅ |
 | **Video** | ✅ |
 | **License** | ![Unknown][license-unknown] |
@@ -2044,10 +2154,44 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Type | Bandwidth Extension | Inpainting | License |
 | :--- | :---: | :---: | :---: | :--- |
+| [RE-USE](#re-use) | Universal Speech Enhancement | ✅ | ❌ | ![Unknown][license-unknown] |
 | [AudioSR](#audiosr) | — | — | — | ![MIT][license-mit] |
+| [PASE](#pase) | Speech Enhancement | ❌ | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [DTT-BSR](#dtt-bsr) | Music Source Restoration | ❌ | ❌ | ![MIT][license-mit] |
 | [NovaSR](#novasr) | — | — | — | ![Apache 2.0][license-apache-2.0] |
 | [NVIDIA A2SB (Audio-to-Audio Schrodinger Bridges)](#nvidia-a2sb) | — | ✅ | ✅ | ![NVIDIA NC][license-nvidia-noncommercial] |
 
+<!-- MODEL:re-use.md -->
+<details id="re-use">
+<summary>RE-USE</summary>
+
+### RE-USE
+
+**Description:** RE-USE (RE-…), NVIDIA's multilingual universal speech enhancement model, targets distortion–perception trade-off by training a single model that balances listening quality against fidelity to the underlying linguistic / speaker / emotional content. Designed to restore diverse degraded speech while leaving everything else (content, identity, prosody, accent, paralinguistic attributes) intact.
+
+**Release Date:** March 17, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Type** | Universal Speech Enhancement |
+| **Bandwidth Extension** | ✅ |
+| **Inpainting** | ❌ |
+| **Sample Rate** | 8 / 16 / 22.05 / 24 / 32 / 44.1 / 48 kHz (multi-rate input) |
+| **Architecture** | Mamba-SSM backbone |
+| **Degradation Coverage** | additive noise, reverberation, clipping, bandwidth limit, codec artifacts, packet loss, low-quality mics |
+| **Language Agnostic** | yes |
+| **License** | ![Unknown][license-unknown] |
+
+**Features:** A **single Mamba-SSM model** that handles seven different input sample rates (no resampling pre-step), covers a broad degradation menu in one checkpoint, stays language-agnostic without per-language training, and explicitly balances distortion reduction against fidelity to the input speech — addressing the universal-SE trade-off that earlier single-purpose enhancers couldn't.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-RE--USE-yellow?logo=huggingface&style=flat)](https://huggingface.co/nvidia/RE-USE)
+[![Demo](https://img.shields.io/badge/Demo-RE--USE-blue&style=flat)](https://huggingface.co/spaces/nvidia/RE-USE)
+[![Paper](https://img.shields.io/badge/Paper-2603.02641-red&style=flat)](https://arxiv.org/abs/2603.02641)
+
+
+</details>
+<!-- /MODEL:re-use.md -->
 <!-- MODEL:audiosr.md -->
 <details id="audiosr">
 <summary>AudioSR</summary>
@@ -2074,6 +2218,67 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 </details>
 <!-- /MODEL:audiosr.md -->
+<!-- MODEL:pase.md -->
+<details id="pase">
+<summary>PASE</summary>
+
+### PASE
+
+**Description:** PASE (Phonologically Anchored Speech Enhancer) is a generative speech-enhancement model from Cisco Collaboration AI that removes noise and reverberation while preserving linguistic content and speaker identity. It uses two fine-tuned WavLM-derived components:
+
+**Release Date:** November 8, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Type** | Speech Enhancement |
+| **Bandwidth Extension** | ❌ |
+| **Inpainting** | ❌ |
+| **Sample Rate** | 16 kHz mono |
+| **Architecture** | Denoising WavLM (DRD from WavLM-Large) + Dual-Stream Vocoder (phonetic + acoustic) |
+| **Finetuned From** | WavLM-Large |
+| **Training Data** | DN5/DNS5 challenge clean + noise, LibriTTS, VCTK, OpenSLR26+28 RIRs |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+
+**Features:** Anchors enhancement to phonology instead of spectrum: by reconstructing from a **phonetic** stream and a separate **acoustic** stream (per DeWavLM's two representations), PASE keeps the words intact even when the spectrum is severely degraded — substantially lowering hallucinations while still regaining perceptual quality.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-pase-yellow?logo=huggingface&style=flat)](https://huggingface.co/Xiaobin-Rong/pase)
+[![GitHub](https://img.shields.io/badge/GitHub-pase-black?logo=github&style=flat)](https://github.com/cisco-open/pase)
+[![Demo](https://img.shields.io/badge/Demo-pase_demo-blue&style=flat)](https://xiaobin-rong.github.io/pase_demo/)
+[![Paper](https://img.shields.io/badge/Paper-2511.13300-red&style=flat)](https://arxiv.org/abs/2511.13300)
+
+
+</details>
+<!-- /MODEL:pase.md -->
+<!-- MODEL:dtt-bsr.md -->
+<details id="dtt-bsr">
+<summary>DTT-BSR</summary>
+
+### DTT-BSR
+
+**Description:** DTT-BSR (DTTNet with **B**and**S**equence and **R**oPE) is a music-source-restoration challenge submission from team AC/DC (Wuhan University) to ICASSP 2026. It is built inside the official MSR-Kit GAN framework, where the baseline generator is replaced by a DTTNet-style time-frequency U-Net and augmented at the bottleneck with:
+
+**Release Date:** October 16, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Type** | Music Source Restoration |
+| **Bandwidth Extension** | ❌ |
+| **Inpainting** | ❌ |
+| **Architecture** | DTTNet TFC-TDF U-Net (complex STFT) + Improved Dual-Path BandSplitRNN block + RoPE-Transformer |
+| **Input** | complex STFT (real + imag channels; n_fft=2048, hop=512) |
+| **Discriminator** | Multi-Frequency Discriminator (baseline) |
+| **Framework** | MSR-Kit GAN (reconstruction + adversarial + feature-matching losses) |
+| **License** | ![MIT][license-mit] |
+
+**Features:** Treats music-source restoration as a **complex-STFT time-frequency U-Net enhancement at the bottleneck**: keep the strong DTTNet dual-path TFC-TDF structure for local spectral patterns, then layer in BandSplitRNN-style sub-band recurrence + RoPE self-attention so the generator can model long-range, cross-band harmonic structure that ordinary GAN baselines miss — critical for restoring non-vocal stems cleanly.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-DTT--BSR-black?logo=github&style=flat)](https://github.com/OrigamiShido/DTT-BSR)
+
+
+</details>
+<!-- /MODEL:dtt-bsr.md -->
 <!-- MODEL:novasr.md -->
 <details id="novasr">
 <summary>NovaSR</summary>
