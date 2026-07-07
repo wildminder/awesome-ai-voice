@@ -2154,12 +2154,12 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Type | Bandwidth Extension | Inpainting | License |
 | :--- | :---: | :---: | :---: | :--- |
-| [RE-USE](#re-use) | Universal Speech Enhancement | ✅ | ❌ | ![Unknown][license-unknown] |
-| [AudioSR](#audiosr) | — | — | — | ![MIT][license-mit] |
+| [RE-USE](#re-use) | Universal Speech Enhancement | ✅ | ❌ | ![NVIDIA NC][license-nvidia-noncommercial] |
+| [NovaSR](#novasr) | Audio Super-Resolution | ✅ | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [PASE](#pase) | Speech Enhancement | ❌ | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [DTT-BSR](#dtt-bsr) | Music Source Restoration | ❌ | ❌ | ![MIT][license-mit] |
-| [NovaSR](#novasr) | — | — | — | ![Apache 2.0][license-apache-2.0] |
-| [NVIDIA A2SB (Audio-to-Audio Schrodinger Bridges)](#nvidia-a2sb) | — | ✅ | ✅ | ![NVIDIA NC][license-nvidia-noncommercial] |
+| [NVIDIA A2SB (Audio-to-Audio Schrodinger Bridges)](#nvidia-a2sb) | High-Resolution Audio Restoration | ✅ | ✅ | ![NVIDIA NC][license-nvidia-noncommercial] |
+| [AudioSR](#audiosr) | Audio Super-Resolution | ✅ | ❌ | ![Apache 2.0][license-apache-2.0] |
 
 <!-- MODEL:re-use.md -->
 <details id="re-use">
@@ -2180,7 +2180,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | **Architecture** | Mamba-SSM backbone |
 | **Degradation Coverage** | additive noise, reverberation, clipping, bandwidth limit, codec artifacts, packet loss, low-quality mics |
 | **Language Agnostic** | yes |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![NVIDIA NC][license-nvidia-noncommercial] |
 
 **Features:** A **single Mamba-SSM model** that handles seven different input sample rates (no resampling pre-step), covers a broad degradation menu in one checkpoint, stays language-agnostic without per-language training, and explicitly balances distortion reduction against fidelity to the input speech — addressing the universal-SE trade-off that earlier single-purpose enhancers couldn't.
 
@@ -2192,32 +2192,36 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 </details>
 <!-- /MODEL:re-use.md -->
-<!-- MODEL:audiosr.md -->
-<details id="audiosr">
-<summary>AudioSR</summary>
+<!-- MODEL:novasr.md -->
+<details id="novasr">
+<summary>NovaSR</summary>
 
-### AudioSR
+### NovaSR
 
-**Description:** Audio super resolution model using latent diffusion to upscale low-quality audio to 48kHz.
+**Description:** NovaSR is a tiny audio upsampler (~52 kB parameter count) that bandwidth-extends 16 kHz input up to 48 kHz. Public card on `YatharthS/NovaSR` advertises realtime factors around 3500× on A100, making it a candidate for real-time on-device super-resolution where model size dominates latency. Inference path is small enough to fit in CPU memory; the use case is speech-bandwidth extension without GPU.
 
-**Release Date:** February 12, 2026 (v1.1.1)
+**Release Date:** January 6, 2026
 
 | Feature | Value |
 |---------|-------|
-| **Audio Input** | 8kHz-48kHz |
-| **Audio Output** | 48kHz |
-| **License** | ![MIT][license-mit] |
-| **Vram** | 6GB min |
-| **Stereo** | yes |
-| **Long-Audio** | yes |
+| **Type** | Audio Super-Resolution (16 kHz → 48 kHz) |
+| **Bandwidth Extension** | ✅ |
+| **Inpainting** | ❌ |
+| **Channels** | mono |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Parameters** | 52 kB |
+| **Streamable** | yes (low VRAM / runs without GPU) |
+| **Realtime Factor** | ~3500× (A100) |
+
+**Features:** A 52 kB-parameter Upsampler that hits ~3500× realtime on GPU and runs on CPU — pushing bandwidth extension below the size / latency envelope where a typical neural upsampler is unacceptable (real-time on-device speech enhancement).
 
 **Links:**
-[![GitHub](https://img.shields.io/badge/GitHub-ComfyUI--AudioSR-black?logo=github&style=flat)](https://github.com/Saganaki22/ComfyUI-AudioSR)
-[![arXiv](https://img.shields.io/badge/arXiv-2309.07314-red&style=flat)](https://arxiv.org/abs/2309.07314)
+[![GitHub](https://img.shields.io/badge/GitHub-NovaSR-black?logo=github&style=flat)](https://github.com/ysharma3501/NovaSR)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-NovaSR-yellow?logo=huggingface&style=flat)](https://huggingface.co/YatharthS/NovaSR)
 
 
 </details>
-<!-- /MODEL:audiosr.md -->
+<!-- /MODEL:novasr.md -->
 <!-- MODEL:pase.md -->
 <details id="pase">
 <summary>PASE</summary>
@@ -2279,60 +2283,71 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 </details>
 <!-- /MODEL:dtt-bsr.md -->
-<!-- MODEL:novasr.md -->
-<details id="novasr">
-<summary>NovaSR</summary>
-
-### NovaSR
-
-**Description:** Lightning fast audio upsampler - 50kB model that upscales 16kHz audio to 48kHz at 3500x realtime.
-
-**Release Date:** 2025
-
-| Feature | Value |
-|---------|-------|
-| **Parameters** | 52kB |
-| **Audio Input** | 16kHz |
-| **Audio Output** | 48kHz |
-| **License** | ![Apache 2.0][license-apache-2.0] |
-| **Speed** | 3600x realtime (A100) |
-| **Vram** | Minimal |
-
-**Links:**
-[![GitHub](https://img.shields.io/badge/GitHub-NovaSR-black?logo=github&style=flat)](https://github.com/ysharma3501/NovaSR)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-NovaSR-yellow?logo=huggingface&style=flat)](https://huggingface.co/YatharthS/NovaSR)
-
-
-</details>
-<!-- /MODEL:novasr.md -->
 <!-- MODEL:nvidia-a2sb.md -->
 <details id="nvidia-a2sb">
 <summary>NVIDIA A2SB (Audio-to-Audio Schrodinger Bridges)</summary>
 
 ### NVIDIA A2SB (Audio-to-Audio Schrodinger Bridges)
 
-**Description:** Diffusion-based audio restoration model tailored for high-resolution music at 44.1kHz. An end-to-end, vocoder-free, multi-task model capable of both bandwidth extension (predicting high-frequency components) and inpainting (re-generating missing segments). Can restore hour-long audio inputs without boundary artifacts.
+**Description:** A2SB is NVIDIA's audio-to-audio Schrödinger Bridge diffusion model for high-resolution (44.1 kHz) music restoration. It is the first long-audio restoration model that can restore hour-long inputs without boundary artifacts, and it's end-to-end — predicting waveform outputs directly without a separate vocoder. A single trained checkpoint handles both bandwidth extension (predicting high-frequency components) and inpainting (re-generating missing segments), training on permissively-licensed subsets of FMA, Medley-Solos-DB, MUSAN, Musical Instrument, MusicNet, Slakh, FreeSound, FSD50K, GTZAN, and NSynth.
 
-**Release Date:** January 2025
+**Release Date:** August 1, 2025
 
 | Feature | Value |
 |---------|-------|
-| **Architecture** | End-to-end vocoder-free |
-| **Streaming** | ❌ |
-| **Inpainting** | ✅ |
+| **Type** | High-Resolution Audio Restoration |
 | **Bandwidth Extension** | ✅ |
+| **Inpainting** | ✅ |
 | **License** | ![NVIDIA NC][license-nvidia-noncommercial] |
-| **High-Resolution** | yes (44.1kHz) |
-| **Long-Audio** | yes (hour-long) |
+| **Channels** | stereo |
+| **Sample Rate** | 44.1 kHz |
+| **Architecture** | End-to-end vocoder-free diffusion Schrödinger Bridge (factorized audio representation) |
+| **Long Audio** | yes (hour-scale restoration, no boundary artifacts) |
+| **Multi Task** | yes (single model, joint bandwidth-extension + inpainting) |
+| **Training Data** | FMA, Medley-Solos-DB, MUSAN, Musical Instrument, MusicNet, Slakh, FreeSound, FSD50K, GTZAN, NSynth (permissive subsets) |
+
+**Features:** A diffusion Schrödinger Bridge formulation that is **end-to-end vocoder-free**: instead of generating a mel / MFCC / latent and then re-synthesising, the model predicts the waveform directly, which is what lets it stay boundary-free over hour-long inputs. The same checkpoint carries both bandwidth extension and inpainting — two distinct restoration tasks trained jointly on permissive-licensed music data and rolled out under NVIDIA NC.
 
 **Links:**
 [![GitHub](https://img.shields.io/badge/GitHub-diffusion--audio--restoration-black?logo=github&style=flat)](https://github.com/NVIDIA/diffusion-audio-restoration)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-audio_to_audio_schrodinger_bridge-yellow?logo=huggingface&style=flat)](https://huggingface.co/nvidia/audio_to_audio_schrodinger_bridge)
-[![arXiv](https://img.shields.io/badge/arXiv-2501.11311-red&style=flat)](https://arxiv.org/abs/2501.11311)
+[![Demo](https://img.shields.io/badge/Demo-A2SB-blue&style=flat)](https://research.nvidia.com/labs/adlr/A2SB/)
+[![Paper](https://img.shields.io/badge/Paper-2501.11311-red&style=flat)](https://arxiv.org/abs/2501.11311)
 
 
 </details>
 <!-- /MODEL:nvidia-a2sb.md -->
+<!-- MODEL:audiosr.md -->
+<details id="audiosr">
+<summary>AudioSR</summary>
+
+### AudioSR
+
+**Description:** AudioSR is a versatile audio super-resolution model from Haoheliu Liu and collaborators, published alongside the arXiv paper `2309.07314`. It is a latent-diffusion model that takes arbitrary low-resolution input audio and reconstructs a 48 kHz waveform — bandwidth extension in one model. Designed to be input-rate-agnostic (8 kHz, 16 kHz, 24 kHz, 32 kHz, 44.1 kHz, 48 kHz), produces a single fixed 48 kHz output regardless of input rate, and supports both mono and stereo material. The HF model id `haoheliu/audiosr_basic` ships the Apache-2.0-licensed basic checkpoint the README links out to; the underlying implementation lives in the GitHub repo `haoheliu/versatile_audio_super_resolution`.
+
+**Release Date:** September 6, 2023
+
+| Feature | Value |
+|---------|-------|
+| **Type** | Audio Super-Resolution (any → 48 kHz) |
+| **Bandwidth Extension** | ✅ |
+| **Inpainting** | ❌ |
+| **Channels** | mono, stereo |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Vram** | 6 GB minimum |
+| **Long Audio** | yes |
+| **Architecture** | latent diffusion (audio LDM) |
+
+**Features:** Versatile bandwidth extension over a wide range of input rates (8–48 kHz) under one fixed 48 kHz output, with monaural-only and stereo-only inference paths working through the same latent-diffusion pipeline — letting a single light checkpoint cover multiple BWE tasks instead of separate per-rate models.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-audiosr_basic-yellow?logo=huggingface&style=flat)](https://huggingface.co/haoheliu/audiosr_basic)
+[![GitHub](https://img.shields.io/badge/GitHub-versatile_audio_super_resolution-black?logo=github&style=flat)](https://github.com/haoheliu/versatile_audio_super_resolution)
+[![Paper](https://img.shields.io/badge/Paper-2309.07314-red&style=flat)](https://arxiv.org/abs/2309.07314)
+
+
+</details>
+<!-- /MODEL:audiosr.md -->
 
 ---
 
