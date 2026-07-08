@@ -39,6 +39,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Fish Audio S2 Pro](#fish-audio-s2-pro) | ✅ | ❌ | 80+ | ✅ | ![Research Only][license-research-only] |
 | [LongCat-Next](#longcat-next) | ✅ | ✅ | Chinese, English | ✅ | ![MIT][license-mit] |
 | [Voxtral-4B-TTS](#voxtral-4b-tts) | ✅ | ❌ | 9 | ✅ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| [Blue (Light Blue) TTS](#blue-tts) | ✅ | ❌ | Hebrew, English, Spanish, Italian, German | ❌ | ![MIT][license-mit] |
 | [KittenTTS](#kittenTTS) | ✅ | ❌ | English, Multiple | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Ming-omni-tts](#ming-omni-tts) | ✅ | ❌ | Chinese, English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [SoulX-Singer](#soulx-singer) | ✅ | ❌ | Mandarin, English, Cantonese | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -567,6 +568,42 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 </details>
 <!-- /MODEL:voxtral-4b-tts.md -->
+<!-- MODEL:blue-tts.md -->
+<details id="blue-tts">
+<summary>Blue (Light Blue) TTS</summary>
+
+### Blue (Light Blue) TTS
+
+**Description:** BlueTTS (project page: lightbluetts.com) is a multilingual text-to-speech library. Built around slim ONNX graphs that run on **ONNX Runtime** with first-class CPU support and optional accelerators — **OpenVINO** (Intel), **CUDA ORT** (NVIDIA), **TensorRT**, and **ONNX Runtime** stock CPU. Targets five languages — **Hebrew, English, Spanish, Italian, German** — including inline mixed-language with XML-style tags in the text prompt. Inference is deliverable as a PyPI package (`blue-onnx`), a Rust crate, or directly from the pinned ONNX graphs on the HF Hub; the v2 release ships a slimmed opset-17 ONNX bundle (notmax123/blue-onnx-v2) that's intended for both FP32 production and the experimental INT8 weight-only fallback.
+
+**Release Date:** February 27, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Pronunciation** | ✅ |
+| **Emotion Control** | ❌ |
+| **Languages** | Hebrew, English, Spanish, Italian, German |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Runtime** | ONNX Runtime (stock CPU; OpenVINO / CUDA / TensorRT optional) |
+| **Speed** | "fastest open-source TTS" (per project description) |
+| **Graph Format** | ONNX opset 17 (slim, full-precision; experimental weight-only INT8 fallback) |
+| **Distribution** | PyPI + HuggingFace + Rust |
+
+**Features:** A **CPU-first multilingual TTS** that ships both slimmed ONNX graphs and a Python package where the same code path runs on **stock CPU ONNX Runtime** by default — *and* optionally accelerates on OpenVINO / CUDA ORT / TensorRT — so deployment doesn't gate on GPU availability. Languages include **Hebrew** (with explicit G2P normalization) — a comparatively rare open-source TTS target — plus standard European languages, all from MIT-licensed weights distributed via both Hugging Face and PyPI.
+
+**Links:**
+[![GitHub](https://img.shields.io/badge/GitHub-BlueTTS-black?logo=github&style=flat)](https://github.com/maxmelichov/BlueTTS)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-blue--onnx--v2-yellow?logo=huggingface&style=flat)](https://huggingface.co/notmax123/blue-onnx-v2)
+[![PyPI](https://img.shields.io/badge/PyPI-blue--onnx-blue&style=flat)](https://pypi.org/project/blue-onnx/)
+[![Website](https://img.shields.io/badge/Website-lightbluetts.com-blue&style=flat)](https://lightbluetts.com/)
+[![Demo](https://img.shields.io/badge/Demo-BlueV2-blue&style=flat)](https://huggingface.co/spaces/notmax123/BlueV2)
+
+
+</details>
+<!-- /MODEL:blue-tts.md -->
 <!-- MODEL:kittenTTS.md -->
 <details id="kittenTTS">
 <summary>KittenTTS</summary>
@@ -1821,6 +1858,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Text | Video | Audio | Max Duration | Sample Rate | License |
 | :--- | :---: | :---: | :---: | :--- | :--- | :--- |
+| [Nemotron-Labs-Audex-30B-A3B](#nemotron-labs-audex-30b-a3b) | ✅ | ❌ | ✅ | — | — | ![NVIDIA NC][license-nvidia-noncommercial] |
 | [MOSS-SoundEffect](#moss-soundeffect) | ✅ | — | — | 30 s | 48 kHz | ![Apache 2.0][license-apache-2.0] |
 | [Omni2Sound (Omni2Audio)](#omni2sound) | ✅ | ✅ | ✅ | — | — | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [ControlFoley](#controlfoley) | ✅ | ✅ | ✅ | — | (not stated) | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
@@ -1832,6 +1870,44 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [ThinkSound](#thinksound) | ✅ | — | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
 | [MMAudio](#mmaudio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:nemotron-labs-audex-30b-a3b.md -->
+<details id="nemotron-labs-audex-30b-a3b">
+<summary>Nemotron-Labs-Audex-30B-A3B</summary>
+
+### Nemotron-Labs-Audex-30B-A3B
+
+**Description:** Nemotron-Labs-Audex-30B-A3B is NVIDIA's unified audio-text LLM — a single model that both **understands** audio (audio QA, speech recognition, speech translation) and **generates** audio (text-to-speech, text-to-audio, speech-to-speech). Built on Nemotron-Cascade-2-30B-A3B (text-only MoE: 30B parameters, 3B active), Audex extends the vocabulary with **discrete audio tokens** for speech / general-audio output and adds an **audio encoder** for speech / general-audio input. Runs in *thinking* and *instruct* (non-thinking) modes and supports up to a 1M-token context length — preserving text-reasoning, alignment, knowledge, long-context, and agentic capabilities of the backbone while gaining audio tasks.
+
+**Release Date:** July 6, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 30B MoE (3B active) |
+| **Modalities** | audio (input and output) |
+| **Audio Understanding** | yes |
+| **Asr** | ✅ |
+| **Speech Translation** | yes |
+| **Text To Speech** | yes |
+| **Text To Audio** | yes |
+| **Speech To Speech Generation** | yes |
+| **Voice Cloning** | ❌ |
+| **License** | ![NVIDIA NC][license-nvidia-noncommercial] |
+| **Languages** | English |
+| **Modes** | thinking, instruct (non-thinking) |
+| **Context Length** | 1M tokens |
+| **Template** | ChatML (with `<think>…</think>` for thinking mode) |
+| **Inference** | vLLM 0.20.0 (recommended) or transformers >= 4.53.0 (mamba-ssm + causal-conv1d required) |
+
+**Features:** First-class audio I/O for a 30B/3B-active text LLM: extended vocabulary with **discrete audio tokens** for outputting speech and general audio, plus an **audio encoder** for input — so the same backbone keeps its strong text reasoning (alignment, knowledge, long-context) and adds ASR + speech translation + TTS + audio generation + S2S without retraining. The MoE form (30B routes, 3B active) keeps inference tractable for a single pipeline that does both.
+
+**Links:**
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Nemotron--Labs--Audex--30B--A3B-yellow?logo=huggingface&style=flat)](https://huggingface.co/nvidia/Nemotron-Labs-Audex-30B-A3B)
+[![Paper](https://img.shields.io/badge/Paper-2607.05196-red&style=flat)](https://arxiv.org/abs/2607.05196)
+[![Collection](https://img.shields.io/badge/Collection-nemotron--labs--audex-blue&style=flat)](https://huggingface.co/collections/nvidia/nemotron-labs-audex)
+
+
+</details>
+<!-- /MODEL:nemotron-labs-audex-30b-a3b.md -->
 <!-- MODEL:moss-soundeffect.md -->
 <details id="moss-soundeffect">
 <summary>MOSS-SoundEffect</summary>
