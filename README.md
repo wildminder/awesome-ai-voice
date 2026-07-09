@@ -110,13 +110,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/bosonai/higgs-audio-v3-tts-4b)
-
 [![GitHub][link-github]](https://github.com/sgl-project/sglang-omni)
-
 [![Blog][link-blog]](https://www.boson.ai/blog/higgs-audio-v3-tts)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/multimodalart/higgs-audio-v3-tts)
-
 
 </details>
 <!-- /MODEL:higgs-audio-v3-tts.md -->
@@ -145,13 +141,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/rednote-hilab/dots.tts-base)
-
 [![GitHub][link-github]](https://github.com/rednote-hilab/dots.tts)
-
 [![Website][link-website]](https://rednote-hilab.github.io/dots.tts-demo/)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/rednote-hilab/dots.tts)
-
 
 </details>
 <!-- /MODEL:dots-tts.md -->
@@ -179,11 +171,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/netease-youdao/Confucius4-TTS)
-
 [![GitHub][link-github]](https://github.com/netease-youdao/Confucius4-TTS)
-
 [![Demo][link-demo]](https://confucius4-tts.youdao.com/gradio)
-
 
 </details>
 <!-- /MODEL:confucius4-tts.md -->
@@ -213,13 +202,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/worstchan/WavTTS)
-
 [![GitHub][link-github]](https://github.com/cwx-worst-one/WavTTS)
-
 [![Demo][link-demo]](https://wavtts.github.io/)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2606.03455)
-
 
 </details>
 <!-- /MODEL:wavtts.md -->
@@ -251,15 +236,10 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5)
-
 [![GitHub][link-github]](https://github.com/OpenMOSS/MOSS-TTS)
-
 [![Website][link-website]](https://mosi.cn/#models)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2603.18090)
-
 [![Demo][link-demo]](https://studio.mosi.cn)
-
 
 </details>
 <!-- /MODEL:moss-tts.md -->
@@ -289,11 +269,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/MisoLabs/MisoTTS)
-
 [![GitHub][link-github]](https://github.com/MisoLabsAI/MisoTTS)
-
 [![Website][link-website]](https://misolabs.ai)
-
 
 </details>
 <!-- /MODEL:misotts.md -->
@@ -329,7 +306,6 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/btsee/oron-tts)
 
-
 </details>
 <!-- /MODEL:oron-tts.md -->
 <!-- MODEL:supertonic-3.md -->
@@ -358,13 +334,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/Supertone/supertonic-3)
-
 [![GitHub][link-github]](https://github.com/supertone-inc/supertonic)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/Supertone/supertonic-3)
-
 [![PyPI][link-pypi]](https://pypi.org/project/supertonic/)
-
 
 </details>
 <!-- /MODEL:supertonic-3.md -->
@@ -396,11 +368,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/ScenemaAI/scenema-audio)
-
 [![GitHub][link-github]](https://github.com/ScenemaAI/scenema-audio)
-
 [![Website][link-website]](https://scenema.ai/audio)
-
 
 </details>
 <!-- /MODEL:scenema-audio.md -->
@@ -431,13 +400,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/ResembleAI/Dramabox)
-
 [![GitHub][link-github]](https://github.com/resemble-ai/DramaBox)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/ResembleAI/Dramabox)
-
 [![Website][link-website]](https://www.resemble.ai/learn/models/dramabox)
-
 
 </details>
 <!-- /MODEL:dramabox.md -->
@@ -466,11 +431,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/sbintuitions/sarashina2.2-tts)
-
 [![GitHub][link-github]](https://github.com/sbintuitions/sarashina2.2-tts)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2606.25369)
-
 
 </details>
 <!-- /MODEL:sarashina22-tts.md -->
@@ -500,11 +462,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/meituan-longcat/LongCat-AudioDiT)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-1B)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-3.5B)
-
 
 </details>
 <!-- /MODEL:longcat-audiodit.md -->
@@ -531,9 +490,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/fishaudio/fish-speech)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/fishaudio/s2-pro)
-
 
 </details>
 <!-- /MODEL:fish-audio-s2-pro.md -->
@@ -563,9 +520,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/meituan-longcat/LongCat-Next)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/meituan-longcat/LongCat-Next)
-
 
 </details>
 <!-- /MODEL:longcat-next.md -->
@@ -593,11 +548,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/mistralai/Voxtral-4B-TTS-2603)
-
 [![Demo][link-demo]](https://console.mistral.ai/build/audio/text-to-speech)
-
 [![Blog][link-blog]](https://mistral.ai/news/voxtral-tts)
-
 
 </details>
 <!-- /MODEL:voxtral-4b-tts.md -->
@@ -629,15 +581,10 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/maxmelichov/BlueTTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/notmax123/blue-onnx-v2)
-
 [![PyPI][link-pypi]](https://pypi.org/project/blue-onnx/)
-
 [![Website][link-website]](https://lightbluetts.com/)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/notmax123/BlueV2)
-
 
 </details>
 <!-- /MODEL:blue-tts.md -->
@@ -664,9 +611,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/KittenML/KittenTTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/spaces/KittenML/KittenTTS-Demo)
-
 
 </details>
 <!-- /MODEL:kittenTTS.md -->
@@ -694,11 +639,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/inclusionAI/Ming-omni-tts-16.8B-A3B)
-
 [![GitHub][link-github]](https://github.com/inclusionAI/Ming-omni-tts)
-
 [![Website][link-website]](https://xqacmer.github.io/Ming-omni-tts/)
-
 
 </details>
 <!-- /MODEL:ming-omni-tts.md -->
@@ -725,11 +667,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/Soul-AILab/SoulX-Singer)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/spaces/Soul-AILab/SoulX-Singer)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2602.07803)
-
 
 </details>
 <!-- /MODEL:soulx-singer.md -->
@@ -758,9 +697,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/samuel-vitorino/sopro)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/samuel-vitorino/sopro)
-
 
 </details>
 <!-- /MODEL:soprotts.md -->
@@ -787,11 +724,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/QwenLM/Qwen3-TTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/collections/Qwen/qwen3-tts)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2601.15621)
-
 
 </details>
 <!-- /MODEL:qwen3-tts.md -->
@@ -822,17 +756,11 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/HumeAI/tada-1b)
-
 [![GitHub][link-github]](https://github.com/HumeAI/tada)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/HumeAI/tada)
-
 [![PyPI][link-pypi]](https://pypi.org/project/hume-tada/)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2602.23068)
-
 [![Blog][link-blog]](https://www.hume.ai/blog/opensource-tada)
-
 
 </details>
 <!-- /MODEL:tada-1b.md -->
@@ -862,11 +790,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/Aratako/Irodori-TTS-500M-v2)
-
 [![GitHub][link-github]](https://github.com/Aratako/Irodori-TTS)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/Aratako/Irodori-TTS-500M-v2-Demo)
-
 
 </details>
 <!-- /MODEL:irodori-tts-500m-v2.md -->
@@ -893,11 +818,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/Kugelaudio/kugelaudio-open)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/kugelaudio/kugelaudio-0-open)
-
 [![Website][link-website]](https://kugelaudio.com)
-
 
 </details>
 <!-- /MODEL:kugelaudio.md -->
@@ -927,11 +849,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![Website][link-website]](https://lemas-project.github.io/LEMAS-Project/)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/LEMAS-Project/LEMAS-TTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/LEMAS-Project/LEMAS-Edit)
-
 
 </details>
 <!-- /MODEL:lemas-tts.md -->
@@ -959,9 +878,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/Aratako/MioTTS-2.6B)
-
 [![GitHub][link-github]](https://github.com/Aratako/MioTTS-Inference)
-
 
 </details>
 <!-- /MODEL:miotts-26b.md -->
@@ -991,11 +908,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/OpenMOSS/MOSS-TTS-Nano)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTS-Nano)
-
 
 </details>
 <!-- /MODEL:moss-tts-nano.md -->
@@ -1023,11 +937,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/neuphonic/neutts)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/neuphonic/neutts-air)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/neuphonic/neutts-nano)
-
 
 </details>
 <!-- /MODEL:neutts.md -->
@@ -1057,9 +968,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![Website][link-website]](https://zhu-han.github.io/omnivoice/)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/k2-fsa/OmniVoice)
-
 
 </details>
 <!-- /MODEL:omnivoice.md -->
@@ -1089,11 +998,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/Aratako/T5Gemma-TTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/Aratako/T5Gemma-TTS-2b-2b)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/Aratako/T5Gemma-TTS-Demo)
-
 
 </details>
 <!-- /MODEL:t5gemma-tts.md -->
@@ -1122,11 +1028,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/tronghieuit/tiny-tts)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/backtracking/tiny-tts)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/backtracking/tiny-tts-demo)
-
 
 </details>
 <!-- /MODEL:tinytts.md -->
@@ -1156,11 +1059,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/OpenBMB/VoxCPM)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/openbmb/VoxCPM2)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/OpenBMB/VoxCPM-Demo)
-
 
 </details>
 <!-- /MODEL:voxcpm2.md -->
@@ -1187,11 +1087,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/zai-org/GLM-TTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/zai-org/GLM-TTS)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2512.14291)
-
 
 </details>
 <!-- /MODEL:glm-tts.md -->
@@ -1219,9 +1116,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/microsoft/VibeVoice)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/microsoft/VibeVoice-Realtime-0.5B)
-
 
 </details>
 <!-- /MODEL:vibevoice-realtime.md -->
@@ -1248,11 +1143,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/FunAudioLLM/CosyVoice)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2505.17589)
-
 
 </details>
 <!-- /MODEL:fun-cosyvoice-30.md -->
@@ -1278,9 +1170,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/LiquidAI/LFM2-Audio-1.5B)
-
 [![Website][link-website]](https://docs.liquid.ai/lfm)
-
 
 </details>
 <!-- /MODEL:lfm2-audio-15b.md -->
@@ -1308,9 +1198,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/xuchenxu168/Comfyui-Index-TTS2)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/IndexTeam/IndexTTS-2)
-
 
 </details>
 <!-- /MODEL:indextts2.md -->
@@ -1337,9 +1225,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/maya-research/maya1)
-
 [![Website][link-website]](https://mayaresearch.ai)
-
 
 </details>
 <!-- /MODEL:maya1.md -->
@@ -1366,9 +1252,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/stepfun-ai/Step-Audio-EditX)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2511.03601)
-
 
 </details>
 <!-- /MODEL:step-audio-editx.md -->
@@ -1395,11 +1279,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/OpenBMB/VoxCPM)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/openbmb/VoxCPM-0.5B)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2509.24650)
-
 
 </details>
 <!-- /MODEL:voxcpm.md -->
@@ -1428,11 +1309,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/FireRedTeam/FireRedTTS2)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/FireRedTeam/FireRedTTS2)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2509.02020)
-
 
 </details>
 <!-- /MODEL:fireredtts2.md -->
@@ -1461,11 +1339,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/NVIDIA/audio-flamingo)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/nvidia/audio-flamingo-3)
-
 [![Website][link-website]](https://afnext-umd-nvidia.github.io/)
-
 
 </details>
 <!-- /MODEL:audio-flamingo-3.md -->
@@ -1489,11 +1364,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/k2-fsa/ZipVoice)
-
 [![Website][link-website]](https://zipvoice.github.io/)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2506.13053)
-
 
 </details>
 <!-- /MODEL:zipvoice.md -->
@@ -1521,9 +1393,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/fishaudio/fish-speech)
-
 [![Website][link-website]](https://fish.audio/)
-
 
 </details>
 <!-- /MODEL:fish-speech.md -->
@@ -1552,13 +1422,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/ResembleAI/chatterbox)
-
 [![GitHub][link-github]](https://github.com/resemble-ai/chatterbox)
-
 [![Website][link-website]](https://resemble.ai/)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-V3)
-
 
 </details>
 <!-- /MODEL:chatterbox.md -->
@@ -1585,9 +1451,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/canopyai/Orpheus-TTS)
-
 [![Website][link-website]](https://canopylabs.ai/model-releases)
-
 
 </details>
 <!-- /MODEL:orpheus-tts.md -->
@@ -1614,11 +1478,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/bytedance/MegaTTS3)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/spaces/ByteDance/MegaTTS3)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2502.18924)
-
 
 </details>
 <!-- /MODEL:megatts3.md -->
@@ -1645,11 +1506,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/SparkAudio/Spark-TTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/SparkAudio/Spark-TTS-0.5B)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2503.01710)
-
 
 </details>
 <!-- /MODEL:spark-tts.md -->
@@ -1676,11 +1534,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/stepfun-ai/Step-Audio)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/stepfun-ai)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2502.11946)
-
 
 </details>
 <!-- /MODEL:step-audio.md -->
@@ -1709,11 +1564,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/hexgrad/kokoro)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/hexgrad/Kokoro-82M)
-
 [![Demo][link-demo]](https://hf.co/spaces/hexgrad/Kokoro-TTS)
-
 
 </details>
 <!-- /MODEL:kokoro-82m.md -->
@@ -1740,11 +1592,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/Ashish-Patnaik/kokoclone)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/PatnaikAshish/kokoclone)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/PatnaikAshish/kokoclone)
-
 
 </details>
 <!-- /MODEL:kokoclone.md -->
@@ -1773,9 +1622,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/ysharma3501/LuxTTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/YatharthS/LuxTTS)
-
 
 </details>
 <!-- /MODEL:luxtts.md -->
@@ -1801,9 +1648,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/XiaomiMiMo/MiMo-Audio)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/collections/XiaomiMiMo/mimo-audio-68cc7202692c27dae881cce0)
-
 
 </details>
 <!-- /MODEL:mimo-audio.md -->
@@ -1831,11 +1676,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/Soul-AILab/SoulX-Podcast)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/collections/Soul-AILab/soulx-podcast)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2510.23541)
-
 
 </details>
 <!-- /MODEL:soulx-podcast.md -->
@@ -1862,9 +1704,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/pnnbao-ump/VieNeu-TTS)
-
 [![GitHub][link-github]](https://github.com/pnnbao97/VieNeu-TTS)
-
 
 </details>
 <!-- /MODEL:vieneu-tts.md -->
@@ -1891,9 +1731,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/nari-labs/dia)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/nari-labs/Dia-1.6B-0626)
-
 
 </details>
 <!-- /MODEL:dia.md -->
@@ -1921,9 +1759,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/myshell-ai/MeloTTS)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/myshell-ai)
-
 
 </details>
 <!-- /MODEL:melotts.md -->
@@ -1949,9 +1785,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 **Links:**
 [![GitHub][link-github]](https://github.com/MoonshotAI/Kimi-Audio)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/moonshotai/Kimi-Audio-7B)
-
 
 </details>
 <!-- /MODEL:kimi-audio.md -->
@@ -2010,11 +1844,8 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/nvidia/Nemotron-Labs-Audex-30B-A3B)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2607.05196)
-
 [![Collection][link-collection]](https://huggingface.co/collections/nvidia/nemotron-labs-audex)
-
 
 </details>
 <!-- /MODEL:nemotron-labs-audex-30b-a3b.md -->
@@ -2045,11 +1876,8 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect (legacy v1 checkpoint))
-
 [![GitHub][link-github]](https://github.com/OpenMOSS/MOSS-TTS/tree/main/moss_soundeffect_v2)
-
 
 </details>
 <!-- /MODEL:moss-soundeffect.md -->
@@ -2082,15 +1910,10 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/Dalision/Omni2Sound)
-
 [![GitHub][link-github]](https://github.com/omni2sound/Omni2Sound)
-
 [![Website][link-website]](https://omni2sound.github.io/)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2601.02731)
-
 [![Benchmark][link-benchmark]](https://huggingface.co/datasets/Dalision/Omni2Sound_Benchmark)
-
 
 </details>
 <!-- /MODEL:omni2sound.md -->
@@ -2123,15 +1946,10 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/YJX-Xiaomi/ControlFoley)
-
 [![GitHub][link-github]](https://github.com/xiaomi-research/controlfoley)
-
 [![Website][link-website]](https://yjx-research.github.io/ControlFoley/)
-
 [![Demo][link-demo]](https://yjx-research.github.io/ControlFoley_web_page/)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2604.15086)
-
 
 </details>
 <!-- /MODEL:controlfoley.md -->
@@ -2158,9 +1976,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/SonyResearch/Woosh-SFX)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2604.01929)
-
 
 </details>
 <!-- /MODEL:woosh.md -->
@@ -2185,9 +2001,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/HITsz-TMG/Uni-MoE)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2510.13344)
-
 
 </details>
 <!-- /MODEL:uni-moe-audio-any2audio.md -->
@@ -2213,15 +2027,10 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/ZeyueT/AudioX)
-
 [![GitHub][link-github]](https://github.com/ZeyueT/Audio-Omni)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/collections/HKUSTAudio/audiox)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/HKUSTAudio/Audio-Omni)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2503.10522)
-
 
 </details>
 <!-- /MODEL:audiox.md -->
@@ -2247,13 +2056,9 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/Tencent-Hunyuan/HunyuanVideo-Foley)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/tencent/HunyuanVideo-Foley)
-
 [![Website][link-website]](https://www.hunyuanvideofoley.org/)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2508.16930)
-
 
 </details>
 <!-- /MODEL:hunyuanvideo-foley.md -->
@@ -2287,13 +2092,9 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/FunAudioLLM/ThinkSound/tree/prismaudio)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/FunAudioLLM/PrismAudio)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/FunAudioLLM/PrismAudio)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2511.18833)
-
 
 </details>
 <!-- /MODEL:prismaudio.md -->
@@ -2318,11 +2119,8 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/FunAudioLLM/ThinkSound)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/liuHuadai/ThinkSound)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/FunAudioLLM/ThinkSound)
-
 
 </details>
 <!-- /MODEL:thinksound.md -->
@@ -2348,13 +2146,9 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/hkchengrex/MMAudio)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/hkchengrex/MMAudio)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/hkchengrex/MMAudio)
-
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2412.15322)
-
 
 </details>
 <!-- /MODEL:mmaudio.md -->
@@ -2399,11 +2193,8 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/nvidia/RE-USE)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/nvidia/RE-USE)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2603.02641)
-
 
 </details>
 <!-- /MODEL:re-use.md -->
@@ -2432,9 +2223,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/ysharma3501/NovaSR)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/YatharthS/NovaSR)
-
 
 </details>
 <!-- /MODEL:novasr.md -->
@@ -2463,13 +2252,9 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/Xiaobin-Rong/pase)
-
 [![GitHub][link-github]](https://github.com/cisco-open/pase)
-
 [![Demo][link-demo]](https://xiaobin-rong.github.io/pase_demo/)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2511.13300)
-
 
 </details>
 <!-- /MODEL:pase.md -->
@@ -2498,7 +2283,6 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/OrigamiShido/DTT-BSR)
-
 
 </details>
 <!-- /MODEL:dtt-bsr.md -->
@@ -2529,13 +2313,9 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/NVIDIA/diffusion-audio-restoration)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/nvidia/audio_to_audio_schrodinger_bridge)
-
 [![Demo][link-demo]](https://research.nvidia.com/labs/adlr/A2SB/)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2501.11311)
-
 
 </details>
 <!-- /MODEL:nvidia-a2sb.md -->
@@ -2564,11 +2344,8 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/haoheliu/audiosr_basic)
-
 [![GitHub][link-github]](https://github.com/haoheliu/versatile_audio_super_resolution)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2309.07314)
-
 
 </details>
 <!-- /MODEL:audiosr.md -->
@@ -2618,15 +2395,10 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/zhifeixie/Mega-ASR)
-
 [![GitHub][link-github]](https://github.com/xzf-thu/Mega-ASR)
-
 [![Website][link-website]](https://xzf-thu.github.io/Mega-ASR/)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2605.19833)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/zhifeixie/Mega-ASR)
-
 
 </details>
 <!-- /MODEL:mega-asr.md -->
@@ -2659,11 +2431,8 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/CohereLabs/cohere-transcribe-03-2026)
-
 [![Demo][link-demo]](https://huggingface.co/spaces/CohereLabs/cohere-transcribe-03-2026)
-
 [![Blog][link-blog]](https://cohere.com/blog/transcribe)
-
 
 </details>
 <!-- /MODEL:cohere-transcribe.md -->
@@ -2687,9 +2456,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/microsoft/VibeVoice)
-
 [![HuggingFace][link-huggingface]](https://huggingface.co/microsoft/VibeVoice-ASR)
-
 
 </details>
 <!-- /MODEL:vibevoice-asr.md -->
@@ -2718,11 +2485,8 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/okestro-ai-lab/SYMPHONY-ASR)
-
 [![GitHub][link-github]]((not stated on this card))
-
 [![Predecessor][link-predecessor]](https://huggingface.co/okestro-ai-lab/SYMPHONY)
-
 
 </details>
 <!-- /MODEL:symphony-asr.md -->
@@ -2753,9 +2517,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)
-
 [![GitHub][link-github]](https://github.com/FunAudioLLM/Fun-ASR)
-
 
 </details>
 <!-- /MODEL:fun-asr.md -->
@@ -2784,9 +2546,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/okestro-ai-lab/SYMPHONY)
-
 [![Successor][link-successor]](https://huggingface.co/okestro-ai-lab/SYMPHONY-ASR)
-
 
 </details>
 <!-- /MODEL:symphony.md -->
@@ -2816,13 +2576,9 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/UsefulSensors/moonshine)
-
 [![GitHub][link-github]](https://github.com/usefulsensors/moonshine)
-
 [![Blog][link-blog]](https://petewarden.com/2024/10/21/introducing-moonshine-the-new-state-of-the-art-for-speech-to-text/)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2410.15608)
-
 
 </details>
 <!-- /MODEL:moonshine.md -->
@@ -2853,9 +2609,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/FunAudioLLM/SenseVoiceSmall)
-
 [![GitHub][link-github]](https://github.com/FunAudioLLM/SenseVoice)
-
 
 </details>
 <!-- /MODEL:sensevoice.md -->
@@ -2884,9 +2638,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 **Links:**
 [![GitHub][link-github]](https://github.com/modelscope/FunASR)
-
 [![Website][link-website]](https://www.funasr.com)
-
 
 </details>
 <!-- /MODEL:funasr.md -->
@@ -2928,11 +2680,8 @@ Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms 
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/kandinskylab/KVAE-Audio)
-
 [![GitHub][link-github]](https://github.com/kandinskylab/kvae-audio)
-
 [![Website][link-website]](https://kandinskylab.ai/)
-
 
 </details>
 <!-- /MODEL:kvae-audio.md -->
@@ -2976,9 +2725,7 @@ Multi-stance audio annotators — specialized models that transcribe not just sp
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/ACE-Step/acestep-transcriber)
-
 [![Paper][link-paper]](https://arxiv.org/abs/2602.00744)
-
 
 </details>
 <!-- /MODEL:acestep-transcriber.md -->
@@ -3024,5 +2771,6 @@ This list is continuously evolving. If you have any models to add or updates to 
 [link-github]: https://img.shields.io/badge/GitHub-code-black?style=flat-square&logo=github "GitHub code"
 [link-huggingface]: https://img.shields.io/badge/HuggingFace-models-yellow?style=flat-square&logo=huggingface "HuggingFace models"
 [link-paper]: https://img.shields.io/badge/Paper-paper-red?style=flat-square "Paper paper"
+[link-pypi]: https://img.shields.io/badge/PyPI-package-blueviolet?style=flat-square&logo=pypi "PyPI package"
 [link-website]: https://img.shields.io/badge/Website-site-blue?style=flat-square "Website site"
 [link-arxiv]: https://img.shields.io/badge/arXiv-paper-red?style=flat-square "arXiv paper"
