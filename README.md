@@ -24,6 +24,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [Gepard](#gepard) | ✅ | ❌ | English, Spanish, Portuguese, Dutch | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Higgs Audio v3 TTS](#higgs-audio-v3-tts) | ✅ | ❌ | 102 | ✅ | ![Research Only][license-research-only] |
 | [dots.tts](#dots-tts) | ✅ | ❌ | Multilingual | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Confucius4-TTS](#confucius4-tts) | ✅ | ❌ | 14 | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -83,6 +84,50 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [MeloTTS](#melotts) | ❌ | ❌ | English, Spanish, French, Chinese, Japanese, Korean | ❌ | ![MIT][license-mit] |
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:gepard.md -->
+<details id="gepard">
+<summary>Gepard</summary>
+
+### Gepard
+
+**Description:** **GE**nerative, **P**rosody-aware, **A**utoregressive text-to-speech model for **R**ealtime **D**ialogue. Gepard is built for low-latency, high-throughput streaming conversation: the model starts speaking the moment text begins arriving, generating audio piece by piece instead of waiting for a full sentence. It is a single decoder-only autoregressive language model built on Qwen3.5 (14 layers, hidden 1024, 8 heads) with ≈556M total parameters (backbone + audio interface + voice-cloning compressor). Audio is produced through NVIDIA NeMo NanoCodec — Finite Scalar Quantization at 22.05 kHz, 21.5 frames/s, 1.89 kbps — with the full 32-channel FSQ frame sampled in one step. Reports ~25× real time on a single RTX 5090 with first-audio-chunk latency around 50 ms; a 96 GB Blackwell card serves up to 256 concurrent conversations. CFG refinement is baked into the weights so quality gain comes at no extra two-pass cost at inference, though the two-pass mode is still selectable as a quality dial.
+
+**Release Date:** June 22, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | ~556M (Qwen3.5-14 backbone + audio interface + voice-cloning compressor) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Pronunciation** | ✅ |
+| **Emotion Control** | ❌ |
+| **Languages** | English (US/UK), Spanish (es-MX), Portuguese (pt-BR), Dutch (NL) |
+| **Streaming** | ✅ |
+| **License** | ![Research Only][license-research-only] |
+| **Audio Codec** | NVIDIA NeMo NanoCodec (FSQ, 22.05 kHz, 21.5 fps, 1.89 kbps) |
+| **Sample Rate** | 22,050 Hz |
+| **Backbone** | Qwen3.5 full-attention transformer (14 layers, hidden 1024, 8 heads; ~500M params) |
+| **Inference** | vLLM |
+| **Throughput** | 256 conversations on one 96 GB Blackwell (RTX Pro 6000) GPU |
+
+**Features:** A prosody-aware autoregressive single-pass frame generator: the whole
+32-channel FSQ audio frame is sampled in one step (no depth transformer),
+and CFG quality refinement is **baked into the weights** rather than
+incurred at inference as a two-pass cost — so the publicly reported TTFA
+of ~50 ms and 25× real time on a single RTX 5090 represent the
+quality-on path, not a cheap-fast preview. Voice cloning is decoupled
+into a separate up-front compressor, which means cloning is "free" at
+run-time once the reference clip is encoded — a structural choice that
+supports serving hundreds of conversations per GPU.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/nineninesix/gepard-1.0)
+[![Demo][link-demo]](https://huggingface.co/spaces/nineninesix/gepard)
+[![Paper][link-paper]](https://huggingface.co/nineninesix/gepard-1.0/resolve/main/gepard_techreport.pdf)
+[![Website][link-website]](https://www.nineninesix.ai/)
+
+</details>
+<!-- /MODEL:gepard.md -->
 <!-- MODEL:higgs-audio-v3-tts.md -->
 <details id="higgs-audio-v3-tts">
 <summary>Higgs Audio v3 TTS</summary>
@@ -2163,6 +2208,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | :--- | :---: | :---: | :---: | :--- |
 | [RE-USE](#re-use) | Universal Speech Enhancement | ✅ | ❌ | ![NVIDIA NC][license-nvidia-noncommercial] |
 | [NovaSR](#novasr) | Audio Super-Resolution | ✅ | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [QuarkAudio-UniSE](#quarkaudio-unise) | Universal Speech Enhancement | ❌ | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [PASE](#pase) | Speech Enhancement | ❌ | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [DTT-BSR](#dtt-bsr) | Music Source Restoration | ❌ | ❌ | ![MIT][license-mit] |
 | [NVIDIA A2SB (Audio-to-Audio Schrodinger Bridges)](#nvidia-a2sb) | High-Resolution Audio Restoration | ✅ | ✅ | ![NVIDIA NC][license-nvidia-noncommercial] |
@@ -2227,6 +2273,46 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 </details>
 <!-- /MODEL:novasr.md -->
+<!-- MODEL:quarkaudio-unise.md -->
+<details id="quarkaudio-unise">
+<summary>QuarkAudio-UniSE</summary>
+
+### QuarkAudio-UniSE
+
+**Description:** **UniSE** is a unified, prompt-free autoregressive speech-enhancement framework built on a decoder-only language model. A single model performs multiple speech-enhancement tasks — speech restoration (SR / denoising), target-speaker extraction (TSE), source separation (SS), and acoustic echo cancellation (AEC, in development) — without explicit task-specific instructions or prompt conditioning; the language model infers the task from the input context. Stack: WavLM as the feature extractor, BiCodec as the discrete codec, and a decoder-only LM as the middle autoregressive backbone. Outputs reconstructed waveform from predicted discrete token sequences.
+
+**Release Date:** December 22, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Streaming** | ❌ |
+| **Languages** | English (paper demo) |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Tasks** | Speech Restoration, Target Speaker Extraction, Source Separation, AEC (developing) |
+| **Architecture** | WavLM (feature extractor) + BiCodec (discrete codec) + decoder-only AR-LM |
+| **Unified** | yes (single model handles SE, SR, TSE, SS without explicit task prompts) |
+| **Prompt Free** | yes (LM infers task from input context) |
+| **Dataset Signals** | noise + reverb + packet-loss + clean (configurable per task) |
+| **Training** | Speech-enhancement SFT, then multitask joint training |
+
+**Features:** A single decoder-only LM that learns the speech-enhancement task
+distribution and **infers which task to perform from the input
+context** — eliminating the need for task-specific prompts, modules,
+or fine-tuning when switching between denoising, target-speaker
+extraction, and separation. Built as an autoregressive discrete-token
+predictor over a WavLM-extracted / BiCodec-quantised representation,
+it moves the speech-enhancement workflow from a zoo of specialist
+models into one generalist.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/QuarkAudio/QuarkAudio-UniSE)
+[![GitHub][link-github]](https://github.com/alibaba/unified-audio/tree/main/QuarkAudio-UniSE)
+[![Paper][link-paper]](https://arxiv.org/abs/2510.20441)
+
+</details>
+<!-- /MODEL:quarkaudio-unise.md -->
 <!-- MODEL:pase.md -->
 <details id="pase">
 <summary>PASE</summary>
@@ -2358,6 +2444,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Languages | Streaming | License |
 | :--- | :--- | :---: | :--- |
+| [MOSS-Transcribe-Diarize](#moss-transcribe-diarize) | Multilingual | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Mega-ASR](#mega-asr) | English, Chinese | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Cohere Transcribe](#cohere-transcribe) | 14 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [VibeVoice-ASR](#vibevoice-asr) | 50+ | ✅ | ![MIT][license-mit] |
@@ -2368,6 +2455,52 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Unknown][license-unknown] |
 | [FunASR](#funasr) | 50+ | ✅ | ![MIT][license-mit] |
 
+<!-- MODEL:moss-transcribe-diarize.md -->
+<details id="moss-transcribe-diarize">
+<summary>MOSS-Transcribe-Diarize</summary>
+
+### MOSS-Transcribe-Diarize
+
+**Description:** **MOSS-Transcribe-Diarize 0.9B** is OpenMOSS's open-source SOTA end-to-end audio-understanding model for long-form multi-speaker transcription. Instead of stitching a separate ASR and diarization system, the model **jointly** transcribes speech and assigns speaker labels, producing time-aligned text with precise timestamps and consistent speaker tags such as `[S01]`, `[S02]` in a single pass. Built for meetings, calls, podcasts, interviews, lectures, and video content. Optional acoustic-event annotations extend the output to "[start][Sxx]text[end]" segments plus `[event]` tags for non-speech sounds. Architecture: Qwen3-style 0.6B text backbone + Whisper-Medium audio encoder (16 kHz, 80 mel bins, 30 s chunks) joined by a 4× temporal merge + MLP audio-text adaptor.
+
+**Release Date:** July 9, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 0.9B total |
+| **Voice Cloning** | ❌ |
+| **Asr** | ✅ |
+| **Pronunciation** | ✅ |
+| **Emotion Control** | ❌ |
+| **Languages** | Multilingual (model card: long-form speech unspecified languages; English demo) |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Output Format** | "[start_seconds][Sxx]text[end_seconds]" segments |
+| **Diarization** | built-in ([S01], [S02], ...) |
+| **Acoustic Event Tags** | yes (optional) |
+| **Text Backbone** | Qwen3-0.6B causal decoder |
+| **Audio Encoder** | Whisper-Medium, 16 kHz, 80 mel bins, 30 s chunks |
+| **Audio Text Bridge** | 4× temporal merge + MLP adaptor |
+| **Inference** | vLLM, SGLang Omni, transformers, HF inference API |
+
+**Features:** **Joint** speech transcription + speaker diarization in a **single
+end-to-end checkpoint** with the canonical `[Sxx]` output format
+embedded in the transcript. Most production pipelines stitch a
+separate ASR model to a separate diarization model (and reconcile
+speaker turns post-hoc) — MOSS-Transcribe-Diarize folds them into
+one model so the timestamps, speaker labels, and event tags come out
+of the same forward pass. Adding a Qwen3-style text decoder on top
+of Whisper-Medium audio features lets the model explicitly reason
+about speaker continuity in the textual stream rather than as a
+postprocess.
+
+**Links:**
+[![GitHub][link-github]](https://github.com/OpenMOSS/MOSS-Transcribe-Diarize)
+[![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-Diarize)
+[![Paper][link-paper]](https://arxiv.org/abs/2601.01554)
+
+</details>
+<!-- /MODEL:moss-transcribe-diarize.md -->
 <!-- MODEL:mega-asr.md -->
 <details id="mega-asr">
 <summary>Mega-ASR</summary>
@@ -2654,6 +2787,7 @@ Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms 
 | Model | Type | Sample Rate | Latent Dim | Modalities | License |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | [KVAE-Audio](#kvae-audio) | Audio VAE | 48 kHz | 64 | Speech, Music, Sound | ![MIT][license-mit] |
+| [QuarkAudio-HCodec](#quarkaudio-hcodec) | Dual-Stream Discrete Audio Codec | 16/48 kHz | - | Audio | ![Apache 2.0][license-apache-2.0] |
 
 <!-- MODEL:kvae-audio.md -->
 <details id="kvae-audio">
@@ -2685,6 +2819,44 @@ Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms 
 
 </details>
 <!-- /MODEL:kvae-audio.md -->
+<!-- MODEL:quarkaudio-hcodec.md -->
+<details id="quarkaudio-hcodec">
+<summary>QuarkAudio-HCodec</summary>
+
+### QuarkAudio-HCodec
+
+**Description:** **H-Codec** is a unified, dual-stream discrete audio tokenizer that quantizes acoustic and semantic features into **independent codebooks**, preserving both signal fidelity and linguistic content separately. Three versions release alongside the paper:
+
+**Release Date:** December 23, 2025
+
+| Feature | Value |
+|---------|-------|
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Modalities** | audio |
+| **Zero Shot Voice** | no (tokenizer, not a synthesis model) |
+| **Architectures** | Acoustic quantizer + Semantic quantizer (separate codebooks) |
+| **Inference** | encoder → 2× quantizers → discrete tokens; decoder reconstructs waveform |
+| **Variants** | 1.0 (16 kHz fixed), 1.5 (16 kHz adaptive), 2.0 (48 kHz fixed) |
+| **Frame Rate** | Fixed (1.0, 2.0); Adaptive (1.5) |
+| **Sample Rate** | 16 kHz (1.0, 1.5); 48 kHz (2.0) |
+| **Ssl Backbone** | WavLM (used as encoder for semantic stream) |
+| **Downstream** | TTS, VC, audio editing, TTA, SE |
+
+**Features:** A **dual-stream neural audio codec** with separate codebooks for
+acoustic and semantic quantization — instead of fusing the two before
+discretizing. This separation lets the acoustic codebook preserve
+high-frequency detail while the semantic codebook retains
+linguistic content for downstream LLM-conditioned generation. The
+adaptive-frame-rate variant (1.5) further reduces token count on
+temporally simple content, lowering LLM training and inference cost.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/QuarkAudio/QuarkAudio-HCodec)
+[![GitHub][link-github]](https://github.com/alibaba/unified-audio/tree/main/QuarkAudio-HCodec/HCodec/)
+[![Paper][link-paper]](https://arxiv.org/pdf/2512.20151)
+
+</details>
+<!-- /MODEL:quarkaudio-hcodec.md -->
 
 ---
 
