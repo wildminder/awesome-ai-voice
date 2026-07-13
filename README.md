@@ -1848,7 +1848,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [Nemotron-Labs-Audex-30B-A3B](#nemotron-labs-audex-30b-a3b) | ✅ | ❌ | ✅ | — | — | ![NVIDIA NC][license-nvidia-noncommercial] |
 | [MOSS-SoundEffect](#moss-soundeffect) | ✅ | — | — | 30 s | 48 kHz | ![Apache 2.0][license-apache-2.0] |
 | [Omni2Sound (Omni2Audio)](#omni2sound) | ✅ | ✅ | ✅ | — | — | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
-| [ControlFoley](#controlfoley) | ✅ | ✅ | ✅ | — | (not stated) | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| [ControlFoley](#controlfoley) | ✅ | ✅ | ✅ | — | 44,100 Hz | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [Woosh](#woosh) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 | [Uni-MoE (Audio)](#uni-moe-audio-any2audio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 | [AudioX / Audio-Omni](#audiox) | ✅ | ✅ | ✅ | — | — | ![Apache 2.0][license-apache-2.0]<br>![CC BY-NC 4.0][license-cc-by-nc-4.0] |
@@ -1968,13 +1968,13 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 ### ControlFoley
 
-**Description:** ControlFoley (Xiaomi MiLM Plus) is a unified video-to-audio generation model built to handle the *cross-modal conflict* problem — the situation where a video shows a dog barking but the text prompt asks for a cat — by routing which modality controls what at inference time. It supports text-controlled video→audio, audio-controlled video→audio, and text+video→audio conditioning. Built on `diffusers` / DiT; trained and released in April 2026 with a project page, code, and online demo.
+**Description:** **ControlFoley** (Xiaomi MiLM Plus) is a unified controllable video-to-audio (foley) generation model. It supports four conditioning combinations under one architecture:
 
 **Release Date:** April 13, 2026
 
 | Feature | Value |
 |---------|-------|
-| **Conditioning** | Text / Video / Text+Video |
+| **Conditioning** | Text / Video / Text + Video / Video + Reference Audio |
 | **Modalities** | Video (visual), Audio (foley) |
 | **Asr** | ❌ |
 | **Voice Cloning** | ❌ |
@@ -1982,19 +1982,31 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | **Video** | ✅ |
 | **Image** | ❌ |
 | **Audio** | ✅ |
-| **Sample Rate** | (not stated) |
+| **Sample Rate** | 44,100 Hz |
 | **License** | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | **Pipeline Tag** | text-to-audio |
 | **Library** | diffusers |
+| **Cross Modal Conflict** | handled via modality-specific control (no explicit router) |
+| **Inference Skill** | ClawHub ControlFoley Audio Generator |
+| **Upcoming** | ComfyUI nodes (in preparation, expanding to V2A / TV2A / TC-V2A / AC-V2A / T2A) |
 
-**Features:** Cross-modal conflict handling: when a video and a text prompt disagree (visually obvious but textually wrong), the model routes control to the modality the user explicitly trusts so the wrong modality doesn't dominate the generated foley. Unifies three conditioning modes (text-controlled VA, audio-controlled VA, and text+video VA) under one generative stack.
+**Features:** **Modality-specific cross-modal conflict resolution** in a single
+generative stack: text governs semantics, reference audio governs
+timbre/acoustic style, and video governs temporal synchronization.
+Rather than routing to a single user-trusted modality, the model
+**decouples control axes** so an input disagreement (video shows a
+dog barking, text asks for a cat) is decomposed into a coherent
+output that respects each modality's responsibility. Trained with
+all-modality dropout for modality-robustness, ControlFoley is the
+first foley system that brings all four conditioning modes — T2A,
+V2A, TV2A, AC-V2A — under one model.
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/YJX-Xiaomi/ControlFoley)
 [![GitHub][link-github]](https://github.com/xiaomi-research/controlfoley)
 [![Website][link-website]](https://yjx-research.github.io/ControlFoley/)
-[![Demo][link-demo]](https://yjx-research.github.io/ControlFoley_web_page/)
 [![Paper][link-paper]](https://arxiv.org/abs/2604.15086)
+[![Skill][link-skill]](https://clawhub.ai/yjx-research/controlfoley-audio-generator)
 
 </details>
 <!-- /MODEL:controlfoley.md -->
@@ -2946,7 +2958,8 @@ This list is continuously evolving. If you have any models to add or updates to 
 [link-demo]: https://img.shields.io/badge/Demo-live-blue?style=flat-square "Demo live"
 [link-github]: https://img.shields.io/badge/GitHub-code-black?style=flat-square&logo=github "GitHub code"
 [link-huggingface]: https://img.shields.io/badge/HuggingFace-models-yellow?style=flat-square&logo=huggingface "HuggingFace models"
-[link-paper]: https://img.shields.io/badge/Paper-paper-red?style=flat-square "Paper paper"
+[link-paper]: https://img.shields.io/badge/Paper-red?style=flat-square "Paper"
 [link-pypi]: https://img.shields.io/badge/PyPI-package-blueviolet?style=flat-square&logo=pypi "PyPI package"
-[link-website]: https://img.shields.io/badge/Website-site-blue?style=flat-square "Website site"
-[link-arxiv]: https://img.shields.io/badge/arXiv-paper-red?style=flat-square "arXiv paper"
+[link-skill]: https://img.shields.io/badge/Skill-lightgrey?style=flat-square&logo=puzzle "Skill"
+[link-website]: https://img.shields.io/badge/Website-blue?style=flat-square "Website"
+[link-arxiv]: https://img.shields.io/badge/arXiv-paper-red?style=flat-square&logo=arXiv "arXiv paper"
