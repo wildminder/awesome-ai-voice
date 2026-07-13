@@ -2914,9 +2914,13 @@ Community-maintained leaderboards for tracking and comparing speech models acros
 
 ### Speech-to-Text (ASR)
 
-- [🤗 Open ASR Leaderboard](https://huggingface.co/spaces/hf-audio/open_asr_leaderboard) — Hugging Face community benchmark ranking open and proprietary ASR models by average WER and RTFx across English and multilingual datasets.
+- [🤗 Open ASR Leaderboard](https://huggingface.co/spaces/hf-audio/open_asr_leaderboard) · [Paper (arXiv 2510.06961)](https://arxiv.org/abs/2510.06961) — Hugging Face community benchmark ranking open and proprietary ASR models by average WER and RTFx across English and multilingual datasets.
 - [Artificial Analysis — Speech-to-Text (Streaming) Leaderboard](https://artificialanalysis.ai/speech-to-text/streaming) — Compares streaming STT models and providers on the AA-WER Streaming index, latency, and pricing.
 - [FFASR Leaderboard (Treble Technologies)](https://huggingface.co/spaces/treble-technologies/ffasr) — Far-field ASR multi-condition benchmark reporting WER and RTFx across noisy, reverberant, and SNR-stratified scenarios (measured & simulated RIRs).
+
+### Voice Cloning & Speaker Privacy
+
+- [RVCBench](https://github.com/Nanboy-Ronan/RVCBench) · [Paper (arXiv 2602.00443)](https://arxiv.org/abs/2602.00443) · [Dataset](https://huggingface.co/datasets/Nanboy/RVCBench) · [Demo](https://huggingface.co/spaces/Nanboy/RVCBench) — First large-scale robustness benchmark for voice cloning + speaker privacy: 27 TTS/VC adversary models, 10 dataset configurations, 5 audio protection methods, with standardised speaker-similarity, intelligibility, and perceptual-quality metrics.
 
 ---
 
