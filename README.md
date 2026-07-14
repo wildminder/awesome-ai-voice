@@ -2004,8 +2004,9 @@ V2A, TV2A, AC-V2A — under one model.
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/YJX-Xiaomi/ControlFoley)
 [![GitHub][link-github]](https://github.com/xiaomi-research/controlfoley)
-[![Website][link-website]](https://yjx-research.github.io/ControlFoley/)
-[![Paper][link-paper]](https://arxiv.org/abs/2604.15086)
+[![Demo][link-demo]](https://yjx-research.github.io/ControlFoley/)
+[![Website][link-website]](https://yjx-research.github.io/ControlFoley_web_page/)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2604.15086)
 [![Skill][link-skill]](https://clawhub.ai/yjx-research/controlfoley-audio-generator)
 
 </details>
