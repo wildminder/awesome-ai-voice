@@ -24,12 +24,15 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [sanoTTS](#sanotts) | ❌ | ❌ | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese | ❌ | ![Unknown][license-unknown] |
+| [FreyaTTS](#freyatts) | ❌ | ❌ | Turkish | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Gepard](#gepard) | ✅ | ❌ | English, Spanish, Portuguese, Dutch | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Higgs Audio v3 TTS](#higgs-audio-v3-tts) | ✅ | ❌ | 102 | ✅ | ![Research Only][license-research-only] |
 | [dots.tts](#dots-tts) | ✅ | ❌ | Multilingual | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Confucius4-TTS](#confucius4-tts) | ✅ | ❌ | 14 | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [WavTTS](#wavtts) | ✅ | ❌ | English, Chinese | ❌ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [MOSS-TTS](#moss-tts) | ✅ | ❌ | 31 | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [VoxFlash-TTS](#voxflash-tts) | ✅ | ❌ | Chinese, English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Miso TTS](#misotts) | ✅ | ❌ | English | ❌ | ![MIT][license-mit] |
 | [OronTTS](#oron-tts) | ✅ | ❌ | Mongolian, Kazakh | ❌ | ![MIT][license-mit] |
 | [Supertonic 3](#supertonic-3) | ✅ | ❌ | 31 | ✅ | ![OpenRAIL-M][license-openrail-m] |
@@ -84,6 +87,105 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [MeloTTS](#melotts) | ❌ | ❌ | English, Spanish, French, Chinese, Japanese, Korean | ❌ | ![MIT][license-mit] |
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:sanotts.md -->
+<details id="sanotts">
+<summary>sanoTTS</summary>
+
+### sanoTTS
+
+**Description:** **sanoTTS** is the smallest known neural text-to-speech family. The name *sano* (सानो) is Nepali for **"small"**. Each voice weighs **745k to 1.8M parameters** — smaller than the smallest voice in prior families (TinyTTS at 1.62M; Inflect Nano at 4.63M; Kokoro at 82M) and the family fits in **under 4 MB per voice** with zero runtime dependencies (the espeak-ng phonemizer is bundled). Voices run **real-time on a ~$3 ESP32-S3 microcontroller** (output through a GPIO into an LM386 and a speaker) and **live in the browser via WebAssembly** — no server, no upload, no NPU. The full neural stack is **duration → acoustic → decoder**, quantized to int8, with the espeak-ng phonemizer included. **9 voices** across **6 languages** ship: English (4 voices — including a 745k on-device "robot" voice), Nepali, Hindi, Vietnamese, Indonesian, and Chinese. The project page at [ampixa.github.io/sanoTTS](https://ampixa.github.io/sanoTTS/) hosts a live browser synthesis demo for every voice.
+
+**Release Date:** July 13, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 745k–1.8M per voice (smallest = the 745k on-device "robot" voice) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese (6 languages, 9 voices) |
+| **Streaming** | ❌ |
+| **License** | ![Unknown][license-unknown] |
+| **Architecture** | full neural stack — duration model → acoustic model → decoder |
+| **Quantization** | int8 |
+| **Runtime Microcontroller** | ESP32-S3 (real-time, GPIO → LM386 → speaker) |
+| **Runtime Browser** | WebAssembly (no server, no upload, no NPU) |
+| **Runtime Footprint** | under 4 MB per voice, zero dependencies |
+| **Voices** | 9 (English: amy / kristin / hfc / amy-small / robot; one voice each for NE / HI / VI / ID / ZH) |
+| **Phonemizer** | espeak-ng (bundled) |
+| **Library Name** | sanotts |
+| **Training Method** | distillation (per voice) |
+
+**Features:** The hard constraint — be the smallest neural TTS family known,
+real-time on a $3 microcontroller — drives the entire stack.
+Conventional sub-100M TTS systems are too large for an ESP32's flash
+and RAM. sanoTTS keeps the full **duration → acoustic → decoder**
+neural pipeline (no espeak-NG-only fallback, no concatenative
+hybrid), quantizes everything to int8, and *bundles the phonemizer*
+so the whole voice ships in under 4 MB with zero runtime dependencies.
+The result is a per-voice footprint 100× smaller than Kokoro and
+2× smaller than TinyTTS while still scoring competitively on the
+authors' SCOREQ / UTMOS / DNSMOS-SIG no-reference 24-sentence harness
+— and the demo synthesizes every voice **live in the browser via
+WASM**, so the smallest-known neural TTS is also the only one that
+runs unattended on a $3 chip and a $0 web page.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/ampixa/sanoTTS)
+[![GitHub][link-github]](https://github.com/Ampixa/sanoTTS)
+[![Website][link-website]](https://ampixa.github.io/sanoTTS/)
+
+</details>
+<!-- /MODEL:sanotts.md -->
+<!-- MODEL:freyatts.md -->
+<details id="freyatts">
+<summary>FreyaTTS</summary>
+
+### FreyaTTS
+
+**Description:** **FreyaTTS** is a 183M-parameter Turkish text-to-speech model. It is **tokenizer-free at the character level** — 92 symbols in its Turkish vocabulary — so there is no phonemizer or G2P step in either training or inference. Speech is generated with a **non-autoregressive conditional flow-matching DiT** in the frozen [AudioVAE2](https://huggingface.co/openbmb/VoxCPM2) latent space (25 Hz, 64-dim latents, 16 kHz encode / 48 kHz decode). Training runs from scratch on Turkish speech: a pretraining stage followed by SFT stage 1/2 for voice lock and short-utterance coverage. Output is 48 kHz mono. On the project's Freya-TR-Eval benchmark the model reports **WER 8.0% / CER 3.0%**, ranking 3rd of 7 among open sub-1B Turkish TTS systems — a deliberate **single-target-speaker, no-cloning** design choice for a focused foundation release. The evaluation dataset is [freya-tr-eval](https://huggingface.co/datasets/freyavoice/freya-tr-eval).
+
+**Release Date:** July 7, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 183.2M |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | Turkish (tr) |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | conditional flow-matching diffusion transformer (DiT), non-autoregressive, 32-step Euler ODE, no CFG |
+| **Tokenizer** | character-level (92 Turkish symbols; no phonemizer, no G2P) |
+| **Latent Space** | frozen AudioVAE2 (Apache-2.0, openbmb/VoxCPM2), 64-dim at 25 Hz |
+| **Codec Io** | 16 kHz encode / 48 kHz decode |
+| **Sample Rate** | 48,000 Hz |
+| **Training** | from scratch on Turkish speech; pretraining + SFT stage 1/2 (voice lock + short-utterance coverage) |
+| **Evaluation** | Freya-TR-Eval — WER 8.0% / CER 3.0%, 3rd of 7 open sub-1B Turkish TTS |
+| **Library Name** | freyatts |
+
+**Features:** Two design choices are worth flagging. First, **tokenizer-free
+character-level Turkish**: by training directly on the 92-symbol
+Turkish alphabet with no phonemizer or G2P grapheme-to-phoneme step,
+the model removes a dependency that is fragile for agglutinative
+Turkish morphology and that often degrades quality when ported to
+low-resource Turkic relatives. Second, **non-autoregressive
+conditional flow-matching in a frozen AudioVAE2 latent space**:
+the 25 Hz / 64-dim bottleneck keeps the DiT small (183M) while
+inheriting a separately-trained audio codec's representation,
+letting a focused single-language-non-multilingual release ship at
+a fraction of the parameter budget of multilingual foundation TTS
+systems. The deliberate "no cloning, single target speaker" choice
+is a scope-lowering move that lets the foundation release put all
+its capacity into Turkish speech quality rather than spread it
+across zero-shot speaker adaptation.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/freyavoice/Freya-TTS)
+[![GitHub][link-github]](https://github.com/freyavoiceai/FreyaTTS)
+[![Paper][link-paper]](https://arxiv.org/abs/2607.09530)
+
+</details>
+<!-- /MODEL:freyatts.md -->
 <!-- MODEL:gepard.md -->
 <details id="gepard">
 <summary>Gepard</summary>
@@ -288,6 +390,56 @@ supports serving hundreds of conversations per GPU.
 
 </details>
 <!-- /MODEL:moss-tts.md -->
+<!-- MODEL:voxflash-tts.md -->
+<details id="voxflash-tts">
+<summary>VoxFlash-TTS</summary>
+
+### VoxFlash-TTS
+
+**Description:** **VoxFlash-TTS** is a zero-shot voice-cloning text-to-speech engine built around extreme latent compression. The VAE encodes 24 kHz waveforms into a **9 frames/s** latent space — roughly 8× more compressed than EnCodec (75 fps) and 2.4× more than Stable Audio (21.5 fps). Generating 10 s of audio therefore requires the diffusion model to produce just **90 latent vectors** rather than hundreds or thousands of tokens, with downstream quadratic savings in attention cost. A ConvNeXtV2-based phoneme encoder followed by a novel coarse-alignment algorithm (cheaper than cross-attention) maps text into the latent sequence; a modern diffusion head then iteratively refines speech latents that the lightweight VAE decoder renders back to waveforms. The architecture targets low-latency, low-resource deployment — consumer-grade GPUs and edge devices — with Chinese and English zero-shot cloning. The project card lists `inference: false` on HF (no hosted inference endpoint), but the project page at [voxflash.github.io](https://voxflash.github.io/) carries the abstract, demo examples, and ablations.
+
+**Release Date:** May 22, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | not stated (ConvNeXtV2 phoneme encoder + diffusion head + lightweight VAE decoder) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | Chinese, English |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Audio Codec** | VoxFlash VAE (9 Hz / 9 fps latent, 24 kHz input) |
+| **Compression Ratio** | ~8× tighter than EnCodec (75 fps), ~2.4× tighter than Stable Audio (21.5 fps) |
+| **Phoneme Encoder** | ConvNeXtV2 + coarse-alignment algorithm (no cross-attention) |
+| **Diffusion Head** | modern multi-step iterative refinement |
+| **Decoder** | lightweight VAE decoder |
+| **Sample Rate** | 24,000 Hz |
+| **Inference** | local CUDA ≥ 12.3.2; no HF hosted endpoint |
+| **Training Dataset** | seed-tts-eval |
+| **Metrics** | word_error_rate, speaker_similarity |
+
+**Features:** The central technical move is **compressing the audio latent
+space to 9 frames/s instead of the conventional 75 fps (EnCodec)
+or 21.5 fps (Stable Audio)**. This is not a quantization tweak —
+it is a temporal-decimation architectural choice that shrinks the
+sequence length the diffusion model has to traverse, and because
+attention cost scales quadratically with sequence length the
+end-to-end compute drops by orders of magnitude. Combined with a
+**coarse-alignment phoneme-to-latent map that avoids cross-attention
+entirely** (using a ConvNeXtV2 phoneme encoder instead), VoxFlash
+hits millisecond-level inference latency on consumer-grade and
+edge hardware for zero-shot Chinese + English cloning, where
+conventional latent-diffusion TTS systems are too slow for real-time
+edge deployment.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/VoxFlashTTS/VoxFlashTTS)
+[![GitHub][link-github]](https://github.com/VoxFlash/VoxFlashTTS)
+[![Website][link-website]](https://voxflash.github.io/)
+[![Paper][link-paper]](https://arxiv.org/abs/2406.02430)
+
+</details>
+<!-- /MODEL:voxflash-tts.md -->
 <!-- MODEL:misotts.md -->
 <details id="misotts">
 <summary>Miso TTS</summary>
@@ -1845,6 +1997,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Text | Video | Audio | Max Duration | Sample Rate | License |
 | :--- | :---: | :---: | :---: | :--- | :--- | :--- |
+| [ScenA](#scena) | ✅ | ❌ | ✅ | — | — | ![Unknown][license-unknown] |
 | [Nemotron-Labs-Audex-30B-A3B](#nemotron-labs-audex-30b-a3b) | ✅ | ❌ | ✅ | — | — | ![NVIDIA NC][license-nvidia-noncommercial] |
 | [MOSS-SoundEffect](#moss-soundeffect) | ✅ | — | — | 30 s | 48 kHz | ![Apache 2.0][license-apache-2.0] |
 | [Omni2Sound (Omni2Audio)](#omni2sound) | ✅ | ✅ | ✅ | — | — | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
@@ -1857,6 +2010,59 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [ThinkSound](#thinksound) | ✅ | — | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
 | [MMAudio](#mmaudio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:scena.md -->
+<details id="scena">
+<summary>ScenA</summary>
+
+### ScenA
+
+**Description:** **ScenA** generates multi-speaker audio *scenes* — dialogue and conversation with sound effects and ambience — from a text prompt, conditioned on one or more **reference-audio** clips that set the speakers' voices. Unlike prior multi-speaker dialogue systems it uses **no** per-turn tags, multi-stream transcripts, or speaker embeddings: a free-form natural-language prompt alone describes the scene. The text prompt determines which reference voice speaks where, allowing overlapping speech, spontaneous paralinguistic events, and scene-level ambient sound — all inherited from the in-the-wild text-to-audio pretraining distribution. The architecture is an audio-only, reference-conditioned flow-matching DiT built on the LTX-2 backbone (~4B parameters, 48 layers). Reference latents are concatenated into the token sequence and distinguished by lightweight identity-aware positional encodings. The training tackles a specifically identified "Reference Shortcut" failure mode — under standard noise schedules the model can identify the matching reference by noisy-target acoustic similarity, bypassing the text prompt — by using a high-noise-biased timestep distribution that forces reliance on the prompt for speaker assignment. Evaluator: CoVoMix2-Dialogue benchmark. Project page, code, paper, and HuggingFace checkpoint are linked below.
+
+**Release Date:** July 7, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | ~4B (DiT, 48 layers; built on LTX-2 architecture) |
+| **Text** | ✅ |
+| **Video** | ❌ |
+| **Audio** | ✅ |
+| **Max Duration** | not stated (scene-level generation) |
+| **Sample Rate** | (not stated; inherits LTX-2 audio VAE) |
+| **Voice Cloning** | ✅ |
+| **Multi Speaker** | yes |
+| **Ambient Sound** | yes (SFX, room acoustics, overlapping speech) |
+| **Architecture** | flow-matching DiT (LTX-2 backbone, audio-only) |
+| **Speaker Assignment** | natural language (no per-turn tags / identity encoders) |
+| **Training Fix** | high-noise-biased timestep distribution (defeats Reference Shortcut) |
+| **Text Encoder** | google/gemma-3-12b-it |
+| **Audio Vae** | bundled (~365 MB; encodes+decodes so full LTX-2 not needed) |
+| **Checkpoint Size** | ~8.2 GB (scena.safetensors) + ~365 MB (audio_vae.safetensors) |
+| **License** | ![Unknown][license-unknown] |
+| **Training Data** | in-the-wild text-to-audio pretrained, then reference-conditioned fine-tune |
+| **Evaluation** | CoVoMix2-Dialogue (speaker-binding metrics) |
+
+**Features:** The "Reference Shortcut" failure-mode identification is the
+technical center of the work: under standard diffusion noise
+schedules, a multi-speaker reference-conditioned model can match
+each reference to the noisy-target segment by acoustic similarity
+alone, bypassing the text prompt entirely. ScenA's high-noise-biased
+timestep distribution forces the model to rely on the prompt for
+speaker assignment at training time. Combined with the absence of
+any per-turn speaker structure (tags / transcripts / identity
+encoders) and the prompt's role as the *only* speaker-routing
+signal, this yields multi-speaker conversational scenes with
+overlapping speech, paralinguistic events, and ambient texture
+that previous structured-supervision multi-speaker systems filter
+out by design.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/mifinkelson/scena)
+[![GitHub][link-github]](https://github.com/finmickey/scena)
+[![Website][link-website]](https://finmickey.github.io/scena/)
+[![Paper][link-paper]](https://arxiv.org/abs/2606.19325)
+
+</details>
+<!-- /MODEL:scena.md -->
 <!-- MODEL:nemotron-labs-audex-30b-a3b.md -->
 <details id="nemotron-labs-audex-30b-a3b">
 <summary>Nemotron-Labs-Audex-30B-A3B</summary>
@@ -2457,6 +2663,8 @@ models into one generalist.
 
 | Model | Languages | Streaming | License |
 | :--- | :--- | :---: | :--- |
+| [GigaAM-Multilingual](#gigaam-multilingual) | 70+ | ❌ | ![MIT][license-mit] |
+| [GigaChat3.1-Audio](#gigachat3-audio) | Russian, English | ❌ | ![MIT][license-mit] |
 | [MOSS-Transcribe-Diarize](#moss-transcribe-diarize) | Multilingual | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Mega-ASR](#mega-asr) | English, Chinese | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Cohere Transcribe](#cohere-transcribe) | 14 | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -2468,6 +2676,106 @@ models into one generalist.
 | [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Unknown][license-unknown] |
 | [FunASR](#funasr) | 50+ | ✅ | ![MIT][license-mit] |
 
+<!-- MODEL:gigaam-multilingual.md -->
+<details id="gigaam-multilingual">
+<summary>GigaAM-Multilingual</summary>
+
+### GigaAM-Multilingual
+
+**Description:** **GigaAM Multilingual** is a family of Conformer-based ASR foundation models from ai-sage (Sber). Two parameter scales ship (`ssl` / `ctc` at 220M and `large_ssl` / `large_ctc` at 600M). The encoder is pretrained with a HuBERT-style self-supervised objective on **2M hours** of speech across **70+ languages**, then fine-tuned for speech recognition with character-wise CTC decoders on 50K hours. The `ssl`/`large_ssl` variants are encoder-only checkpoints for downstream fine-tuning; the `ctc`/`large_ctc` variants add a character-wise CTC decoder ready for inference. The model reports best-in-class open-source quality on Russian, Kazakh, Kyrgyz, and Uzbek ASR, and moderate quality on English — beating Seamless M4T large v2 and Omnilingual 1B on Russian Common Voice (7.1%/5.1% WER vs 9.2%/13.6%). A live demo Space is hosted at [hugging-apps/gigaam-multilingual-asr](https://huggingface.co/spaces/hugging-apps/gigaam-multilingual-asr).
+
+**Release Date:** July 14, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 220M (`ssl` / `ctc`); 600M (`large_ssl` / `large_ctc`) |
+| **Asr** | ✅ |
+| **Languages** | 70+ pretrained, fine-tuned for ru / en / kk / ky / uz |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | Conformer encoder + (optional) character-wise CTC decoder |
+| **Pretraining Objective** | HuBERT-style self-supervised |
+| **Pretraining Hours** | 2,000,000 hours |
+| **Fine Tuning Hours** | 50,000 hours |
+| **Variants** | ssl (encoder-only), ctc (encoder + CTC decoder), large_ssl (600M encoder-only), large_ctc (600M + CTC decoder) |
+| **Evaluation Cv Russian** | WER 7.1% (220M) / 5.1% (600M) |
+| **Evaluation Cv Kazakh** | best-in-class (see paper) |
+| **Evaluation Fleurs English** | WER 12.2% (220M) / 9.4% (600M) |
+| **Training Library** | pytorch, custom_code |
+
+**Features:** Two things set GigaAM-Multilingual apart from prior multilingual
+ASR foundation work. First, the scale of pretraining — **2M hours
+across 70+ languages** under a HuBERT-style self-supervised
+objective — paired with a *character-wise* CTC decoder fine-tune
+(no word-piece lexicon dependency) lets a single checkpoint cover
+languages with very different phonotactics and orthographies
+(Turkic + Slavic + Indo-Aryan families) without a language-tagged
+decoding head per family. Second, the **two-tier release** — encoder-only
+(`ssl`/`large_ssl`) for downstream fine-tuning and encoder+CTC
+(`ctc`/`large_ctc`) ready for inference — gives the community both
+a drop-in recognizer and a foundation for task-specific adaptation.
+On Russian Common Voice it beats Seamless M4T large v2 and
+Omnilingual 1B, the closest open baselines.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/ai-sage/GigaAM-Multilingual)
+[![Paper][link-paper]](https://arxiv.org/abs/2607.10371)
+[![Demo][link-demo]](https://huggingface.co/spaces/hugging-apps/gigaam-multilingual-asr)
+
+</details>
+<!-- /MODEL:gigaam-multilingual.md -->
+<!-- MODEL:gigachat3-audio.md -->
+<details id="gigachat3-audio">
+<summary>GigaChat3.1-Audio</summary>
+
+### GigaChat3.1-Audio
+
+**Description:** `GigaChat Audio 10B` is an audio-native LLM built on top of the GigaChat 3.1 Lightning text model (10B total parameters, A1.8B active). A Conformer speech encoder and a modality adapter feed audio embeddings directly into the existing Mixture-of-Experts decoder, so the model retains the text quality of its base while adding speech understanding. Capabilities include audio question answering and classification, **temporal grounding** (event localization in long audio with timestamped descriptions and timestamped audio summarization), emotion recognition (Dusha benchmarks), tool-use, and text-only tasks. The temporal-grounding skills are trained on the purpose-built [TimeGround-1M](https://huggingface.co/datasets/ai-sage/TimeGround-1M) dataset of long-form audio paired with time-aligned annotations. On Russian ASR (Golos crowd), the model reports WER ≈14.7 versus Whisper-large-v3 ≈9.1; on temporal localization it scores mIoU 40.3 / 48.3 on ≤10min / 20–60min clips — substantially above Voxtral (3B) and Phi-4 (4B). Multiple HF Spaces (e.g. `hugging-apps/gigaam-multilingual-asr`) host live demos of the related GigaAM-Multilingual family.
+
+**Release Date:** July 13, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 10B total (A1.8B active, MoE) |
+| **Asr** | ✅ |
+| **Languages** | Russian, English |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | audio-native MoE LLM — Conformer speech encoder + modality adapter + MoE decoder |
+| **Base Model** | ai-sage/GigaChat3.1-10B-A1.8B (GigaChat 3.1 Lightning text model) |
+| **Capabilities** | audio QA, classification, temporal grounding, emotion recognition, speech translation, tool-use, text-only |
+| **Temporal Grounding** | yes (timestamped event localization in long audio) |
+| **Training Data Audio Grounding** | ai-sage/TimeGround-1M (1M long-form audio + time-aligned annotations) |
+| **Evaluation Mmau** | 62.2 (vs Voxtral 3B 59.8, Phi-4 4B 68.3) |
+| **Evaluation Mmlu Speech** | 50.3 |
+| **Evaluation Audio Math Mqa** | 72.5 |
+| **Evaluation Emotion Dusha Crowd** | 90.0 acc |
+| **Evaluation Emotion Dusha Podcast** | 92.4 acc |
+| **Evaluation Asr Ru Golos** | WER 14.7 |
+| **Evaluation Temporal Localization 10M** | mIoU 40.3 |
+| **Evaluation Temporal Localization 20 60M** | mIoU 48.3 |
+
+**Features:** Two things make GigaChat3.1-Audio stand out among audio LLMs.
+First, **modality-injection into an existing MoE**: rather than
+training a smaller speech-text model from scratch, it taps a
+10B-A1.8B MoE text LLM (GigaChat 3.1 Lightning) by inserting a
+Conformer encoder + linear adapter that project audio embeddings
+into the existing decoder sequence — so text quality is inherited
+rather than re-learned. Second, **timestamped temporal grounding
+on long audio**: trained on the TimeGround-1M dataset, the model
+produces event-localization mIoU scores (40.3 / 48.3 on ≤10min /
+20–60min clips) that are an order of magnitude above comparable
+open models (Voxtral 3B 3.4 mIoU on ≤10min; 0.1 on 20–60min), and
+its audio-summarization output is timestamped rather than just a
+flat transcript.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/ai-sage/GigaChat3.1-Audio-10B-A1.8B)
+[![Paper][link-paper]](https://arxiv.org/abs/2607.10387)
+[![Demo][link-demo]](https://huggingface.co/spaces/hugging-apps/gigaam-multilingual-asr)
+
+</details>
+<!-- /MODEL:gigachat3-audio.md -->
 <!-- MODEL:moss-transcribe-diarize.md -->
 <details id="moss-transcribe-diarize">
 <summary>MOSS-Transcribe-Diarize</summary>
@@ -2947,9 +3255,9 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
-[license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
-[license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
 [license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
+[license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
+[license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
 [license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
