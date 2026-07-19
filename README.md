@@ -60,13 +60,18 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [T5Gemma-TTS](#t5gemma-tts) | ✅ | ❌ | English, Chinese, Japanese | ❌ | ![MIT][license-mit] |
 | [TinyTTS](#tinytts) | ❌ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [VoxCPM2](#voxcpm2) | ✅ | ❌ | 30 | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [Soprano](#soprano) | ❌ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [GLM-TTS](#glm-tts) | ✅ | ❌ | Chinese, English | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [Echo-TTS](#echo-tts) | ✅ | ❌ | English | ❌ | ![MIT][license-mit] |
 | [VibeVoice-Realtime](#vibevoice-realtime) | ✅ | ❌ | Multilingual | ✅ | ![MIT][license-mit] |
 | [Fun-CosyVoice 3.0](#fun-cosyvoice-30) | ✅ | ❌ | 9 + 18+ Chinese dialects | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [LFM2-Audio-1.5B](#lfm2-audio-15b) | ✅ | ✅ | English | ✅ | ![LFM][license-lfm] |
+| [Marvis-TTS](#marvis-tts) | ✅ | ❌ | English, French, German | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [IndexTTS2](#indextts2) | ✅ | ❌ | Chinese, English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Maya1](#maya1) | ✅ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Step-Audio-EditX](#step-audio-editx) | ✅ | ❌ | Mandarin, English, Sichuanese, Cantonese, Japanese, Korean | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [KaniTTS](#kani-tts) | ❌ | ❌ | English, German, Chinese, Korean, Arabic, Spanish | ✅ | ![LFM][license-lfm] |
+| [VibeVoice-Finetuning](#vibevoice-finetuning) | ❌ | ❌ | — | ❌ | ![MIT][license-mit] |
 | [VoxCPM](#voxcpm) | ✅ | ❌ | Chinese, English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [FireRedTTS2](#fireredtts2) | ✅ | ❌ | EN, ZH, JP, KO, FR, DE, RU | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Audio Flamingo 3 (AF3) / Audio Flamingo Next](#audio-flamingo-3) | ❌ | ✅ | Multi-lingual | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -86,6 +91,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Dia](#dia) | ✅ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [MeloTTS](#melotts) | ❌ | ❌ | English, Spanish, French, Chinese, Japanese, Korean | ❌ | ![MIT][license-mit] |
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
+| [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Unknown][license-unknown] |
 
 <!-- MODEL:sanotts.md -->
 <details id="sanotts">
@@ -1261,6 +1267,55 @@ edge deployment.
 
 </details>
 <!-- /MODEL:voxcpm2.md -->
+<!-- MODEL:soprano.md -->
+<details id="soprano">
+<summary>Soprano</summary>
+
+### Soprano
+
+**Description:** **Soprano** is an ultra-lightweight, on-device text-to-speech (TTS) model designed for expressive, high-fidelity speech synthesis at unprecedented speed. The 1.1 release ships an 80M-parameter backbone that achieves up to **20× real-time generation on CPU** and **2000× real-time on GPU**, with **lossless streaming** (<250 ms latency on CPU, <15 ms on GPU), **<1 GB memory usage** at inference, and **infinite generation length** (automatic text splitting). Output sample rate is **32 kHz**, with widespread device support (CUDA / CPU / MPS on Windows, Linux, and Mac). Inference is production-ready through an OpenAI-compatible endpoint, ONNX, WebUI, CLI, and ComfyUI nodes. The base 1.1 model is `ekwek/Soprano-1.1-80M` on HuggingFace; a fine-tuning toolkit (`soprano-factory`) was released January 13 2026 alongside the 1.1 weights — the 1.1 release reports **95% fewer hallucinations** and a **63% preference rate** over 1.0 (Soprano-80M). A live demo runs on `ekwek/Soprano-TTS` HF Space.
+
+**Release Date:** December 22, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 80M (Soprano-1.1-80M) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | English (US/UK family voices, per HF Space) |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Sample Rate** | 32,000 Hz |
+| **Inference Targets** | OpenAI-compatible endpoint, ONNX, WebUI, CLI, ComfyUI |
+| **Performance Cpu** | up to 20× real-time |
+| **Performance Gpu** | up to 2000× real-time |
+| **Memory** | <1 GB at inference |
+| **Text Length** | infinite (automatic text splitting) |
+| **Devices** | CUDA, CPU, MPS (Windows, Linux, Mac) |
+| **Training Toolkit** | soprano-factory (https://github.com/ekwek1/soprano-factory) |
+| **History 1 1** | Soprano-1.1-80M released 2026-01-14 (95% fewer hallucinations; 63% preference over 1.0) |
+| **History 1 0** | Soprano-80M released 2025-12-22 |
+
+**Features:** The defining trade-off of this release is **extreme on-device
+efficiency at sub-100M scale**: an 80M-parameter backbone hits
+**<250 ms CPU latency** and **<15 ms GPU** for lossless streaming
+while keeping inference within <1 GB of memory — well under the
+multi-billion-parameter budget that newer conversational TTS
+systems require. The release pairs the model with `soprano-factory`
+(open-source training/fine-tuning toolkit) so users can build their
+own voices on top of the same backbone, and one installation can
+drive OpenAI-compatible / ONNX / WebUI / CLI / ComfyUI inference.
+The 1.1 update is a measured iteration: 95% fewer hallucinations
+and a 63% preference over 1.0 at the same parameter budget, so the
+measurable quality jump ships with no added inference cost.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/ekwek/Soprano-1.1-80M)
+[![GitHub][link-github]](https://github.com/ekwek1/soprano)
+[![Demo][link-demo]](https://huggingface.co/spaces/ekwek/Soprano-TTS)
+
+</details>
+<!-- /MODEL:soprano.md -->
 <!-- MODEL:glm-tts.md -->
 <details id="glm-tts">
 <summary>GLM-TTS</summary>
@@ -1289,6 +1344,58 @@ edge deployment.
 
 </details>
 <!-- /MODEL:glm-tts.md -->
+<!-- MODEL:echo-tts.md -->
+<details id="echo-tts">
+<summary>Echo-TTS</summary>
+
+### Echo-TTS
+
+**Description:** **Echo** is a 2.4B-parameter **diffusion-based diffusion transformer (DiT)** text-to-speech model. It conditions on target text and up to **two minutes of speaker reference audio**, generates Fish Speech S1-DAC latents, and decodes to **44.1 kHz** audio. Output length is up to **30 seconds per segment**. The model is fast at single-sample generation: on one A100, generating 30 seconds of audio from a 120-second prompt takes **~1.45 seconds** (RTF < 0.05) — substantially faster than frontier autoregressive approaches at similar quality. The architecture is a deliberate pivot from the author's prior autoregressive-in-DAC-space model **Parakeet**, which struggled with semantic-consistency retries and weak voice cloning; Echo's diffusion approach trades off real-time interactivity for **fast, high-fidelity zero-shot voice cloning** in offline synthesis. Trained via the TPU Research Cloud (TRC). Demo (preview) hosted on `jordand/echo-tts-preview` HF Space; base model on `jordand/echo-tts-base`.
+
+**Release Date:** December 4, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 2.4B (DiT) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | English (per demo samples) |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | diffusion transformer (DiT) in Fish Speech S1-DAC latent space |
+| **Max Segment Duration** | 30 s |
+| **Sample Rate** | 44,100 Hz |
+| **Speaker Reference Max** | 120 s |
+| **Performance A100 Rt** | 30 s output in ~1.45 s (RTF < 0.05) |
+| **Audio Codec** | Fish Speech S1-DAC |
+| **Prior Model** | Parakeet (autoregressive in DAC space) |
+| **Training Infrastructure** | TPU Research Cloud (TRC) |
+| **Inference Requirements** | CUDA-capable GPU with at least 8 GB VRAM; Python 3.10+ |
+| **Sampler** | euler CFG with independent guidances for text (3.0) and speaker (8.0); 40 steps; sequence_length 640 default |
+| **License Clarification** | MIT (per GH repo license) |
+
+**Features:** Echo is a deliberate **next-step pivot from autoregressive-in-DAC-space
+TTS to a full diffusion approach**. The author's prior model,
+Parakeet, generated DAC tokens autoregressively but suffered the
+classic AR weakness — semantic-consistency retries — and weak
+voice cloning. Echo keeps Fish Speech S1-DAC latents (so the audio
+representation is the same proven codec) but moves the generator
+*upstream* to a 2.4B DiT operating directly on those latents,
+conditioned on a long (up to 2-minute) speaker reference. The
+result: 30-second outputs in ~1.45 s on a single A100 (RTF < 0.05)
+with high-fidelity zero-shot cloning — fast enough that the
+"diffusion is too slow" objection no longer applies at the segment
+length that matters for offline content generation, while the AR
+class's retry-induced inconsistency is gone by construction.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/jordand/echo-tts-base)
+[![GitHub][link-github]](https://github.com/jordandare/echo-tts)
+[![Demo][link-demo]](https://huggingface.co/spaces/jordand/echo-tts-preview)
+[![Blog][link-blog]](https://jordandarefsky.com/blog/2025/echo/)
+
+</details>
+<!-- /MODEL:echo-tts.md -->
 <!-- MODEL:vibevoice-realtime.md -->
 <details id="vibevoice-realtime">
 <summary>VibeVoice-Realtime</summary>
@@ -1371,6 +1478,54 @@ edge deployment.
 
 </details>
 <!-- /MODEL:lfm2-audio-15b.md -->
+<!-- MODEL:marvis-tts.md -->
+<details id="marvis-tts">
+<summary>Marvis-TTS</summary>
+
+### Marvis-TTS
+
+**Description:** **Marvis** is a conversational real-time streaming TTS from Marvis-Labs. The architecture inherits Sesame's **CSM-1B** (Conversational Speech Model): a 250M-parameter **multimodal backbone** that processes interleaved text + audio tokens and a smaller 60M-parameter **audio decoder** that models the remaining 31 RVQ codebook levels to reconstruct high-quality speech from the backbone's representations. Audio tokens come from **Kyutai's mimi codec** (RVQ tokens). The dual-transformer split — semantic backbone + small decoder — yields sub-second latency, and the model is built for **on-edge / on-device** deployment (Apple Silicon / iPad / iPhone / Mac). Two operational choices distinguish Marvis:
+
+**Release Date:** November 6, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 250M (multimodal backbone) + 60M (audio decoder) = 310M total |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | English, French, German |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | dual-transformer CSM-1B (Conversational Speech Model) — multimodal backbone + audio decoder |
+| **Audio Codec** | Kyutai mimi codec (RVQ tokens; backbone models codebook 0, decoder models codebook 1–31) |
+| **Quantized Size** | ~500 MB (4-bit MLX) |
+| **Training Dataset** | amphion/Emilia-Dataset |
+| **Library Name** | transformers, mlx, mlx-audio |
+| **Inference Cli** | `mlx_audio.tts.generate --model Marvis-AI/marvis-tts-250m-v0.2 --stream --text "..." [--ref_audio ./x.wav]` |
+| **Variants In Collection** | 250m-v0.2, 250m-v0.2-MLX-{4bit,6bit,8bit}, 100m-v0.2 (+ MLX variants), 250m-v0.2-transformers |
+| **Emits Text Chunking** | no (full-sequence contextual processing) |
+
+**Features:** Two operational choices make Marvis stand out among conversational
+TTS. First, **no regex chunking**: most streaming TTS engines
+pre-split sentences by regex patterns before feeding them to the
+generator, which can disrupt flow / intonation; Marvis processes
+the entire text contextually, treating the text as a single
+interleaved multimodal sequence. Second, the **dual-transformer
+CSM-1B design** — a 250M backbone for codebook 0 (semantic) and a
+smaller 60M audio decoder for codebooks 1-31 (acoustic) — produces
+a quantized footprint of ~500 MB, enabling **on-device Apple-Silicon
+inference** (iPad / iPhone / Mac) with real-time streaming. The
+architecture makes a high-quality CSM-style TTS with zero-shot
+cloning actually deployable at the edge, while the official
+collection's 4 / 6 / 8-bit MLX variants let users trade footprint
+for fidelity on a per-device basis.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/Marvis-AI/marvis-tts-250m-v0.2)
+[![GitHub][link-github]](https://github.com/Marvis-Labs/marvis-tts)
+
+</details>
+<!-- /MODEL:marvis-tts.md -->
 <!-- MODEL:indextts2.md -->
 <details id="indextts2">
 <summary>IndexTTS2</summary>
@@ -1453,6 +1608,106 @@ edge deployment.
 
 </details>
 <!-- /MODEL:step-audio-editx.md -->
+<!-- MODEL:kani-tts.md -->
+<details id="kani-tts">
+<summary>KaniTTS</summary>
+
+### KaniTTS
+
+**Description:** **KaniTTS** is a 370M-parameter two-stage text-to-speech model from nineninesix-ai. The architecture pairs an **LFM-2 backbone LLM** (Liquid Foundation Model v2 — a non-transformer, structured state-space architecture) with a **neural audio codec** for output waveform synthesis. The LLM generates compressed audio-token representations and the codec renders them to 22 kHz waveforms, yielding low-latency generation: **~1 s to produce 15 s of audio on a single RTX 5080**, with **2 GB GPU VRAM** at inference, and **MOS 4.3 / WER < 5%** quality on the project's benchmarks. Languages covered: **English, German, Chinese, Korean, Arabic, Spanish** across multiple per-language voices (English, German, Chinese, Korean, Arabic, Spanish each ship a 400M checkpoint; Japanese ships a 370M "Expo-2025-Osaka" variant; a multilingual 370M checkpoint is also available). MLX variants exist for Apple-Silicon inference. The codec is the same author's `nemo-nano-codec-22kHz-0.6kbps-12.5fps-MLX` (NVIDIA NeMo NanoCodec, MLX-ported to ~12.5 fps / 0.6 kbps). The model is part of the nineninesix-ai family alongside Gepard.
+
+**Release Date:** September 30, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 370M (kani-tts-370m multilingual); 400M per-language (en / de / zh / ko / ar / es); 370M (expo2025-osaka-ja) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | English, German, Chinese, Korean, Arabic, Spanish (multilingual 370M checkpoint); Japanese (Expo-2025-Osaka variant) |
+| **Streaming** | ✅ |
+| **License** | ![Unknown][license-unknown] |
+| **Sample Rate** | 22,000 Hz |
+| **Backbone Llm** | LFM-2 (Liquid Foundation Model; non-transformer structured state-space architecture) |
+| **Audio Codec** | nineninesix/nemo-nano-codec-22khz-0.6kbps-12.5fps-MLX (NVIDIA NeMo NanoCodec, MLX-ported) |
+| **Performance Rt 5080** | ~1 s for 15 s audio on RTX 5080 |
+| **Memory** | 2 GB GPU VRAM at inference |
+| **Quality Mos** | 4.3 / 5 (naturalness) |
+| **Quality Wer** | <5% (accuracy) |
+| **Training Dataset** | ~80k hours (LibriTTS, Common Voice, Emilia) |
+| **Training Hardware** | 8x H100 GPUs, 45 hours on Lambda AI |
+| **Per Language Models** | kani-tts-400m-{en,zh,de,ar,es,ko} on HuggingFace |
+| **Pretrained Checkpoints** | 0.2-pt (450M), 0.3-pt (400M) for custom posttraining / fine-tuning |
+| **Mlx Variants** | kani-tts-370m-MLX (Apple Silicon) |
+| **Arxiv** | 2505.20506 |
+
+**Features:** KaniTTS's design choice worth flagging: it pairs a **non-transformer
+LFM-2 backbone** (Liquid Foundation Model — structured state-space
+rather than attention) with a **neural audio codec for output** at
+the **370M scale**. The choice lets the model hit a ~1 s / 15 s
+audio generation rate on a **2 GB GPU VRAM budget** — sub-1B
+parameters, sub-entry-tier GPU requirement, but still multilingual
+across six languages. The two-stage approach (LLM → codec) is
+conventional; what's less conventional is the choice of a
+state-space backbone over the usual transformer decoder at this
+scale, hitting latency / VRAM numbers that open up sub-1B real-time
+TTS on consumer-grade hardware. The same author ships `soprano-factory`-style
+companion assets (pretrained v0.2-pt / v0.3-pt checkpoints, a
+NeMo NanoCodec MLX port) to lower the bar for fine-tuning on custom
+datasets.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/nineninesix/kani-tts-370m)
+[![GitHub][link-github]](https://github.com/nineninesix-ai/kani-tts)
+
+</details>
+<!-- /MODEL:kani-tts.md -->
+<!-- MODEL:vibevoice-finetuning.md -->
+<details id="vibevoice-finetuning">
+<summary>VibeVoice-Finetuning</summary>
+
+### VibeVoice-Finetuning
+
+**Description:** This is an **unofficial, work-in-progress LoRA fine-tuning toolkit** for the VibeVoice TTS / speech model (1.5B-base and 7B-base checkpoints). The base VibeVoice checkpoints are the same ones covered in this list's [a separate entry](#modelvibevoice-realtimemd): audio-conditioned diffusion TTS for spoken dialogue, streaming, etc. This toolkit takes **pretrained VibeVoice** weights + a paired (text, audio, optional reference-audio) dataset and trains a **LoRA adapter** against two losses simultaneously:
+
+**Release Date:** September 16, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 1.5B (LoRA-adapted) / 7B (LoRA-adapted) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | inherits base VibeVoice coverage |
+| **Streaming** | not directly (toolkit output is a LoRA adapter; the adapter inherits VibeVoice inference shape) |
+| **License** | ![MIT][license-mit] |
+| **Loss Text** | masked cross-entropy on text tokens |
+| **Loss Acoustic** | diffusion MSE on acoustic latents |
+| **Hardware 1 5B** | ≥16 GB VRAM |
+| **Hardware 7B** | ≥48 GB VRAM |
+| **Transformers Version** | 4.51.3 (known-good; other versions may break on Qwen2 architecture) |
+| **Tested Docker Image** | runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04 |
+| **Audio Target Format** | 24 kHz audio (paired dataset of target-audio + transcripts + optional reference-audio prompts) |
+| **Training Entrypoint** | `python -m src.finetune_vibevoice_lora --model_name_or_path aoi-ot/VibeVoice-Large --processor_name_or_path src/vibevoice/processor --dataset_name <your/dataset> --text_column_name text [--voice_column_name audio_ref]` |
+| **Supports Hf Dataset Loader** | yes |
+| **Output** | LoRA adapter compatible with VibeVoice base |
+
+**Features:** The dual-loss trick is the technical center of this toolkit. Naive
+LoRA fine-tuning of a unified TTS model often specializes the
+synthesis but **silently damages the text LLM capability** the
+base inherited from its Qwen-class backbone; the
+"masked CE on text tokens + diffusion MSE on acoustic latents"
+two-headed loss preserves both competencies at training time. Pair
+that with the careful pinning of Transformers 4.51.3 (other versions
+break on the Qwen2 architecture) and a documented minimum-VRAM
+budget per base size (16 GB for 1.5B, 48 GB for 7B), and you get a
+reproducible recipe for **community fine-tuning of VibeVoice** —
+something the official Microsoft VibeVoice release doesn't ship
+out-of-the-box.
+
+**Links:**
+[![GitHub][link-github]](https://github.com/voicepowered-ai/VibeVoice-finetuning)
+
+</details>
+<!-- /MODEL:vibevoice-finetuning.md -->
 <!-- MODEL:voxcpm.md -->
 <details id="voxcpm">
 <summary>VoxCPM</summary>
@@ -1986,6 +2241,52 @@ edge deployment.
 
 </details>
 <!-- /MODEL:kimi-audio.md -->
+<!-- MODEL:espeak-ng.md -->
+<details id="espeak-ng">
+<summary>eSpeak-NG</summary>
+
+### eSpeak-NG
+
+**Description:** **eSpeak NG** is a compact open-source software text-to-speech synthesizer for Linux, Windows, Android, and other operating systems. It supports **more than 100 languages and accents**, is a fork of Jonathan Duddington's original eSpeak engine, and uses the **formant synthesis** method: the model produces speech by explicitly computing the acoustic resonances (formants) of each phoneme, not by concatenating human-speech recordings. The trade is well-known — the speech is clear and usable at high playback speeds, but **not as natural or smooth** as larger neural or concatenative synthesizers. The compensation is size: the program and its data, including many languages, total a few megabytes. Other synthesis methods supported: **Klatt formant synthesis** and **MBROLA diphone back-end** via the documented integration.
+
+**Release Date:** December 8, 2015
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | n/a (formant-synthesis engine; not a neural model) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | 100+ languages and accents (see docs/languages.md) |
+| **Streaming** | ✅ |
+| **License** | ![Unknown][license-unknown] |
+| **Synthesis Method** | formant synthesis (primary); Klatt formant synthesis (secondary); MBROLA diphone backend (optional) |
+| **Footprint** | a few MB (program + data + many languages) |
+| **Audio Output** | WAV file (CLI), direct playback, or shared-library API |
+| **Input Formats** | text from file / stdin (CLI), SSML (partial), HTML (partial) |
+| **Packages** | CLI (espeak-ng man page), shared library (libespeak-ng), SAPI5 Windows module |
+| **Supersedes** | eSpeak (Jonathan Duddington's original engine) |
+| **Downstream Usage** | G2P / phonemizer for neural TTS pipelines (e.g. sanoTTS bundles espeak-ng for its duration model) |
+| **Platforms** | Linux, Windows, Android, Solaris, Mac OS X |
+
+**Features:** eSpeak-NG is **the** canonical reference implementation of compact
+multi-language formant synthesis. Its 100+-language coverage in a
+few megabytes, plus SSML / SAPI5 / MBROLA / shared-library / CLI
+surfaces, are matched only by neural TTS systems that are **orders
+of magnitude larger**. The reason it belongs in a list whose other
+entries are neural TTS systems is its continued quiet role in the
+neural stack as a **G2P / phonemizer front-end** — the phoneme
+inventory and grapheme-to-phoneme rules that sanoTTS and similar
+sub-1B neural TTS engines bundle are often just a port of
+eSpeak-NG's language-data files. So even if the formant-synthesis
+audio output itself has been surpassed for naturalness, the
+**phoneme infrastructure** underneath many of the smaller neural
+TTS entries on this list still traces back to eSpeak-NG.
+
+**Links:**
+[![GitHub][link-github]](https://github.com/espeak-ng/espeak-ng)
+
+</details>
+<!-- /MODEL:espeak-ng.md -->
 
 ---
 
@@ -2003,6 +2304,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [Omni2Sound (Omni2Audio)](#omni2sound) | ✅ | ✅ | ✅ | — | — | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [ControlFoley](#controlfoley) | ✅ | ✅ | ✅ | — | 44,100 Hz | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [Woosh](#woosh) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
+| [Chroma-4B](#chroma-4b) | ✅ | ❌ | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
 | [Uni-MoE (Audio)](#uni-moe-audio-any2audio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 | [AudioX / Audio-Omni](#audiox) | ✅ | ✅ | ✅ | — | — | ![Apache 2.0][license-apache-2.0]<br>![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [HunyuanVideo-Foley](#hunyuanvideo-foley) | ✅ | ✅ | — | — | 48 kHz | ![Unknown][license-unknown] |
@@ -2244,6 +2546,60 @@ V2A, TV2A, AC-V2A — under one model.
 
 </details>
 <!-- /MODEL:woosh.md -->
+<!-- MODEL:chroma-4b.md -->
+<details id="chroma-4b">
+<summary>Chroma-4B</summary>
+
+### Chroma-4B
+
+**Description:** **Chroma 1.0** (FlashLabs' `Chroma-4B` on HuggingFace) is the first open-source, real-time, **end-to-end spoken dialogue model** that achieves both **sub-second end-to-end latency** and **high-fidelity personalized voice cloning**. The pipeline is end-to-end — no separate ASR → LLM → TTS stitch — speech goes in, speech comes out. The architectural centerpiece is an **interleaved text-audio token schedule (1 text : 2 audio)** that supports streaming generation, so the model can begin emitting audio while the user is still talking (broken-off turns / barge-in handled). Experimental results from the project's paper:
+
+**Release Date:** November 28, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 4B |
+| **Voice Cloning** | ✅ |
+| **Asr** | ✅ |
+| **Languages** | English (per benchmark reporting) |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | end-to-end spoken-dialogue LLM; interleaved text-audio token schedule (1:2); custom_code modules |
+| **Pipeline Tag** | any-to-any (HF classification) |
+| **Audio Tokenization** | chroma tokenizer (RVQ-style per project's tag) |
+| **Latency Rtf** | 0.43 (speech out ~2.3× wall-clock) |
+| **Speaker Similarity** | +10.96% relative improvement over human baseline |
+| **Inference Library** | transformers (custom_code) |
+| **Correlations With Larger Class** | matches full dialogue turn at streaming latency |
+| **Pretrained** | yes (safetensors weights) |
+| **Hf Space Demos** | hysts/Chroma-4B, Pnevka/Chroma-4B |
+| **History** | paper arXiv 2601.11141 (2026-01) |
+
+**Features:** Two bets together produce the dual property that no prior
+open-source spoken-dialogue model has hit simultaneously. First,
+an **interleaved text-audio token schedule (1:2)** — text tokens
+and audio tokens are interleaved at a fixed 1:2 ratio through the
+sequence, which gives the model a structured place to emit audio
+*while still consuming user audio + text context*, supporting
+sub-second end-to-end latency without a separate ASR / LLM / TTS
+pipeline. Second, **personalized voice cloning baked into the
+spoke-dialogue model** — the cloned voice is not bolted on top by
+a separate TTS stage (as is the default pattern), it's in-model
+at the audio-token-generation layer. The empirical payoff is a
+**10.96% relative speaker-similarity gain over the human
+baseline** (i.e. the cloned voice is closer to the reference
+speaker than two of the same human speaker's recordings are to
+each other), while hitting RTF 0.43 — a floor that prior systems
+exceeded either in *latency* (no streaming) or in *cloning
+fidelity* (parrot the speaker poorly), rarely both.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/FlashLabs/Chroma-4B)
+[![Paper][link-paper]](https://arxiv.org/abs/2601.11141)
+[![Demo][link-demo]](https://huggingface.co/spaces/hysts/Chroma-4B)
+
+</details>
+<!-- /MODEL:chroma-4b.md -->
 <!-- MODEL:uni-moe-audio-any2audio.md -->
 <details id="uni-moe-audio-any2audio">
 <summary>Uni-MoE (Audio)</summary>
@@ -2431,6 +2787,7 @@ V2A, TV2A, AC-V2A — under one model.
 | [PASE](#pase) | Speech Enhancement | ❌ | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [DTT-BSR](#dtt-bsr) | Music Source Restoration | ❌ | ❌ | ![MIT][license-mit] |
 | [NVIDIA A2SB (Audio-to-Audio Schrodinger Bridges)](#nvidia-a2sb) | High-Resolution Audio Restoration | ✅ | ✅ | ![NVIDIA NC][license-nvidia-noncommercial] |
+| [ZipEnhancer](#zipenhancer) | Acoustic Noise Suppression | ❌ | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [AudioSR](#audiosr) | Audio Super-Resolution | ✅ | ❌ | ![Apache 2.0][license-apache-2.0] |
 
 <!-- MODEL:re-use.md -->
@@ -2624,6 +2981,56 @@ models into one generalist.
 
 </details>
 <!-- /MODEL:nvidia-a2sb.md -->
+<!-- MODEL:zipenhancer.md -->
+<details id="zipenhancer">
+<summary>ZipEnhancer</summary>
+
+### ZipEnhancer
+
+**Description:** **ZipEnhancer** (`speech_zipenhancer_ans_multiloss_16k_base`) is Alibaba DAMO Academy's next-generation **single-channel speech intelligent denoising** model. It is a 16 kHz-in → 16 kHz-out acoustic-noise-suppression (ANS) system that:
+
+**Release Date:** October 12, 2024
+
+| Feature | Value |
+|---------|-------|
+| **Type** | Acoustic Noise Suppression / Speech Enhancement (single-channel denoising) |
+| **Bandwidth Extension** | ❌ |
+| **Inpainting** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Model Type** | dual-path (per ModelScope metadata) |
+| **Training Objective** | multi-loss (per model id `..._multiloss_...`) |
+| **Input Sample Rate** | 16,000 Hz |
+| **Output Sample Rate** | 16,000 Hz |
+| **Channels** | single-channel (mono) |
+| **Task** | acoustic-noise-suppression (ANS) |
+| **Use Cases** | denoise any audio source; improve acoustic quality; vocal extraction from background |
+| **Host Org** | Alibaba DAMO Academy (iic on ModelScope) |
+| **Ecosystem** | ModelScope; Hugging Face Spaces not hosted on HF, demo available through ModelScope's widget |
+| **Release Date Evidence** | ModelScope CreatedTime = unix 1728713079 = 2024-10-12 06:04 UTC |
+
+**Features:** Alibaba's ZipEnhancer is among the few open **single-channel speech
+denoising** models that ships both an explicit **dual-path
+architecture** and a published **multi-loss training objective** at
+the 16 kHz single-channel baseline. The dual-path split — a common
+modern architectural pattern in speech enhancement — separates
+the model's processing path for short-time-frame local acoustic
+features from its longer-context path, which lets the system keep
+a sharp response to sudden transient noise while still modeling
+the slow envelope of stationary backgrounds. Combined with the
+multi-loss objective (the model id suffix `_multiloss` indicates
+multiple supervision signals during training, e.g. spectral /
+waveform / perceptual losses), the result is one of the few openly
+hosted ANS checkpoints that handles **arbitrary-source audio
+quality improvement**, not just narrow-band microphone cleanup —
+the documented use case extends to vocal extraction from full
+mixes, which most ANS-only pipelines can't do without a separate
+source-separation model.
+
+**Links:**
+[![ModelScope][link-modelscope]](https://modelscope.cn/models/iic/speech_zipenhancer_ans_multiloss_16k_base)
+
+</details>
+<!-- /MODEL:zipenhancer.md -->
 <!-- MODEL:audiosr.md -->
 <details id="audiosr">
 <summary>AudioSR</summary>
@@ -2671,6 +3078,7 @@ models into one generalist.
 | [VibeVoice-ASR](#vibevoice-asr) | 50+ | ✅ | ![MIT][license-mit] |
 | [SYMPHONY-ASR](#symphony-asr) | English, Korean | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Fun-ASR](#fun-asr) | 31 | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [GLM-ASR-Nano-2512](#glm-asr-nano) | 17 | ❌ | ![MIT][license-mit] |
 | [SYMPHONY](#symphony) | English, Korean | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Moonshine](#moonshine) | English | ❌ | ![MIT][license-mit] |
 | [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Unknown][license-unknown] |
@@ -2975,6 +3383,55 @@ postprocess.
 
 </details>
 <!-- /MODEL:fun-asr.md -->
+<!-- MODEL:glm-asr-nano.md -->
+<details id="glm-asr-nano">
+<summary>GLM-ASR-Nano-2512</summary>
+
+### GLM-ASR-Nano-2512
+
+**Description:** **GLM-ASR-Nano-2512** is a 1.5B-parameter open-source speech recognition model from Zhipu AI. The "Nano" model is built for real-world complexity: it produces the **lowest average error rate (4.10)** among comparable open-source ASR models while keeping the checkpoint at the compact 1.5B scale. Key capabilities:
+
+**Release Date:** December 9, 2025
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 1.5B |
+| **Asr** | ✅ |
+| **Languages** | 17 supported (WER ≤ 20%); Mandarin, English, Cantonese specially optimized |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | speech-encoder + text decoder (transformers framework) |
+| **Wer Avg** | 4.10 (lowest among comparable open-source ASR) |
+| **Benchmarks** | Wenet Meeting (real-world meeting scenarios, noise / overlapping speech); Aishell-1 (Mandarin) |
+| **Licensed Channels** | Hugging Face, ModelScope |
+| **Companion Repo** | https://github.com/zai-org/GLM-ASR |
+| **Inference Lib** | transformers (v4.x from source; v5 support planned; vLLM, SGLang planned) |
+| **Input Modes** | audio URL (via processor.apply_transcription_request) or raw audio arrays |
+| **Download Count** | ~150k (as of mid-2026) |
+| **Model Class** | GlmAsrForConditionalGeneration (custom_code) / AutoModelForSeq2SeqLM |
+| **Demo Spaces** | YatharthS/GLM-ASR-Nano, Pevernow/GLM-ASR-Nano, yakoudev/GLM-ASR-Nano, naicoi/GLM-ASR-Nano |
+
+**Features:** Two design decisions set GLM-ASR-Nano apart from the Whisper-V3
+class of multilingual ASR. First, **explicit dialect-support
+training**: rather than treating dialectal Mandarin as noise to be
+suppressed, the model was tuned for Cantonese and other regional
+variants as first-class targets — a capability gap that most prior
+ASR systems left untouched. Second, **specifically trained
+robustness on low-volume / quiet-speech audio** — the regime where
+conventional ASR often falls back on aggressive denoising that
+removes the very signal the model needs. The result: the lowest
+average error rate (4.10) among comparable open-source ASR models,
+with the strongest advantage on Chinese benchmarks (Wenet Meeting,
+Aishell-1) — in a 1.5B-parameter checkpoint that integrates
+directly with the `transformers` v4.x / v5.x stack.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/zai-org/GLM-ASR-Nano-2512)
+[![GitHub][link-github]](https://github.com/zai-org/GLM-ASR)
+[![Demo][link-demo]](https://huggingface.co/spaces/YatharthS/GLM-ASR-Nano)
+
+</details>
+<!-- /MODEL:glm-asr-nano.md -->
 <!-- MODEL:symphony.md -->
 <details id="symphony">
 <summary>SYMPHONY</summary>
@@ -3108,6 +3565,7 @@ Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms 
 | Model | Type | Sample Rate | Latent Dim | Modalities | License |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | [KVAE-Audio](#kvae-audio) | Audio VAE | 48 kHz | 64 | Speech, Music, Sound | ![MIT][license-mit] |
+| [LinaCodec](#linacodec) | Single-Stream Neural Audio Codec | 48 kHz | — | Audio | ![Unknown][license-unknown] |
 | [QuarkAudio-HCodec](#quarkaudio-hcodec) | Dual-Stream Discrete Audio Codec | 16/48 kHz | - | Audio | ![Apache 2.0][license-apache-2.0] |
 
 <!-- MODEL:kvae-audio.md -->
@@ -3140,6 +3598,61 @@ Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms 
 
 </details>
 <!-- /MODEL:kvae-audio.md -->
+<!-- MODEL:linacodec.md -->
+<details id="linacodec">
+<summary>LinaCodec</summary>
+
+### LinaCodec
+
+**Description:** **LinaCodec** is a highly-compressive neural audio tokenizer designed for speech models. Audio is compressed to **just 12.5 tokens per second (171 bps)** and decoded back to **48 kHz** waveforms — roughly **60× more compressed than DAC** (774 tokens/sec, 44.1 kHz), **24× more than EnCodec** (300 tokens/sec, 24 kHz), **4× more than Xcodec2** (50 tokens/sec, 16 kHz), and **16× more than Mimi** (200 tokens/sec, 24 kHz). The encoder runs at **200× real-time**; the decoder at **400× real-time** (faster with batching). Although this is a tokenizer rather than a synthesis model, it supports indirect downstream tasks like voice conversion, audio super-resolution, and audio denoising. Designed for direct drop-in use as the audio tokenizer of TTS/ASR pipelines — reported use case is enabling TTS models to run at **800× real-time, ~8× faster than the same author's MiraTTS**, and faster training (high-quality TTS in < 1 day).
+
+**Release Date:** January 2, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | not stated (encoder + decoder transformer pair) |
+| **License** | ![Unknown][license-unknown] |
+| **Type** | Neural audio codec (single-stream discrete tokenizer) |
+| **Sample Rate** | 48,000 Hz |
+| **Latent Dim** | — (token-stream tokenizer; discrete codebook rather than continuous latent) |
+| **Modalities** | Audio |
+| **Tokens Per Second** | 12.5 (171 bps) |
+| **Compression Vs Dac** | ~60× tighter (vs DAC 774 tokens/s @ 44.1 kHz) |
+| **Compression Vs Encodec** | ~24× tighter (vs EnCodec 300 tokens/s @ 24 kHz) |
+| **Compression Vs Xcodec2** | ~4× tighter (vs Xcodec2 50 tokens/s @ 16 kHz) |
+| **Compression Vs Mimi** | ~16× tighter (vs Mimi 200 tokens/s @ 24 kHz) |
+| **Encoder Speed** | 200× real-time |
+| **Decoder Speed** | 400× real-time (faster with batching) |
+| **Downstream Tasks** | TTS, ASR, voice conversion (indirect), audio super-resolution (indirect), audio denoising (indirect) |
+| **Inference Install** | `pip install git+https://github.com/ysharma3501/LinaCodec.git` |
+| **Usage Inference** | `from linacodec.codec import LinaCodec` |
+| **Author Other Work** | MiraTTS (https://github.com/ysharma3501) |
+| **Inference Speed Claim** | enables TTS at 800× real-time (~8× faster than MiraTTS) |
+| **Training Speed Claim** | high-quality TTS in < 1 day |
+| **Variants** | single 48 kHz checkpoint at HF |
+
+**Features:** The architectural decision that drives LinaCodec's pitch is the
+**12.5 tokens-per-second target rate**. That number sits
+substantially below every comparable neural audio codec
+(Xcodec2 50, Mimi 200, EnCodec 300, DAC 774) — an order-of-magnitude
+compression jump relative to EnCodec / DAC and ~4× tighter than
+the previous state-of-the-art at the time of release. The pragmatic
+consequence for TTS pipelines is that the **sequence length the
+LLM decoder has to traverse is proportionally shorter**, so
+attention cost collapses quadratically, and the same TTS backbone
+sped up by 8× vs the author's MiraTTS hit "~800× real-time"
+with the codec swap. The "codec isn't a TTS model" caveat matters:
+LinaCodec shows up here as a **drop-in tokenizer for TTS / ASR
+pipelines**, not a dialogue or voice-synthesis model itself —
+the comparison-table columns reflect it isn't measuring the same
+thing as the TTS rows above.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/YatharthS/LinaCodec)
+[![GitHub][link-github]](https://github.com/ysharma3501/LinaCodec)
+
+</details>
+<!-- /MODEL:linacodec.md -->
 <!-- MODEL:quarkaudio-hcodec.md -->
 <details id="quarkaudio-hcodec">
 <summary>QuarkAudio-HCodec</summary>
@@ -3267,6 +3780,7 @@ This list is continuously evolving. If you have any models to add or updates to 
 [link-demo]: https://img.shields.io/badge/Demo-live-blue?style=flat-square "Demo live"
 [link-github]: https://img.shields.io/badge/GitHub-code-black?style=flat-square&logo=github "GitHub code"
 [link-huggingface]: https://img.shields.io/badge/HuggingFace-models-yellow?style=flat-square&logo=huggingface "HuggingFace models"
+[link-modelscope]: https://img.shields.io/badge/ModelScope-orange?style=flat-square "ModelScope"
 [link-paper]: https://img.shields.io/badge/Paper-red?style=flat-square "Paper"
 [link-pypi]: https://img.shields.io/badge/PyPI-package-blueviolet?style=flat-square&logo=pypi "PyPI package"
 [link-skill]: https://img.shields.io/badge/Skill-lightgrey?style=flat-square&logo=puzzle "Skill"
