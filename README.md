@@ -24,6 +24,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [Scylla's Band](#scyllasband) | ❌ | ❌ | en_us, en_gb, es, it | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [sanoTTS](#sanotts) | ❌ | ❌ | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese | ❌ | ![Unknown][license-unknown] |
 | [FreyaTTS](#freyatts) | ❌ | ❌ | Turkish | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Gepard](#gepard) | ✅ | ❌ | English, Spanish, Portuguese, Dutch | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -93,6 +94,76 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Unknown][license-unknown] |
 
+<!-- MODEL:scyllasband.md -->
+<details id="scyllasband">
+<summary>Scylla's Band</summary>
+
+### Scylla's Band
+
+**Description:** **Scylla's Band** is a multilingual, multi-voice, **expressive** TTS model from Spybyscript, designed specifically for **local and self-hosted inference** through ONNX Runtime (with an experimental LiteRT backend for explicit native / mobile use). The architecture is a continuous-latent TTS family:
+
+**Release Date:** July 19, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | not stated (architecture: 4-layer duration predictor (192 hidden) + 12-layer rectified-flow acoustic generator (512 hidden, AdaLN, QK norm)) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | en_us, en_gb, es, it (4 public text-input languages) |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Sample Rate** | 24,000 Hz |
+| **Managed Voices** | 10 (ariadne, felix, gwen, ink, max, orpheus, rex, scylla, stone, tuesday) |
+| **Voice Default Locale** | en_us for most; ink / orpheus / tuesday default to en_gb |
+| **Voice Style Dim** | 128 (style features) + 32 (prosody features) |
+| **Affect Axes** | 6 (calm, joy, anger, sadness, sarcasm, questioning — all continuous in `[0, 1]`) |
+| **Affect Overlay Axes** | sarcasm, questioning (mixable with any core delivery) |
+| **Affect Cfg Scope** | duration + acoustic-flow prediction (preserves voice / reference) |
+| **Encoders Default** | ONNX Runtime (Python CLI / Python API / Android sample / `libscyllasband` native) |
+| **Encoders Experimental** | LiteRT (experimental / explicit-selection) |
+| **Cli Quality Default** | 8-step Heun sampling |
+| **Graph Budgets** | 512 G2P text tokens / 512 phone frames / 640 latent frames |
+| **Latent Target Buckets** | 256 / 384 / 512 / 640 (smallest-fit selection) |
+| **Vocoder** | Scylla's Band acoustic adapter + frozen `charactr/vocos-mel-24khz` |
+| **Hop Lengths** | 256 (waveform) / 512 (latent) |
+| **Text Frontend** | phrase-level multilingual G2P (74-phone vocabulary) |
+| **Span Context** | 3 segments over up to 768 phones with 512-dim context state |
+| **Prefix Context** | up to 24 acoustic latent frames from preceding chunk |
+| **Long Form Features** | boundary metadata + punctuation pause floors + prefix-latent carryover + span context |
+| **Group Speak Input** | `[voice]`, `[voice:language]`, `[voice:language:axis=value,...]` annotations |
+| **Bundle Contract** | 1.0.0 / `scyllasband-duration-flow` |
+| **Intended Use** | single-voice speech synthesis (10 voices); en/es/it; long-form narration; multi-voice dialogue from tagged text; continuous affect control; ONNX desktop/server; ONNX + LiteRT native/mobile |
+| **Not Intended** | arbitrary-speaker cloning / impersonation / fraud / deceptive speech |
+| **Distributions** | training data, trainer checkpoints, and export tooling not distributed |
+| **Cli Commands** | download, validate-bundle, list-voices, normalize-text, speak, group-speak, stream, plan |
+| **Library Name** | onnxruntime (tags include onnx, tflite, litert, duration-flow) |
+
+**Features:** Three design decisions distinguish Scylla's Band in the multilingual
+TTS class. First, **decoupling duration and acoustic flow as
+separate rectified-flow stages** — duration is a 192-hidden, 4-layer
+predictor operating on a 512-phone window, acoustic latents a
+512-hidden, 12-layer AdaLN / QK-norm generator at 24-dim. This split
+lets affect-CFG act on **both** stages independently while retaining
+voice / reference conditioning, supporting the 6-axis continuous
+composability. Second, **6 affect axes** (with `sarcasm` and
+`questioning` as overlays mixed with any core delivery) instead of
+mutually-exclusive discrete emotion classes — `calm=0.5, joy=0.5` is
+a valid input, and axes stay in `[0, 1]` so multi-axis states are
+expressible without combinatorial blow-up. Third, the **ONNX-first
+runtime** design with `libscyllasband` native + an experimental
+LiteRT backend sits at a budget most neural TTS systems don't
+target — the 8-step Heun default and 512/512/640 fixed graph budget
+keep the model usable on CPU and mobile, and the inference-only
+release surface (training data + checkpoints not distributed) is the
+complement of the latency / mobile inference focus.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/spybyscript/scyllasband)
+[![GitHub][link-github]](https://github.com/lowkeytea/scyllasband)
+[![Website][link-website]](https://lowkeytea.github.io/scyllasband/)
+
+</details>
+<!-- /MODEL:scyllasband.md -->
 <!-- MODEL:sanotts.md -->
 <details id="sanotts">
 <summary>sanoTTS</summary>
@@ -2299,6 +2370,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | Model | Text | Video | Audio | Max Duration | Sample Rate | License |
 | :--- | :---: | :---: | :---: | :--- | :--- | :--- |
 | [ScenA](#scena) | ✅ | ❌ | ✅ | — | — | ![Unknown][license-unknown] |
+| [Nemotron-Labs-Audex-2B](#nemotron-labs-audex-2b) | ✅ | ❌ | ✅ | — | — | ![Unknown][license-unknown] |
 | [Nemotron-Labs-Audex-30B-A3B](#nemotron-labs-audex-30b-a3b) | ✅ | ❌ | ✅ | — | — | ![NVIDIA NC][license-nvidia-noncommercial] |
 | [MOSS-SoundEffect](#moss-soundeffect) | ✅ | — | — | 30 s | 48 kHz | ![Apache 2.0][license-apache-2.0] |
 | [Omni2Sound (Omni2Audio)](#omni2sound) | ✅ | ✅ | ✅ | — | — | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
@@ -2365,6 +2437,65 @@ out by design.
 
 </details>
 <!-- /MODEL:scena.md -->
+<!-- MODEL:nemotron-labs-audex-2b.md -->
+<details id="nemotron-labs-audex-2b">
+<summary>Nemotron-Labs-Audex-2B</summary>
+
+### Nemotron-Labs-Audex-2B
+
+**Description:** **Nemotron-Labs-Audex-2B** is NVIDIA's smaller sibling of the Audex unified audio-text LLM. Like the **30B-A3B** flagship, the 2B is a single model family that both **understands audio** (audio QA, speech recognition, speech translation) and **generates audio** (text-to-speech, text-to-audio, speech-to-speech). It is built on the same audio-vocabulary-extended transformer stack as the 30B-A3B but at a **densely-parameterized 2B scale** (no MoE), so the compute and memory footprint are lowered to a budget tractable on more modest hardware. The 2B checkpoint is the project-tagged **SFT variant** in the Audex collection — instruction-tuned and ready for inference. Both sizes preserve text reasoning, alignment, knowledge, long-context, and agentic capabilities of the text backbone while adding discrete-token audio I/O.
+
+**Release Date:** July 6, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 2B (dense; SFT fine-tune, instruct + reasoning-ready) |
+| **Text** | ✅ |
+| **Video** | ❌ |
+| **Audio** | ✅ |
+| **Modalities** | text + audio (input and output) |
+| **Max Duration** | not stated |
+| **Sample Rate** | not stated (decoder output) |
+| **Voice Cloning** | ❌ |
+| **Audio Understanding** | yes (audio QA, classification) |
+| **Asr** | ✅ |
+| **Speech Translation** | yes |
+| **Text To Speech** | yes |
+| **Text To Audio** | yes |
+| **Speech To Speech Generation** | yes |
+| **Reasoning Mode** | yes (thinking + instruct modes inherited from text backbone) |
+| **License** | ![Unknown][license-unknown] |
+| **Pipeline Tag** | text-generation |
+| **Library Name** | transformers |
+| **Derived From** | same family as Nemotron-Labs-Audex-30B-A3B |
+| **Companion 30B** | nvidia/Nemotron-Labs-Audex-30B-A3B (MoE: 30B total, 3B active) |
+| **Spaces** | nvidia/Nemotron-Labs-Audex, WaveCut/Nemotron-Labs-Audex, hugging-apps/nemotron-labs-audex-2b |
+| **Createdat** | 2026-07-06T16:21:07Z |
+| **Downloads** | ~2.4k |
+
+**Features:** The 2B sibling matters because it preserves the *central thesis* of
+the Audex paper — **unified audio-text LLM intelligence without
+regressing on text intelligence** — while dropping the parameter
+budget substantially. The 30B-A3B MoE hits a 1M-context, agentic
+flagship tier; the 2B dense version is the same audio-aware
+architecture extended down to a budget that doesn't require a
+high-end MoE serving stack. The pair lets users choose on
+deployment cost rather than on capability sub-selection: the 2B
+ships the same audio-to-audio + text-to-audio + audio-understanding
++ ASR + speech-translation coverage as the MoE flagship, just at
+the cost of longer-context / reasoning depth that the MoE was
+specifically tuned for. Both share the **discrete-audio-token
+vocabulary extension** of the text backbone so they can be reasoned
+about interchangeably.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/nvidia/Nemotron-Labs-Audex-2B)
+[![Paper][link-paper]](https://arxiv.org/abs/2607.05196)
+[![Collection][link-collection]](https://huggingface.co/collections/nvidia/nemotron-labs-audex)
+[![Demo][link-demo]](https://huggingface.co/spaces/nvidia/Nemotron-Labs-Audex)
+
+</details>
+<!-- /MODEL:nemotron-labs-audex-2b.md -->
 <!-- MODEL:nemotron-labs-audex-30b-a3b.md -->
 <details id="nemotron-labs-audex-30b-a3b">
 <summary>Nemotron-Labs-Audex-30B-A3B</summary>
@@ -3564,10 +3695,74 @@ Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms 
 
 | Model | Type | Sample Rate | Latent Dim | Modalities | License |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| [DSA-Tokenizer](#dsa-tokenizer) | Disentangled Semantic-Acoustic Speech Tokenizer | 24 kHz | — | Audio | ![MIT][license-mit] |
 | [KVAE-Audio](#kvae-audio) | Audio VAE | 48 kHz | 64 | Speech, Music, Sound | ![MIT][license-mit] |
 | [LinaCodec](#linacodec) | Single-Stream Neural Audio Codec | 48 kHz | — | Audio | ![Unknown][license-unknown] |
 | [QuarkAudio-HCodec](#quarkaudio-hcodec) | Dual-Stream Discrete Audio Codec | 16/48 kHz | - | Audio | ![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:dsa-tokenizer.md -->
+<details id="dsa-tokenizer">
+<summary>DSA-Tokenizer</summary>
+
+### DSA-Tokenizer
+
+**Description:** **DSA-Tokenizer** is a speech tokenizer that **explicitly disentangles semantic and acoustic speech information into independent discrete token streams**, designed as a building block for fully discrete Speech LLMs. The two token kinds are supervised with **distinct optimization constraints**: **semantic tokens** are trained to low WER/CER under ASR supervision (capturing linguistic content only), while **acoustic tokens** are trained to reconstruct mel-spectrograms (capturing speaker style / prosody / acoustic texture). The decoder is a **hierarchical Flow Matching** DiT trained with two strategies — **self-reconstruction** (predict the velocity field of the full mel-spectrogram from complete acoustic + semantic tokens) and **recombination / contextual inpainting** (predict the masked mel-spectrogram region given the unmasked acoustic context + the full semantic tokens). The DiT is **distilled to 4-step inference** and **fine-tuned with GAN** for synthesis quality, while supporting **cross-utterance voice clone** through the disentangled token streams.
+
+**Release Date:** July 21, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | not stated (hierarchy of encoders + DiT decoder + vocoder) |
+| **Type** | Disentangled Semantic-Acoustic Speech Tokenizer (dual-stream codec) |
+| **Sample Rate** | 24,000 Hz (vocoder: flow2gan_mel_24k_base_50Hz) |
+| **Latent Dim** | discrete semantic tokens + discrete acoustic tokens (separate codebooks; vocab.txt ships) |
+| **Token Rate** | 50 Hz (mel2gan vocoder) |
+| **Modalities** | Audio |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | Two-stream encoder (semantic + acoustic branches) → hierarchical Flow Matching DiT decoder → GAN-fine-tuned vocoder (flow2gan_mel_24k_base_50Hz) |
+| **Semantic Supervision** | ASR loss (low WER/CER) |
+| **Acoustic Supervision** | mel-spectrogram reconstruction loss |
+| **Decoder Optimisation** | Flow Matching + 4-step distillation + GAN fine-tuning |
+| **Training Strategies** | self-reconstruction + recombination / contextual inpainting (joint) |
+| **Inference Steps** | 4 (distilled) |
+| **Inference Pattern** | `from f5_tts.dsa_api import DSATokenizer; DSATokenizer.from_pretrained('DiscreteSpeech/dsa-tokenizer', device='cuda:0')` |
+| **Downstream Tasks Supported** | SpeechLLM-TTS (e.g. Llasa 1B/3B/8B, Spark-TTS), SpeechLLM-VC, speech reconstruction, voice clone across utterances |
+| **Disentanglement Quality** | outperforms WavTokenizer/Mimi/Encodec/SpeechTokenizer/DualCodec/SAC on disentanglement probing (low WER + low speaker similarity on semantic; high WER + high speaker similarity on acoustic) |
+| **Bundle Files** | `dsa_tokenizer/model_10000.pt`, `dsa_tokenizer/vocab.txt`, `dsa_tokenizer/config.yaml`; vocoder `flow2gan_mel_24k_base_50hz/epoch-20.pt` |
+| **Pipeline Tag** | text-to-speech (the canonical use is LLM-TTS); tags include voice-cloning, tokenizer, speech |
+| **Library** | zips under `f5_tts.dsa_api` integration |
+| **Demo Url Format** | anonymous.4open.science uses `/w/.../index.html` (root URL returns 400 folder_not_supported; index.html works) |
+| **Downloads** | 0 (released July 21 2026) |
+
+**Features:** Two bets together are the technical center of DSA-Tokenizer. The
+first is **explicit semantic-acoustic disentanglement via distinct
+optimization constraints**: rather than training a single
+representational bottleneck and hoping semantic and acoustic
+content separate (as prior fusing tokenizers do), DSA trains
+semantic tokens against ASR supervision and acoustic tokens against
+mel reconstruction as separate streams — so the disentanglement is
+*engineered into the loss surface*, not extracted post-hoc. The
+second is a **hierarchical Flow Matching decoder with joint
+self-reconstruction + contextual-inpainting training**, which lets
+the same decoder both reconstruct complete utterances and **inpaint
+missing regions using surrounding acoustic context** (the
+characteristic operation needed for voice conversion / segment
+editing). Coupled with **4-step distillation** and **GAN
+fine-tuning** for inference speed and audio quality, the result is
+a single tokenizer that supports high-fidelity speech reconstruction
+*and* cross-utterance voice clone *and* LLM-TTS (paired with Llasa
+8B, Spark-TTS, etc.) — and on the project's disentanglement
+probing beats WavTokenizer / Mimi / Encodec / SpeechTokenizer /
+DualCodec / SAC at producing a *truly* separable semantic /
+acoustic representation.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/DiscreteSpeech/dsa-tokenizer)
+[![Paper][link-paper]](https://arxiv.org/abs/2601.09239)
+[![Demo][link-demo]](https://anonymous.4open.science/w/DSA_Tokenizer_demo/)
+
+</details>
+<!-- /MODEL:dsa-tokenizer.md -->
 <!-- MODEL:kvae-audio.md -->
 <details id="kvae-audio">
 <summary>KVAE-Audio</summary>
@@ -3768,8 +3963,8 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
-[license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
 [license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
+[license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
@@ -3777,6 +3972,7 @@ This list is continuously evolving. If you have any models to add or updates to 
 [license-nvidia-noncommercial]: https://img.shields.io/badge/NVIDIA_NC-yellow?style=flat-square&logo=nvidia "NVIDIA NC"
 
 [link-blog]: https://img.shields.io/badge/Blog-post-blue?style=flat-square "Blog post"
+[link-collection]: https://img.shields.io/badge/Collection-darkblue?style=flat-square "Collection"
 [link-demo]: https://img.shields.io/badge/Demo-live-blue?style=flat-square "Demo live"
 [link-github]: https://img.shields.io/badge/GitHub-code-black?style=flat-square&logo=github "GitHub code"
 [link-huggingface]: https://img.shields.io/badge/HuggingFace-models-yellow?style=flat-square&logo=huggingface "HuggingFace models"
