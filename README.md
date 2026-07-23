@@ -24,6 +24,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [NeuTTS-2E](#neutts-2e) | ❌ | ❌ | English | ✅ | ![Unknown][license-unknown] |
 | [Scylla's Band](#scyllasband) | ❌ | ❌ | en_us, en_gb, es, it | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [sanoTTS](#sanotts) | ❌ | ❌ | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese | ❌ | ![Unknown][license-unknown] |
 | [FreyaTTS](#freyatts) | ❌ | ❌ | Turkish | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -94,6 +95,80 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Unknown][license-unknown] |
 
+<!-- MODEL:neutts-2e.md -->
+<details id="neutts-2e">
+<summary>NeuTTS-2E</summary>
+
+### NeuTTS-2E
+
+**Description:** **NeuTTS-2E** is a super-fast, highly realistic, **on-device** emotional text-to-speech model from Neuphonic. It is the next generation after **NeuTTS Air / Nano** (which continue to ship for multilingual + zero-shot-cloning contexts) — narrowed in scope to an **English-only alpha** focused on:
+
+**Release Date:** July 21, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 0.2B (compact LM backbone + codec) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | English (English-only alpha) |
+| **Streaming** | ✅ |
+| **License** | ![Unknown][license-unknown] |
+| **Backbone** | compact LM backbone tuned for emotional TTS token generation |
+| **Codec** | efficient codec (compact, paired with the LM) |
+| **Speakers** | 4 fixed (`emily`, `paul`, `sophie`, `steven`) |
+| **Emotions** | 6 + neutral (`angry`, `disgusted`, `fearful`, `happy`, `sad`, `surprised`, `neutral`) |
+| **Emotion Control Mode** | single-argument selection (no composable multi-axis axes like Scylla's Band) |
+| **Input Format** | text only — no phonemizer, no system dependencies |
+| **On Device** | yes (laptop-class CPU real-time / better-than-real-time) |
+| **Distribution Formats** | safetensors (torch), Q4 GGUF, Q8 GGUF |
+| **Formats In Collection** | `neuphonic/neutts-2e` (safetensors), `neuphonic/neutts-2e-q4-gguf` (smallest footprint), `neuphonic/neutts-2e-q8-gguf` (mid-tier compression) |
+| **Gguf Features** | imatrix, conversational, endpoints_compatible |
+| **Pipeline Tag** | text-to-speech |
+| **Library Name** | (HF tag does not declare transformers / safetensors stem beyond safetensors itself) |
+| **Downloads** | 194 / 241 / 216 (torch / q4 / q8) |
+| **Intended Use** | embedded voice agents, on-device assistants, toys, privacy-sensitive applications |
+| **Comparison With Air Nano** | Air/Nano continue to ship for zero-shot cloning + multilingual contexts; 2E is the next-gen focused English emotional variant |
+| **Safety Note** | model is alpha; legitimate project landing is `neuphonic.com` (not `neutts.com`) |
+
+**Features:** The technical center of NeuTTS-2E is *maximum speed per parameter*
+at on-device budgets — the 0.2B LM + codec pair delivers
+**real-time-or-better on laptop-class CPUs** while exposing
+**discrete categorical emotion control** (`angry` / `disgusted` /
+`fearful` / `happy` / `sad` / `surprised` / `neutral`) plus a
+**fixed four-speaker cast** for consistency in agent / toy /
+accessibility voice personas. Two design choices distinguish it from
+the surrounding TTS field:
+
+First, the **categorical emotion surface is single-axis and
+discrete** (one emotion per call), not the continuous multi-axis
+composable vector surface used by models like Scylla's Band
+([neurotica base + 6-axis continuous strengths]). The project's
+positioning — production-grade agents + toys + accessibility —
+benefits from a one-argument API where `emotion="happy"` is the
+explicit operational state. The release locks emotional mode at
+generation time, which simplifies downstream filtering / guardrails.
+
+Second, the **distribution-shape design** (one model, three
+deployment formats) is a deliberate on-device-first posture: the
+`safetensors` torch build for max-quality GPU/server; `Q8 GGUF` for
+mid-tier compression; `Q4 GGUF` for the small-footprint embedded
+target. All three are direct llama.cpp-compatible drops of the
+same model — no retraining-per-format — letting users pick size vs
+quality at deployment time without changing the production API.
+The combined CPU-first + GGUF-first design pattern is the
+opposite of the cloud-first TTS systems in this list — and is what
+makes 2E suitable for embedded voice agents, toys, and
+privacy-sensitive applications where audio + text must remain
+on-device.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/neuphonic/neutts-2e)
+[![GitHub][link-github]](https://github.com/neuphonic/neutts)
+[![Demo][link-demo]](https://huggingface.co/spaces/neuphonic/neutts-2e)
+[![Collection][link-collection]](https://huggingface.co/collections/neuphonic/neutts-2e)
+
+</details>
+<!-- /MODEL:neutts-2e.md -->
 <!-- MODEL:scyllasband.md -->
 <details id="scyllasband">
 <summary>Scylla's Band</summary>
@@ -3963,8 +4038,8 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
-[license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
 [license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
+[license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
