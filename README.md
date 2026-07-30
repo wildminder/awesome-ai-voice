@@ -24,10 +24,12 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [Audio8-TTS-Preview-0.6b](#audio8-tts-preview-0-6b) | ✅ | ❌ | Cantonese, Chinese, Dutch, English, French, German, Italian, Japanese, Korean, Polish, Spanish | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [NeuTTS-2E](#neutts-2e) | ❌ | ❌ | English | ✅ | ![Unknown][license-unknown] |
 | [Scylla's Band](#scyllasband) | ❌ | ❌ | en_us, en_gb, es, it | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [sanoTTS](#sanotts) | ❌ | ❌ | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese | ❌ | ![Unknown][license-unknown] |
 | [FreyaTTS](#freyatts) | ❌ | ❌ | Turkish | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [Inflect-Nano-v2](#inflect-nano-v2) | ❌ | ❌ | English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Gepard](#gepard) | ✅ | ❌ | English, Spanish, Portuguese, Dutch | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Higgs Audio v3 TTS](#higgs-audio-v3-tts) | ✅ | ❌ | 102 | ✅ | ![Research Only][license-research-only] |
 | [dots.tts](#dots-tts) | ✅ | ❌ | Multilingual | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -95,6 +97,61 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Unknown][license-unknown] |
 
+<!-- MODEL:audio8-tts-preview-0-6b.md -->
+<details id="audio8-tts-preview-0-6b">
+<summary>Audio8-TTS-Preview-0.6b</summary>
+
+### Audio8-TTS-Preview-0.6b
+
+**Description:** **Audio8 TTS Preview 0.6B** is a 0.6B-parameter multilingual text-to-speech model with **zero-shot voice cloning**. It uses a **DualAR architecture** inspired by [Fish Audio S2 Pro](https://github.com/fishaudio/fish-speech): a **slow AR transformer** predicts one semantic token per audio frame, and a **fast AR transformer** predicts the frame's codec codebooks conditioned on the slow hidden state and preceding codebooks. The bundled **44.1 kHz neural audio codec** handles both reference-audio encoding and waveform decoding — no additional codec checkpoint is required. The model supports **11 recommended languages** (Cantonese, Chinese, Dutch, English, French, German, Italian, Japanese, Korean, Polish, Spanish) with zero-shot voice cloning from a reference audio clip + matching transcript.
+
+**Release Date:** July 28, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 601,159,424 (0.6B, excluding the codec) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | Cantonese, Chinese, Dutch, English, French, German, Italian, Japanese, Korean, Polish, Spanish (11) |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | DualAR (slow AR + fast AR), inspired by Fish Audio S2 Pro |
+| **Slow Ar** | 24 layers, width 896, 14 attention heads, 2 KV heads |
+| **Fast Ar** | 4 layers, width 896, 14 attention heads, 2 KV heads |
+| **Acoustic Tokens** | 10 codebooks, 4,096 entries per codebook |
+| **Codec** | 44.1 kHz, 2,048 samples per model frame (~21.5 frames/s), bundled (no external codec needed) |
+| **Context Length** | up to 2,048 packed text/audio positions |
+| **Sample Rate** | 44,100 Hz |
+| **Inference** | transformers with trust_remote_code=True; CUDA-capable GPU recommended |
+| **Dependencies** | torch>=2.5.0, torchaudio>=2.5.0, transformers>=4.57.0,<5, soundfile, safetensors |
+| **Preview Status** | language coverage intentionally limited; broader multilingual + Chinese dialect support planned |
+| **Library Name** | transformers (custom_code) |
+| **Pipeline Tag** | text-to-speech |
+| **Createdat** | 2026-07-28T07:53:00Z |
+
+**Features:** The DualAR architecture is the technical centerpiece: rather than
+a single autoregressive decoder predicting all codebook levels
+sequentially (the standard codec-LLM TTS pattern), Audio8 splits
+the work into a **slow AR** that predicts one semantic token per
+audio frame and a **fast AR** that predicts the frame's remaining
+codec codebooks conditioned on the slow hidden state. This
+separation lets the semantic-level reasoning happen at the slow
+AR's 24-layer depth while the acoustic codebook prediction stays
+lightweight at 4 layers — reducing the total compute per frame
+without sacrificing semantic quality. The **bundled 44.1 kHz
+codec** (no external codec checkpoint needed) and the 10-codebook
+/ 4,096-entry acoustic token design give the model self-contained
+high-fidelity output at a compact 0.6B scale, making it one of
+the smallest multilingual zero-shot-cloning TTS systems shipping
+at 44.1 kHz.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/Audio8/Audio8-TTS-Preview-0.6b)
+[![GitHub][link-github]](https://github.com/Audio8-AI/Audio8_TTS)
+[![Website][link-website]](https://audio8-ai.github.io/Audio8_TTS/)
+
+</details>
+<!-- /MODEL:audio8-tts-preview-0-6b.md -->
 <!-- MODEL:neutts-2e.md -->
 <details id="neutts-2e">
 <summary>NeuTTS-2E</summary>
@@ -338,6 +395,62 @@ across zero-shot speaker adaptation.
 
 </details>
 <!-- /MODEL:freyatts.md -->
+<!-- MODEL:inflect-nano-v2.md -->
+<details id="inflect-nano-v2">
+<summary>Inflect-Nano-v2</summary>
+
+### Inflect-Nano-v2
+
+**Description:** **Inflect-Nano-v2** is a complete local text-to-waveform speech synthesis model with **3,966,721 deployable parameters** — under 4M total. It is a **VITS**-architecture fixed-voice English TTS designed for **CPU or CUDA inference** with deterministic seeds, long-text handling, and **24 kHz mono output**. The full FP32 checkpoint is **15.97 MB**, making it one of the smallest complete neural TTS systems that produces natural-sounding speech without a separate vocoder or phonemizer dependency. The model ships with a public **adaptation toolkit** for preparing data, auditing train/validation splits, adapting a fixed voice or language, resuming training, evaluating checkpoints, and exporting PyTorch or ONNX packages. A sibling **Inflect-Micro-v2** (9.36M parameters) prioritizes quality below 10M; Nano prioritizes footprint below 4M. Both share one public API.
+
+**Release Date:** June 25, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 3,966,721 (3.97M deployable) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | English |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | VITS (end-to-end text-to-waveform) |
+| **Sample Rate** | 24,000 Hz |
+| **Footprint** | 15.97 MB FP32 |
+| **Inference** | CPU or CUDA; PyTorch + ONNX export |
+| **Determinism** | deterministic seeds for reproducible generation |
+| **Long Text** | automatic text splitting and handling |
+| **Input Format** | text (no phonemizer or system dependencies) |
+| **Adaptation Toolkit** | data prep, split auditing, voice/language adaptation, training resume, checkpoint eval, PyTorch/ONNX export |
+| **Sibling Model** | Inflect-Micro-v2 (9.36M params, quality-prioritized below 10M) |
+| **Api** | one public API across Micro and Nano sizes |
+| **Library** | pytorch |
+| **Metrics** | WER |
+| **Inference False On Hf** | yes (no hosted HF inference endpoint; local-only) |
+
+**Features:** Inflect-Nano-v2's defining constraint is **completeness under 4M
+parameters**: the entire text-to-waveform pipeline — no separate
+vocoder, no phonemizer, no system dependencies — fits in 3.97M
+deployable parameters and a 15.97 MB FP32 checkpoint. This is
+smaller than even sanoTTS's smallest voice (745k) when measured
+by *complete-pipeline* footprint, though sanoTTS ships per-voice
+weights rather than a single fixed-voice checkpoint. The VITS
+end-to-end architecture is the enabler: by folding the acoustic
+model and vocoder into a single jointly-trained network, Inflect
+avoids the multi-stage pipeline overhead that makes most neural
+TTS systems larger. The public **adaptation toolkit** extends the
+fixed-voice design into a customizable platform — users can
+prepare data, adapt a voice or language, resume training, and
+export PyTorch or ONNX packages — making the 4M-parameter
+footprint a starting point for domain-specific TTS rather than a
+dead-end fixed-voice release.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/owensong/Inflect-Nano-v2)
+[![GitHub][link-github]](https://github.com/owenawsong/Inflect)
+[![Demo][link-demo]](https://huggingface.co/spaces/owensong/Inflect-v2)
+
+</details>
+<!-- /MODEL:inflect-nano-v2.md -->
 <!-- MODEL:gepard.md -->
 <details id="gepard">
 <summary>Gepard</summary>
@@ -3278,7 +3391,9 @@ source-separation model.
 | :--- | :--- | :---: | :--- |
 | [GigaAM-Multilingual](#gigaam-multilingual) | 70+ | ❌ | ![MIT][license-mit] |
 | [GigaChat3.1-Audio](#gigachat3-audio) | Russian, English | ❌ | ![MIT][license-mit] |
+| [Audio8-ASR-0.1B](#audio8-asr-0-1b) | 7 | ❌ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [MOSS-Transcribe-Diarize](#moss-transcribe-diarize) | Multilingual | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [ARK-ASR-3B](#ark-asr-3b) | 19 | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Mega-ASR](#mega-asr) | English, Chinese | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Cohere Transcribe](#cohere-transcribe) | 14 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [VibeVoice-ASR](#vibevoice-asr) | 50+ | ✅ | ![MIT][license-mit] |
@@ -3390,6 +3505,67 @@ flat transcript.
 
 </details>
 <!-- /MODEL:gigachat3-audio.md -->
+<!-- MODEL:audio8-asr-0-1b.md -->
+<details id="audio8-asr-0-1b">
+<summary>Audio8-ASR-0.1B</summary>
+
+### Audio8-ASR-0.1B
+
+**Description:** **Audio8-ASR-0.1B** is a compact autoregressive ASR model whose language-model component has only **0.1B parameters**. It supports multilingual speech recognition for **Chinese, English, French, German, Japanese, Korean, and Cantonese**. The project positions it as **one of the smallest usable performance ASR models in the LLM era** — and backs that claim with Open ASR Leaderboard results: a **composite WER of 7.03%** across seven English splits at **RTFx 741.15** on H200 (LibriSpeech test-clean 2.70%, GigaSpeech 8.48%, AMI 10.99%, Earnings22 12.31%). On Chinese internal evals it reports CER 8.84% (WenetSpeech meeting) and 7.98% (WenetSpeech net).
+
+**Release Date:** July 10, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 0.1B (LM component) |
+| **Asr** | ✅ |
+| **Languages** | Chinese, English, French, German, Japanese, Korean, Cantonese (7) |
+| **Streaming** | ❌ |
+| **License** | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| **Architecture** | autoregressive ASR (Whisper-style encoder + MLP adapter + Qwen decoder, per shared paper) |
+| **Pipeline Tag** | automatic-speech-recognition |
+| **Library Name** | transformers (custom_code) |
+| **Open Asr Leaderboard Composite Wer** | 7.03% |
+| **Open Asr Leaderboard Rtfx** | 741.15 (H200, BF16, eager attention, greedy decoding) |
+| **Eval Librispeech Clean** | WER 2.70% |
+| **Eval Librispeech Other** | WER 6.59% |
+| **Eval Gigaspeech Clean** | WER 8.48% |
+| **Eval Ami Cleaned** | WER 10.99% |
+| **Eval Earnings22** | WER 12.31% |
+| **Eval Spgispeech** | WER 3.73% |
+| **Eval Voxpopuli** | WER 4.39% |
+| **Eval Wenetspeech Meeting** | CER 8.84% |
+| **Eval Wenetspeech Net** | CER 7.98% |
+| **Deployment Variants** | ONNX Runtime (~1.1 GB peak), iOS ANE (~200 MB peak), base Transformers |
+| **Hotword Support** | yes (tagged in HF metadata) |
+| **Companion Model** | ARK-ASR-3B (3B-scale sibling, same paper + repo) |
+| **Createdat** | 2026-07-10T06:57:05Z |
+| **Downloads** | ~527 |
+
+**Features:** Audio8-ASR-0.1B's pitch is **usable ASR quality at 0.1B LM
+parameters** — a scale where most LLM-era ASR systems are either
+too large for edge deployment or too low-quality for production.
+The composite WER of 7.03% on the Open ASR Leaderboard (with
+LibriSpeech clean at 2.70%) demonstrates that a 0.1B-parameter
+autoregressive decoder, paired with a Whisper-style encoder and
+MLP adapter, can hit competitive accuracy. The deployment-variant
+strategy is the other half of the story: the same model ships as
+**ONNX Runtime** (~1.1 GB peak for edge devices) and **iOS ANE**
+(~200 MB peak for local iPhone transcription) — the latter being
+a footprint that makes on-device ASR practical on consumer phones
+without server roundtrips. The **hotword** support (tagged in HF
+metadata) adds contextual biasing for domain-specific vocabulary,
+which is critical for meeting / medical / legal transcription at
+this parameter scale.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/Audio8/Audio8-ASR-0.1B)
+[![GitHub][link-github]](https://github.com/AutoArk/open-audio-opd)
+[![Paper][link-paper]](https://arxiv.org/abs/2605.28139)
+[![Demo][link-demo]](https://huggingface.co/spaces/Audio8/audio8-asr-0-1b)
+
+</details>
+<!-- /MODEL:audio8-asr-0-1b.md -->
 <!-- MODEL:moss-transcribe-diarize.md -->
 <details id="moss-transcribe-diarize">
 <summary>MOSS-Transcribe-Diarize</summary>
@@ -3436,6 +3612,71 @@ postprocess.
 
 </details>
 <!-- /MODEL:moss-transcribe-diarize.md -->
+<!-- MODEL:ark-asr-3b.md -->
+<details id="ark-asr-3b">
+<summary>ARK-ASR-3B</summary>
+
+### ARK-ASR-3B
+
+**Description:** **ARK-ASR-3B** is a 3B-scale audio-capable autoregressive Transformers model for automatic speech recognition. It achieves **current state-of-the-art results on the Hugging Face Open ASR Leaderboard English short-form benchmark**, with an average WER of **5.04%** and RTFx of **490.98** across AMI, Earnings22, GigaSpeech, LibriSpeech, SPGISpeech, and VoxPopuli. On Chinese benchmarks it reports CER 1.80% (AISHELL-1), 4.97% (WenetSpeech test meeting), and 4.58% (WenetSpeech test-net).
+
+**Release Date:** June 22, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 3B (decoder LLM + Whisper-style encoder + MLP adapter) |
+| **Asr** | ✅ |
+| **Languages** | 19 (Chinese, English, German, Japanese, French, Korean, Spanish, Polish, Italian, Romanian, Hungarian, Czech, Dutch, Finnish, Croatian, Slovak, Slovene, Estonian, Lithuanian) |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | Whisper-style audio encoder (RoPE) + MLP adapter + Qwen decoder |
+| **Pipeline Tag** | automatic-speech-recognition |
+| **Library Name** | transformers (custom_code); vLLM serving supported |
+| **Input Sample Rate** | 16,000 Hz |
+| **Checkpoint Format** | safetensors |
+| **Open Asr Leaderboard Avg Wer** | 5.04% (current SOTA on English short-form) |
+| **Open Asr Leaderboard Rtfx** | 490.98 |
+| **Eval Ami** | WER 8.79% |
+| **Eval Earnings22** | WER 8.23% |
+| **Eval Gigaspeech** | WER 6.98% |
+| **Eval Librispeech Clean** | WER 1.03% |
+| **Eval Librispeech Other** | WER 2.35% |
+| **Eval Spgispeech** | WER 2.46% |
+| **Eval Voxpopuli** | WER 5.47% |
+| **Eval Aishell1** | CER 1.80% |
+| **Eval Wenetspeech Meeting** | CER 4.97% |
+| **Eval Wenetspeech Net** | CER 4.58% |
+| **Companion Model** | Audio8-ASR-0.1B (0.1B-scale sibling, same paper + repo) |
+| **Createdat** | 2026-06-22T07:04:45Z |
+| **Downloads** | ~7,109 |
+
+**Features:** ARK-ASR-3B's headline result is **5.04% average WER on the Open
+ASR Leaderboard** — the current state of the art on that benchmark
+at the time of release, beating the project's own 0.6B variant
+(5.97%) and prior open ASR systems. The architecture is a
+straightforward but well-tuned combination: a **Whisper-style
+encoder with RoPE** (proven audio representation), an **MLP adapter**
+(dimension bridging), and a **Qwen decoder** (strong multilingual
+text LLM). The key design choice is **injecting audio embeddings
+by replacing audio placeholder token embeddings in the Qwen
+decoder** before transcript generation — this lets the model
+inherit the Qwen LLM's multilingual text capability (19 languages
+including low-resource Baltic and Slavic languages) while adding
+speech input through a minimal-modification adapter rather than
+a full architecture redesign. The **vLLM serving** support makes
+the 3B model practical for production batch transcription, and
+the shared training repo (`AutoArk/open-audio-opd`) with the 0.1B
+sibling lets users trade accuracy for footprint on the same code
+base.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/Audio8/ARK-ASR-3B)
+[![GitHub][link-github]](https://github.com/AutoArk/open-audio-opd)
+[![Paper][link-paper]](https://arxiv.org/abs/2605.28139)
+[![Demo][link-demo]](https://huggingface.co/spaces/Audio8/ark-asr-3b)
+
+</details>
+<!-- /MODEL:ark-asr-3b.md -->
 <!-- MODEL:mega-asr.md -->
 <details id="mega-asr">
 <summary>Mega-ASR</summary>
@@ -4038,10 +4279,10 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
-[license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
-[license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
-[license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
+[license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
+[license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
+[license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
 [license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
 [license-nvidia-noncommercial]: https://img.shields.io/badge/NVIDIA_NC-yellow?style=flat-square&logo=nvidia "NVIDIA NC"
