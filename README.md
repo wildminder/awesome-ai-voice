@@ -648,6 +648,7 @@ supports serving hundreds of conversations per GPU.
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5)
+[![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5)
 [![GitHub][link-github]](https://github.com/OpenMOSS/MOSS-TTS)
 [![Website][link-website]](https://mosi.cn/#models)
 [![Paper][link-paper]](https://arxiv.org/abs/2603.18090)
@@ -3134,6 +3135,7 @@ fidelity* (parrot the speaker poorly), rarely both.
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/nvidia/RE-USE)
+[![GitHub][link-github]](https://github.com/NVIDIA/diffusion-audio-restoration)
 [![Demo][link-demo]](https://huggingface.co/spaces/nvidia/RE-USE)
 [![Paper][link-paper]](https://arxiv.org/abs/2603.02641)
 
@@ -3395,6 +3397,8 @@ source-separation model.
 | [MOSS-Transcribe-Diarize](#moss-transcribe-diarize) | Multilingual | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [ARK-ASR-3B](#ark-asr-3b) | 19 | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Mega-ASR](#mega-asr) | English, Chinese | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [Higgs-Audio-v3-8B-STT-v2](#higgs-audio-v3-8b-stt-v2) | English | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [Higgs-Audio-v3-STT](#higgs-audio-v3-stt) | English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Cohere Transcribe](#cohere-transcribe) | 14 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [VibeVoice-ASR](#vibevoice-asr) | 50+ | ✅ | ![MIT][license-mit] |
 | [SYMPHONY-ASR](#symphony-asr) | English, Korean | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -3711,6 +3715,108 @@ base.
 
 </details>
 <!-- /MODEL:mega-asr.md -->
+<!-- MODEL:higgs-audio-v3-8b-stt-v2.md -->
+<details id="higgs-audio-v3-8b-stt-v2">
+<summary>Higgs-Audio-v3-8B-STT-v2</summary>
+
+### Higgs-Audio-v3-8B-STT-v2
+
+**Description:** **Higgs Audio v3 8B STT v2** is the larger-scale speech-to-text model from Boson AI, combining a **Whisper-Large-v3 encoder** with a **Qwen3-8B decoder** (8.91B total parameters), fine-tuned with **LoRA** on diverse ASR benchmarks. It is the larger sibling of the 2.68B `higgs-audio-v3-stt` and shares the same custom architecture (`trust_remote_code=True` required). The model ships with full **model-index benchmark results** across 8 Open ASR Leaderboard splits:
+
+**Release Date:** April 27, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 8.91B (Whisper-Large-v3 encoder + Qwen3-8B decoder, LoRA fine-tuned) |
+| **Asr** | ✅ |
+| **Languages** | English |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | Whisper-Large-v3 encoder + Qwen3-8B decoder (custom `higgs_audio_3` code) |
+| **Pipeline Tag** | automatic-speech-recognition |
+| **Library Name** | transformers (custom_code) |
+| **Fine Tuning** | LoRA on diverse ASR benchmarks |
+| **Base Model** | bosonai/higgs-audio-v3-8b |
+| **Eval Librispeech Clean** | WER 1.25% |
+| **Eval Librispeech Other** | WER 2.38% |
+| **Eval Spgispeech** | WER 3.60% |
+| **Eval Tedlium V3** | WER 3.09% |
+| **Eval Voxpopuli** | WER 5.92% |
+| **Eval Gigaspeech** | WER 8.47% |
+| **Eval Earnings22** | WER 8.73% |
+| **Eval Ami Ihm** | WER 10.14% |
+| **Leaderboard** | Open ASR Leaderboard (hf-audio/open_asr_leaderboard) |
+| **Companion Stt Small** | bosonai/higgs-audio-v3-stt (2.68B variant) |
+| **Companion Tts** | bosonai/higgs-audio-v3-tts-4b (the TTS sibling) |
+| **Createdat** | 2026-04-27T17:29:37Z |
+| **Downloads** | ~1,133 |
+
+**Features:** The 8B STT v2 is the **scaled-up sibling** of the 2.68B base STT,
+pairing the same Whisper-Large-v3 encoder with a **Qwen3-8B
+decoder** (vs the base's smaller Qwen3 decoder) and fine-tuning
+with **LoRA** rather than full fine-tuning — keeping the 8B
+backbone's text capability while adapting the ASR head. The
+full model-index benchmark results (LibriSpeech clean WER 1.25%,
+GigaSpeech 8.47%) are published directly in the model card's
+`model-index` metadata, making the evaluation transparent and
+reproducible. The model shares the same custom `higgs_audio_3`
+remote code as the base STT, so users can swap between the 2.68B
+and 8.91B variants without changing their inference pipeline.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/bosonai/higgs-audio-v3-8b-stt-v2)
+[![Paper][link-paper]](https://arxiv.org/abs/2603.02641)
+
+</details>
+<!-- /MODEL:higgs-audio-v3-8b-stt-v2.md -->
+<!-- MODEL:higgs-audio-v3-stt.md -->
+<details id="higgs-audio-v3-stt">
+<summary>Higgs-Audio-v3-STT</summary>
+
+### Higgs-Audio-v3-STT
+
+**Description:** **Higgs Audio v3 STT** is a speech-to-text model from Boson AI combining a **Whisper-Large-v3 encoder** with a **Qwen3 decoder** (2.68B total parameters). It is the ASR sibling of the Higgs Audio v3 TTS model (`higgs-audio-v3-tts-4b`), sharing the same Qwen3 decoder family but specialized for speech recognition rather than speech synthesis. The model uses a custom architecture (`trust_remote_code=True` required) and is fine-tuned on public train splits of **AMI (IHM), VoxPopuli (en), SPGISpeech, LibriSpeech, TED-LIUM, GigaSpeech, and Earnings22** — with all rows from source recordings that appear in the ESB/Open-ASR test sets excluded from training to prevent contamination.
+
+**Release Date:** March 25, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 2.68B (Whisper-Large-v3 encoder + Qwen3 decoder) |
+| **Asr** | ✅ |
+| **Languages** | English |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | Whisper-Large-v3 encoder + Qwen3 decoder (custom `higgs_audio_3` code) |
+| **Pipeline Tag** | automatic-speech-recognition |
+| **Library Name** | transformers (custom_code) |
+| **Training Data** | AMI (IHM), VoxPopuli (en), SPGISpeech, LibriSpeech, TED-LIUM, GigaSpeech, Earnings22 (public train splits; ESB/Open-ASR test-set rows excluded) |
+| **Repetition Handling** | word-repetition cap + phrase-level repetition-loop collapse (deterministic, uniform) |
+| **Leaderboard** | Open ASR Leaderboard (hf-audio/open_asr_leaderboard), FFASR (treble-technologies/ffasr) |
+| **Companion Tts** | bosonai/higgs-audio-v3-tts-4b (the TTS sibling) |
+| **Createdat** | 2026-03-25T18:39:22Z |
+| **Downloads** | ~6,886 |
+| **Checkpoint Update** | June 2026 (refreshed fine-tuning data + repetition-loop collapse) |
+
+**Features:** Higgs Audio v3 STT pairs a **Whisper-Large-v3 encoder** (proven
+audio representation) with a **Qwen3 decoder** (strong text LLM)
+at 2.68B total parameters — a smaller-scale sibling of the 8B
+variant (`higgs-audio-v3-8b-stt-v2`). The June 2026 update added
+a **phrase-level repetition-loop collapse** alongside the existing
+word-repetition cap, addressing a common failure mode in
+autoregressive ASR where the decoder gets stuck repeating a
+phrase. Both corrections are deterministic and applied uniformly
+to every dataset, so the leaderboard results are directly
+comparable across the pre- and post-update checkpoints. The
+contamination-prevention protocol (excluding ESB/Open-ASR test-set
+source recordings from training) is a transparency measure that
+ensures the Open ASR Leaderboard results are clean.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/bosonai/higgs-audio-v3-stt)
+[![Paper][link-paper]](https://arxiv.org/abs/2603.02641)
+
+</details>
+<!-- /MODEL:higgs-audio-v3-stt.md -->
 <!-- MODEL:cohere-transcribe.md -->
 <details id="cohere-transcribe">
 <summary>Cohere Transcribe</summary>
@@ -4275,7 +4381,7 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 ---
 
-*Last Updated: July 2026*
+*Last Updated: August 2026*
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
