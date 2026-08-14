@@ -20,6 +20,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 ## Text-to-Speech (TTS) Models
 
+- [Clickyy](https://github.com/jayamitkatariya/clickyyy) - Shake your cursor to summon an AI agent that sees your screen and clicks, types, drags, and acts for you on macOS. Open-source, MIT.
+
 ### TTS Quick Comparison
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
