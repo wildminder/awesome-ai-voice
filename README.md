@@ -24,10 +24,11 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [FireRedTTS3](#fireredtts3) | ✅ | ❌ | 24 | — | ![Apache 2.0][license-apache-2.0] |
 | [Audio8-TTS-Preview-0.6b](#audio8-tts-preview-0-6b) | ✅ | ❌ | Cantonese, Chinese, Dutch, English, French, German, Italian, Japanese, Korean, Polish, Spanish | ❌ | ![Apache 2.0][license-apache-2.0] |
-| [NeuTTS-2E](#neutts-2e) | ❌ | ❌ | English | ✅ | ![Unknown][license-unknown] |
+| [NeuTTS-2E](#neutts-2e) | ❌ | ❌ | English | ✅ | ![Other][license-other] |
 | [Scylla's Band](#scyllasband) | ❌ | ❌ | en_us, en_gb, es, it | ✅ | ![Apache 2.0][license-apache-2.0] |
-| [sanoTTS](#sanotts) | ❌ | ❌ | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese | ❌ | ![Unknown][license-unknown] |
+| [sanoTTS](#sanotts) | ❌ | ❌ | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese | ❌ | ![Other][license-other] |
 | [FreyaTTS](#freyatts) | ❌ | ❌ | Turkish | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Inflect-Nano-v2](#inflect-nano-v2) | ❌ | ❌ | English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Gepard](#gepard) | ✅ | ❌ | English, Spanish, Portuguese, Dutch | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -40,8 +41,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Miso TTS](#misotts) | ✅ | ❌ | English | ❌ | ![MIT][license-mit] |
 | [OronTTS](#oron-tts) | ✅ | ❌ | Mongolian, Kazakh | ❌ | ![MIT][license-mit] |
 | [Supertonic 3](#supertonic-3) | ✅ | ❌ | 31 | ✅ | ![OpenRAIL-M][license-openrail-m] |
-| [Scenema Audio](#scenema-audio) | ✅ | ❌ | English, German, French, Spanish, Italian, Portuguese, Japanese, Chinese, Korean, Russian, Arabic, Hindi, Swahili | ❌ | ![Unknown][license-unknown] |
-| [Dramabox](#dramabox) | ✅ | ❌ | English | ❌ | ![Unknown][license-unknown] |
+| [Scenema Audio](#scenema-audio) | ✅ | ❌ | English, German, French, Spanish, Italian, Portuguese, Japanese, Chinese, Korean, Russian, Arabic, Hindi, Swahili | ❌ | ![Other][license-other] |
+| [Dramabox](#dramabox) | ✅ | ❌ | English | ❌ | ![Other][license-other] |
 | [Sarashina2.2-TTS](#sarashina22-tts) | ✅ | ❌ | Japanese, English | ❌ | ![Research Only][license-research-only] |
 | [LongCat-AudioDiT](#longcat-audiodit) | ✅ | ❌ | Chinese, English | ❌ | ![MIT][license-mit] |
 | [Fish Audio S2 Pro](#fish-audio-s2-pro) | ✅ | ❌ | 80+ | ✅ | ![Research Only][license-research-only] |
@@ -53,7 +54,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [SoulX-Singer](#soulx-singer) | ✅ | ❌ | Mandarin, English, Cantonese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [SoproTTS](#soprotts) | ✅ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Qwen3-TTS](#qwen3-tts) | ✅ | ❌ | 10 | ✅ | ![Apache 2.0][license-apache-2.0] |
-| [TADA](#tada-1b) | ❌ | ❌ | English | ❌ | ![Unknown][license-unknown] |
+| [TADA](#tada-1b) | ❌ | ❌ | English | ❌ | ![Other][license-other] |
 | [Irodori-TTS-500M-v2](#irodori-tts-500m-v2) | ✅ | ❌ | Japanese | ❌ | ![MIT][license-mit] |
 | [KugelAudio](#kugelaudio) | ✅ | ❌ | 23 European languages | ✅ | ![MIT][license-mit] |
 | [LEMAS-TTS](#lemas-tts) | ✅ | ❌ | 10 | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -95,8 +96,40 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Dia](#dia) | ✅ | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [MeloTTS](#melotts) | ❌ | ❌ | English, Spanish, French, Chinese, Japanese, Korean | ❌ | ![MIT][license-mit] |
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
-| [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Unknown][license-unknown] |
+| [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:fireredtts3.md -->
+<details id="fireredtts3">
+<summary>FireRedTTS3</summary>
+
+### FireRedTTS3
+
+**Description:** FireRedTTS3 is a unified speech generation and editing system from the FireRed Team built on semantically enriched continuous speech representations. It ships in two variants: **FireRedTTS3-Base** (zero-shot voice cloning across 24 languages and 21 Chinese dialects) and **FireRedTTS3-Instruct** (natural-language voice design and combined semantic + acoustic speech editing in one model). Beyond cloning, it supports instruction-based voice design (no reference audio needed) and editing operations such as insertion / deletion / substitution (semantic) and speed / pitch / volume changes (acoustic).
+
+**Release Date:** August 5, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 24 (plus 21 Chinese dialects) |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | Qwen3 backbone + patch-level diffusion autoregressive (DiTAR) + RedAE codec + CAM++ speaker encoder |
+| **Variants** | Base (cloning), Instruct (cloning + voice design + editing) |
+
+**Features:** Represents speech with semantically enriched *continuous* (non-quantized) representations, enabling a single system to do zero-shot cloning, text-driven voice design, and fine-grained semantic + acoustic editing. On Seed-TTS-eval it reaches an average WER/CER of 3.04% with 78.8% speaker similarity; MiniMax-MLS-Test average SIM 84.8%.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/FireRedTeam/FireRedTTS3)
+[![GitHub][link-github]](https://github.com/FireRedTeam/FireRedTTS3)
+**Additional Tools:**
+
+| Tool | Type | Link |
+|------|------|------|
+| FireRedTTS3-ComfyUI | ComfyUI node | [FireRedTTS3-ComfyUI](https://github.com/Saganaki22/FireRedTTS3-ComfyUI) |
+
+</details>
+<!-- /MODEL:fireredtts3.md -->
 <!-- MODEL:audio8-tts-preview-0-6b.md -->
 <details id="audio8-tts-preview-0-6b">
 <summary>Audio8-TTS-Preview-0.6b</summary>
@@ -169,7 +202,7 @@ at 44.1 kHz.
 | **Asr** | ❌ |
 | **Languages** | English (English-only alpha) |
 | **Streaming** | ✅ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![Other][license-other] |
 | **Backbone** | compact LM backbone tuned for emotional TTS token generation |
 | **Codec** | efficient codec (compact, paired with the LM) |
 | **Speakers** | 4 fixed (`emily`, `paul`, `sophie`, `steven`) |
@@ -313,7 +346,7 @@ complement of the latency / mobile inference focus.
 | **Asr** | ❌ |
 | **Languages** | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese (6 languages, 9 voices) |
 | **Streaming** | ❌ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![GPL 3.0][license-gpl-3.0] |
 | **Architecture** | full neural stack — duration model → acoustic model → decoder |
 | **Quantization** | int8 |
 | **Runtime Microcontroller** | ESP32-S3 (real-time, GPIO → LM386 → speaker) |
@@ -576,7 +609,7 @@ supports serving hundreds of conversations per GPU.
 | **Emotion Control** | ✅ |
 | **Languages** | 14 (zh, en, ja, ko, de, fr, es, id, vi, th, pt, it, ru, ms) |
 | **Streaming** | ❌ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![Apache 2.0][license-apache-2.0] |
 | **Architecture** | speech encoder + LLM (T2S) + flow-matching head (S2A) |
 
 **Features:** Cross-lingual voice transfer without accent drift: the same reference voice stays consistent when the speaker switches languages — backed by a speech encoder + LLM backbone pipeline (T2S) with a flow-matching acoustic decoder (S2A) and training that bundles 14 languages with code-switched, emotion-preserving decoding.
@@ -723,7 +756,7 @@ edge deployment.
 | **Asr** | ❌ |
 | **Languages** | English |
 | **Streaming** | ❌ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![MIT][license-mit] |
 | **Architecture** | Sesame-style CSM (two transformer stack: backbone + audio decoder) |
 | **Audio Tokenizer** | Mimi (32 codebooks, vocab 2051, max seq 2048) |
 | **Library** | pytorch |
@@ -821,7 +854,7 @@ edge deployment.
 | **Emotion Control** | ✅ |
 | **Languages** | 13 (en, de, fr, es, it, pt, ja, zh, ko, ru, ar, hi, sw) |
 | **Streaming** | ❌ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![Other][license-other] |
 | **Parent Model** | Lightricks LTX-2.3 (audio branch) |
 | **Prompt Format** | `<speak voice=… gender=… scene=… language=…>` XML with `<action>` tag for shifting emotion |
 | **Long Form Narration** | yes (auto-splits text while preserving voice continuity) |
@@ -854,7 +887,7 @@ edge deployment.
 | **Emotion Control** | ✅ |
 | **Languages** | English |
 | **Streaming** | ❌ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![Other][license-other] |
 | **Base Model** | Lightricks/LTX-2.3 (audio branch) |
 | **Architecture** | DiT + flow matching, IC-LoRA fine-tune, Gemma 3 12B text embeddings |
 | **Inference Time** | ~2.5 s / generation (warm server) |
@@ -1210,7 +1243,7 @@ edge deployment.
 | **Emotion Control** | ✅ |
 | **Languages** | English |
 | **Streaming** | ❌ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![Other][license-other] |
 | **Base Model** | meta-llama/Llama-3.2-1B |
 | **Tokenization** | 1:1 text–acoustic dual alignment (one speech vector per text token) |
 | **Dynamic Duration** | yes (each autoregressive step covers one text token, duration is determined per-token) |
@@ -1885,7 +1918,7 @@ for fidelity on a per-device basis.
 | **Asr** | ❌ |
 | **Languages** | English, German, Chinese, Korean, Arabic, Spanish (multilingual 370M checkpoint); Japanese (Expo-2025-Osaka variant) |
 | **Streaming** | ✅ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![LFM][license-lfm] |
 | **Sample Rate** | 22,000 Hz |
 | **Backbone Llm** | LFM-2 (Liquid Foundation Model; non-transformer structured state-space architecture) |
 | **Audio Codec** | nineninesix/nemo-nano-codec-22khz-0.6kbps-12.5fps-MLX (NVIDIA NeMo NanoCodec, MLX-ported) |
@@ -2518,7 +2551,7 @@ out-of-the-box.
 | **Asr** | ❌ |
 | **Languages** | 100+ languages and accents (see docs/languages.md) |
 | **Streaming** | ✅ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![GPL 3.0][license-gpl-3.0] |
 | **Synthesis Method** | formant synthesis (primary); Klatt formant synthesis (secondary); MBROLA diphone backend (optional) |
 | **Footprint** | a few MB (program + data + many languages) |
 | **Audio Output** | WAV file (CLI), direct playback, or shared-library API |
@@ -2558,8 +2591,9 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Text | Video | Audio | Max Duration | Sample Rate | License |
 | :--- | :---: | :---: | :---: | :--- | :--- | :--- |
-| [ScenA](#scena) | ✅ | ❌ | ✅ | — | — | ![Unknown][license-unknown] |
-| [Nemotron-Labs-Audex-2B](#nemotron-labs-audex-2b) | ✅ | ❌ | ✅ | — | — | ![Unknown][license-unknown] |
+| [MiDashengLM-Gen](#midashenglm-gen) | ✅ | ❌ | ❌ | — | 16 kHz | ![Apache 2.0][license-apache-2.0] |
+| [ScenA](#scena) | ✅ | ❌ | ✅ | — | — | ![Other][license-other] |
+| [Nemotron-Labs-Audex-2B](#nemotron-labs-audex-2b) | ✅ | ❌ | ✅ | — | — | ![NVIDIA NC][license-nvidia-noncommercial] |
 | [Nemotron-Labs-Audex-30B-A3B](#nemotron-labs-audex-30b-a3b) | ✅ | ❌ | ✅ | — | — | ![NVIDIA NC][license-nvidia-noncommercial] |
 | [MOSS-SoundEffect](#moss-soundeffect) | ✅ | — | — | 30 s | 48 kHz | ![Apache 2.0][license-apache-2.0] |
 | [Omni2Sound (Omni2Audio)](#omni2sound) | ✅ | ✅ | ✅ | — | — | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
@@ -2568,11 +2602,44 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [Chroma-4B](#chroma-4b) | ✅ | ❌ | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
 | [Uni-MoE (Audio)](#uni-moe-audio-any2audio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 | [AudioX / Audio-Omni](#audiox) | ✅ | ✅ | ✅ | — | — | ![Apache 2.0][license-apache-2.0]<br>![CC BY-NC 4.0][license-cc-by-nc-4.0] |
-| [HunyuanVideo-Foley](#hunyuanvideo-foley) | ✅ | ✅ | — | — | 48 kHz | ![Unknown][license-unknown] |
+| [HunyuanVideo-Foley](#hunyuanvideo-foley) | ✅ | ✅ | — | — | 48 kHz | ![Research Only][license-research-only] |
 | [PrismAudio](#prismaudio) | — | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 | [ThinkSound](#thinksound) | ✅ | — | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
 | [MMAudio](#mmaudio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:midashenglm-gen.md -->
+<details id="midashenglm-gen">
+<summary>MiDashengLM-Gen</summary>
+
+### MiDashengLM-Gen
+
+**Description:** MiDashengLM-Gen (MiDasheng Language Model for Generation) is an end-to-end framework for unified audio-scene generation from Xiaomi. Built on a pre-trained LLM and the Dasheng audio tokenizer, it couples per-token conditional flow matching with autoregressive generation to produce coherent 16 kHz audio that simultaneously blends speech, music, sound effects and environmental acoustics from a structured text description. It supports 9 languages with emotion control and approaches dedicated TTS intelligibility on speech (Seed-TTS English WER drops from 12.15% to 2.79%) while retaining mixed-audio scene capability, and extends competitively to multilingual settings.
+
+**Release Date:** August 12, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Text** | ✅ |
+| **Video** | ❌ |
+| **Image** | ❌ |
+| **Audio** | ❌ |
+| **Sample Rate** | 16 kHz |
+| **Languages** | 9 |
+| **Emotion Control** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Parameters** | 1.7B (Qwen3-1.7B backbone) |
+| **Architecture** | DashengTokenizer (768-dim @25Hz) + Qwen3-1.7B + flow-matching DiT (16 layers, hidden 2048) |
+
+**Features:** LLM-conditioned high-dimensional (768-dim @25Hz) audio latents generated without quantization artifacts; audio-text alignment pre-training maps latents into the LLM token space before generation; a learned stop head enables variable-length truncation. First end-to-end trained model for general text-to-audio-scene generation.
+
+**Links:**
+[![Demo][link-demo]](https://xingws.github.io/midashenglm-gen-demo/)
+[![HuggingFace][link-huggingface]](https://huggingface.co/mispeech/midashenglm-gen)
+[![GitHub][link-github]](https://github.com/xiaomi-research/midashenglm-gen)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2608.11804)
+
+</details>
+<!-- /MODEL:midashenglm-gen.md -->
 <!-- MODEL:scena.md -->
 <details id="scena">
 <summary>ScenA</summary>
@@ -2600,7 +2667,7 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | **Text Encoder** | google/gemma-3-12b-it |
 | **Audio Vae** | bundled (~365 MB; encodes+decodes so full LTX-2 not needed) |
 | **Checkpoint Size** | ~8.2 GB (scena.safetensors) + ~365 MB (audio_vae.safetensors) |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![Other][license-other] |
 | **Training Data** | in-the-wild text-to-audio pretrained, then reference-conditioned fine-tune |
 | **Evaluation** | CoVoMix2-Dialogue (speaker-binding metrics) |
 
@@ -2653,7 +2720,7 @@ out by design.
 | **Text To Audio** | yes |
 | **Speech To Speech Generation** | yes |
 | **Reasoning Mode** | yes (thinking + instruct modes inherited from text backbone) |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![NVIDIA NC][license-nvidia-noncommercial] |
 | **Pipeline Tag** | text-generation |
 | **Library Name** | transformers |
 | **Derived From** | same family as Nemotron-Labs-Audex-30B-A3B |
@@ -2990,7 +3057,7 @@ fidelity* (parrot the speaker poorly), rarely both.
 | **Sample Rate** | 48 kHz |
 | **Text** | ✅ |
 | **Video** | ✅ |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![Research Only][license-research-only] |
 | **High-Quality-Foley** | yes |
 | **Context-Aware** | yes |
 
@@ -3053,7 +3120,7 @@ fidelity* (parrot the speaker poorly), rarely both.
 | **Parameters** | - |
 | **Text** | ✅ |
 | **Audio** | ✅ |
-| **License** | ![Apache 2.0][license-apache-2.0]<br>![Research Only][license-research-only] |
+| **License** | ![Research Only][license-research-only]<br>![Apache 2.0][license-apache-2.0] |
 | **Cot-Driven-Reasoning** | yes |
 | **Interactive-Object-Centric-Editing** | yes |
 
@@ -3406,7 +3473,7 @@ source-separation model.
 | [GLM-ASR-Nano-2512](#glm-asr-nano) | 17 | ❌ | ![MIT][license-mit] |
 | [SYMPHONY](#symphony) | English, Korean | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Moonshine](#moonshine) | English | ❌ | ![MIT][license-mit] |
-| [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Unknown][license-unknown] |
+| [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Other][license-other] |
 | [FunASR](#funasr) | 50+ | ✅ | ![MIT][license-mit] |
 
 <!-- MODEL:gigaam-multilingual.md -->
@@ -4067,7 +4134,7 @@ directly with the `transformers` v4.x / v5.x stack.
 | **Timestamps** | yes |
 | **Emotion Recognition** | yes |
 | **Audio Event Detection** | yes |
-| **License** | ![Unknown][license-unknown] |
+| **License** | ![Other][license-other] |
 
 **Features:** A non-autoregressive end-to-end architecture that runs at 15× the speed of Whisper-Large while bundling ASR + LID + SER + AED in one model, plus a GGUF/llama.cpp path that brings the whole pipeline to CPU/edge devices without Python at runtime.
 
@@ -4387,12 +4454,15 @@ This list is continuously evolving. If you have any models to add or updates to 
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
-[license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
+[license-other]: https://img.shields.io/badge/Other-lightgrey?style=flat-square "Other"
+[license-gpl-3.0]: https://img.shields.io/badge/GPL_3.0-blue?style=flat-square "GPL 3.0"
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
 [license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
 [license-nvidia-noncommercial]: https://img.shields.io/badge/NVIDIA_NC-yellow?style=flat-square&logo=nvidia "NVIDIA NC"
+[license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
 
+[link-benchmark]: https://img.shields.io/badge/Benchmark-benchmark-lightgrey?style=flat-square "Benchmark benchmark"
 [link-blog]: https://img.shields.io/badge/Blog-post-blue?style=flat-square "Blog post"
 [link-collection]: https://img.shields.io/badge/Collection-darkblue?style=flat-square "Collection"
 [link-demo]: https://img.shields.io/badge/Demo-live-blue?style=flat-square "Demo live"
@@ -4400,7 +4470,9 @@ This list is continuously evolving. If you have any models to add or updates to 
 [link-huggingface]: https://img.shields.io/badge/HuggingFace-models-yellow?style=flat-square&logo=huggingface "HuggingFace models"
 [link-modelscope]: https://img.shields.io/badge/ModelScope-orange?style=flat-square "ModelScope"
 [link-paper]: https://img.shields.io/badge/Paper-red?style=flat-square "Paper"
+[link-predecessor]: https://img.shields.io/badge/Predecessor-predecessor-lightgrey?style=flat-square "Predecessor predecessor"
 [link-pypi]: https://img.shields.io/badge/PyPI-package-blueviolet?style=flat-square&logo=pypi "PyPI package"
 [link-skill]: https://img.shields.io/badge/Skill-lightgrey?style=flat-square&logo=puzzle "Skill"
+[link-successor]: https://img.shields.io/badge/Successor-successor-lightgrey?style=flat-square "Successor successor"
 [link-website]: https://img.shields.io/badge/Website-blue?style=flat-square "Website"
 [link-arxiv]: https://img.shields.io/badge/arXiv-paper-red?style=flat-square&logo=arXiv "arXiv paper"
