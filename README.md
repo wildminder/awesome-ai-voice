@@ -24,6 +24,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [Rynsan TTS](#rynsan-tts) | — | ❌ | Khasi, Garo, Pnar, English, Hindi | — | ![CC BY 4.0][license-cc-by-4.0] |
+| [Audio8 TTS Preview 0.1B](#audio8-tts-preview-0-1b) | ✅ | ❌ | 8 | — | ![Other][license-other] |
+| [Kiseki-TTS](#kiseki-tts) | ❌ | ✅ | Japanese | — | ![MIT][license-mit] |
 | [FireRedTTS3](#fireredtts3) | ✅ | ❌ | 24 | — | ![Apache 2.0][license-apache-2.0] |
 | [Audio8-TTS-Preview-0.6b](#audio8-tts-preview-0-6b) | ✅ | ❌ | Cantonese, Chinese, Dutch, English, French, German, Italian, Japanese, Korean, Polish, Spanish | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [NeuTTS-2E](#neutts-2e) | ❌ | ❌ | English | ✅ | ![Other][license-other] |
@@ -39,12 +42,14 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [MOSS-TTS](#moss-tts) | ✅ | ❌ | 31 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [VoxFlash-TTS](#voxflash-tts) | ✅ | ❌ | Chinese, English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Miso TTS](#misotts) | ✅ | ❌ | English | ❌ | ![MIT][license-mit] |
+| [Raon-OpenTTS-1B](#raon-opentts-1b) | ✅ | ❌ | English | — | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [OronTTS](#oron-tts) | ✅ | ❌ | Mongolian, Kazakh | ❌ | ![MIT][license-mit] |
 | [Supertonic 3](#supertonic-3) | ✅ | ❌ | 31 | ✅ | ![OpenRAIL-M][license-openrail-m] |
 | [Scenema Audio](#scenema-audio) | ✅ | ❌ | English, German, French, Spanish, Italian, Portuguese, Japanese, Chinese, Korean, Russian, Arabic, Hindi, Swahili | ❌ | ![Other][license-other] |
 | [Dramabox](#dramabox) | ✅ | ❌ | English | ❌ | ![Other][license-other] |
 | [Sarashina2.2-TTS](#sarashina22-tts) | ✅ | ❌ | Japanese, English | ❌ | ![Research Only][license-research-only] |
 | [LongCat-AudioDiT](#longcat-audiodit) | ✅ | ❌ | Chinese, English | ❌ | ![MIT][license-mit] |
+| [SILMA TTS](#silma-tts) | ✅ | ❌ | Arabic, English | — | ![Apache 2.0][license-apache-2.0] |
 | [Fish Audio S2 Pro](#fish-audio-s2-pro) | ✅ | ❌ | 80+ | ✅ | ![Research Only][license-research-only] |
 | [LongCat-Next](#longcat-next) | ✅ | ✅ | Chinese, English | ✅ | ![MIT][license-mit] |
 | [Voxtral-4B-TTS](#voxtral-4b-tts) | ✅ | ❌ | 9 | ✅ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
@@ -98,6 +103,99 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:rynsan-tts.md -->
+<details id="rynsan-tts">
+<summary>Rynsan TTS</summary>
+
+### Rynsan TTS
+
+**Description:** Rynsan TTS is a multilingual text-to-speech model that extends [k2-fsa/OmniVoice](https://huggingface.co/k2-fsa/OmniVoice) to support **Khasi, Garo, and Pnar** — languages of Meghalaya, India that have historically had limited representation in modern speech technology. Rather than building a system from scratch, Rynsan retains the multilingual capabilities of the base model while adding speech data for these low-resource Khasic languages. Developed under the **Tynrai AI** initiative, its broader goal is accessible speech technology for the diverse languages and dialects of Meghalaya, supporting their preservation and use in voice-based applications. A live demo is available at [ri.tynrai.in/demo](https://ri.tynrai.in/demo). The repository is gated (manual access approval).
+
+**Release Date:** August 22, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Asr** | ❌ |
+| **Languages** | 5+ (English, Hindi + extension languages Khasi `kha`, Garo `grt`, Pnar `pbv`; base OmniVoice supports more) |
+| **License** | ![CC BY 4.0][license-cc-by-4.0] |
+| **Parameters** | ~0.61B |
+| **Architecture** | OmniVoice (k2-fsa) multilingual TTS, extended fine-tune |
+| **Base Model** | k2-fsa/OmniVoice |
+| **Developer** | Toiar / Tynrai AI |
+
+**Features:** Extends a modern multilingual TTS foundation to three substantially under-resourced Khasic languages — a rare production-oriented entry for indigenous-language speech tech, aimed at accessibility, education, and language preservation rather than benchmark leadership.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/toiar/Rynsan-TTS)
+[![Demo][link-demo]](https://ri.tynrai.in/demo)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:rynsan-tts.md -->
+<!-- MODEL:audio8-tts-preview-0-1b.md -->
+<details id="audio8-tts-preview-0-1b">
+<summary>Audio8 TTS Preview 0.1B</summary>
+
+### Audio8 TTS Preview 0.1B
+
+**Description:** Audio8 TTS Preview 0.1B is the smallest release in the Audio8 TTS family ("the smallest zero-shot TTS worth running"): a ~170M-parameter generative model plus a separate ~120M-parameter codec decoder, making the complete audio generation stack much smaller than most modern multilingual TTS systems. It supports speech generation and **zero-shot voice cloning** (reference audio + matching transcript). Primary languages are Chinese and English, with German, Spanish, French, Italian, Japanese, and Korean as experimental/multilingual-evaluation targets. Released under the custom Audio8 Community License v1.0: non-commercial use is free, and commercial use is free only for entities with annual revenue under US$2M.
+
+**Release Date:** August 19, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 8 (Chinese + English primary; de/es/fr/it/ja/ko experimental) |
+| **License** | ![Other][license-other] |
+| **Parameters** | ~0.17B main model (+ ~120M codec decoder) |
+| **Architecture** | Audio8 Falcon H1 DualAR — slow AR (semantic tokens) + fast AR (codec codebooks), 10 codebooks × 4096 entries |
+| **Audio Codec** | bundled 44.1 kHz neural codec (~21.5 frames/s) |
+| **Context** | up to 2,048 packed text/audio positions |
+| **Variants** | 0.1B (this), [0.6B](https://huggingface.co/Audio8/Audio8-TTS-Preview-0.6b) |
+
+**Features:** Packs practical zero-shot cloning into a ~170M-parameter model using an Falcon-H1-derived DualAR design (slow AR predicts semantic tokens per frame; fast AR predicts the frame's 10 codebooks conditioned on the slow hidden state). On Seed-TTS it posts EN WER 1.662 at only ~0.17B — within reach of 4B+ systems — and ships with its own 44.1 kHz codec so no external codec checkpoint is needed.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/Audio8/Audio8-TTS-Preview-0.1b)
+[![GitHub][link-github]](https://github.com/Audio8-AI/Audio8_TTS)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:audio8-tts-preview-0-1b.md -->
+<!-- MODEL:kiseki-tts.md -->
+<details id="kiseki-tts">
+<summary>Kiseki-TTS</summary>
+
+### Kiseki-TTS
+
+**Description:** Kiseki-TTS is a small, fast Japanese text-to-speech model from telecomadm1145 built on top of `Qwen/Qwen3-TTS-Tokenizer-12Hz`. It generates discrete neural audio codec tokens at **12.5 Hz** (4–6× fewer autoregressive steps than 50–75 Hz codecs) and decodes them to waveform with the Qwen3 TTS codec. The acoustic decoder is a linear-time **Mamba2 SSM** rather than a self-attention stack, so generation cost is constant per frame — memory does not grow with utterance length and there is no KV cache to manage. Because TTS and ASR were trained jointly in a single multi-task run, the same checkpoint also performs **ASR** (Japanese speech → text, reading only codec layer 0). It is a **single-domain voice** (ASMR-style Japanese training data) with no speaker conditioning or voice cloning.
+
+**Release Date:** August 15, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ❌ |
+| **Asr** | ✅ |
+| **Languages** | Japanese only (ja) |
+| **License** | ![MIT][license-mit] |
+| **Parameters** | ~0.41B (0.33B backbone + 78M audio branch) |
+| **Architecture** | Transformer encoder (12 layers, bidirectional self-attention) + cross-attention → Mamba2 SSM decoder (6 layers, no causal self-attention) |
+| **Audio Codec** | Qwen3-TTS-Tokenizer-12Hz (12.5 Hz, 16 quantizer layers) |
+| **Base Model** | Kiseki-1.1-0.3B (seq2seq translation model) |
+| **Training Data** | telecomadm1145/asmr_archive_qwentts_encoded |
+
+**Features:** The decoder deliberately omits causal self-attention — temporal context is carried entirely by the Mamba2 recurrent state while text conditioning enters through cross-attention whose K/V are computed once during prefill. This yields O(1) state per frame (a fixed SSM tensor plus a 3-frame conv window) instead of an O(T) KV cache, so long-form synthesis degrades gracefully past the ~41 s training ceiling instead of hitting a memory cliff. Combined with the 12.5 Hz codec and a shared multi-token-prediction head that resolves all 16 codebook layers in one trunk pass, the model is both compute- and memory-bandwidth-bound rather than quadratic in length.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/telecomadm1145/Kiseki-TTS)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:kiseki-tts.md -->
 <!-- MODEL:fireredtts3.md -->
 <details id="fireredtts3">
 <summary>FireRedTTS3</summary>
@@ -122,12 +220,16 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/FireRedTeam/FireRedTTS3)
 [![GitHub][link-github]](https://github.com/FireRedTeam/FireRedTTS3)
+
+
 **Additional Tools:**
 
 | Tool | Type | Link |
 |------|------|------|
 | FireRedTTS3-ComfyUI | ComfyUI node | [FireRedTTS3-ComfyUI](https://github.com/Saganaki22/FireRedTTS3-ComfyUI) |
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:fireredtts3.md -->
 <!-- MODEL:audio8-tts-preview-0-6b.md -->
@@ -183,6 +285,8 @@ at 44.1 kHz.
 [![GitHub][link-github]](https://github.com/Audio8-AI/Audio8_TTS)
 [![Website][link-website]](https://audio8-ai.github.io/Audio8_TTS/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:audio8-tts-preview-0-6b.md -->
 <!-- MODEL:neutts-2e.md -->
@@ -257,6 +361,8 @@ on-device.
 [![Demo][link-demo]](https://huggingface.co/spaces/neuphonic/neutts-2e)
 [![Collection][link-collection]](https://huggingface.co/collections/neuphonic/neutts-2e)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:neutts-2e.md -->
 <!-- MODEL:scyllasband.md -->
@@ -327,6 +433,8 @@ complement of the latency / mobile inference focus.
 [![GitHub][link-github]](https://github.com/lowkeytea/scyllasband)
 [![Website][link-website]](https://lowkeytea.github.io/scyllasband/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:scyllasband.md -->
 <!-- MODEL:sanotts.md -->
@@ -376,6 +484,8 @@ runs unattended on a $3 chip and a $0 web page.
 [![GitHub][link-github]](https://github.com/Ampixa/sanoTTS)
 [![Website][link-website]](https://ampixa.github.io/sanoTTS/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:sanotts.md -->
 <!-- MODEL:freyatts.md -->
@@ -426,6 +536,8 @@ across zero-shot speaker adaptation.
 [![GitHub][link-github]](https://github.com/freyavoiceai/FreyaTTS)
 [![Paper][link-paper]](https://arxiv.org/abs/2607.09530)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:freyatts.md -->
 <!-- MODEL:inflect-nano-v2.md -->
@@ -482,6 +594,8 @@ dead-end fixed-voice release.
 [![GitHub][link-github]](https://github.com/owenawsong/Inflect)
 [![Demo][link-demo]](https://huggingface.co/spaces/owensong/Inflect-v2)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:inflect-nano-v2.md -->
 <!-- MODEL:gepard.md -->
@@ -526,6 +640,8 @@ supports serving hundreds of conversations per GPU.
 [![Paper][link-paper]](https://huggingface.co/nineninesix/gepard-1.0/resolve/main/gepard_techreport.pdf)
 [![Website][link-website]](https://www.nineninesix.ai/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:gepard.md -->
 <!-- MODEL:higgs-audio-v3-tts.md -->
@@ -559,6 +675,8 @@ supports serving hundreds of conversations per GPU.
 [![Blog][link-blog]](https://www.boson.ai/blog/higgs-audio-v3-tts)
 [![Demo][link-demo]](https://huggingface.co/spaces/multimodalart/higgs-audio-v3-tts)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:higgs-audio-v3-tts.md -->
 <!-- MODEL:dots-tts.md -->
@@ -590,6 +708,8 @@ supports serving hundreds of conversations per GPU.
 [![Website][link-website]](https://rednote-hilab.github.io/dots.tts-demo/)
 [![Demo][link-demo]](https://huggingface.co/spaces/rednote-hilab/dots.tts)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:dots-tts.md -->
 <!-- MODEL:confucius4-tts.md -->
@@ -619,6 +739,8 @@ supports serving hundreds of conversations per GPU.
 [![GitHub][link-github]](https://github.com/netease-youdao/Confucius4-TTS)
 [![Demo][link-demo]](https://confucius4-tts.youdao.com/gradio)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:confucius4-tts.md -->
 <!-- MODEL:wavtts.md -->
@@ -651,6 +773,8 @@ supports serving hundreds of conversations per GPU.
 [![Demo][link-demo]](https://wavtts.github.io/)
 [![Paper][link-paper]](https://arxiv.org/abs/2606.03455)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:wavtts.md -->
 <!-- MODEL:moss-tts.md -->
@@ -687,6 +811,8 @@ supports serving hundreds of conversations per GPU.
 [![Paper][link-paper]](https://arxiv.org/abs/2603.18090)
 [![Demo][link-demo]](https://studio.mosi.cn)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:moss-tts.md -->
 <!-- MODEL:voxflash-tts.md -->
@@ -737,6 +863,8 @@ edge deployment.
 [![Website][link-website]](https://voxflash.github.io/)
 [![Paper][link-paper]](https://arxiv.org/abs/2406.02430)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:voxflash-tts.md -->
 <!-- MODEL:misotts.md -->
@@ -768,8 +896,50 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/MisoLabsAI/MisoTTS)
 [![Website][link-website]](https://misolabs.ai)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:misotts.md -->
+<!-- MODEL:raon-opentts-1b.md -->
+<details id="raon-opentts-1b">
+<summary>Raon-OpenTTS-1B</summary>
+
+### Raon-OpenTTS-1B
+
+**Description:** Raon-OpenTTS is an open-data, open-weight zero-shot TTS system from KRAFTON that performs on par with state-of-the-art closed-data models. This is the 1B variant (1048M parameters). Both model weights and training data are public: Raon-OpenTTS-Core is 510.1K hours of English speech, quality-filtered from the 615K-hour public Raon-OpenTTS-Pool using combined DNSMOS, WER, and VAD rank-based filtering. It ranks 1st or 2nd in WER and SIM among recent zero-shot TTS models on Seed-TTS-Eval and CV3-Eval, and achieves the best average WER/SIM on Raon-OpenTTS-Eval across Clean, Noisy, Wild, and Expressive regimes. A smaller [Raon-OpenTTS-0.3B](https://huggingface.co/KRAFTON/Raon-OpenTTS-0.3B) variant is also available.
+
+**Release Date:** May 21, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | English only (trained on 11 English speech datasets) |
+| **License** | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| **Parameters** | 1048M |
+| **Architecture** | DiT (Diffusion Transformer) based on F5-TTS with flow matching; dim=1408, depth=28, heads=24 |
+| **Audio Output** | 80-ch mel-spectrogram at 16 kHz, HiFi-GAN vocoder (LibriTTS) |
+| **Training Data** | Raon-OpenTTS-Core (510.1K hours), 520K updates on 48× B200 |
+
+**Features:** Demonstrates that fully open data + open weights can match proprietary SOTA: on Seed-TTS-Eval it reaches 1.78 WER / 0.749 SIM (vs Qwen3-TTS 1.46/0.715 at 1.7B), and best overall robustness (WER 2.81 / SIM 0.695) across four acoustic regimes on its own Raon-OpenTTS-Eval benchmark. The pipeline pairs large-scale rank-based data curation (DNSMOS + WER + VAD filtering of a 615K-hour pool) with an efficient F5-TTS-derived DiT.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/KRAFTON/Raon-OpenTTS-1B)
+[![GitHub][link-github]](https://github.com/krafton-ai/Raon-OpenTTS)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2605.20830)
+[![Dataset][link-dataset]](https://huggingface.co/datasets/KRAFTON/Raon-OpenTTS-Pool)
+
+
+**Additional Tools:**
+
+| Tool | Type | Link |
+|------|------|------|
+| ComfyUI-Raon-OpenTTS | ComfyUI node | [ComfyUI-Raon-OpenTTS](https://github.com/Saganaki22/ComfyUI-Raon-OpenTTS) |
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:raon-opentts-1b.md -->
 <!-- MODEL:oron-tts.md -->
 <details id="oron-tts">
 <summary>OronTTS</summary>
@@ -802,6 +972,8 @@ edge deployment.
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/btsee/oron-tts)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:oron-tts.md -->
 <!-- MODEL:supertonic-3.md -->
@@ -834,6 +1006,8 @@ edge deployment.
 [![Demo][link-demo]](https://huggingface.co/spaces/Supertone/supertonic-3)
 [![PyPI][link-pypi]](https://pypi.org/project/supertonic/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:supertonic-3.md -->
 <!-- MODEL:scenema-audio.md -->
@@ -867,6 +1041,8 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/ScenemaAI/scenema-audio)
 [![Website][link-website]](https://scenema.ai/audio)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:scenema-audio.md -->
 <!-- MODEL:dramabox.md -->
@@ -900,6 +1076,8 @@ edge deployment.
 [![Demo][link-demo]](https://huggingface.co/spaces/ResembleAI/Dramabox)
 [![Website][link-website]](https://www.resemble.ai/learn/models/dramabox)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:dramabox.md -->
 <!-- MODEL:sarashina22-tts.md -->
@@ -930,6 +1108,8 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/sbintuitions/sarashina2.2-tts)
 [![Paper][link-paper]](https://arxiv.org/abs/2606.25369)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:sarashina22-tts.md -->
 <!-- MODEL:longcat-audiodit.md -->
@@ -961,8 +1141,42 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-1B)
 [![HuggingFace][link-huggingface]](https://huggingface.co/meituan-longcat/LongCat-AudioDiT-3.5B)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:longcat-audiodit.md -->
+<!-- MODEL:silma-tts.md -->
+<details id="silma-tts">
+<summary>SILMA TTS</summary>
+
+### SILMA TTS
+
+**Description:** SILMA TTS v1 is a high-performance, **150M-parameter** bilingual (Arabic/English) TTS model developed by SILMA AI. Built on the **F5-TTS diffusion architecture**, it was pretrained from scratch using tens of thousands of hours of high-quality public and proprietary data. It supports instant voice cloning with less than 8 seconds of reference audio (the reference transcript can also be left empty — it is transcribed on the fly), full support for Arabic **Tashkeel** (diacritics, auto-enriched via CATT when absent), NeMo-based text normalization, and an RTF around **0.12** on an RTX 4090. Released under a commercial-friendly license: code MIT, model weights Apache-2.0. The model is 100% compatible with F5-TTS v1.1.7 tooling for inference and fine-tuning.
+
+**Release Date:** March 13, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 2 (Arabic MSA/Fusha + English) |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Parameters** | 150M |
+| **Architecture** | F5-TTS Diffusion Transformer with flow matching (pretrained from scratch, F5-TTS v1.1.7-compatible) |
+| **Pronunciation** | ✅ |
+| **Cost** | RTF ≈ 0.12 (RTX 4090) |
+
+**Features:** Brings native-level Arabic synthesis to a 150M footprint: one of the smallest open F5-TTS-family models pretrained from scratch rather than fine-tuned, with first-class Arabic handling (Tashkeel-aware pronunciation via CATT enrichment, NeMo text normalization) alongside English, plus instant zero-shot cloning under fully permissive licensing (Apache-2.0 weights / MIT code).
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/silma-ai/silma-tts)
+[![GitHub][link-github]](https://github.com/SILMA-AI/silma-tts)
+[![Website][link-website]](https://silma.ai/arabic-text-to-speech)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:silma-tts.md -->
 <!-- MODEL:fish-audio-s2-pro.md -->
 <details id="fish-audio-s2-pro">
 <summary>Fish Audio S2 Pro</summary>
@@ -988,6 +1202,8 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/fishaudio/fish-speech)
 [![HuggingFace][link-huggingface]](https://huggingface.co/fishaudio/s2-pro)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:fish-audio-s2-pro.md -->
 <!-- MODEL:longcat-next.md -->
@@ -1018,6 +1234,8 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/meituan-longcat/LongCat-Next)
 [![HuggingFace][link-huggingface]](https://huggingface.co/meituan-longcat/LongCat-Next)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:longcat-next.md -->
 <!-- MODEL:voxtral-4b-tts.md -->
@@ -1047,6 +1265,8 @@ edge deployment.
 [![Demo][link-demo]](https://console.mistral.ai/build/audio/text-to-speech)
 [![Blog][link-blog]](https://mistral.ai/news/voxtral-tts)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:voxtral-4b-tts.md -->
 <!-- MODEL:blue-tts.md -->
@@ -1082,6 +1302,8 @@ edge deployment.
 [![Website][link-website]](https://lightbluetts.com/)
 [![Demo][link-demo]](https://huggingface.co/spaces/notmax123/BlueV2)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:blue-tts.md -->
 <!-- MODEL:kittenTTS.md -->
@@ -1109,6 +1331,8 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/KittenML/KittenTTS)
 [![HuggingFace][link-huggingface]](https://huggingface.co/spaces/KittenML/KittenTTS-Demo)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:kittenTTS.md -->
 <!-- MODEL:ming-omni-tts.md -->
@@ -1138,6 +1362,8 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/inclusionAI/Ming-omni-tts)
 [![Website][link-website]](https://xqacmer.github.io/Ming-omni-tts/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:ming-omni-tts.md -->
 <!-- MODEL:soulx-singer.md -->
@@ -1166,6 +1392,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/spaces/Soul-AILab/SoulX-Singer)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2602.07803)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:soulx-singer.md -->
 <!-- MODEL:soprotts.md -->
@@ -1195,6 +1423,8 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/samuel-vitorino/sopro)
 [![HuggingFace][link-huggingface]](https://huggingface.co/samuel-vitorino/sopro)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:soprotts.md -->
 <!-- MODEL:qwen3-tts.md -->
@@ -1223,6 +1453,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/collections/Qwen/qwen3-tts)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2601.15621)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:qwen3-tts.md -->
 <!-- MODEL:tada-1b.md -->
@@ -1258,6 +1490,8 @@ edge deployment.
 [![Paper][link-paper]](https://arxiv.org/abs/2602.23068)
 [![Blog][link-blog]](https://www.hume.ai/blog/opensource-tada)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:tada-1b.md -->
 <!-- MODEL:irodori-tts-500m-v2.md -->
@@ -1289,6 +1523,8 @@ edge deployment.
 [![GitHub][link-github]](https://github.com/Aratako/Irodori-TTS)
 [![Demo][link-demo]](https://huggingface.co/spaces/Aratako/Irodori-TTS-500M-v2-Demo)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:irodori-tts-500m-v2.md -->
 <!-- MODEL:kugelaudio.md -->
@@ -1317,6 +1553,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/kugelaudio/kugelaudio-0-open)
 [![Website][link-website]](https://kugelaudio.com)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:kugelaudio.md -->
 <!-- MODEL:lemas-tts.md -->
@@ -1348,6 +1586,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/LEMAS-Project/LEMAS-TTS)
 [![HuggingFace][link-huggingface]](https://huggingface.co/LEMAS-Project/LEMAS-Edit)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:lemas-tts.md -->
 <!-- MODEL:miotts-26b.md -->
@@ -1376,6 +1616,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/Aratako/MioTTS-2.6B)
 [![GitHub][link-github]](https://github.com/Aratako/MioTTS-Inference)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:miotts-26b.md -->
 <!-- MODEL:moss-tts-nano.md -->
@@ -1407,6 +1649,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M)
 [![Demo][link-demo]](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTS-Nano)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:moss-tts-nano.md -->
 <!-- MODEL:neutts.md -->
@@ -1436,6 +1680,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/neuphonic/neutts-air)
 [![HuggingFace][link-huggingface]](https://huggingface.co/neuphonic/neutts-nano)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:neutts.md -->
 <!-- MODEL:omnivoice.md -->
@@ -1466,6 +1712,8 @@ edge deployment.
 [![Website][link-website]](https://zhu-han.github.io/omnivoice/)
 [![HuggingFace][link-huggingface]](https://huggingface.co/k2-fsa/OmniVoice)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:omnivoice.md -->
 <!-- MODEL:t5gemma-tts.md -->
@@ -1497,6 +1745,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/Aratako/T5Gemma-TTS-2b-2b)
 [![Demo][link-demo]](https://huggingface.co/spaces/Aratako/T5Gemma-TTS-Demo)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:t5gemma-tts.md -->
 <!-- MODEL:tinytts.md -->
@@ -1527,6 +1777,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/backtracking/tiny-tts)
 [![Demo][link-demo]](https://huggingface.co/spaces/backtracking/tiny-tts-demo)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:tinytts.md -->
 <!-- MODEL:voxcpm2.md -->
@@ -1558,6 +1810,8 @@ edge deployment.
 [![HuggingFace][link-huggingface]](https://huggingface.co/openbmb/VoxCPM2)
 [![Demo][link-demo]](https://huggingface.co/spaces/OpenBMB/VoxCPM-Demo)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:voxcpm2.md -->
 <!-- MODEL:soprano.md -->
@@ -1607,6 +1861,8 @@ measurable quality jump ships with no added inference cost.
 [![GitHub][link-github]](https://github.com/ekwek1/soprano)
 [![Demo][link-demo]](https://huggingface.co/spaces/ekwek/Soprano-TTS)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:soprano.md -->
 <!-- MODEL:glm-tts.md -->
@@ -1635,6 +1891,8 @@ measurable quality jump ships with no added inference cost.
 [![HuggingFace][link-huggingface]](https://huggingface.co/zai-org/GLM-TTS)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2512.14291)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:glm-tts.md -->
 <!-- MODEL:echo-tts.md -->
@@ -1687,6 +1945,8 @@ class's retry-induced inconsistency is gone by construction.
 [![Demo][link-demo]](https://huggingface.co/spaces/jordand/echo-tts-preview)
 [![Blog][link-blog]](https://jordandarefsky.com/blog/2025/echo/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:echo-tts.md -->
 <!-- MODEL:vibevoice-realtime.md -->
@@ -1715,6 +1975,8 @@ class's retry-induced inconsistency is gone by construction.
 [![GitHub][link-github]](https://github.com/microsoft/VibeVoice)
 [![HuggingFace][link-huggingface]](https://huggingface.co/microsoft/VibeVoice-Realtime-0.5B)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:vibevoice-realtime.md -->
 <!-- MODEL:fun-cosyvoice-30.md -->
@@ -1743,6 +2005,8 @@ class's retry-induced inconsistency is gone by construction.
 [![HuggingFace][link-huggingface]](https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2505.17589)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:fun-cosyvoice-30.md -->
 <!-- MODEL:lfm2-audio-15b.md -->
@@ -1769,6 +2033,8 @@ class's retry-induced inconsistency is gone by construction.
 [![HuggingFace][link-huggingface]](https://huggingface.co/LiquidAI/LFM2-Audio-1.5B)
 [![Website][link-website]](https://docs.liquid.ai/lfm)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:lfm2-audio-15b.md -->
 <!-- MODEL:marvis-tts.md -->
@@ -1817,6 +2083,8 @@ for fidelity on a per-device basis.
 [![HuggingFace][link-huggingface]](https://huggingface.co/Marvis-AI/marvis-tts-250m-v0.2)
 [![GitHub][link-github]](https://github.com/Marvis-Labs/marvis-tts)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:marvis-tts.md -->
 <!-- MODEL:indextts2.md -->
@@ -1845,6 +2113,8 @@ for fidelity on a per-device basis.
 [![GitHub][link-github]](https://github.com/xuchenxu168/Comfyui-Index-TTS2)
 [![HuggingFace][link-huggingface]](https://huggingface.co/IndexTeam/IndexTTS-2)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:indextts2.md -->
 <!-- MODEL:maya1.md -->
@@ -1872,6 +2142,8 @@ for fidelity on a per-device basis.
 [![HuggingFace][link-huggingface]](https://huggingface.co/maya-research/maya1)
 [![Website][link-website]](https://mayaresearch.ai)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:maya1.md -->
 <!-- MODEL:step-audio-editx.md -->
@@ -1899,6 +2171,8 @@ for fidelity on a per-device basis.
 [![HuggingFace][link-huggingface]](https://huggingface.co/stepfun-ai/Step-Audio-EditX)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2511.03601)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:step-audio-editx.md -->
 <!-- MODEL:kani-tts.md -->
@@ -1952,6 +2226,8 @@ datasets.
 [![HuggingFace][link-huggingface]](https://huggingface.co/nineninesix/kani-tts-370m)
 [![GitHub][link-github]](https://github.com/nineninesix-ai/kani-tts)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:kani-tts.md -->
 <!-- MODEL:vibevoice-finetuning.md -->
@@ -1999,6 +2275,8 @@ out-of-the-box.
 **Links:**
 [![GitHub][link-github]](https://github.com/voicepowered-ai/VibeVoice-finetuning)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:vibevoice-finetuning.md -->
 <!-- MODEL:voxcpm.md -->
@@ -2027,6 +2305,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/openbmb/VoxCPM-0.5B)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2509.24650)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:voxcpm.md -->
 <!-- MODEL:fireredtts2.md -->
@@ -2057,6 +2337,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/FireRedTeam/FireRedTTS2)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2509.02020)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:fireredtts2.md -->
 <!-- MODEL:audio-flamingo-3.md -->
@@ -2087,6 +2369,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/nvidia/audio-flamingo-3)
 [![Website][link-website]](https://afnext-umd-nvidia.github.io/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:audio-flamingo-3.md -->
 <!-- MODEL:zipvoice.md -->
@@ -2112,6 +2396,8 @@ out-of-the-box.
 [![Website][link-website]](https://zipvoice.github.io/)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2506.13053)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:zipvoice.md -->
 <!-- MODEL:fish-speech.md -->
@@ -2140,6 +2426,8 @@ out-of-the-box.
 [![GitHub][link-github]](https://github.com/fishaudio/fish-speech)
 [![Website][link-website]](https://fish.audio/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:fish-speech.md -->
 <!-- MODEL:chatterbox.md -->
@@ -2171,6 +2459,8 @@ out-of-the-box.
 [![Website][link-website]](https://resemble.ai/)
 [![Demo][link-demo]](https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-V3)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:chatterbox.md -->
 <!-- MODEL:orpheus-tts.md -->
@@ -2198,6 +2488,8 @@ out-of-the-box.
 [![GitHub][link-github]](https://github.com/canopyai/Orpheus-TTS)
 [![Website][link-website]](https://canopylabs.ai/model-releases)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:orpheus-tts.md -->
 <!-- MODEL:megatts3.md -->
@@ -2226,6 +2518,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/spaces/ByteDance/MegaTTS3)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2502.18924)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:megatts3.md -->
 <!-- MODEL:spark-tts.md -->
@@ -2254,6 +2548,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/SparkAudio/Spark-TTS-0.5B)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2503.01710)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:spark-tts.md -->
 <!-- MODEL:step-audio.md -->
@@ -2282,6 +2578,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/stepfun-ai)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2502.11946)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:step-audio.md -->
 <!-- MODEL:kokoro-82m.md -->
@@ -2312,6 +2610,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/hexgrad/Kokoro-82M)
 [![Demo][link-demo]](https://hf.co/spaces/hexgrad/Kokoro-TTS)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:kokoro-82m.md -->
 <!-- MODEL:kokoclone.md -->
@@ -2340,6 +2640,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/PatnaikAshish/kokoclone)
 [![Demo][link-demo]](https://huggingface.co/spaces/PatnaikAshish/kokoclone)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:kokoclone.md -->
 <!-- MODEL:luxtts.md -->
@@ -2369,6 +2671,8 @@ out-of-the-box.
 [![GitHub][link-github]](https://github.com/ysharma3501/LuxTTS)
 [![HuggingFace][link-huggingface]](https://huggingface.co/YatharthS/LuxTTS)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:luxtts.md -->
 <!-- MODEL:mimo-audio.md -->
@@ -2395,6 +2699,8 @@ out-of-the-box.
 [![GitHub][link-github]](https://github.com/XiaomiMiMo/MiMo-Audio)
 [![HuggingFace][link-huggingface]](https://huggingface.co/collections/XiaomiMiMo/mimo-audio-68cc7202692c27dae881cce0)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:mimo-audio.md -->
 <!-- MODEL:soulx-podcast.md -->
@@ -2424,6 +2730,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/collections/Soul-AILab/soulx-podcast)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2510.23541)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:soulx-podcast.md -->
 <!-- MODEL:vieneu-tts.md -->
@@ -2451,6 +2759,8 @@ out-of-the-box.
 [![HuggingFace][link-huggingface]](https://huggingface.co/pnnbao-ump/VieNeu-TTS)
 [![GitHub][link-github]](https://github.com/pnnbao97/VieNeu-TTS)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:vieneu-tts.md -->
 <!-- MODEL:dia.md -->
@@ -2478,6 +2788,8 @@ out-of-the-box.
 [![GitHub][link-github]](https://github.com/nari-labs/dia)
 [![HuggingFace][link-huggingface]](https://huggingface.co/nari-labs/Dia-1.6B-0626)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:dia.md -->
 <!-- MODEL:melotts.md -->
@@ -2506,6 +2818,8 @@ out-of-the-box.
 [![GitHub][link-github]](https://github.com/myshell-ai/MeloTTS)
 [![HuggingFace][link-huggingface]](https://huggingface.co/myshell-ai)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:melotts.md -->
 <!-- MODEL:kimi-audio.md -->
@@ -2532,6 +2846,8 @@ out-of-the-box.
 [![GitHub][link-github]](https://github.com/MoonshotAI/Kimi-Audio)
 [![HuggingFace][link-huggingface]](https://huggingface.co/moonshotai/Kimi-Audio-7B)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:kimi-audio.md -->
 <!-- MODEL:espeak-ng.md -->
@@ -2578,6 +2894,8 @@ TTS entries on this list still traces back to eSpeak-NG.
 **Links:**
 [![GitHub][link-github]](https://github.com/espeak-ng/espeak-ng)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:espeak-ng.md -->
 
@@ -2638,6 +2956,8 @@ Models that can generate audio from multiple input modalities (video, text, imag
 [![GitHub][link-github]](https://github.com/xiaomi-research/midashenglm-gen)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2608.11804)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:midashenglm-gen.md -->
 <!-- MODEL:scena.md -->
@@ -2691,6 +3011,8 @@ out by design.
 [![Website][link-website]](https://finmickey.github.io/scena/)
 [![Paper][link-paper]](https://arxiv.org/abs/2606.19325)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:scena.md -->
 <!-- MODEL:nemotron-labs-audex-2b.md -->
@@ -2750,6 +3072,8 @@ about interchangeably.
 [![Collection][link-collection]](https://huggingface.co/collections/nvidia/nemotron-labs-audex)
 [![Demo][link-demo]](https://huggingface.co/spaces/nvidia/Nemotron-Labs-Audex)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:nemotron-labs-audex-2b.md -->
 <!-- MODEL:nemotron-labs-audex-30b-a3b.md -->
@@ -2787,6 +3111,8 @@ about interchangeably.
 [![Paper][link-paper]](https://arxiv.org/abs/2607.05196)
 [![Collection][link-collection]](https://huggingface.co/collections/nvidia/nemotron-labs-audex)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:nemotron-labs-audex-30b-a3b.md -->
 <!-- MODEL:moss-soundeffect.md -->
@@ -2819,6 +3145,8 @@ about interchangeably.
 [![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect (legacy v1 checkpoint))
 [![GitHub][link-github]](https://github.com/OpenMOSS/MOSS-TTS/tree/main/moss_soundeffect_v2)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:moss-soundeffect.md -->
 <!-- MODEL:omni2sound.md -->
@@ -2855,6 +3183,8 @@ about interchangeably.
 [![Paper][link-paper]](https://arxiv.org/abs/2601.02731)
 [![Benchmark][link-benchmark]](https://huggingface.co/datasets/Dalision/Omni2Sound_Benchmark)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:omni2sound.md -->
 <!-- MODEL:controlfoley.md -->
@@ -2904,6 +3234,8 @@ V2A, TV2A, AC-V2A — under one model.
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2604.15086)
 [![Skill][link-skill]](https://clawhub.ai/yjx-research/controlfoley-audio-generator)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:controlfoley.md -->
 <!-- MODEL:woosh.md -->
@@ -2931,6 +3263,8 @@ V2A, TV2A, AC-V2A — under one model.
 [![GitHub][link-github]](https://github.com/SonyResearch/Woosh-SFX)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2604.01929)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:woosh.md -->
 <!-- MODEL:chroma-4b.md -->
@@ -2985,6 +3319,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![Paper][link-paper]](https://arxiv.org/abs/2601.11141)
 [![Demo][link-demo]](https://huggingface.co/spaces/hysts/Chroma-4B)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:chroma-4b.md -->
 <!-- MODEL:uni-moe-audio-any2audio.md -->
@@ -3010,6 +3346,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![GitHub][link-github]](https://github.com/HITsz-TMG/Uni-MoE)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2510.13344)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:uni-moe-audio-any2audio.md -->
 <!-- MODEL:audiox.md -->
@@ -3039,6 +3377,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![HuggingFace][link-huggingface]](https://huggingface.co/HKUSTAudio/Audio-Omni)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2503.10522)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:audiox.md -->
 <!-- MODEL:hunyuanvideo-foley.md -->
@@ -3067,6 +3407,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![Website][link-website]](https://www.hunyuanvideofoley.org/)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2508.16930)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:hunyuanvideo-foley.md -->
 <!-- MODEL:prismaudio.md -->
@@ -3103,6 +3445,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![Demo][link-demo]](https://huggingface.co/spaces/FunAudioLLM/PrismAudio)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2511.18833)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:prismaudio.md -->
 <!-- MODEL:thinksound.md -->
@@ -3129,6 +3473,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![HuggingFace][link-huggingface]](https://huggingface.co/liuHuadai/ThinkSound)
 [![Demo][link-demo]](https://huggingface.co/spaces/FunAudioLLM/ThinkSound)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:thinksound.md -->
 <!-- MODEL:mmaudio.md -->
@@ -3157,6 +3503,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![Demo][link-demo]](https://huggingface.co/spaces/hkchengrex/MMAudio)
 [![arXiv][link-arxiv]](https://arxiv.org/abs/2412.15322)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:mmaudio.md -->
 
@@ -3206,6 +3554,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![Demo][link-demo]](https://huggingface.co/spaces/nvidia/RE-USE)
 [![Paper][link-paper]](https://arxiv.org/abs/2603.02641)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:re-use.md -->
 <!-- MODEL:novasr.md -->
@@ -3235,6 +3585,8 @@ fidelity* (parrot the speaker poorly), rarely both.
 [![GitHub][link-github]](https://github.com/ysharma3501/NovaSR)
 [![HuggingFace][link-huggingface]](https://huggingface.co/YatharthS/NovaSR)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:novasr.md -->
 <!-- MODEL:quarkaudio-unise.md -->
@@ -3275,6 +3627,8 @@ models into one generalist.
 [![GitHub][link-github]](https://github.com/alibaba/unified-audio/tree/main/QuarkAudio-UniSE)
 [![Paper][link-paper]](https://arxiv.org/abs/2510.20441)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:quarkaudio-unise.md -->
 <!-- MODEL:pase.md -->
@@ -3306,6 +3660,8 @@ models into one generalist.
 [![Demo][link-demo]](https://xiaobin-rong.github.io/pase_demo/)
 [![Paper][link-paper]](https://arxiv.org/abs/2511.13300)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:pase.md -->
 <!-- MODEL:dtt-bsr.md -->
@@ -3334,6 +3690,8 @@ models into one generalist.
 **Links:**
 [![GitHub][link-github]](https://github.com/OrigamiShido/DTT-BSR)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:dtt-bsr.md -->
 <!-- MODEL:nvidia-a2sb.md -->
@@ -3367,6 +3725,8 @@ models into one generalist.
 [![Demo][link-demo]](https://research.nvidia.com/labs/adlr/A2SB/)
 [![Paper][link-paper]](https://arxiv.org/abs/2501.11311)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:nvidia-a2sb.md -->
 <!-- MODEL:zipenhancer.md -->
@@ -3417,6 +3777,8 @@ source-separation model.
 **Links:**
 [![ModelScope][link-modelscope]](https://modelscope.cn/models/iic/speech_zipenhancer_ans_multiloss_16k_base)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:zipenhancer.md -->
 <!-- MODEL:audiosr.md -->
@@ -3447,6 +3809,8 @@ source-separation model.
 [![GitHub][link-github]](https://github.com/haoheliu/versatile_audio_super_resolution)
 [![Paper][link-paper]](https://arxiv.org/abs/2309.07314)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:audiosr.md -->
 
@@ -3522,6 +3886,8 @@ Omnilingual 1B, the closest open baselines.
 [![Paper][link-paper]](https://arxiv.org/abs/2607.10371)
 [![Demo][link-demo]](https://huggingface.co/spaces/hugging-apps/gigaam-multilingual-asr)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:gigaam-multilingual.md -->
 <!-- MODEL:gigachat3-audio.md -->
@@ -3574,6 +3940,8 @@ flat transcript.
 [![Paper][link-paper]](https://arxiv.org/abs/2607.10387)
 [![Demo][link-demo]](https://huggingface.co/spaces/hugging-apps/gigaam-multilingual-asr)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:gigachat3-audio.md -->
 <!-- MODEL:audio8-asr-0-1b.md -->
@@ -3635,6 +4003,8 @@ this parameter scale.
 [![Paper][link-paper]](https://arxiv.org/abs/2605.28139)
 [![Demo][link-demo]](https://huggingface.co/spaces/Audio8/audio8-asr-0-1b)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:audio8-asr-0-1b.md -->
 <!-- MODEL:moss-transcribe-diarize.md -->
@@ -3681,6 +4051,8 @@ postprocess.
 [![HuggingFace][link-huggingface]](https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-Diarize)
 [![Paper][link-paper]](https://arxiv.org/abs/2601.01554)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:moss-transcribe-diarize.md -->
 <!-- MODEL:ark-asr-3b.md -->
@@ -3746,6 +4118,8 @@ base.
 [![Paper][link-paper]](https://arxiv.org/abs/2605.28139)
 [![Demo][link-demo]](https://huggingface.co/spaces/Audio8/ark-asr-3b)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:ark-asr-3b.md -->
 <!-- MODEL:mega-asr.md -->
@@ -3780,6 +4154,8 @@ base.
 [![Paper][link-paper]](https://arxiv.org/abs/2605.19833)
 [![Demo][link-demo]](https://huggingface.co/spaces/zhifeixie/Mega-ASR)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:mega-asr.md -->
 <!-- MODEL:higgs-audio-v3-8b-stt-v2.md -->
@@ -3834,6 +4210,8 @@ and 8.91B variants without changing their inference pipeline.
 [![HuggingFace][link-huggingface]](https://huggingface.co/bosonai/higgs-audio-v3-8b-stt-v2)
 [![Paper][link-paper]](https://arxiv.org/abs/2603.02641)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:higgs-audio-v3-8b-stt-v2.md -->
 <!-- MODEL:higgs-audio-v3-stt.md -->
@@ -3882,6 +4260,8 @@ ensures the Open ASR Leaderboard results are clean.
 [![HuggingFace][link-huggingface]](https://huggingface.co/bosonai/higgs-audio-v3-stt)
 [![Paper][link-paper]](https://arxiv.org/abs/2603.02641)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:higgs-audio-v3-stt.md -->
 <!-- MODEL:cohere-transcribe.md -->
@@ -3916,6 +4296,8 @@ ensures the Open ASR Leaderboard results are clean.
 [![Demo][link-demo]](https://huggingface.co/spaces/CohereLabs/cohere-transcribe-03-2026)
 [![Blog][link-blog]](https://cohere.com/blog/transcribe)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:cohere-transcribe.md -->
 <!-- MODEL:vibevoice-asr.md -->
@@ -3940,6 +4322,8 @@ ensures the Open ASR Leaderboard results are clean.
 [![GitHub][link-github]](https://github.com/microsoft/VibeVoice)
 [![HuggingFace][link-huggingface]](https://huggingface.co/microsoft/VibeVoice-ASR)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:vibevoice-asr.md -->
 <!-- MODEL:symphony-asr.md -->
@@ -3970,6 +4354,8 @@ ensures the Open ASR Leaderboard results are clean.
 [![GitHub][link-github]]((not stated on this card))
 [![Predecessor][link-predecessor]](https://huggingface.co/okestro-ai-lab/SYMPHONY)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:symphony-asr.md -->
 <!-- MODEL:fun-asr.md -->
@@ -4001,6 +4387,8 @@ ensures the Open ASR Leaderboard results are clean.
 [![HuggingFace][link-huggingface]](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)
 [![GitHub][link-github]](https://github.com/FunAudioLLM/Fun-ASR)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:fun-asr.md -->
 <!-- MODEL:glm-asr-nano.md -->
@@ -4050,6 +4438,8 @@ directly with the `transformers` v4.x / v5.x stack.
 [![GitHub][link-github]](https://github.com/zai-org/GLM-ASR)
 [![Demo][link-demo]](https://huggingface.co/spaces/YatharthS/GLM-ASR-Nano)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:glm-asr-nano.md -->
 <!-- MODEL:symphony.md -->
@@ -4079,6 +4469,8 @@ directly with the `transformers` v4.x / v5.x stack.
 [![HuggingFace][link-huggingface]](https://huggingface.co/okestro-ai-lab/SYMPHONY)
 [![Successor][link-successor]](https://huggingface.co/okestro-ai-lab/SYMPHONY-ASR)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:symphony.md -->
 <!-- MODEL:moonshine.md -->
@@ -4111,6 +4503,8 @@ directly with the `transformers` v4.x / v5.x stack.
 [![Blog][link-blog]](https://petewarden.com/2024/10/21/introducing-moonshine-the-new-state-of-the-art-for-speech-to-text/)
 [![Paper][link-paper]](https://arxiv.org/abs/2410.15608)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:moonshine.md -->
 <!-- MODEL:sensevoice.md -->
@@ -4142,6 +4536,8 @@ directly with the `transformers` v4.x / v5.x stack.
 [![HuggingFace][link-huggingface]](https://huggingface.co/FunAudioLLM/SenseVoiceSmall)
 [![GitHub][link-github]](https://github.com/FunAudioLLM/SenseVoice)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:sensevoice.md -->
 <!-- MODEL:funasr.md -->
@@ -4171,6 +4567,8 @@ directly with the `transformers` v4.x / v5.x stack.
 [![GitHub][link-github]](https://github.com/modelscope/FunASR)
 [![Website][link-website]](https://www.funasr.com)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:funasr.md -->
 
@@ -4250,6 +4648,8 @@ acoustic representation.
 [![Paper][link-paper]](https://arxiv.org/abs/2601.09239)
 [![Demo][link-demo]](https://anonymous.4open.science/w/DSA_Tokenizer_demo/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:dsa-tokenizer.md -->
 <!-- MODEL:kvae-audio.md -->
@@ -4280,6 +4680,8 @@ acoustic representation.
 [![GitHub][link-github]](https://github.com/kandinskylab/kvae-audio)
 [![Website][link-website]](https://kandinskylab.ai/)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:kvae-audio.md -->
 <!-- MODEL:linacodec.md -->
@@ -4335,6 +4737,8 @@ thing as the TTS rows above.
 [![HuggingFace][link-huggingface]](https://huggingface.co/YatharthS/LinaCodec)
 [![GitHub][link-github]](https://github.com/ysharma3501/LinaCodec)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:linacodec.md -->
 <!-- MODEL:quarkaudio-hcodec.md -->
@@ -4373,6 +4777,8 @@ temporally simple content, lowering LLM training and inference cost.
 [![GitHub][link-github]](https://github.com/alibaba/unified-audio/tree/main/QuarkAudio-HCodec/HCodec/)
 [![Paper][link-paper]](https://arxiv.org/pdf/2512.20151)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:quarkaudio-hcodec.md -->
 
@@ -4417,6 +4823,8 @@ Multi-stance audio annotators — specialized models that transcribe not just sp
 [![HuggingFace][link-huggingface]](https://huggingface.co/ACE-Step/acestep-transcriber)
 [![Paper][link-paper]](https://arxiv.org/abs/2602.00744)
 
+
+<p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:acestep-transcriber.md -->
 
@@ -4455,6 +4863,7 @@ This list is continuously evolving. If you have any models to add or updates to 
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
 [license-other]: https://img.shields.io/badge/Other-lightgrey?style=flat-square "Other"
+[license-cc-by-4.0]: https://img.shields.io/badge/CC_BY_4.0-green?style=flat-square&logo=creativecommons "CC BY 4.0"
 [license-gpl-3.0]: https://img.shields.io/badge/GPL_3.0-blue?style=flat-square "GPL 3.0"
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
@@ -4465,6 +4874,7 @@ This list is continuously evolving. If you have any models to add or updates to 
 [link-benchmark]: https://img.shields.io/badge/Benchmark-benchmark-lightgrey?style=flat-square "Benchmark benchmark"
 [link-blog]: https://img.shields.io/badge/Blog-post-blue?style=flat-square "Blog post"
 [link-collection]: https://img.shields.io/badge/Collection-darkblue?style=flat-square "Collection"
+[link-dataset]: https://img.shields.io/badge/Dataset-dataset-darkgreen?style=flat-square&logo=huggingface "Dataset dataset"
 [link-demo]: https://img.shields.io/badge/Demo-live-blue?style=flat-square "Demo live"
 [link-github]: https://img.shields.io/badge/GitHub-code-black?style=flat-square&logo=github "GitHub code"
 [link-huggingface]: https://img.shields.io/badge/HuggingFace-models-yellow?style=flat-square&logo=huggingface "HuggingFace models"
