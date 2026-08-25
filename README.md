@@ -24,6 +24,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [CuteTTS](#cutetts) | ✅ | ❌ | 5 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Rynsan TTS](#rynsan-tts) | — | ❌ | Khasi, Garo, Pnar, English, Hindi | — | ![CC BY 4.0][license-cc-by-4.0] |
 | [Audio8 TTS Preview 0.1B](#audio8-tts-preview-0-1b) | ✅ | ❌ | 8 | — | ![Other][license-other] |
 | [Kiseki-TTS](#kiseki-tts) | ❌ | ✅ | Japanese | — | ![MIT][license-mit] |
@@ -103,6 +104,38 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:cutetts.md -->
+<details id="cutetts">
+<summary>CuteTTS</summary>
+
+### CuteTTS
+
+**Description:** CuteTTS is a lightweight (~230M-parameter) **continuous autoregressive** TTS model from OPPO that models continuous latents rather than discrete codec tokens, running efficiently on GPUs, CPUs, and Apple silicon. It delivers ultra-low latency — ~40 ms to the first audio chunk and ~9× real-time throughput on an RTX 4090 — with strong speech quality and zero-shot voice cloning (best-in-comparison 78.9 SIM on LibriSpeech test-clean). Multilingual support covers English, Chinese, French, German, and Spanish. A distilled variant (`CuteTTS-distill`) trades slight quality for further efficiency. Ships with a web demo, Python API, and CLI.
+
+**Release Date:** August 24, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 5 (English, Chinese, French, German, Spanish) |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Parameters** | ~230M |
+| **Architecture** | continuous autoregressive modeling of latents + speaker encoder + audio VAE (discrete-codec-free design) |
+| **Variants** | CuteTTS, CuteTTS-distill |
+
+**Features:** Autoregressively models *continuous* latent audio representations instead of discrete codec tokens, eliminating codebook-related artifacts and quantization loss at only ~230M parameters. Combined with a lightweight speaker encoder and audio VAE, this yields best-of-class speaker similarity among compared open models and ~40 ms first-chunk latency while remaining practical for CPU/Apple-silicon inference.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/OPPOer/CuteTTS)
+[![GitHub][link-github]](https://github.com/OPPO-Mente-Lab/CuteTTS)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2608.08638)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:cutetts.md -->
 <!-- MODEL:rynsan-tts.md -->
 <details id="rynsan-tts">
 <summary>Rynsan TTS</summary>
@@ -3822,6 +3855,7 @@ source-separation model.
 
 | Model | Languages | Streaming | License |
 | :--- | :--- | :---: | :--- |
+| [kodama-ja-streaming-small](#kodama-ja-streaming-small) | Japanese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [GigaAM-Multilingual](#gigaam-multilingual) | 70+ | ❌ | ![MIT][license-mit] |
 | [GigaChat3.1-Audio](#gigachat3-audio) | Russian, English | ❌ | ![MIT][license-mit] |
 | [Audio8-ASR-0.1B](#audio8-asr-0-1b) | 7 | ❌ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
@@ -3840,6 +3874,37 @@ source-separation model.
 | [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Other][license-other] |
 | [FunASR](#funasr) | 50+ | ✅ | ![MIT][license-mit] |
 
+<!-- MODEL:kodama-ja-streaming-small.md -->
+<details id="kodama-ja-streaming-small">
+<summary>kodama-ja-streaming-small</summary>
+
+### kodama-ja-streaming-small
+
+**Description:** kodama-ja-streaming-small is a Japanese streaming speech-recognition model, fully fine-tuned from `moonshine-ai/moonshine-streaming-small` (MIT, English) on the full 35,000 hours of ReazonSpeech v2. It targets offline CPU operation and low-latency streaming, shipping a 3-graph ONNX/ORT deployment set (324 MB): a float acoustic encoder (207.9 MB; int8 quantization degrades accuracy so it is kept in float), a cross-attention KV prefill graph, and an int8 dynamic-quantized single-step decoder (83.1 MB, no CER regression). Streaming uses **bounded-tail revision (local-agreement)** with a 500 ms block; the adopted setting trades +0.0538 CER vs offline for ~883–957 ms finalization latency. It is ~5.3× faster to first partial than Vosk small. The card notes the checkpoint measures 140,135,225 parameters from the safetensors header (the base model's card says 123M).
+
+**Release Date:** August 22, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Languages** | Japanese only (ja) |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Parameters** | 140.1M (safetensors measured; base card claims 123M) |
+| **Architecture** | Moonshine Streaming encoder-decoder (10+10 layers, vocab 32,768, 16 kHz) |
+| **Base Model** | moonshine-ai/moonshine-streaming-small (full fine-tune, not LoRA) |
+| **Training Data** | ReazonSpeech v2 (35,000 hours, CDLA-Sharing-1.0) |
+| **Deployment** | ONNX/ORT assets bundled (encoder float + int8 decoder step), CPU offline |
+
+**Features:** Brings native streaming Japanese ASR to CPU-class devices by porting Moonshine's bounded-tail revision scheme through a full-language fine-tune and quantizing only where it is safe (the per-step decoder, keeping the acoustic encoder in float). The card is unusually transparent about the streaming/offline trade-off (+0.0538 CER at the adopted latency setting vs +0.0230 for a slower frozen-free variant) and about the parameter-count discrepancy versus the upstream card.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/ayousanz/kodama-ja-streaming-small)
+[![Demo][link-demo]](https://huggingface.co/spaces/hugging-apps/kodama-ja-streaming-asr)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:kodama-ja-streaming-small.md -->
 <!-- MODEL:gigaam-multilingual.md -->
 <details id="gigaam-multilingual">
 <summary>GigaAM-Multilingual</summary>
@@ -4860,8 +4925,8 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
-[license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
+[license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-other]: https://img.shields.io/badge/Other-lightgrey?style=flat-square "Other"
 [license-cc-by-4.0]: https://img.shields.io/badge/CC_BY_4.0-green?style=flat-square&logo=creativecommons "CC BY 4.0"
 [license-gpl-3.0]: https://img.shields.io/badge/GPL_3.0-blue?style=flat-square "GPL 3.0"
