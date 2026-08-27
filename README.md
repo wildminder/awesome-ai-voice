@@ -24,6 +24,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [TontaubeV1](#tontaube-v1) | ✅ | ❌ | 7 | ✅ | ![Other][license-other] |
+| [Breeze TTS 2](#breeze-tts-2) | ✅ | ❌ | 2 | ✅ | ![Other][license-other] |
+| [Sopro v2 Turbo](#sopro-v2-turbo) | ✅ | ❌ | 4 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [CuteTTS](#cutetts) | ✅ | ❌ | 5 | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Rynsan TTS](#rynsan-tts) | — | ❌ | Khasi, Garo, Pnar, English, Hindi | — | ![CC BY 4.0][license-cc-by-4.0] |
 | [Audio8 TTS Preview 0.1B](#audio8-tts-preview-0-1b) | ✅ | ❌ | 8 | — | ![Other][license-other] |
@@ -104,6 +107,112 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:tontaube-v1.md -->
+<details id="tontaube-v1">
+<summary>TontaubeV1</summary>
+
+### TontaubeV1
+
+**Description:** TontaubeV1 is a multilingual text-to-speech model from TontaubeAI (craitech) designed for expressive voice cloning, long-form generation, and low-latency streaming. Its release contains four causal codebook predictors: **CB0** generates semantic audio and duration from text, while progressively smaller **CB1–CB3** add acoustic detail. CB0 uses a Qwen3-1.7B-derived transformer trunk and CB1–CB3 progressively shallower Qwen3-0.6B-derived trunks, each with a two-layer audio-token head. The four output streams are decoded with DualCodec, and the inference path uses VibeVoice's acoustic encoder/decoder for continuous reconstruction and streaming. It ships bundled synthetic voices plus zero-shot cloning from up to 60 s of reference audio, with public speaking styles `audiobook`, `conversational`, and `agentic`. Released under the **Tontaube Community Model License 1.0**, which is explicitly not open-source.
+
+**Release Date:** August 26, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 7 (English, German primary; Spanish, French, Italian, Dutch, Portuguese secondary) |
+| **Streaming** | ✅ |
+| **License** | ![Other][license-other] |
+| **Parameters** | ~2.87B (2,873,962,498; CB0 1.83B + CB1 449M + CB2 327M + CB3 269M) |
+| **Architecture** | 4-stage Qwen3-derived codebook cascade (CB0–CB3) + DualCodec + VibeVoice decode |
+| **Styles** | audiobook, conversational, agentic |
+
+**Features:** The four-stage codebook cascade (CB0 semantic+duration → CB1–CB3 progressive acoustic refinement) lets a single multilingual model deliver expressive, long-form, low-latency speech with strong zero-shot cloning. On the 1,088 English zero-shot Seed-TTS examples it posts 1.66% mean utterance-level WER (measured with Whisper large-v3 at semantic temperature 0.6), and the RTX-5090 streaming path reaches ~200 ms to first encoded audio.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/TontaubeAI/TontaubeV1)
+[![GitHub][link-github]](https://github.com/craitech/tontaube)
+[![Demo][link-demo]](https://tontaube.ai/playground)
+[![Paper][link-paper]](https://tontaube.ai/papers/tontaube-v1-technical-report.pdf)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:tontaube-v1.md -->
+<!-- MODEL:breeze-tts-2.md -->
+<details id="breeze-tts-2">
+<summary>Breeze TTS 2</summary>
+
+### Breeze TTS 2
+
+**Description:** Breeze TTS 2 is an open-weight text-to-speech model from BreezeBlue / RESONIA built for real-time interaction. It ranks #1 among open-weight models on the Artificial Analysis TTS leaderboard while outperforming frontier proprietary systems. Its open-ended natural-language instruction-following supports **reference-free voice design** (create a voice from a text description) and **reference-guided voice direction** (clone a voice while steering tone, emotion, pace, delivery), alongside standard reference-audio voice cloning. Ultra-low-latency streaming reaches 0.32 RTF (≈3.1× real time with the warmed-up fast path) and under 40 ms time-to-first-audio on an NVIDIA H100, emitting 24 kHz PCM. Source code is Apache-2.0; model weights are governed by the BreezeBlue Research and Non-Commercial License (commercial use needs written authorization from RESONIA).
+
+**Release Date:** August 25, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 2 (English, Chinese) |
+| **Streaming** | ✅ |
+| **License** | ![Other][license-other] |
+| **Parameters** | 3B (3,466,363,713) |
+| **Architecture** | seq2seq backbone + depth decoder + codec with CUDA-graph fast path (no named backbone disclosed) |
+| **Highlights** | #1 open-weight on Artificial Analysis TTS leaderboard; vocal events inline (laugh/cough) |
+
+**Features:** Pairs natural-language voice control with real-time streaming: a single model handles reference-free **voice design** (no reference audio needed) and **voice direction** (clone + steer prosody), and ships a CUDA-graph fast path that hits sub-40 ms TTFA at ~3.1× real time on H100 — open-weight quality that the authors claim exceeds frontier proprietary TTS.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/BreezeBlue/Breeze-TTS-2)
+[![GitHub][link-github]](https://github.com/breezeblue-ai/breeze-tts)
+[![Blog][link-blog]](https://breezeblue.ai/breeze-tts-2)
+[![Demo][link-demo]](https://huggingface.co/spaces/BreezeBlue/breeze-tts-2-demo)
+
+
+**Additional Tools:**
+
+| Tool | Type | Link |
+|------|------|------|
+| ComfyUI-Breeze-TTS-2 | ComfyUI node | [ComfyUI-Breeze-TTS-2](https://github.com/Saganaki22/ComfyUI-Breeze-TTS-2) |
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:breeze-tts-2.md -->
+<!-- MODEL:sopro-v2-turbo.md -->
+<details id="sopro-v2-turbo">
+<summary>Sopro v2 Turbo</summary>
+
+### Sopro v2 Turbo
+
+**Description:** Sopro (Portuguese for "breath") is a lightweight voice-cloning text-to-speech family. This repo ships **sopro-v2-turbo**, a 120M-parameter open model that streams and runs comfortably on a laptop CPU or in the browser (ONNX runtime), reaching SOTA-level intelligibility against much larger systems. It supports **zero-shot voice cloning** from 5–20 s of reference audio, four languages (English, European Portuguese, French, German), and a streaming path with ~300 ms time-to-first-audio on a laptop CPU (0.24 RTF offline / 0.21 RTF streaming on an M3 CPU, 0.07 RTF on H100). Released under Apache-2.0.
+
+**Release Date:** August 25, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 4 (English, European Portuguese, French, German) |
+| **Streaming** | ✅ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Parameters** | 120M (121,574,193) |
+| **Deployment** | in-browser ONNX runtime; int8 AR weights on CPU; causal vocoder |
+| **Architecture** | autoregressive TTS + chunked-attention streaming path + causal vocoder (F5-TTS/CosyVoice/Vocos lineage acknowledged) |
+
+**Features:** Packs SOTA-level intelligibility into a 120M footprint that runs in the browser or on a laptop CPU, with a chunked-attention + causal-vocoder streaming path (~300 ms TTFA) — making zero-shot multilingual voice cloning practical for on-device and edge deployment rather than GPU-only serving.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/samuel-vitorino/sopro-v2-turbo)
+[![GitHub][link-github]](https://github.com/samuel-vitorino/sopro)
+[![Demo][link-demo]](https://samuel-vitorino.github.io/sopro/)
+[![Blog][link-blog]](https://research.haloneuro.ai/posts/sopro-v2)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:sopro-v2-turbo.md -->
 <!-- MODEL:cutetts.md -->
 <details id="cutetts">
 <summary>CuteTTS</summary>
