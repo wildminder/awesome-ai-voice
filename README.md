@@ -24,6 +24,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [ICE-012 Audio](#ice-012-audio) | ✅ | ❌ | 590 | ✅ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [TontaubeV1](#tontaube-v1) | ✅ | ❌ | 7 | ✅ | ![Other][license-other] |
 | [Breeze TTS 2](#breeze-tts-2) | ✅ | ❌ | 2 | ✅ | ![Other][license-other] |
 | [Sopro v2 Turbo](#sopro-v2-turbo) | ✅ | ❌ | 4 | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -107,6 +108,38 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:ice-012-audio.md -->
+<details id="ice-012-audio">
+<summary>ICE-012 Audio</summary>
+
+### ICE-012 Audio
+
+**Description:** ICE-012 Audio is a multilingual text-to-speech model from DarkPs (a FanuonAI organization) with streaming output and reference-based voice cloning. Its defining trait is breadth of language coverage — **590 language names/variants** are accepted (name or 2–3-letter ID, with a language-agnostic fallback), including 13 Arabic dialects ("Lahgtna" variants) alongside the full ISO list. It introduces an **active acoustic adapter** — conditioning codec embeddings before the backbone and refining hidden states after it. Voice is controllable along six axes: gender (male/female), age (child → elderly), pitch (5 levels), accent (10 English accents), style (e.g. whisper), and speed (0.5–2.0×), plus an `--auto-voice` mode where the model picks a voice automatically. The checkpoint is ~714M parameters (F16) and runs via `transformers` with `trust_remote_code=True`. Released under CC BY-NC 4.0.
+
+**Release Date:** August 29, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 590 names/variants (incl. 13 Arabic Lahgtna dialects; language-agnostic fallback) |
+| **Streaming** | ✅ |
+| **License** | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| **Parameters** | ~714M (714,409,993 F16) |
+| **Architecture** | causal LM with active acoustic adapter (conditions codec embeddings pre-backbone, refines hidden states post-backbone) |
+| **Voice Controls** | gender, age, pitch, accent, style, speed; auto-voice mode |
+
+**Features:** The active acoustic adapter wraps the backbone on both sides — conditioning codec embeddings before it and refining hidden states after — while a six-axis voice-control space (gender/age/pitch/accent/style/speed plus auto-voice) and 590-language coverage make it one of the broadest single-checkpoint TTS releases for dialect and minority-language synthesis.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/darkps/ice-012-audio)
+[![Website][link-website]](https://dark.ps)
+[![Demo][link-demo]](https://huggingface.co/spaces/hugging-apps/ice-012-audio-tts)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:ice-012-audio.md -->
 <!-- MODEL:tontaube-v1.md -->
 <details id="tontaube-v1">
 <summary>TontaubeV1</summary>
@@ -3964,6 +3997,7 @@ source-separation model.
 
 | Model | Languages | Streaming | License |
 | :--- | :--- | :---: | :--- |
+| [VibeVoice-ASR-Streaming-7B](#vibevoice-asr-streaming-7b) | 10 | ✅ | ![MIT][license-mit] |
 | [kodama-ja-streaming-small](#kodama-ja-streaming-small) | Japanese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [GigaAM-Multilingual](#gigaam-multilingual) | 70+ | ❌ | ![MIT][license-mit] |
 | [GigaChat3.1-Audio](#gigachat3-audio) | Russian, English | ❌ | ![MIT][license-mit] |
@@ -3983,6 +4017,37 @@ source-separation model.
 | [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Other][license-other] |
 | [FunASR](#funasr) | 50+ | ✅ | ![MIT][license-mit] |
 
+<!-- MODEL:vibevoice-asr-streaming-7b.md -->
+<details id="vibevoice-asr-streaming-7b">
+<summary>VibeVoice-ASR-Streaming-7B</summary>
+
+### VibeVoice-ASR-Streaming-7B
+
+**Description:** VibeVoice-ASR-Streaming is Microsoft's unified **streaming** speech-to-text model that transcribes **Who (Speaker)** said **What (Content)** continuously as speech arrives, with support for **customized hotwords** (names, technical terms) that improve recognition of domain-specific content. It covers 10 languages: Chinese, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, and Spanish. The checkpoint weighs 8.67B parameters (BF16) and loads with transformers (`VibeVoiceForASRStreamingTraining`). A technical report is on arXiv (2609.02812). Released under the MIT License by Microsoft Research.
+
+**Release Date:** September 2, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Languages** | 10 (zh, en, fr, de, it, ja, ko, pt, ru, es) |
+| **Streaming** | ✅ |
+| **License** | ![MIT][license-mit] |
+| **Parameters** | 8.67B (8,674,021,857 BF16) |
+| **Architecture** | VibeVoice (transformers, VibeVoiceForASRStreamingTraining) |
+| **Highlights** | speaker-attributed transcription; customized hotword boosting |
+
+**Features:** Unifies three streaming capabilities in one pass — speaker attribution ("who"), content transcription ("what"), and user-supplied hotword boosting for domain-specific vocabulary — instead of chaining diarization + ASR + post-correction, and does it continuously as audio arrives rather than in offline batches.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/microsoft/VibeVoice-ASR-Streaming-7B)
+[![GitHub][link-github]](https://github.com/microsoft/VibeVoice)
+[![Demo][link-demo]](https://aka.ms/vibeasr)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.02812)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:vibevoice-asr-streaming-7b.md -->
 <!-- MODEL:kodama-ja-streaming-small.md -->
 <details id="kodama-ja-streaming-small">
 <summary>kodama-ja-streaming-small</summary>
@@ -5030,7 +5095,7 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 ---
 
-*Last Updated: August 2026*
+*Last Updated: September 2026*
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
