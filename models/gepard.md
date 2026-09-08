@@ -28,25 +28,28 @@ dial.
 ## Links
 
 - HuggingFace: https://huggingface.co/nineninesix/gepard-1.0
+- GitHub: https://github.com/nineninesix-ai/gepard-inference
+- arXiv: https://arxiv.org/abs/2609.04222
 - Demo: https://huggingface.co/spaces/nineninesix/gepard
 - Paper: https://huggingface.co/nineninesix/gepard-1.0/resolve/main/gepard_techreport.pdf
 - Website: https://www.nineninesix.ai/
 
 ## Features
 
-- parameters: ~556M (Qwen3.5-14 backbone + audio interface + voice-cloning compressor)
-- voice_cloning: yes (short reference clip, up-front capture, no per-word cost)
+- parameters: ~556M (555,694,169; Qwen3.5 backbone + audio interface + voice-cloning compressor)
+- voice_cloning: yes (zero-shot, short reference clip, up-front capture, no per-word cost)
 - asr: no
 - pronunciation: yes (autoregressive language model keeps content natural)
 - emotion_control: no (prosody-aware, not controllably expressive)
 - languages: English (US/UK), Spanish (es-MX), Portuguese (pt-BR), Dutch (NL)
 - streaming: yes (TTFA ~50 ms, ~25× real time on RTX 5090)
-- license: Research Only (CODEC NVIDIA Open Model License; Apache 2.0 for model weights)
-- audio_codec: NVIDIA NeMo NanoCodec (FSQ, 22.05 kHz, 21.5 fps, 1.89 kbps)
+- license: Apache-2.0
+- audio_codec: NVIDIA NeMo NanoCodec (FSQ, 22.05 kHz, 21.5 fps, 1.89 kbps; NVIDIA Open Model License)
 - sample_rate: 22,050 Hz
 - backbone: Qwen3.5 full-attention transformer (14 layers, hidden 1024, 8 heads; ~500M params)
 - inference: vLLM
 - throughput: 256 conversations on one 96 GB Blackwell (RTX Pro 6000) GPU
+- benchmark: Seed-TTS-eval leader on perceived quality (NISQA-MOS 4.25, NOI 4.16, COL 4.16, DIS 4.51) trading some WER/SIM
 
 ## Comparison
 
@@ -66,4 +69,8 @@ of ~50 ms and 25× real time on a single RTX 5090 represent the
 quality-on path, not a cheap-fast preview. Voice cloning is decoupled
 into a separate up-front compressor, which means cloning is "free" at
 run-time once the reference clip is encoded — a structural choice that
-supports serving hundreds of conversations per GPU.
+supports serving hundreds of conversations per GPU. A stop-head weight
+update (2026-08-06) fixed premature stopping at sentence boundaries and
+lifted the effective duration ceiling; on Seed-TTS-eval Gepard leads the
+compared systems on perceived quality (NISQA-MOS 4.25) while trading
+some speaker similarity and WER for its streaming-first design.

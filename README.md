@@ -24,6 +24,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [rumik-oss 1](#rumik-oss-1) | ❌ | ❌ | 22 Indic languages + English | — | ![Other][license-other] |
+| [Irodori-TTS-v4.1-Anime](#irodori-tts-v4-1-anime) | — | ❌ | Japanese | — | ![MIT][license-mit] |
 | [ICE-012 Audio](#ice-012-audio) | ✅ | ❌ | 590 | ✅ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [TontaubeV1](#tontaube-v1) | ✅ | ❌ | 7 | ✅ | ![Other][license-other] |
 | [Breeze TTS 2](#breeze-tts-2) | ✅ | ❌ | 2 | ✅ | ![Other][license-other] |
@@ -108,6 +110,72 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:rumik-oss-1.md -->
+<details id="rumik-oss-1">
+<summary>rumik-oss 1</summary>
+
+### rumik-oss 1
+
+**Description:** rumik-oss 1 is a 3B multilingual text-to-speech model from rumik ai, trained on **fewer than 70,000 hours of speech** while performing competitively with existing TTS models. It covers **22 Indic languages in their native scripts and romanized forms plus English**, supporting both single-language and **code-switched** synthesis. Delivery is conditioned via `<description="...">` tags (tone, accent, pace), with inline vocalization control (`<laugh>`, `<chuckle>`, `<sigh>`). It extends CohereLabs/tiny-aya-fire with discrete speech tokens from the **mimi codec**: following the flattened codec-token formulation used in llama-mimi, text conditioning and audio generation share a single autoregressive sequence, predicting eight codebook tokens per frame before advancing, with the frozen mimi decoder reconstructing the 24 kHz waveform. The model ships with **4 fixed voices (Ira, Aisha, Siya, Zoya)** that perform equally well across all 22 languages; there is no zero-shot voice cloning. Licensed under Cohere's CC-BY-NC-4.0 with acceptable-use addendum (research and non-commercial use only).
+
+**Release Date:** September 6, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | 22 Indic languages + English (native scripts and romanized; code-switching supported) |
+| **License** | ![Other][license-other] |
+| **Parameters** | 3B (3,381,533,697 BF16) |
+| **Architecture** | CohereLabs/tiny-aya-fire backbone + flattened mimi codec tokens (8 codebooks/frame, llama-mimi formulation) |
+| **Audio Codec** | kyutai/mimi (frozen decoder), 24 kHz output |
+| **Pronunciation** | ✅ |
+| **Highlights** | description-conditioned delivery (`<description>` tags), inline vocalizations (`<laugh>`/`<chuckle>`/`<sigh>`) |
+| **Variants** | rumik-oss-1 (post-trained), rumik-oss-1-base (speaker-conditioned pre-post-training) |
+
+**Features:** Brings competitive multilingual TTS to 22 Indic languages with under 70k training hours, using a flattened mimi codec-token formulation (single autoregressive sequence for text conditioning + audio) on the tiny-aya-fire backbone. Code-switched synthesis, description-conditioned delivery, and inline vocalization tags are first-class capabilities, and its 4 voices perform equally well across all 22 languages — unusual, as most TTS voices are language-specific.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/rumik-ai/rumik-oss-1)
+[![Blog][link-blog]](https://rumik.ai/research/rumik-oss)
+[![Demo][link-demo]](https://huggingface.co/spaces/rumik-ai/rumik-oss-1)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:rumik-oss-1.md -->
+<!-- MODEL:irodori-tts-v4-1-anime.md -->
+<details id="irodori-tts-v4-1-anime">
+<summary>Irodori-TTS-v4.1-Anime</summary>
+
+### Irodori-TTS-v4.1-Anime
+
+**Description:** Irodori-TTS-v4.1-Anime is a Japanese text-to-speech model fine-tuned from [Aratako/Irodori-TTS-v4.1-Small](https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small) using anime-style speech data. Because the base model's annotation pipeline is not publicly documented, the fine-tuning data was annotated independently — so caption conditioning and emoji controls may behave differently from the base model. The full-precision checkpoint (0.8B params, F32) ships at the repository root, with quantized variants (`int8-weight-only`, `int8-dynamic`, `int4-weight-only`, `float8-weight-only`, `float8-dynamic`) in subdirectories. It follows the base model's MIT License and ethical restrictions; inference uses the original [Irodori-TTS repository](https://github.com/Aratako/Irodori-TTS).
+
+**Release Date:** September 4, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | — |
+| **Asr** | ❌ |
+| **Languages** | Japanese |
+| **License** | ![MIT][license-mit] |
+| **Parameters** | ~0.8B (766,052,385 F32) |
+| **Architecture** | Irodori-TTS (Aratako) fine-tune; caption-conditioned with emoji controls |
+| **Base Model** | Aratako/Irodori-TTS-v4.1-Small |
+| **Variants** | int8-weight-only, int8-dynamic, int4-weight-only, float8-weight-only, float8-dynamic |
+
+**Features:** A community fine-tune that ports the Irodori-TTS line into the anime-voice domain using an independently built annotation pipeline (since the base model's is undocumented), and ships the result with five ready-made quantization variants (int4/int8/fp8) for efficient inference.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/phasefield-audio/Irodori-TTS-v4.1-Anime)
+[![GitHub][link-github]](https://github.com/Aratako/Irodori-TTS)
+[![Demo][link-demo]](https://huggingface.co/spaces/hugging-apps/irodori-tts-anime-demo)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:irodori-tts-v4-1-anime.md -->
 <!-- MODEL:ice-012-audio.md -->
 <details id="ice-012-audio">
 <summary>ICE-012 Audio</summary>
@@ -618,25 +686,26 @@ complement of the latency / mobile inference focus.
 
 ### sanoTTS
 
-**Description:** **sanoTTS** is the smallest known neural text-to-speech family. The name *sano* (सानो) is Nepali for **"small"**. Each voice weighs **745k to 1.8M parameters** — smaller than the smallest voice in prior families (TinyTTS at 1.62M; Inflect Nano at 4.63M; Kokoro at 82M) and the family fits in **under 4 MB per voice** with zero runtime dependencies (the espeak-ng phonemizer is bundled). Voices run **real-time on a ~$3 ESP32-S3 microcontroller** (output through a GPIO into an LM386 and a speaker) and **live in the browser via WebAssembly** — no server, no upload, no NPU. The full neural stack is **duration → acoustic → decoder**, quantized to int8, with the espeak-ng phonemizer included. **9 voices** across **6 languages** ship: English (4 voices — including a 745k on-device "robot" voice), Nepali, Hindi, Vietnamese, Indonesian, and Chinese. The project page at [ampixa.github.io/sanoTTS](https://ampixa.github.io/sanoTTS/) hosts a live browser synthesis demo for every voice.
+**Description:** **sanoTTS** is the smallest known neural text-to-speech family. The name *sano* (सानो) is Nepali for **"small"**. Each voice weighs **294k to 2.3M parameters** — smaller than the smallest voice in prior families (TinyTTS at 1.62M; Inflect Nano at 4.63M; Kokoro at 82M) and the family fits in **under 4 MB per voice** with zero runtime dependencies (the espeak-ng phonemizer is bundled). Voices run **real-time on a ~$3 ESP32-S3 microcontroller** (output through a GPIO into an LM386 and a speaker) and **live in the browser via WebAssembly** — no server, no upload, no NPU. The full neural stack is **duration → acoustic → decoder**, quantized to int8, with the espeak-ng phonemizer included. **11 voices** across **6 languages** ship: English, Nepali, Hindi, Vietnamese, Indonesian, and Chinese — including the 294k `heart-nano` voice (337 KB) and the mel-based `heart` / `heart-nano` pair that predicts a 100-band spectrogram rendered by a noise-fed ConvNeXt + iSTFT decoder at 24 kHz. The inference runtime was relicensed **MIT** (September 2026); the project as a whole remains GPLv3 via espeak-ng. The project page at [ampixa.github.io/sanoTTS](https://ampixa.github.io/sanoTTS/) hosts a live browser synthesis demo for every voice.
 
 **Release Date:** July 13, 2026
 
 | Feature | Value |
 |---------|-------|
-| **Parameters** | 745k–1.8M per voice (smallest = the 745k on-device "robot" voice) |
+| **Parameters** | 294k–2.3M per voice (smallest = the 294k "heart-nano" voice, 337 KB) |
 | **Voice Cloning** | ❌ |
 | **Asr** | ❌ |
-| **Languages** | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese (6 languages, 9 voices) |
+| **Languages** | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese (6 languages, 11 voices) |
 | **Streaming** | ❌ |
-| **License** | ![GPL 3.0][license-gpl-3.0] |
+| **License** | ![Other][license-other] |
 | **Architecture** | full neural stack — duration model → acoustic model → decoder |
-| **Quantization** | int8 |
-| **Runtime Microcontroller** | ESP32-S3 (real-time, GPIO → LM386 → speaker) |
+| **Quantization** | int8 (W8/A12, corr 0.9995+; piperlite portable C99) |
+| **Runtime Microcontroller** | ESP32-S3 (real-time RTF 0.41, GPIO → LM386 → speaker) |
 | **Runtime Browser** | WebAssembly (no server, no upload, no NPU) |
 | **Runtime Footprint** | under 4 MB per voice, zero dependencies |
-| **Voices** | 9 (English: amy / kristin / hfc / amy-small / robot; one voice each for NE / HI / VI / ID / ZH) |
+| **Voices** | 11 (English: amy / kristin / hfc / amy-1p1m / amy-1p8m / robot / heart / heart-nano; one voice each for NE / VI / ID / ZH + shared lang voices) |
 | **Phonemizer** | espeak-ng (bundled) |
+| **License Split** | inference runtime MIT; project overall GPL-3.0 (copyleft from espeak-ng) |
 | **Library Name** | sanotts |
 | **Training Method** | distillation (per voice) |
 
@@ -647,10 +716,12 @@ and RAM. sanoTTS keeps the full **duration → acoustic → decoder**
 neural pipeline (no espeak-NG-only fallback, no concatenative
 hybrid), quantizes everything to int8, and *bundles the phonemizer*
 so the whole voice ships in under 4 MB with zero runtime dependencies.
-The result is a per-voice footprint 100× smaller than Kokoro and
-2× smaller than TinyTTS while still scoring competitively on the
-authors' SCOREQ / UTMOS / DNSMOS-SIG no-reference 24-sentence harness
-— and the demo synthesizes every voice **live in the browser via
+The newest `heart` / `heart-nano` voices switch to a mel-based recipe
+(100-band spectrogram + noise-fed ConvNeXt + iSTFT decoder at 24 kHz),
+bringing the smallest voice down to **294k parameters / 337 KB** —
+a per-voice footprint 100× smaller than Kokoro and 2× smaller than
+TinyTTS while still leading SCOREQ / UTMOS in the sub-15M class —
+and the demo synthesizes every voice **live in the browser via
 WASM**, so the smallest-known neural TTS is also the only one that
 runs unattended on a $3 chip and a $0 web page.
 
@@ -785,19 +856,20 @@ dead-end fixed-voice release.
 
 | Feature | Value |
 |---------|-------|
-| **Parameters** | ~556M (Qwen3.5-14 backbone + audio interface + voice-cloning compressor) |
+| **Parameters** | ~556M (555,694,169; Qwen3.5 backbone + audio interface + voice-cloning compressor) |
 | **Voice Cloning** | ✅ |
 | **Asr** | ❌ |
 | **Pronunciation** | ✅ |
 | **Emotion Control** | ❌ |
 | **Languages** | English (US/UK), Spanish (es-MX), Portuguese (pt-BR), Dutch (NL) |
 | **Streaming** | ✅ |
-| **License** | ![Research Only][license-research-only] |
-| **Audio Codec** | NVIDIA NeMo NanoCodec (FSQ, 22.05 kHz, 21.5 fps, 1.89 kbps) |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Audio Codec** | NVIDIA NeMo NanoCodec (FSQ, 22.05 kHz, 21.5 fps, 1.89 kbps; NVIDIA Open Model License) |
 | **Sample Rate** | 22,050 Hz |
 | **Backbone** | Qwen3.5 full-attention transformer (14 layers, hidden 1024, 8 heads; ~500M params) |
 | **Inference** | vLLM |
 | **Throughput** | 256 conversations on one 96 GB Blackwell (RTX Pro 6000) GPU |
+| **Benchmark** | Seed-TTS-eval leader on perceived quality (NISQA-MOS 4.25, NOI 4.16, COL 4.16, DIS 4.51) trading some WER/SIM |
 
 **Features:** A prosody-aware autoregressive single-pass frame generator: the whole
 32-channel FSQ audio frame is sampled in one step (no depth transformer),
@@ -807,10 +879,16 @@ of ~50 ms and 25× real time on a single RTX 5090 represent the
 quality-on path, not a cheap-fast preview. Voice cloning is decoupled
 into a separate up-front compressor, which means cloning is "free" at
 run-time once the reference clip is encoded — a structural choice that
-supports serving hundreds of conversations per GPU.
+supports serving hundreds of conversations per GPU. A stop-head weight
+update (2026-08-06) fixed premature stopping at sentence boundaries and
+lifted the effective duration ceiling; on Seed-TTS-eval Gepard leads the
+compared systems on perceived quality (NISQA-MOS 4.25) while trading
+some speaker similarity and WER for its streaming-first design.
 
 **Links:**
 [![HuggingFace][link-huggingface]](https://huggingface.co/nineninesix/gepard-1.0)
+[![GitHub][link-github]](https://github.com/nineninesix-ai/gepard-inference)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.04222)
 [![Demo][link-demo]](https://huggingface.co/spaces/nineninesix/gepard)
 [![Paper][link-paper]](https://huggingface.co/nineninesix/gepard-1.0/resolve/main/gepard_techreport.pdf)
 [![Website][link-website]](https://www.nineninesix.ai/)
@@ -5103,10 +5181,10 @@ This list is continuously evolving. If you have any models to add or updates to 
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-other]: https://img.shields.io/badge/Other-lightgrey?style=flat-square "Other"
 [license-cc-by-4.0]: https://img.shields.io/badge/CC_BY_4.0-green?style=flat-square&logo=creativecommons "CC BY 4.0"
-[license-gpl-3.0]: https://img.shields.io/badge/GPL_3.0-blue?style=flat-square "GPL 3.0"
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
 [license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
+[license-gpl-3.0]: https://img.shields.io/badge/GPL_3.0-blue?style=flat-square "GPL 3.0"
 [license-nvidia-noncommercial]: https://img.shields.io/badge/NVIDIA_NC-yellow?style=flat-square&logo=nvidia "NVIDIA NC"
 [license-unknown]: https://img.shields.io/badge/Unknown-lightgrey?style=flat-square "Unknown"
 
