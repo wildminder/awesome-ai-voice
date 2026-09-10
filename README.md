@@ -24,6 +24,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [AuK](#auk) | ✅ | ❌ | — | — | ![MIT][license-mit] |
+| [AuK-Flash](#auk-flash) | ✅ | ❌ | — | — | ![MIT][license-mit] |
 | [rumik-oss 1](#rumik-oss-1) | ❌ | ❌ | 22 Indic languages + English | — | ![Other][license-other] |
 | [Irodori-TTS-v4.1-Anime](#irodori-tts-v4-1-anime) | — | ❌ | Japanese | — | ![MIT][license-mit] |
 | [ICE-012 Audio](#ice-012-audio) | ✅ | ❌ | 590 | ✅ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
@@ -110,6 +112,81 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:auk.md -->
+<details id="auk">
+<summary>AuK</summary>
+
+### AuK
+
+**Description:** AuK is a 1.5B foundation model from Tencent for speech generation and editing, trained on millions of hours of diverse audio data. Through a single natural-language instruction interface it unifies an unusually broad task set: **zero-shot TTS** (speak text in the reference voice) and **instruct TTS** (voice from a description alone, no reference), **content editing** (rewrite what is said; even lyric editing that preserves melody and voice), **acoustic editing** (pitch by semitones, speed, volume), **paralinguistic editing** (emotion, timbre, de-accent, nonverbal sounds, whisper conversion), and **enhancement & separation** (denoise/dereverberate, speech separation, music/vocal separation, target-speaker extraction). Architecture: a diffusion transformer with layer-fusion weights, conditioned by a Qwen2.5-Omni-3B MLLM encoder and a separate VAE (loaded at runtime). Day-0 SGLang-Omni serving support, Gradio and ComfyUI integrations, and a task Cookbook are provided. Released under MIT.
+
+**Release Date:** September 9, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Parameters** | 1.5B |
+| **Architecture** | diffusion transformer + layer fusion, Qwen2.5-Omni-3B MLLM encoder, separate VAE |
+| **Variants** | AuK (this, base) + [AuK-Flash](https://huggingface.co/tencent/AuK-Flash) (distilled, 4-step inference) |
+| **Editing** | content, lyric, pitch, speed, volume, emotion, timbre, de-accent, nonverbal, whisper conversion |
+| **Enhancement Separation** | speech enhancement, speech separation, music separation, target speaker extraction |
+| **Deployment** | SGLang-Omni (day-0), Gradio, ComfyUI |
+
+**Features:** Unifies generation *and* the full editing/enhancement/separation spectrum in one instruction-following model — most systems pick one lane (TTS, or editing, or separation); AuK does zero-shot + instruct TTS, lyric rewriting with melody preservation, emotion/timbre/de-accent/whisper paralinguistic edits, and source separation through the same natural-language interface. A diffusion transformer with layer fusion, distilled into a 4-step AuK-Flash variant for fast inference.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/tencent/AuK)
+[![GitHub][link-github]](https://github.com/Tencent-Hunyuan/AuK)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.08936)
+[![Demo][link-demo]](https://huggingface.co/spaces/tencent/AuK)
+
+
+**Additional Tools:**
+
+| Tool | Type | Link |
+|------|------|------|
+| ComfyUI-AuK | ComfyUI node | [ComfyUI-AuK](https://github.com/Saganaki22/ComfyUI-AuK) |
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:auk.md -->
+<!-- MODEL:auk-flash.md -->
+<details id="auk-flash">
+<summary>AuK-Flash</summary>
+
+### AuK-Flash
+
+**Description:** AuK-Flash is the **distilled variant of AuK**, Tencent's 1.5B foundation model for speech generation and editing, optimized for **fast 4-step inference**. It exposes the same natural-language instruction interface as the base model: zero-shot TTS (reference voice) and instruct TTS (voice description, no reference), content and lyric editing, pitch/speed/volume acoustic edits, emotion/timbre/de-accent/nonverbal/whisper paralinguistic edits, plus speech enhancement and speech/music/target-speaker separation. Architecture matches the base: diffusion transformer with layer-fusion weights, Qwen2.5-Omni-3B MLLM encoder, and a separate runtime-loaded VAE. Released under MIT.
+
+**Release Date:** September 9, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Parameters** | 1.5B |
+| **Architecture** | diffusion transformer + layer fusion (distilled to 4 inference steps), Qwen2.5-Omni-3B MLLM encoder, separate VAE |
+| **Base Model** | tencent/AuK |
+| **Editing** | content, lyric, pitch, speed, volume, emotion, timbre, de-accent, nonverbal, whisper conversion |
+| **Enhancement Separation** | speech enhancement, speech separation, music separation, target speaker extraction |
+| **Deployment** | SGLang-Omni, Gradio, ComfyUI |
+
+**Features:** Distills the AuK foundation model's diffusion transformer down to **4 inference steps**, making the full generate-and-edit capability set (including enhancement and separation) practical for interactive use — traded against the base model's maximum quality, with the two variants loadable side-by-side from the same codebase.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/tencent/AuK-Flash)
+[![GitHub][link-github]](https://github.com/Tencent-Hunyuan/AuK)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.08936)
+[![Demo][link-demo]](https://huggingface.co/spaces/tencent/AuK)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:auk-flash.md -->
 <!-- MODEL:rumik-oss-1.md -->
 <details id="rumik-oss-1">
 <summary>rumik-oss 1</summary>
