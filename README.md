@@ -29,6 +29,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [rumik-oss 1](#rumik-oss-1) | ❌ | ❌ | 22 Indic languages + English | — | ![Other][license-other] |
 | [Irodori-TTS-v4.1-Anime](#irodori-tts-v4-1-anime) | — | ❌ | Japanese | — | ![MIT][license-mit] |
 | [ICE-012 Audio](#ice-012-audio) | ✅ | ❌ | 590 | ✅ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| [Coqui TTS Anonymizer](#coqui-tts) | ✅ | ❌ | 16 | ✅ | ![MPL 2.0][license-mpl-2.0] |
 | [TontaubeV1](#tontaube-v1) | ✅ | ❌ | 7 | ✅ | ![Other][license-other] |
 | [Breeze TTS 2](#breeze-tts-2) | ✅ | ❌ | 2 | ✅ | ![Other][license-other] |
 | [Sopro v2 Turbo](#sopro-v2-turbo) | ✅ | ❌ | 4 | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -285,6 +286,71 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 <p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:ice-012-audio.md -->
+<!-- MODEL:coqui-tts.md -->
+<details id="coqui-tts">
+<summary>Coqui TTS Anonymizer</summary>
+
+### Coqui TTS Anonymizer (rm00cr/coqui-tts)
+
+**Description:** **Coqui TTS Anonymizer** is a fork of [Coqui TTS](https://github.com/coqui-ai/TTS) whose headline capability is a **speaker-anonymization pipeline**: give it a recording plus a donor voice, and it returns *the same words spoken in the donor's voice*. The transcript survives verbatim; the original speaker's vocal identity does not. The paper behind it (*Your Voice Cloning System is Secretly a Voice Anonymizer*, arXiv 2608.27360) makes the mechanism explicit — **XTTS v2's voice cloning preserves prosodic structure independently of speaker identity**, so the cloning path can be repurposed as voice conversion by conditioning on a pseudo-speaker, with **no retraining**. The fork adds an `anonymizer/` package (pipeline, config, voice pools, donor selection, scoring, resumable batch, CLI), anonymization entry points on the `Xtts` class, and a weight-free unit-test suite. Evaluation covers **seven European languages** across CommonVoice and Multilingual LibriSpeech, reporting near-optimal privacy (**EER ≈ 0.49**) with substantially better speech quality than dedicated anonymization baselines and no language-specific training.
+
+**Release Date:** August 27, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | XTTS v2 checkpoints (~2 GB, downloaded once); no new weights trained |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 16 (XTTS v2) |
+| **Streaming** | ✅ |
+| **License** | ![MPL 2.0][license-mpl-2.0] |
+| **Base Model** | coqui-ai/TTS (XTTS v2) |
+| **Pipeline** | Whisper transcript → tokenize → XTTS GPT with reference conditioning → HiFi-GAN decode at 24 kHz |
+| **Modes** | single (one forward pass, seconds) / refine (segment + rescore + regenerate weak segments + crossfade stitch, minutes, GPU) / iterate (N compounding passes, keeps the best-scoring, minutes, GPU) |
+| **Donor Selection** | explicit file, directory, or comma-separated list; or a voice pool (directory of per-speaker folders, or a CSV manifest) with `most_distant` selection |
+| **Selection Metric** | ECAPA2 mean cosine similarity; the pool speaker furthest from the target wins, then conditioning on its `select_top_k` least-similar clips (default 10) |
+| **Selection Preview** | `anonymize select` ranks the pool without loading XTTS |
+| **Scoring** | WER, BLEU, target_similarity, reference_similarity, overall_quality (weighted 0.05 / 0.05 / 0.30 / 0.60) |
+| **Iterate Tradeoff** | on the bundled sample, three iterations moved similarity-to-original 0.198 → 0.141 while WER rose 0.00 → 0.07 |
+| **Cli** | `anonymize run` / `anonymize batch` / `anonymize select` / `anonymize config` |
+| **Batch** | resumable, file-locked checkpoint, `manifest.csv` recording the chosen donor per file, per-file failure isolation |
+| **Config Precedence** | CLI flag > `--config` file > environment variable > built-in default |
+| **Env Vars** | `XTTS_MODEL_DIR`, `ANONYMIZER_DEVICE`, `ANONYMIZER_MODE`, `ANONYMIZER_WHISPER_MODEL`, `ANONYMIZER_VOICE_POOL` |
+| **Install** | `uv sync` then `uv run anonymize download-model` |
+| **Api** | `from anonymizer import Anonymizer` then `anon.anonymize("interview.wav", reference="donor.wav")` |
+| **Hardware** | CUDA GPU strongly recommended; CPU is workable for `single` only |
+| **Limitations** | transcript content is not redacted; language must be set explicitly; quality depends on the donor; Whisper errors propagate; prosody and timing shift; not a formal privacy guarantee |
+| **Upstream Models** | ⓍTTS v2, VITS, YourTTS, Tortoise, Bark, ~1100 Fairseq models, plus the MelGAN / HiFi-GAN / UnivNet vocoder family |
+
+**Features:** The paper's insight is a **capability inversion**: a voice *cloning* model is
+a voice *anonymizer* in disguise. XTTS v2 was trained on 27k hours to keep
+prosody and linguistic content while swapping speaker identity on demand —
+which is precisely the operation anonymization needs, only with the
+"speaker" axis pointed at a *pseudo*-speaker rather than a target identity.
+Reframing it that way means **zero retraining and zero language-specific
+data**, and it is why the released system is a ~300-line façade over an
+existing checkpoint rather than a new model. Two engineering decisions make
+it usable rather than merely clever. First, **donor choice is automated and
+per-utterance**: a fixed donor is a weak default (if the donor resembles the
+speaker being anonymized, almost no identity is removed), so the pool mode
+embeds the target and every candidate with ECAPA2 and picks the speaker
+furthest away, recording the choice in the batch manifest so a run stays
+auditable. Second, **quality is a knob with a measured cost**: `refine`
+resynthesizes only weak segments, while `iterate` compounds conversion — the
+repo publishes the resulting similarity/WER trade-off rather than claiming a
+free lunch. The honest framing of the limitation matters too: this hides
+*who* is speaking, not *what* was said, and the authors are explicit that
+empirical ECAPA2 similarity is not a formal privacy guarantee.
+
+**Links:**
+[![GitHub][link-github]](https://github.com/rm00cr/coqui-tts)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2608.27360)
+[![Predecessor][link-predecessor]](https://github.com/coqui-ai/TTS)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:coqui-tts.md -->
 <!-- MODEL:tontaube-v1.md -->
 <details id="tontaube-v1">
 <summary>TontaubeV1</summary>
@@ -4152,12 +4218,16 @@ source-separation model.
 
 | Model | Languages | Streaming | License |
 | :--- | :--- | :---: | :--- |
+| [Xiaomi-CocktailASR-1](#xiaomi-cocktailasr-1) | Chinese, English | ❌ | ![Apache 2.0][license-apache-2.0] |
+| [BuzzASR](#buzz-asr) | 102 | ❌ | ![MIT][license-mit] |
 | [VibeVoice-ASR-Streaming-7B](#vibevoice-asr-streaming-7b) | 10 | ✅ | ![MIT][license-mit] |
+| [Granite-Speech-5.0-470M-TurboCTC](#granite-speech-5-0-470m-turboctc) | English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [kodama-ja-streaming-small](#kodama-ja-streaming-small) | Japanese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [GigaAM-Multilingual](#gigaam-multilingual) | 70+ | ❌ | ![MIT][license-mit] |
 | [GigaChat3.1-Audio](#gigachat3-audio) | Russian, English | ❌ | ![MIT][license-mit] |
 | [Audio8-ASR-0.1B](#audio8-asr-0-1b) | 7 | ❌ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [MOSS-Transcribe-Diarize](#moss-transcribe-diarize) | Multilingual | ✅ | ![Apache 2.0][license-apache-2.0] |
+| [Typhoon ASR Streaming](#typhoon-asr-streaming) | Thai | ✅ | ![CC BY 4.0][license-cc-by-4.0]<br>![Other][license-other] |
 | [ARK-ASR-3B](#ark-asr-3b) | 19 | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Mega-ASR](#mega-asr) | English, Chinese | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Higgs-Audio-v3-8B-STT-v2](#higgs-audio-v3-8b-stt-v2) | English | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -4172,6 +4242,129 @@ source-separation model.
 | [SenseVoice](#sensevoice) | Multilingual | ✅ | ![Other][license-other] |
 | [FunASR](#funasr) | 50+ | ✅ | ![MIT][license-mit] |
 
+<!-- MODEL:xiaomi-cocktailasr-1.md -->
+<details id="xiaomi-cocktailasr-1">
+<summary>Xiaomi-CocktailASR-1</summary>
+
+### Xiaomi-CocktailASR-1
+
+**Description:** **Xiaomi-CocktailASR-1** is a **target-speaker ASR (TS-ASR) SpeechLLM**. Given a reference clip of the speaker you want and either mixed or single-speaker audio, it transcribes **only that speaker** — using the reference as a **voiceprint prompt**, with no explicit speech separation stage. It is built on large-scale multi-speaker data and addresses the two failure modes the paper calls out in prior TS-ASR work: **degraded single-speaker accuracy** (a dedicated TS-ASR model that breaks on ordinary audio) and **the inability to reject** when the target speaker is absent. Xiaomi-CocktailASR-1 does both in one architecture — it stays comparable to mainstream ASR on single-speaker sets, and it outputs **empty text** when the reference speaker is not in the mixture. It also supports a **Chain-of-Thought mode** that emits explicit reasoning steps. On simulated multi-speaker benchmarks it reaches **4.11% WER** on LibriMix 2mix and **2.90%** on LibriSpeechMix 2mix, where Qwen3-ASR scores 68.75% and 92.17% respectively.
+
+**Release Date:** September 10, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Languages** | Chinese, English |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | MicAsrModel SpeechLLM — inline D2V2 audio encoder + adapter + LLM, loaded via `trust_remote_code` |
+| **Parameters** | not stated (single `pytorch_model.bin` holding D2V2 + adapter + LLM) |
+| **Input** | reference speaker clip + target audio, auto-concatenated internally as reference + 1 s silence + target |
+| **Audio Format** | 16 kHz mono (other rates are resampled automatically) |
+| **Capabilities** | target-speaker ASR, negative-sample rejection, chain-of-thought reasoning |
+| **Cot** | `<think>...</think>` reasoning plus `<answer>...</answer>` output, enabled with `cot=True` |
+| **Wer Librimix** | 2mix 4.11 / 3mix 12.29 |
+| **Wer Librispeechmix** | 2mix 2.90 / 3mix 4.91 |
+| **Wer Real Multispeaker** | AMI SDM 21.81 / AliMeeting Far 20.63 |
+| **Wer Single Speaker** | LibriSpeech 1.73 / AliMeeting-near 6.57 / AMI-ihm 8.89 / WenetSpeech-meeting 5.81 / CommonVoice-zh 4.95 |
+| **Frr Single Speaker** | LibriSpeech 0.36 / AliMeeting-near 0.38 / AMI-ihm 0.01 / WenetSpeech 0 / CommonVoice-zh 0.73 |
+| **Negative Rejection Rate** | LibriSpeech neg 79.59 / Aishell neg 75.35 / Chinese in-house neg 68.54 |
+| **Cot Gain** | LibriMix 2mix 4.11 → 3.87 WER with CoT |
+| **Baselines Beaten** | Qwen3-ASR, Gemini, StepAudio, Whisper Large-v2, SQ-Whisper, prior Conformer TS-ASR |
+| **Usage** | `AutoModel.from_pretrained("Ease3/Xiaomi-CocktailASR-1", trust_remote_code=True, torch_dtype="bfloat16")` then `model("target.wav", "ref_speaker.wav")` |
+| **Batch** | `tools/test_batch_scp.py` over a 5-column TSV, with `--cot` for reasoning mode |
+| **Runtime** | `pip install torch torchaudio transformers soundfile` |
+| **Weights Host** | HuggingFace repo `Ease3/Xiaomi-CocktailASR-1` (linked from the official xiaomi-research repo) |
+| **Upstream License** | Apache-2.0 per the xiaomi-research repository LICENSE |
+
+**Features:** The architectural bet is **prompt-based speaker conditioning instead of
+separation**: rather than running a speech-separation front-end and then
+transcribing the extracted stream, Xiaomi-CocktailASR-1 feeds the reference
+voiceprint into the LLM's prompt path and lets attention do the selection, so
+one model serves both cocktail-party and ordinary single-speaker audio with
+no model switch. That unification is the point — the paper's complaint about
+prior TS-ASR is precisely that specializing for mixtures *costs* you
+single-speaker accuracy, and the single-speaker numbers here (1.73% on
+LibriSpeech, 8.89% on AMI-ihm) sit alongside mainstream ASR rather than
+behind it. The second, less common capability is **negative-sample
+rejection**: because the model can emit empty output when the reference
+speaker is absent, it becomes usable as a *verification* component — 79.59%
+rejection on LibriSpeech negative pairs, where Qwen3-ASR and StepAudio score
+0%. That is not free, and the report is candid about the cost: rejection
+introduces a small **false-rejection rate** on true positives (0.36% on
+LibriSpeech, 0.73% on CommonVoice-zh), which is why FRR is published next to
+every WER number. CoT mode adds interpretability and a small accuracy gain
+(4.11 → 3.87 WER on LibriMix 2mix) but not a transformation — the honest
+framing for a reasoning mode whose value is legibility rather than raw score.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/Ease3/Xiaomi-CocktailASR-1)
+[![GitHub][link-github]](https://github.com/xiaomi-research/xiaomi-cocktailasr-1)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.11274)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:xiaomi-cocktailasr-1.md -->
+<!-- MODEL:buzz-asr.md -->
+<details id="buzz-asr">
+<summary>BuzzASR</summary>
+
+### BuzzASR
+
+**Description:** **BuzzASR** is a swarm of **102 monolingual speech recognizers** — one fine-tune of [openai/whisper-large-v3](https://huggingface.co/openai/whisper-large-v3) per FLEURS language, MIT-licensed and shipped as fp16 safetensors so each drops into any standard Whisper pipeline. The project scales up two language-adaptation recipes that had previously been tried on only a handful of languages: **Simple (SFT)**, plain fine-tuning, and **Full (FFT)**, full fine-tuning behind a **native tokenizer** whose embeddings are warm-started from Whisper's before training. The native tokenizer is the crux — Whisper's BPE was built for English-heavy data and shreds other languages into many small pieces, so replacing it both **raises accuracy and shortens the token stream**, which means FFT also decodes faster. Results: **89 of 102** languages beat Whisper-large-v3 zero-shot on FLEURS-test CER (77 in the paper with an average CER reduction of more than 2.8×), **31 of 102** hold the lowest CER of every open system compared on FLEURS-test, and **41 of 102** on the combined FLEURS + Common Voice set. Compression improves **3.3× on average** in characters per token, up to **21.7×**.
+
+**Release Date:** September 8, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Languages** | 102 (one monolingual model per FLEURS language) |
+| **Streaming** | ❌ |
+| **License** | ![MIT][license-mit] |
+| **Parameters** | 1.5B per model (1,545,548,800 F16 in each safetensors checkpoint) |
+| **Base Model** | openai/whisper-large-v3 |
+| **Models Released** | 102 (the best recipe per language, chosen on validation — never on test) |
+| **Recipes** | Simple (SFT, plain fine-tuning) and Full (FFT, native tokenizer + fine-tuning) |
+| **Fft Tokenizer** | language-native tokenizer replacing Whisper's English-heavy BPE, with embeddings warm-started from Whisper's |
+| **Compression Gain** | 3.3× average improvement in characters per token, up to 21.7× |
+| **Results Vs Whisper Zs** | 89/102 languages better on FLEURS-test CER (paper reports 77/102 with >2.8× average CER reduction) |
+| **Sota Open Systems** | 31/102 lowest CER on FLEURS-test; 41/102 on FLEURS + Common Voice (paper counts 27/102 on the combined set) |
+| **Compared Against** | Whisper-large-v3, Omnilingual 1B/7B, MMS-1B, Qwen3-ASR, Cohere |
+| **Decoding Speed** | FFT emits fewer tokens than Whisper/SFT, so it finishes first at equal time-per-token |
+| **Usage** | `WhisperForConditionalGeneration.from_pretrained("BuzzASR/<language>")` with `WhisperProcessor` |
+| **Prompt** | language/task prompt baked into each model's generation config, so no `language=` argument is needed |
+| **Compute Partner** | EleutherAI |
+| **Venue** | Findings of EMNLP 2026 |
+| **Format** | fp16 safetensors, compatible with the standard Transformers Whisper path |
+
+**Features:** Most multilingual ASR work tries to make **one model cover everything**;
+BuzzASR bets the opposite way and **mass-produces specialists**. The
+contribution is not the idea — monolingual fine-tuning is old news — but the
+demonstration that it holds up at **102-language scale** with a uniform,
+reproducible recipe, which converts a folk practice into a baseline others
+have to beat. The genuinely technical part is the **tokenizer swap**. Because
+decode latency is token count × time-per-token, and because Whisper's
+tokenizer fragments non-English text, a language-native tokenizer pays twice:
+fewer tokens to emit *and* better accuracy from keeping whole morphemes. The
+engineering trick that makes it cheap is **warm-starting the new tokenizer's
+embeddings from Whisper's** before fine-tuning, so the model does not have to
+relearn its input representation from scratch — that is what turns a
+from-scratch tokenizer change into an incremental fine-tune. The reporting is
+also notably careful: recipes are selected on validation and never on test,
+and the project publishes both the FLEURS-test count (31) and the combined
+FLEURS + Common Voice count (41) rather than quoting the flattering one
+alone.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/BuzzASR)
+[![GitHub][link-github]](https://github.com/lemn-lab/buzz-asr)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.09554)
+[![Website][link-website]](https://lemn-lab.github.io/buzz-asr/)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:buzz-asr.md -->
 <!-- MODEL:vibevoice-asr-streaming-7b.md -->
 <details id="vibevoice-asr-streaming-7b">
 <summary>VibeVoice-ASR-Streaming-7B</summary>
@@ -4203,6 +4396,80 @@ source-separation model.
 <p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:vibevoice-asr-streaming-7b.md -->
+<!-- MODEL:granite-speech-5-0-470m-turboctc.md -->
+<details id="granite-speech-5-0-470m-turboctc">
+<summary>Granite-Speech-5.0-470M-TurboCTC</summary>
+
+### Granite-Speech-5.0-470M-TurboCTC
+
+**Description:** **Granite Speech 5.0 TurboCTC** is a compact **470 million parameter English ASR model** whose explicit design target is the *speed* axis of the speed–accuracy trade-off. It is an **encoder-only Conformer trained with CTC** — no autoregressive decoder, no language-model head — and inference is a single non-autoregressive pass with **greedy decoding**. The architecture runs 16 Conformer blocks (hidden 1024, 8 heads × 128, conv kernel 7) with **block-diagonal (chunk-wise) self-attention** over 128-frame blocks, **self-conditioned CTC** (middle-layer predictions feed back as conditioning), and a **16,384 BPE output head**. Aggressive **pyramidal temporal subsampling** takes the frame rate from 100 Hz to **12.5 Hz** (2× frame stacking/skipping, then 4× strided depthwise convolutions with pooled residuals in the first two blocks). Training used **only public data** — ~60,000 hours of English audio plus synthetic multi-speaker and entity-rich subsets — with a **Muon optimizer** and balanced sampling, over 10 days on 8× H100. The result: on the speed–accuracy **Pareto frontier** of the Open ASR leaderboard while being **twice as fast as the fastest competitor**, with Apache-2.0 weights suited to laptops, smartphones and other edge devices.
+
+**Release Date:** August 25, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 473.0M (472,993,792 safetensors-measured; card rounds to 470M) |
+| **Languages** | English only (en) |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Architecture** | encoder-only Conformer CTC — 16 blocks, hidden 1024, 8 attention heads × 128, conv kernel 7 |
+| **Output Head** | 16,384 BPE units |
+| **Input Dimension** | 320 = (80 log-mels + 80 deltas) × 2 |
+| **Temporal Subsampling** | 8× (100 Hz → 12.5 Hz) via frame stacking/skipping (2×) then strided depthwise convolutions with pooled residuals in the first two Conformer blocks (4×) |
+| **Attention** | block-diagonal (chunk-wise) self-attention, 128-frame blocks |
+| **Self Conditioning** | CTC predictions from the middle layer feed back as conditioning |
+| **Training Data** | ~60,000 hours of English audio, public corpora only |
+| **Training Breakdown** | MLS 44,600 h; YODAS 8,900 h; CommonVoice-17 2,500 h; VoxPopuli 500 h; LibriSpeech 960 h; AMI 150 h; Earnings-22 100 h |
+| **Synthetic Data** | 2,000 h multi-speaker concatenations (MLS/YODAS/CV-17/VoxPopuli/AMI); 500 h multi-speaker Earnings-22; 240 h numbers, currencies, URLs, phone numbers and addresses generated with gpt-oss-120b or gpt-oss-20b and synthesized with StyleTTS2 |
+| **Optimizer** | Muon (novel use for ASR training) |
+| **Sampling** | balanced data sampling |
+| **Inference Speedups** | 1×1 convolutions replaced with linear layers; optimized Conformer attention computation |
+| **Speed Claim** | on the speed–accuracy Pareto frontier of the Open ASR leaderboard, 2× faster than the fastest competitor |
+| **Evaluations** | Open ASR leaderboard (short-form English, RTFx on 1× H200) and FFASR leaderboard (noisy/reverberant speech, RTFx on 1× L4) — official results as of August 25, 2026 |
+| **Deployment** | transformers >= 5.16.0 native (`AutoModelForCTC`); mlx-audio >= 0.5.1 on Apple Silicon; transcribe.cpp GGUF (Q8_0) on Metal, Vulkan, CUDA, ROCm or CPU |
+| **Usage** | `AutoProcessor` + `AutoModelForCTC`, then `model.generate(**inputs)` with greedy decoding |
+| **Training Compute** | 10 days on 8× H100 (IBM Blue Vela) |
+| **Venue** | technical report submitted to ICASSP 2027 |
+| **Intended Use** | enterprise low-latency / high-throughput English speech-to-text |
+
+**Features:** The contrarian move is deploying **plain CTC in 2026**, against a leaderboard
+landscape dominated by LLM-based SpeechLLMs — and winning on the axis CTC
+was always good at. An encoder-only model with greedy, fully parallel
+decoding has no autoregressive token loop to pay for, and IBM then spends
+the entire architecture budget making the encoder itself cheap: **8×
+pyramidal subsampling to a 12.5 Hz frame rate** collapses the sequence the
+encoder must traverse (the same low-frame-rate logic the audio-codec side of
+this list converges on), **block-diagonal attention** caps quadratic cost at
+chunk scale, **self-conditioned CTC** buys back accuracy lost to the small
+output head, and inference-level micro-optimizations (1×1 convs → linear
+layers, attention restructuring) squeeze the runtime further. Two quieter
+choices matter for reproducibility: training on **public data only** (with
+synthetic multi-speaker and entity-rich augmentation, including
+StyleTTS2-synthesized numbers and addresses) makes the recipe auditable,
+and the **first ASR use of the Muon optimizer** is a concrete, copyable
+training contribution rather than a benchmark flex. The claim worth
+remembering is calibrated honestly — not "best WER" but **on the Pareto
+frontier while 2× faster than the fastest competitor**, which is the right
+pitch for edge deployment where RTFx dominates.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/ibm-granite/granite-speech-5.0-470m-turboctc)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.20104)
+[![Blog][link-blog]](https://huggingface.co/blog/ibm-granite/granite-speech-5-0-470m-turboctc)
+[![GitHub][link-github]](https://github.com/ibm-granite/granite-speech-models)
+
+
+**Additional Tools:**
+
+| Tool | Type | Link |
+|------|------|------|
+| transcribe.cpp | GGUF inference engine (Metal, Vulkan, CUDA, ROCm, CPU) | [transcribe.cpp](https://github.com/handy-computer/transcribe.cpp) |
+| mlx-audio | Apple Silicon (MLX) runtime | [mlx-audio](https://github.com/Blaizzy/mlx-audio) |
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:granite-speech-5-0-470m-turboctc.md -->
 <!-- MODEL:kodama-ja-streaming-small.md -->
 <details id="kodama-ja-streaming-small">
 <summary>kodama-ja-streaming-small</summary>
@@ -4449,6 +4716,68 @@ postprocess.
 <p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:moss-transcribe-diarize.md -->
+<!-- MODEL:typhoon-asr-streaming.md -->
+<details id="typhoon-asr-streaming">
+<summary>Typhoon ASR Streaming</summary>
+
+### Typhoon ASR Streaming
+
+**Description:** **Typhoon ASR Streaming** is SCB DataX's system for **steerable, low-latency Thai speech recognition**. Open Thai ASR had been dominated by offline Whisper-style models that read the whole utterance before transcribing; this release replaces them with **cache-aware streaming encoders** that stay accurate at low latency, plus a **decode-time shallow-fusion layer** (GPU 4-gram LM + phrase boosting) that steers the vocabulary toward names and domain terms at runtime — **no retraining, and under a 3% change in the real-time factor**. At a 1040 ms look-ahead, forcing the old full-context Typhoon ASR Real-time model to stream collapses to **62.8% CER** on TVSpeech; the cache-aware models reach **19.4%** (115M) and **14.1%** (0.6B) — a 4.5× CER reduction. The release ships the two acoustic checkpoints, paired sub-word 4-gram fusion LMs, an OpenAI-Realtime-style WebSocket ASR server, a LiveKit Agents STT adapter, a Gradio demo and a Next.js steering front-end.
+
+**Release Date:** July 5, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Languages** | Thai (th-TH); the 0.6B tokenizer also carries English sub-word units for code-switched terms |
+| **Streaming** | ✅ |
+| **License** | ![CC BY 4.0][license-cc-by-4.0]<br>![Other][license-other]<br>![Apache 2.0][license-apache-2.0] |
+| **Parameters** | 115M (converted) / 0.6B (adapted, best accuracy, default) |
+| **Architecture** | FastConformer-Transducer with cache-aware streaming encoders |
+| **Variants** | typhoon-asr-streaming-115m (converted from Typhoon ASR Real-time, single 2048-token Thai BPE, no prompt) and typhoon-asr-streaming-nemotron-0.6b (adapted from NVIDIA Nemotron streaming ASR, 15,135-token multilingual + Thai tokenizer, requires `target_lang="th-TH"`) |
+| **Fusion** | GPU 4-gram LM shallow fusion + phrase boosting, applied at decode time (alpha = beta = 0.5) |
+| **Fusion Cost** | < 3% RTF |
+| **Latency Options** | 1040 / 480 / 80 ms look-ahead (minimum 80 ms) |
+| **Cer Streaming 1040Ms Tvspeech** | full-context forced to stream 62.8 → 115M 19.4 → 0.6B 14.1 |
+| **Cer Streaming 1040Ms Gigaspeech2** | full-context forced to stream 39.8 → 115M 10.4 → 0.6B 9.3 |
+| **Steering 0.6B** | baseline 14.4% CER / 16.6% keyword recall → +n-gram 14.6 / 20.4 → +phrase boost 14.1 / 20.7 |
+| **Efficiency** | batch-1 RTF 0.020–0.024 (42–50× faster than real time); batch-16 ≈300 concurrent streams per H100 |
+| **First Token** | ≈ look-ahead + ~25 ms |
+| **Serving** | OpenAI Realtime-style WebSocket server, LiveKit Agents STT adapter, Gradio demo, Next.js front-end |
+| **Dependency** | NVIDIA NeMo pinned to source commit `907edfd` |
+| **Evaluation Data** | TVSpeech and GigaSpeech2-Thai |
+| **Ngram Rebuild** | `scripts/` rebuilds the 0.6B n-gram from your own corpus |
+| **Provenance** | the contaminated n-gram used as a memorization upper bound in the paper is not distributed |
+| **Venue** | IEEE SLT 2026 system demo (SCB DataX, Bangkok) |
+
+**Features:** The interesting move is treating **latency as a runtime dial rather than a
+training-time commitment**. Cache-aware streaming encoders make the
+look-ahead a decode parameter, so one checkpoint spans 1040 ms down to 80 ms
+— and the release exposes exactly that trade-off in an interactive demo that
+streams the same Thai clip through the full-context baseline and both
+cache-aware models side by side. The baseline is the argument: at 80 ms
+look-ahead it "collapses into garble", which is the honest version of the
+claim that cache-aware training is not optional for low-latency streaming.
+The second bet is **decode-time vocabulary steering**: shallow fusion with a
+GPU n-gram LM plus phrase boosting lets a user inject names like *Betagro* or
+*กชพร* mid-stream, which matters disproportionately in Thai broadcast speech
+where rare proper nouns and code-switched English jargon dominate the error
+budget. Crucially the paper reports both halves of the trade — phrase
+boosting pulls CER from 14.4% to 14.1% while lifting keyword recall from
+16.6% to 20.7%, and the whole fusion layer costs under 3% RTF — rather than
+reporting only the accuracy win. The repo also declines to ship the
+contaminated n-gram it used as a memorization upper bound, keeping only the
+honest fusion artifacts.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/typhoon-ai/typhoon-asr-streaming-nemotron-0.6b)
+[![HuggingFace][link-huggingface]](https://huggingface.co/typhoon-ai/typhoon-asr-streaming-115m)
+[![GitHub][link-github]](https://github.com/warit-s/typhoon-asr-streaming)
+[![Website][link-website]](https://warit-s.github.io/typhoon-asr-streaming/)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:typhoon-asr-streaming.md -->
 <!-- MODEL:ark-asr-3b.md -->
 <details id="ark-asr-3b">
 <summary>ARK-ASR-3B</summary>
@@ -4976,11 +5305,81 @@ Audio autoencoders, codecs, and latent-space tokenizers that compress waveforms 
 
 | Model | Type | Sample Rate | Latent Dim | Modalities | License |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| [ZipCodec](#zipcodec) | Streaming Neural Speech Codec | 16 kHz | 64 | Audio | ![Apache 2.0][license-apache-2.0] |
 | [DSA-Tokenizer](#dsa-tokenizer) | Disentangled Semantic-Acoustic Speech Tokenizer | 24 kHz | — | Audio | ![MIT][license-mit] |
 | [KVAE-Audio](#kvae-audio) | Audio VAE | 48 kHz | 64 | Speech, Music, Sound | ![MIT][license-mit] |
 | [LinaCodec](#linacodec) | Single-Stream Neural Audio Codec | 48 kHz | — | Audio | ![Unknown][license-unknown] |
 | [QuarkAudio-HCodec](#quarkaudio-hcodec) | Dual-Stream Discrete Audio Codec | 16/48 kHz | - | Audio | ![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:zipcodec.md -->
+<details id="zipcodec">
+<summary>ZipCodec</summary>
+
+### ZipCodec
+
+**Description:** **ZipCodec** attacks the *frame rate* of neural speech coding rather than only the bitrate. It runs at **6.25 Hz** — one token every **160 ms** — at **0.80 kbit/s**, with a **theoretical latency of 160 ms**, by combining large-scale **WavLM distillation** with a redesigned transformer-based encoder/decoder, a **scalar spherical quantizer** (64 codebooks × 4 entries, i.e. 2 bits per latent dimension) and a **latency-aware streaming decoder**. The project page compares it head-to-head against EnCodec (1.50 kbps), AudioDec (1.60 kbps), HILCodec (1.50 kbps), Mimi (0.83 kbps), PAST (1.00 kbps), FocalCodec-Stream (0.80 kbps) and FocalCodec (0.65 kbps) on speech resynthesis and voice conversion, and the authors report it substantially outperforms existing **streaming** codecs at comparable bitrates while operating at a far lower frame rate. Despite **842M parameters**, it reaches real-time single-stream inference on a consumer-grade CPU; ONNX, OpenVINO, `torch.compile` and CUDA-graph backends ship as install extras.
+
+**Release Date:** September 11, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 842M (842,154,100 F32 in the released checkpoint) |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Type** | Streaming Neural Speech Codec (single-stream discrete tokenizer) |
+| **Sample Rate** | 16,000 Hz |
+| **Latent Dim** | 64 (scalar quantized; 64 codebooks × 4 entries = 2 bits per dimension) |
+| **Modalities** | Audio |
+| **Frame Rate** | 6.25 Hz (one frame per 160 ms) |
+| **Bitrate** | 0.80 kbit/s |
+| **Theoretical Latency** | 160 ms |
+| **Base Model** | microsoft/wavlm-large (large-scale distillation) |
+| **Quantizer** | scalar spherical quantizer (64 codebooks × 4 entries) |
+| **Decoder** | latency-aware streaming decoder |
+| **Streaming** | ✅ |
+| **Cpu Inference** | real-time single-stream on a consumer-grade CPU despite 842M parameters |
+| **Tasks** | speech resynthesis, voice conversion, streaming |
+| **Compared Against** | EnCodec 1.50 kbps, AudioDec 1.60 kbps, HILCodec 1.50 kbps, Mimi 0.83 kbps, PAST 1.00 kbps, FocalCodec-Stream 0.80 kbps, FocalCodec 0.65 kbps |
+| **Related Work** | FocalCodec (same author; 0.65 kbps, non-streaming) |
+| **Install** | `pip install zipcodec` (extras: `zipcodec[onnx]`, `zipcodec[openvino]`, `zipcodec[streaming]`) |
+| **Usage** | `torch.hub.load("lucadellalib/zipcodec", "zipcodec", config="lucadellalib/zipcodec", trust_repo=True)` |
+| **Api** | `from zipcodec import ZipCodec` then `ZipCodec.from_pretrained("lucadellalib/zipcodec")` |
+| **Api Core** | `codec.wav_to_toks(wav)` → `codec.toks_to_codes(toks)` → `codec.toks_to_wav(toks)` |
+| **Export Backends** | eager, torch.compile, jit, CUDA graphs, ONNX, ONNX I/O binding, OpenVINO |
+| **Benchmark Default** | five runs of 40.96 s with four CPU threads |
+| **Runtime Requirements** | Python 3.10+, PyTorch, NumPy, safetensors, huggingface-hub |
+| **Training Data** | not stated in the repository |
+
+**Features:** The central bet is that **frame rate, not bitrate, is the bottleneck** for
+speech generation pipelines. At 6.25 Hz every token has to carry ~25× more
+information than at a typical 50 Hz codec, which is why prior work treated
+sub-10 Hz frame rates as a quality cliff. ZipCodec's arithmetic is unusually
+legible: **64 scalar dimensions × 2 bits × 6.25 frames/s = 800 bit/s**, so
+the 0.80 kbit/s headline is exactly what the quantizer geometry implies —
+the compression is bought by making each latent dimension nearly binary
+rather than by pruning the sequence. Two design choices do the heavy lifting
+against the resulting reconstruction penalty: **large-scale WavLM
+distillation** gives the encoder a strong, already-linguistic feature space
+to compress into, and a **latency-aware streaming decoder** lets the decoder
+exploit only causally available context, so the model is trained for the
+streaming regime it will actually run in instead of being adapted to it.
+The 842M parameter count is the counterintuitive part: rather than trading
+size for latency, ZipCodec keeps a large distilled backbone and buys back
+real-time CPU inference through backend engineering (ONNX / OpenVINO /
+CUDA-graph exports are first-class in the repo). Like the other entries in
+this category, ZipCodec is a **drop-in tokenizer** for TTS / ASR /
+voice-conversion pipelines, not a synthesis model itself.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/lucadellalib/zipcodec)
+[![GitHub][link-github]](https://github.com/lucadellalib/zipcodec)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.11642)
+[![Website][link-website]](https://lucadellalib.github.io/zipcodec-web/)
+[![Predecessor][link-predecessor]](https://github.com/lucadellalib/focalcodec)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:zipcodec.md -->
 <!-- MODEL:dsa-tokenizer.md -->
 <details id="dsa-tokenizer">
 <summary>DSA-Tokenizer</summary>
@@ -5256,8 +5655,9 @@ This list is continuously evolving. If you have any models to add or updates to 
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
 [license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
-[license-other]: https://img.shields.io/badge/Other-lightgrey?style=flat-square "Other"
 [license-cc-by-4.0]: https://img.shields.io/badge/CC_BY_4.0-green?style=flat-square&logo=creativecommons "CC BY 4.0"
+[license-other]: https://img.shields.io/badge/Other-lightgrey?style=flat-square "Other"
+[license-mpl-2.0]: https://img.shields.io/badge/MPL_2.0-blue?style=flat-square "MPL 2.0"
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
 [license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
