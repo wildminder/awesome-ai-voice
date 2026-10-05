@@ -274,6 +274,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | **Parameters** | ~714M (714,409,993 F16) |
 | **Architecture** | causal LM with active acoustic adapter (conditions codec embeddings pre-backbone, refines hidden states post-backbone) |
 | **Voice Controls** | gender, age, pitch, accent, style, speed; auto-voice mode |
+| [AI Group Call](https://aigroupcall.app) | An AI council you can talk to: a group voice call where agents riff with each other, answer when named, and yield when you speak. |
 
 **Features:** The active acoustic adapter wraps the backbone on both sides — conditioning codec embeddings before it and refining hidden states after — while a six-axis voice-control space (gender/age/pitch/accent/style/speed plus auto-voice) and 590-language coverage make it one of the broadest single-checkpoint TTS releases for dialect and minority-language synthesis.
 
