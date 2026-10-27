@@ -24,6 +24,9 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [Ming-3.0-tts-0.5B](#ming-3-0-tts-0-5b) | ✅ | ❌ | 7 | — | ![MIT][license-mit] |
+| [Fish Audio Drama 3](#drama-3) | ✅ | ❌ | 83 | ✅ | ![Fish Audio Community][license-fish-audio-community] |
+| [Resona](#resona) | ❌ | ❌ | 10 | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [AuK](#auk) | ✅ | ❌ | — | — | ![MIT][license-mit] |
 | [AuK-Flash](#auk-flash) | ✅ | ❌ | — | — | ![MIT][license-mit] |
 | [rumik-oss 1](#rumik-oss-1) | ❌ | ❌ | 22 Indic languages + English | — | ![Other][license-other] |
@@ -42,6 +45,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [NeuTTS-2E](#neutts-2e) | ❌ | ❌ | English | ✅ | ![Other][license-other] |
 | [Scylla's Band](#scyllasband) | ❌ | ❌ | en_us, en_gb, es, it | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [sanoTTS](#sanotts) | ❌ | ❌ | English, Nepali, Hindi, Vietnamese, Indonesian, Chinese | ❌ | ![Other][license-other] |
+| [WordVoice-base-0.5B](#wordvoice-base-0-5b) | ✅ | ❌ | 2 | — | ![Apache 2.0][license-apache-2.0] |
 | [FreyaTTS](#freyatts) | ❌ | ❌ | Turkish | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Inflect-Nano-v2](#inflect-nano-v2) | ❌ | ❌ | English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Gepard](#gepard) | ✅ | ❌ | English, Spanish, Portuguese, Dutch | ✅ | ![Apache 2.0][license-apache-2.0] |
@@ -59,6 +63,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Dramabox](#dramabox) | ✅ | ❌ | English | ❌ | ![Other][license-other] |
 | [Sarashina2.2-TTS](#sarashina22-tts) | ✅ | ❌ | Japanese, English | ❌ | ![Research Only][license-research-only] |
 | [LongCat-AudioDiT](#longcat-audiodit) | ✅ | ❌ | Chinese, English | ❌ | ![MIT][license-mit] |
+| [VoXtream2](#voxtream2) | ✅ | ❌ | English | ✅ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [SILMA TTS](#silma-tts) | ✅ | ❌ | Arabic, English | — | ![Apache 2.0][license-apache-2.0] |
 | [Fish Audio S2 Pro](#fish-audio-s2-pro) | ✅ | ❌ | 80+ | ✅ | ![Research Only][license-research-only] |
 | [LongCat-Next](#longcat-next) | ✅ | ✅ | Chinese, English | ✅ | ![MIT][license-mit] |
@@ -113,6 +118,230 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:ming-3-0-tts-0-5b.md -->
+<details id="ming-3-0-tts-0-5b">
+<summary>Ming-3.0-tts-0.5B</summary>
+
+### Ming-3.0-tts-0.5B
+
+**Description:** Ming-3.0-tts-0.5B is the dense half of inclusionAI's Ming-3.0-tts family: a 0.5B speech-generation model on a Qwen2.5-0.5B backbone, shipped as a single 1.48B-parameter checkpoint (safetensors-measured 1,479,454,868 in BF16) that bundles the backbone, a DiT patch head, an AudioVAE audio tokenizer inherited from the Ming-2.0 generation, a CAM++ speaker encoder and the text tokenizer. Output is 44.1 kHz. It speaks seven languages — Chinese, English, German, Spanish, French, Korean and Japanese — plus Sichuanese and Cantonese dialects, and exposes control as **task modes rather than arbitrary combinations**: zero-shot cloning from a reference clip, voice design from a natural-language description, free-form delivery instructions, 14 inline paralinguistic tags (breath, cough, sigh, laughter, hesitation, surprise, question and confirmation sounds, in Chinese or English), explicit emotion, speed/pitch/volume attributes, and built-in IP voices (100+ Chinese, five English; recommended US_James, US_Stella, 灵小柔, 灵楷). On the independent Artificial Analysis leaderboards (October 2026) it ranks **1st among open-weights models on Controlled Voice** (Elo 1069) and **1st overall on Pronunciation Robustness** (93.2%). It is MIT-licensed, with the technical report still pending; the honest weak spot is speaker similarity, which trails content accuracy across every language.
+
+**Release Date:** October 19, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 1,479,454,868 (0.5B dense backbone + AudioVAE + DiT head + aggregator, safetensors-measured, BF16) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 7 (Chinese, English, German, Spanish, French, Korean, Japanese) + Sichuanese and Cantonese dialects |
+| **License** | ![MIT][license-mit] |
+| **Architecture** | dense Qwen2.5-0.5B backbone + DiT patch head + AudioVAE audio tokenizer (Qwen2-style, 24 layers, hidden 896) + CAM++ speaker encoder (BailingMMNativeForConditionalGeneration) |
+| **Sample Rate** | 44.1 kHz |
+| **Controls** | emotion (7 categories), speed/pitch/volume, dialect, free-form natural-language instruction, text-described voice design |
+| **Paralinguistic Tags** | 14 (breath, cough, sigh, laughter, hesitation, surprise, question/confirmation — Chinese or English) |
+| **Built In Voices** | 100+ Chinese, 5 English (recommended US_James, US_Stella, 灵小柔, 灵楷) |
+| **Tasks** | TTS, FREEFORM, VOICE_DESIGN, MULTILINGUAL, BASIC, EMOTION, DIALECT, IP (task modes are mutually exclusive) |
+| **Text Normalization** | FST grammars via pynini (--no_text_normalization to skip) |
+| **Sibling Model** | Ming-3.0-tts-tiny (MoE on Ling V3, 7.9B total / 1.3B active) adds multi-speaker podcast synthesis |
+| **Seed Tts Zh** | WER 0.800% / SIM 0.758 (Seed-TTS reference 1.110% / 0.796; 3rd on Chinese WER among compared open models) |
+| **Seed Tts En** | WER 1.584% / SIM 0.691 |
+| **Multilingual Minimax** | German 0.365% WER, Spanish 1.099% WER, French 4.264% WER (SIM 0.675), Korean 1.728% CER, Japanese 3.765% CER |
+| **Nvbench Single** | zh CER 2.70 / PCER 22.80 / OCER 3.20; en CER 7.60 / PCER 37.00 / OCER 8.90 (SOTA on all six single-tag metrics jointly with tiny) |
+| **Dialect Wsc** | easy CER 2.27% (SOTA) / SIM 0.689 / ACC 80.68%; hard CER 3.35% / SIM 0.691 / ACC 87.64% |
+| **Emotion Cv3** | 72.33% average (3rd); emotion_cv3n: 37.33% average (2nd) |
+| **Voice Design Instructtts** | 72.29% average (3rd; APS 78.54, DSD 77.28, RP 61.06) |
+| **Attribute Control** | speed 99% / volume 95% / pitch 86% (avg 93.30%, leads the compared set), WER 0.317%, SIM 0.712 |
+| **Leaderboard Aa** | Controlled Voice 1069 (1st open-weights, 13th overall), Pronunciation Robustness 93.2% (1st overall), Provider Voice 1188 (3rd open-weights, 17th overall) — October 2026 |
+| **Runtime** | transformers 4.46.3, torch 2.6 / CUDA 12.4 Docker image, vLLM-Omni accelerated inference |
+| **Sampling** | cfg_scale 2.0, temperature 0, flow_steps 10, sigma 0.25, seed 1234 |
+| **Hardware** | tested on NVIDIA H800-80GB and H20-96G |
+| **Limitations** | speaker similarity weaker than content accuracy (French SIM is the clearest gap); pitch less accurate than speed and volume; emotion control harder when the words carry no emotional signal; open-ended voice design still behind Qwen3-TTS; technical report pending |
+
+**Features:** The interesting part is not the model size but the **control surface**: a 0.5B dense checkpoint that exposes voice cloning, text-described voice design, free-form delivery instructions, 14 inline paralinguistic tags, dialect selection and explicit emotion/attribute controls as distinct task modes, with the modes deliberately non-composable so a request never mixes incompatible conditioning. That design is what produces SOTA single-tag paralinguistic accuracy (zh CER 2.70) and SOTA Cantonese base CER (6.15% with 98.00% accuracy) from a model small enough for a single H800, and the independent arena results back it up — first among open-weights models on Controlled Voice and first overall on Pronunciation Robustness, where text normalization (96.5% on Expanding Shorthand) and sequence fidelity (90.6%) are the deciding axes. The honest caveat is that content accuracy and speaker similarity move independently here: intelligibility is excellent, voice identity is the weaker half, and the older Ming-omni-tts still holds the overall records for attribute-control accuracy, pitch and similarity.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B)
+[![GitHub][link-github]](https://github.com/inclusionAI/Ming-3.0-tts)
+[![Website][link-website]](https://nomorecoding.github.io/Ming-3.0-tts/)
+[![ModelScope][link-modelscope]](https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b)
+[![Predecessor][link-predecessor]](https://huggingface.co/inclusionAI/Ming-omni-tts-16.8B-A3B)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:ming-3-0-tts-0-5b.md -->
+<!-- MODEL:drama-3.md -->
+<details id="drama-3">
+<summary>Fish Audio Drama 3</summary>
+
+### Fish Audio Drama 3
+
+**Description:** **Fish Audio Drama 3** is a **35-billion-parameter mixture-of-experts** text-to-speech model with roughly **3B parameters active per token**. Its explicit target is not narration but *dramatic performance*: multi-character scenes with up to **16 tagged speakers**, free-form director's notes, performative tags, multi-round revision and infill editing. The backbone is a **hybrid attention stack** — 40 layers mixing full attention with linear attention — over a **256-expert / 8-active MoE** whose experts are stored as **FP8 E4M3** blocks while the remainder stays in BF16, giving a measured **35.9B parameters** across 8 safetensors shards. The audio side uses a **codebook-MTP decoder**: a 4-layer shared multi-token-prediction tower over **10 codebooks** decoded causally across the whole sequence, feeding the same **ModifiedDAC** codec as Fish Audio S2 (10 codebooks at ~21.5 Hz, 44.1 kHz output). It was initialised from **Qwen3.5**, and post-training used **GRPO** with a single learned human-preference reward model and no KL penalty.
+
+**Release Date:** October 13, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 35.9B total with ~3B active per token (35,901,609,088 safetensors-measured across 8 shards; 62,245 tensors) |
+| **Weight Layout** | 32,212,254,720 FP8 E4M3 expert params, 3,687,388,288 BF16, 1,966,080 F32; index total 39,594,895,616 bytes |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Languages** | 83 (language codes in the model card; the card describes roughly 80 languages and dialects) |
+| **Streaming** | ✅ |
+| **License** | ![Fish Audio Community][license-fish-audio-community] |
+| **Architecture** | FishOmniModel, model_type fish_omni, bfloat16 dtype |
+| **Attention** | hybrid — full attention plus linear attention over 40 layers, hidden 2048, 16 heads, 2 KV heads, head_dim 256, attn_output_gate enabled |
+| **Moe** | 256 experts with 8 active per token, moe_intermediate_size 512, shared-expert gate, bsgemm-moe quantization with 128x128 weight blocks and dynamic activation scheme |
+| **Audio Decoder** | codebook_mtp_shared — 4 layers, 4 shared enrichment layers, dim 2048, audio_hidden_dim 4096, intermediate_size 6144, 10 codebooks, vocab 4096, rope_base 10000000 |
+| **Context Length** | 262,144 max position embeddings, vocab 252,288 |
+| **Base Model** | initialised from Qwen3.5 |
+| **Codec** | ModifiedDAC, 10 codebooks at approximately 21.5 Hz, 44.1 kHz output |
+| **Speakers** | up to 16 tagged characters via `<|speaker:0|>` through `<|speaker:15|>` tags |
+| **Chunking** | long text auto-chunked at roughly 300 UTF-8 bytes with up to 3 speakers per chunk, streamed per chunk |
+| **Speech Template** | reference-bracket-v1 |
+| **Training Data** | several hundred billion tokens spanning roughly 80 languages and dialects |
+| **Post Training** | GRPO reinforcement learning with a single learned human-preference reward model, no rule-based rewards and no KL penalty |
+| **Editing** | editing-as-continuation via previous_takes, plus infill editing with lower WER than the Cartesia Sonic-3 infill API on Ming-Freeform-Audio-Edit in English and Chinese |
+| **Revision** | multi-turn revision raises emotion accuracy from 55.5% to 58.2% and style accuracy from 76.5% to 81.8% over 3 rounds on Step-Audio-Edit |
+| **Throughput** | 271 frames per second versus 177 for Fish Audio S2 on one H200 despite more than 7x the parameters |
+| **Serving** | on one H200, concurrency 1 gives 166.7 frames per second with 88.9 ms median TTFA and RTF 0.131; concurrency 16 gives 927.6 frames per second with 210.1 ms median TTFA; concurrency 64 gives 1,687.3 frames per second with 450.9 ms median TTFA |
+| **Vocoder Placement** | moving the vocoder to a second GPU raises concurrency-256 throughput from 2,422 to 4,160 frames per second, about 72% more, and cuts median TTFA from 3,403 ms to 2,146 ms |
+| **Vram** | NVIDIA GPU with at least 48 GB for the FP8 checkpoint |
+| **Deployment** | vLLM-Omni, SGLang-Omni, mlx-audio, llama.cpp, audio.cpp, CTranslate2 and ComfyUI nodes |
+| **Release** | v3.0.0-beta pre-release on GitHub on October 13, 2026, with the technical report on arXiv as 2610.18010 |
+| **License Terms** | research and non-commercial use free of charge; commercial use permitted while annual revenue is below the USD 500,000 revenue threshold; hosted services require a separate written license; attribution notice and a "Built with Fish Audio" display are required; voice impersonation without consent and removal of watermarks or provenance are prohibited; outputs may not be used to train other speech or audio models |
+
+**Features:** Drama 3 treats speech generation as a **directing problem** rather than a
+speaking problem, and the architecture is designed around that bet. A 16-way
+speaker-tag system, performative point tags such as `[sighs]` and `[laughs]`,
+scoped tags like `<whisper>...</whisper>`, free-form style descriptions and
+unstructured director's notes all push the user toward *staging a scene*
+rather than writing a prompt and accepting one take. The second bet is
+**editing as a first-class verb**: `previous_takes` turns a revision into a
+continuation of the model's own output, multi-round revision measurably lifts
+emotion accuracy from 55.5% to 58.2% and style accuracy from 76.5% to 81.8%,
+and infill editing beats Cartesia Sonic-3's infill API on WER in both English
+and Chinese. The third bet is that **sparsity plus FP8 is enough to make a
+35B speech model serveable**: 256 experts at 8 active keep per-token cost
+near 3B while FP8 E4M3 expert storage keeps the footprint down, and the
+reported 271 frames per second on one H200 against Fish Audio S2's 177 —
+despite more than 7x the parameters — is the number that makes the case.
+Two design details are worth flagging for anyone building on top: the
+**codebook-MTP decoder** decodes all 10 codebooks causally over the entire
+sequence rather than per-frame, which is what makes long multi-speaker
+scenes coherent; and the **hybrid full-plus-linear attention** stack is the
+price of a 262,144-token context at this scale. The post-training recipe is
+notable for what it omits — GRPO with a single learned human-preference
+reward model, no rule-based rewards and no KL penalty, a deliberately small
+number of moving parts for a model of this size. The community license is
+also unusually concrete for a 35B speech model: commercial use is allowed
+below USD 500,000 annual revenue, outputs may not be used to train other
+speech or audio models, and the attribution notice is mandatory.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/fishaudio/drama-3)
+[![GitHub][link-github]](https://github.com/fishaudio/fish-speech)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2610.18010)
+[![Website][link-website]](https://fish.audio)
+[![Demo][link-demo]](https://speech.fish.audio/)
+[![Predecessor][link-predecessor]](https://huggingface.co/fishaudio/s2-pro)
+
+
+**Additional Tools:**
+
+| Tool | Type | Link |
+|------|------|------|
+| darioooooo0o/drama-3-w4a16-32gb | NVIDIA CUDA W4A16 int4 experts with int8 backbone, 30.7 GiB peak for 32 GB GPUs | [darioooooo0o/drama-3-w4a16-32gb](https://huggingface.co/darioooooo0o/drama-3-w4a16-32gb) |
+| darioooooo0o/drama-3-w4a16 | NVIDIA CUDA W4A16 int4 experts, 41.5 GB down to 25.9 GB, about 38% smaller | [darioooooo0o/drama-3-w4a16](https://huggingface.co/darioooooo0o/drama-3-w4a16) |
+| akhaliq/drama-3-int4 | NVIDIA CUDA hybrid W4A16 GPTQ-Marlin int4, 22.1 GB, runs on Ampere A100 sm80, published WER and speaker-similarity evals | [akhaliq/drama-3-int4](https://huggingface.co/akhaliq/drama-3-int4) |
+| WaveCut/Drama-3-OrbitQuant-W4A4 | NVIDIA CUDA OrbitQuant W4A4, RPBH rotation with Lloyd-Max codebooks, 25.44 GB bundle | [WaveCut/Drama-3-OrbitQuant-W4A4](https://huggingface.co/WaveCut/Drama-3-OrbitQuant-W4A4) |
+| WaveCut/Drama-3-OrbitQuant-W2A2 | NVIDIA CUDA OrbitQuant W2A2, 11.8 GB, smallest CUDA quant in this set | [WaveCut/Drama-3-OrbitQuant-W2A2](https://huggingface.co/WaveCut/Drama-3-OrbitQuant-W2A2) |
+| Reza2kn/drama-3-nvfp4 | NVIDIA Blackwell NVFP4 E2M1 with E4M3 scales per 16 input channels, CUTLASS kernels, 27.42 GB total | [Reza2kn/drama-3-nvfp4](https://huggingface.co/Reza2kn/drama-3-nvfp4) |
+| asfberlin/drama-3-128e-w4a16 | NVIDIA CUDA W4A16 pruned to 128 of 256 experts by measured router usage, 12.7 GiB on disk, 15.4 GiB peak for 2 concurrent requests on RTX 5080 | [asfberlin/drama-3-128e-w4a16](https://huggingface.co/asfberlin/drama-3-128e-w4a16) |
+| skysay/drama3-emo-w4 | NVIDIA CUDA mixed W4A8 with W6A8 on layer 0, emotion-calibrated over 630 seed-matched takes, for ComfyUI-Drama3 | [skysay/drama3-emo-w4](https://huggingface.co/skysay/drama3-emo-w4) |
+| mlx-community/fish-audio-drama-3-bf16 | Apple Silicon MLX BF16, 67 GB | [mlx-community/fish-audio-drama-3-bf16](https://huggingface.co/mlx-community/fish-audio-drama-3-bf16) |
+| mlx-community/fish-audio-drama-3-8bit | Apple Silicon MLX 8-bit, 42 GB, needs a 64 GB Mac | [mlx-community/fish-audio-drama-3-8bit](https://huggingface.co/mlx-community/fish-audio-drama-3-8bit) |
+| mlx-community/fish-audio-drama-3-4bit | Apple Silicon MLX 4-bit, 22 GB | [mlx-community/fish-audio-drama-3-4bit](https://huggingface.co/mlx-community/fish-audio-drama-3-4bit) |
+| mlx-community/fish-audio-drama-3-3bit | Apple Silicon MLX 3-bit, 16.9 GB, fits a 32 GB Mac, WER 1.4% and UTMOS 4.04 | [mlx-community/fish-audio-drama-3-3bit](https://huggingface.co/mlx-community/fish-audio-drama-3-3bit) |
+| vanch007/Drama-3-MLX-BF16 | Apple Silicon MLX BF16, 69.0 GB and RTF 5.238 on M3 Max 128 GB | [vanch007/Drama-3-MLX-BF16](https://huggingface.co/vanch007/Drama-3-MLX-BF16) |
+| vanch007/Drama-3-MLX-8bit | Apple Silicon MLX 8-bit affine quantization with group size 64, 32.6 GB and RTF 4.827 on M3 Max 128 GB | [vanch007/Drama-3-MLX-8bit](https://huggingface.co/vanch007/Drama-3-MLX-8bit) |
+| vanch007/Drama-3-MLX-4bit | Apple Silicon MLX 4-bit affine quantization with group size 64, 23.2 GB and RTF 3.453 on M3 Max 128 GB | [vanch007/Drama-3-MLX-4bit](https://huggingface.co/vanch007/Drama-3-MLX-4bit) |
+| fcmeyer/drama-3-MLX-3bit-HQ | Apple Silicon MLX 3-bit experts except 15 sensitivity-swept layers at 4-bit, 19.7 GB plus 1.6 GB codec, 34 GB peak on M5 Max at 2.7x real time | [fcmeyer/drama-3-MLX-3bit-HQ](https://huggingface.co/fcmeyer/drama-3-MLX-3bit-HQ) |
+| fcmeyer/drama-3-MLX-4bit-HQ | Apple Silicon MLX 4-bit quality-weighted, 24.5 GB, 39 GB peak on M5 Max at 2.3x real time | [fcmeyer/drama-3-MLX-4bit-HQ](https://huggingface.co/fcmeyer/drama-3-MLX-4bit-HQ) |
+| fcmeyer/drama-3-MLX-5bit | Apple Silicon MLX 5-bit, 26.3 GB, 40 GB peak on M5 Max at 2.8x real time | [fcmeyer/drama-3-MLX-5bit](https://huggingface.co/fcmeyer/drama-3-MLX-5bit) |
+| pentacoxian-dev/drama3-small-GGUF | GGUF pruned to 45% of expert slots and distilled back to Japanese and English, IQ3_XXS at 9.74 GiB, 10.26 GiB measured peak on RTX 4090, requires an audio.cpp patch | [pentacoxian-dev/drama3-small-GGUF](https://huggingface.co/pentacoxian-dev/drama3-small-GGUF) |
+| Jmica/Drama-3-GGUF | GGUF audio.cpp-native, Q2_K, Q3_K_S and Q4_K_S expert banks with explicit backbone precision overrides | [Jmica/Drama-3-GGUF](https://huggingface.co/Jmica/Drama-3-GGUF) |
+| EryriLabs/drama-3-llamacpp-GGUF | GGUF llama.cpp build, Q4_K experts with Q8 backbone at 20.8 GB plus a 1.7 GB mmproj, run via mara-drama3 | [EryriLabs/drama-3-llamacpp-GGUF](https://huggingface.co/EryriLabs/drama-3-llamacpp-GGUF) |
+| jordimas/drama-3-ct2 | CTranslate2 conversion preserving FP8 E4M3 experts and block scales, needs a custom CTranslate2 build with Drama3 support | [jordimas/drama-3-ct2](https://huggingface.co/jordimas/drama-3-ct2) |
+| PedroMarinhoDev/Drama-3-ComfyUI | ComfyUI weights for ComfyUI-Drama3, FP8 and int8 expert variants plus W4A8 and W6A8, ComfyUI v0.40+ with 8 GB VRAM and 32 to 48 GB RAM | [PedroMarinhoDev/Drama-3-ComfyUI](https://huggingface.co/PedroMarinhoDev/Drama-3-ComfyUI) |
+| UltimateIntent/Fish-Audio-Drama-3-Q2-Q3 | ComfyUI Q2_K and Q3_K expert quants with bundled workflow JSON, ASR and synthetic-voice auxiliaries | [UltimateIntent/Fish-Audio-Drama-3-Q2-Q3](https://huggingface.co/UltimateIntent/Fish-Audio-Drama-3-Q2-Q3) |
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:drama-3.md -->
+<!-- MODEL:resona.md -->
+<details id="resona">
+<summary>Resona</summary>
+
+### Resona
+
+**Description:** **Resona** is an **82M-parameter neural TTS engine** built for the opposite of the cloud: 100% air-gapped, no GPU, no telemetry, synthesized on a commodity CPU. It targets the gap the author describes between cloud APIs (which cost latency and privacy) and small open engines that sound robotic on Indian languages and Hinglish code-switching. The pipeline is a text normalizer feeding a **language router**; Hinglish text passes through a custom transducer with a **protected technical-term whitelist** before hitting a **Devanagari/IPA phonemizer** (built on `espeak-ng`, which must be installed separately), then a token-and-rhythm alignment stage and an **AdaIN prosody predictor** driven by a **256-D voice style tensor**, an 82M **neural vocoder**, and finally a **breathing-cadence injector** that places 180 ms clause pauses and 350 ms sentence boundaries. Two checkpoints ship (`resona-v1.pth` and `resona-indic-v1.pth`, ~327 MB each) and **21 "Grade A" voice personas** are selectable by name, each defined by a pre-rendered style tensor rather than a reference clip. Speed is the headline metric: **RTF 0.18x** and a **180 ms cold start** measured on a single thread of an Intel Core i7-12700H, at ~420 MB RAM, outputting 24 kHz WAV.
+
+**Release Date:** September 26, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 82M (two ~327 MB checkpoints — resona-v1.pth and resona-indic-v1.pth) |
+| **Voice Cloning** | ❌ |
+| **Asr** | ❌ |
+| **Languages** | 10 (Hinglish and Hindi are native; es/fr/it/pt/ja/zh and en-GB are routed through the espeak-ng IPA G2P front-end into the same vocoder) |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Output Sample Rate** | 24 kHz |
+| **Voices** | 21 "Grade A" personas, each with a persona character, pitch and speed; 8 Hinglish/Indic flagships include `anjura`, `divya`, `meera`, `priya`, `arjun`, `kabir`, `aman`, `atul` |
+| **G2P** | espeak-ng Devanagari/IPA for Hindi; American and British English IPA; Spanish, French, Italian, Portuguese IPA; Romaji/Kana for Japanese; Pinyin for Mandarin |
+| **Code Switching** | custom Hinglish transducer with a protected technical-term whitelist so terms are not mis-transliterated |
+| **Prosody Control** | AdaIN prosody predictor conditioned on a 256-D voice style tensor |
+| **Breathing Cadence** | 180 ms clause pauses and 350 ms sentence boundaries inserted automatically |
+| **Pipeline** | text normalizer → language router → Hinglish transducer / phonemizer → token and rhythm alignment → AdaIN prosody predictor → 82M neural vocoder → breathing cadence → 24 kHz WAV |
+| **Benchmarks** | cold start 180 ms, RTF 0.18x, 48 words/s, ~420 MB RAM — measured on one thread of an Intel Core i7-12700H |
+| **Quality Metrics** | none reported (no MOS, speaker similarity, intelligibility or third-party evaluation) |
+| **Requirements** | Python 3.9–3.12 and `espeak-ng` installed on the host (auto-discovery plus CLI fallback) |
+| **Interfaces** | Python API (`from resona import ResonaPipeline`) and a `resona-tts` CLI with `--list-voices`, `--voice`, `--lang`, `--speed` |
+| **Repository** | self-contained Python package (core, preprocessing, voices, vocab, cli), bundled lexicons, example scripts, an automated test suite, and SHA-256 release integrity hashes |
+| **Provenance** | the repository ships a NOTICE file describing upstream architectural foundations |
+
+**Features:** What Resona is really selling is a **budget**: 82M parameters and a
+single-thread CPU RTF of 0.18x puts it in a class of its own in this list,
+where most TTS models assume a GPU. The engineering consequence is visible in
+the architecture — rather than a large autoregressive acoustic model, the
+quality budget is spent on **deterministic post-processing** (the breathing-cadence
+pause injector) and on **front-end robustness** (the Hinglish transducer plus
+a protected technical-term whitelist, which is a surprisingly concrete
+acknowledgment that code-switched text usually breaks on exactly the product
+names, resolutions and menu items a tutorial voice needs to say). The 21
+personas as **256-D style tensors with per-voice pitch and speed** is a
+lightweight alternative to voice cloning: no reference audio, no training,
+just a style vector per speaker. The "10 languages" figure deserves a careful
+read, though — Hinglish and Hindi are the native path, while the remaining
+eight come from `espeak-ng`'s existing IPA front-end feeding the same 82M
+vocoder, so the breadth is inherited from the phonemizer rather than from
+acoustic training in those languages. This is also a very young release:
+first public commit 2026-09-26, no published quality metrics, no MOS or
+speaker-similarity numbers, and speed figures that are self-reported on one
+CPU. Treat the engineering and the licensing as the substance, and the
+"studio-grade" quality claims as unverified.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/milansharma94/Resona)
+[![GitHub][link-github]](https://github.com/MilannSharma/Resona-TTS)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:resona.md -->
 <!-- MODEL:auk.md -->
 <details id="auk">
 <summary>AuK</summary>
@@ -217,6 +446,13 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 [![HuggingFace][link-huggingface]](https://huggingface.co/rumik-ai/rumik-oss-1)
 [![Blog][link-blog]](https://rumik.ai/research/rumik-oss)
 [![Demo][link-demo]](https://huggingface.co/spaces/rumik-ai/rumik-oss-1)
+
+
+**Additional Tools:**
+
+| Tool | Type | Link |
+|------|------|------|
+| ComfyUI-Rumik-TTS | ComfyUI node | [ComfyUI-Rumik-TTS](https://github.com/dheeai/ComfyUI-Rumik-TTS) |
 
 
 <p align="center">· · · · · · · · · · · · · ·</p>
@@ -877,6 +1113,69 @@ runs unattended on a $3 chip and a $0 web page.
 <p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:sanotts.md -->
+<!-- MODEL:wordvoice-base-0-5b.md -->
+<details id="wordvoice-base-0-5b">
+<summary>WordVoice-base-0.5B</summary>
+
+### WordVoice-base-0.5B
+
+**Description:** **WordVoice** reframes LLM-based TTS from *implicit* to *explicit* control: instead of asking the model to "just sound right", the user states **what should happen acoustically, word by word**. Built on the [CosyVoice3](https://github.com/FunAudioLLM/CosyVoice) framework, it supports independent, **decoupled control of five acoustic dimensions per input word**: ⏱️ **duration** (per-word pronunciation length), ⏸️ **boundary** (a 5-level pause class `b0`–`b4`), 🔊 **energy** (loudness, 0–1), 🎵 **pitch** (core f0, −1–1) and 📈 **tone** (7 prosodic morphologies — flat, rise, strong rise, fall, strong fall, peak, valley). The mechanism is an **"acoustic thinking" bound token** (`<b>`): before the autoregressive model emits the speech tokens for a given word, it first *predicts that word's acoustic attributes* — plan the prosody, then generate the sound. Two inference modes are shipped: **Free Mode**, where the LLM performs the prosodic planning itself for reference-conditioned zero-shot speech, and **Control Mode**, where the caller supplies the attributes. Weights are released per language — `wordvoice_llm_en.pt` and `wordvoice_llm_zh.pt` alongside a shared flow-matching module — trained on the **WordVoice-5A** dataset, whose five "dimensions" are the five controllable attributes.
+
+**Release Date:** July 8, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 0.5B (base and name); shipped as three checkpoints — flow matching 1.33 GB plus separate EN and ZH LLM weights at 2.03 GB each |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | 2 (Chinese and English, with separate per-language LLM checkpoints) |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Base Model** | FunAudioLLM/Fun-CosyVoice3-0.5B-2512 (Qwen2.5-family LLM backbone per the project README) |
+| **Control Dimensions** | duration, boundary (b0–b4), energy (0–1), pitch (−1 to 1), tone (7 categories) |
+| **Tone Categories** | flat, rise, strong rise, fall, strong fall, peak, valley |
+| **Mechanism** | bound token (`<b>`) — the AR LLM predicts a word's acoustic attributes before generating its speech tokens |
+| **Modes** | Free Mode (model plans prosody for zero-shot speech) and Control Mode (caller supplies per-word attributes) |
+| **Training Data** | WordVoice-5A (released alongside the model, with a separate preprocessing pipeline at XXH333/WordVoice-5A-Pipeline) |
+| **Datasets Note** | speaker count, hours and utterance counts are not stated in the released documentation |
+| **Benchmarks** | none — no WER, MOS, speaker-similarity or control-accuracy numbers are published; quality claims are qualitative |
+| **Sample Rate** | not stated in the released documentation |
+| **Install** | conda environment, `pip install -e .`, then `bash download_models.sh` (pulls CosyVoice3 and MMS-FA dependencies) |
+| **Inference** | `python wordvoice_infer.py` for the out-of-the-box Free Mode / Control Mode demo |
+| **Release Notes** | open-sourced with paper, model, dataset and pipeline on 2026/07/08; interactive Hugging Face Space demo added 2026/07/29 |
+
+**Features:** Nearly every LLM-TTS system makes prosody a **latent**: the language model is
+asked to produce fluent speech and the timing, pauses, energy and intonation
+emerge as a side effect, so the user can influence them only through prompt
+text — and cannot ask for "a long pause after this word" or "flat and quiet
+here" in any reproducible way. WordVoice's move is to make those attributes
+**first-class, discrete, per-word outputs** that the user writes down. The
+subtle part is *where* the control lives: the **bound token** means the
+attributes are predicted by the autoregressive LLM itself, autoregressively,
+*before* the corresponding speech tokens are generated — "acoustic thinking".
+That ordering is what makes the control compositional rather than a separate
+classifier bolted on afterward; the model reasons about the prosodic shape of
+the word it is about to say, in context with the words around it. The
+five-dimension decomposition (duration / boundary / energy / pitch / tone) is
+also a deliberate interface choice — boundary is a *category* while energy and
+pitch are *scalars*, which is not how a generic "emotion" tag behaves, and is
+far more useful for subtitle and dubbing work. Worth weighing alongside the
+controls is what the release does **not** include: no objective results, no
+MOS, no speaker-similarity figure, no stated reference-audio protocol, and no
+sample rate. The controls are clearly specified and the code is open; the
+accuracy of the control and the fidelity of the zero-shot cloning are
+unmeasured in the published artifacts.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/XXH333/WordVoice-base-0.5B)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2607.06461)
+[![GitHub][link-github]](https://github.com/XXH333/WordVoice-main)
+[![Demo][link-demo]](https://huggingface.co/spaces/XXH333/wordvoice-tts)
+[![Website][link-website]](https://xxh333.github.io/wordvoice-demo/)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:wordvoice-base-0-5b.md -->
 <!-- MODEL:freyatts.md -->
 <details id="freyatts">
 <summary>FreyaTTS</summary>
@@ -1541,6 +1840,45 @@ edge deployment.
 <p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:longcat-audiodit.md -->
+<!-- MODEL:voxtream2.md -->
+<details id="voxtream2">
+<summary>VoXtream2</summary>
+
+### VoXtream2
+
+**Description:** VoXtream2 is a zero-shot full-stream TTS model from the Department of Speech, Music and Hearing at KTH Royal Institute of Technology (Nikita Torgashov, Gustav Eje Henter, Gabriel Skantze). Its headline feature is **dynamic speaking-rate control**: distribution matching plus classifier-free guidance give fine-grained control of speech rate that can be changed *while the model is generating* — the paper demonstrates gradual speed-ups/slow-downs and sharp control-signal changes mid-utterance. It runs **4x faster than real time** with a **74 ms first-packet latency** in full-stream mode on a consumer GPU ("full-stream" meaning it begins speaking from the first word rather than waiting for a text chunk). A **translingual** capability comes from prompt text masking, so the 3–10 s reference clip can be in any language even though text input is English. The backbone follows the phone/temp/dep former stack of its predecessor VoXtream (arXiv 2509.15969, ICASSP 2026), keeping sink attention for streaming, and was trained on Emilia and HiFiTTS2. Code is Apache-2.0; weights are CC-BY-NC 4.0, and the card prohibits generating someone's speech without consent.
+
+**Release Date:** March 17, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 639,104,000 (462,870,528 model + 176,233,472 depth former, FP32) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Languages** | English (acoustic prompts in any language via prompt text masking) |
+| **Streaming** | ✅ |
+| **License** | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
+| **Architecture** | phone_former + temp_former + dep_former_csm (depth former, CSM-style), 16 codebooks, audio vocab 2050, embedding dim 1024, speaker embedding dim 192, sink attention |
+| **Speaking Rate** | dynamic, adjustable mid-utterance in syllables per second (distribution matching + classifier-free guidance) |
+| **Training Data** | Emilia + HiFiTTS2 (preprocessed: herimor/voxtream2-train) |
+| **Constraints** | text max 1000 chars; prompt audio 3-10 s; out-of-scope use forbids generating anyone's speech without consent |
+| **Usage** | pip install "voxtream>=0.2" (espeak-ng phonemizer required) |
+
+**Features:** Dynamic speaking-rate control is the novelty: instead of a fixed speed set at inference, the target rate (in syllables per second) acts as a continuous control signal handled with distribution matching and classifier-free guidance, and can be updated between generated frames. Combined with full-stream generation — first audio packet in 74 ms at 4x real time on a consumer GPU — and prompt text masking that makes any-language reference audio usable for English synthesis, VoXtream2 extends the low-latency streaming TTS line started by VoXtream into flexibly paced, voice-controllable territory.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/herimor/voxtream2)
+[![GitHub][link-github]](https://github.com/herimor/voxtream)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2603.13518)
+[![Website][link-website]](https://herimor.github.io/voxtream2)
+[![Demo][link-demo]](https://huggingface.co/spaces/herimor/voxtream2)
+[![Dataset][link-dataset]](https://huggingface.co/datasets/herimor/voxtream2-train)
+[![Predecessor][link-predecessor]](https://arxiv.org/abs/2509.15969)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:voxtream2.md -->
 <!-- MODEL:silma-tts.md -->
 <details id="silma-tts">
 <summary>SILMA TTS</summary>
@@ -3305,7 +3643,10 @@ Models that can generate audio from multiple input modalities (video, text, imag
 
 | Model | Text | Video | Audio | Max Duration | Sample Rate | License |
 | :--- | :---: | :---: | :---: | :--- | :--- | :--- |
+| [Ming-3.0-audio-flash](#ming-3-0-audio-flash) | ✅ | ❌ | ✅ | — | — | ![MIT][license-mit] |
+| [Ming-3.0-audio-tiny](#ming-3-0-audio-tiny) | ✅ | ❌ | ✅ | — | — | ![MIT][license-mit] |
 | [MiDashengLM-Gen](#midashenglm-gen) | ✅ | ❌ | ❌ | — | 16 kHz | ![Apache 2.0][license-apache-2.0] |
+| [NVIDIA NemotronLabs VoiceChat 11B](#nemotronlabs-voicechat-11b) | ✅ | ❌ | ✅ | — | 22.05 kHz | ![OpenMDW 1.1][license-openmdw-1.1] |
 | [ScenA](#scena) | ✅ | ❌ | ✅ | — | — | ![Other][license-other] |
 | [Nemotron-Labs-Audex-2B](#nemotron-labs-audex-2b) | ✅ | ❌ | ✅ | — | — | ![NVIDIA NC][license-nvidia-noncommercial] |
 | [Nemotron-Labs-Audex-30B-A3B](#nemotron-labs-audex-30b-a3b) | ✅ | ❌ | ✅ | — | — | ![NVIDIA NC][license-nvidia-noncommercial] |
@@ -3321,6 +3662,98 @@ Models that can generate audio from multiple input modalities (video, text, imag
 | [ThinkSound](#thinksound) | ✅ | — | ✅ | — | — | ![Apache 2.0][license-apache-2.0] |
 | [MMAudio](#mmaudio) | ✅ | ✅ | — | — | — | ![Apache 2.0][license-apache-2.0] |
 
+<!-- MODEL:ming-3-0-audio-flash.md -->
+<details id="ming-3-0-audio-flash">
+<summary>Ming-3.0-audio-flash</summary>
+
+### Ming-3.0-audio-flash
+
+**Description:** Ming-3.0-audio-flash is inclusionAI's native audio-language Mixture-of-Experts model: **126B total parameters with 6.5B activated per inference step** (128,181,010,400 measured across 25 BF16 shards). It accepts audio together with a text instruction and returns text, optionally with synthesized speech from a separate Talker, so a single model covers the whole loop from hearing to understanding to answering out loud. The backbone is a `BailingMoeV3Audio` MoE paired with a 32-layer, 1280-wide audio encoder over 128 mel bins with a 3000-token audio context; the Talker speaks with built-in IP voices (灵小柔, 灵楷, US_James, US_Stella) or clones a voice from a reference clip plus its transcript. Recognition is the headline: Chinese CER **3.45%** averaged over AISHELL-1/2, Common Voice 15zh, FLEURS and WenetSpeech, English WER **3.69%** averaged over LibriSpeech, Common Voice 15 en, FLEURS and VoxPopuli, and **9.40%** CER across fifteen Mandarin dialects — with long-form meeting transcription (AA-Earnings22, AISHELL-4, AliMeeting, AMI) handled by the same model. On audio understanding it leads the compared open models on BigBenchAudio (99.40), MMAU (82.00), MMSU (78.82) and MMAU-Pro (66.41). It is served through vLLM-Omni, SGLang and SGLang-Omni — the last exposing OpenAI-compatible transcription, speech and chat endpoints from one server — and is released under MIT.
+
+**Release Date:** October 19, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 126B total / 6.5B active per step (128,181,010,400 safetensors-measured, 25 BF16 shards) |
+| **License** | ![MIT][license-mit] |
+| **Text** | ✅ |
+| **Video** | ❌ |
+| **Audio** | ✅ |
+| **Voice Cloning** | ✅ |
+| **Asr** | ✅ |
+| **Languages** | Chinese and English (varied accents, dialects, noisy and multi-speaker conditions) |
+| **Streaming** | ✅ |
+| **Architecture** | audio encoder (32 layers, hidden 1280, 20 heads, 128 mel bins, 3000 audio-context tokens) + projector + BailingMoeV3Audio MoE text backbone + optional Talker for speech output |
+| **Chinese Asr Avg** | CER 3.45 (AISHELL-1 1.11, AISHELL-2 Android 2.48 / iOS 2.49, Common Voice 15zh 4.61, FLEURS zh 2.92, WenetSpeech meeting 5.54 / net 5.01) |
+| **English Asr Avg** | WER 3.69 (LibriSpeech clean 1.20 / other 2.40, Multilingual LibriSpeech 3.80, Common Voice 15 en 6.51, FLEURS en 2.86, VoxPopuli 5.37) |
+| **Dialect Asr Avg** | CER 9.40 across 15 Mandarin dialects (incl. Cantonese 4.09, Sichuanese/Chongqing 4.07, Anhui 5.76, Hokkien 12.84) |
+| **Long Form Asr** | AA-Earnings22-clean WER 5.78, Earnings22 WER 11.60, AISHELL-4 CER 14.76 / DER 8.58, AliMeeting DER 8.66, AMI WER 19.06 |
+| **Context Asr** | ContextLASR WER 1.52 / NE-WER 5.21 / NE-FNR 1.06 |
+| **Audio Intelligence** | BigBenchAudio 99.40, MMAU 82.00, MMAR 74.40, MMSU 78.82, MMAU-Pro 66.41, AudioMarathon 68.41, LongAudioSpan rubric 41.12, MuchoMusic 65.65 |
+| **Spoken Interaction** | URO-Bench-Pro 81.92, VoiceBench 86.74 |
+| **Tool Calling** | BFCL-V3 Audio 81.40, SpeechTCEval 82.60 |
+| **Voices** | built-in IP voices 灵小柔 (default), 灵楷, US_James, US_Stella; reference-audio cloning with prompt text |
+| **Serving** | vLLM-Omni (OpenAI-compatible, 128K profile on 8x 80 GB H800, TP8), SGLang (text output, 4 GPUs), SGLang-Omni (2 GPUs; /v1/audio/transcriptions, /v1/audio/speech, /v1/chat/completions), Transformers with custom code (trust_remote_code) |
+| **Sibling Model** | Ming-3.0-audio-tiny (9.3B total / 2.7B active, single-GPU profile) |
+
+**Features:** The design bet is that **one audio-language model should absorb the whole assistant stack** — recognition, understanding, reasoning and spoken output — instead of chaining an ASR model into an LLM into a TTS model, each hop adding latency and losing acoustic context. Ming-3.0-audio-flash implements that as a MoE thinker (6.5B active out of 126B) behind a 32-layer audio encoder, with a Talker that can speak the answer in a built-in IP voice or a voice cloned from a reference clip. The evidence that the bet is paying off is in the numbers rather than the slogan: 3.45% Chinese CER and 3.69% English WER *including* fifteen Mandarin dialects and long-form multi-speaker meeting audio, 9.40% dialect-average CER, and best-in-class BigBenchAudio (99.40) and MMSU (78.82) against Qwen3-Omni, MiMo-V2.6 and Gemini 3.8 Flash. It also keeps the agent shape: tool calling (BFCL-V3 Audio 81.40) and spoken interaction (VoiceBench 86.74) come from the same weights, with an OpenAI-compatible server that serves transcription, chat and speech from one port.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/inclusionAI/Ming-3.0-audio-flash)
+[![GitHub][link-github]](https://github.com/inclusionAI/Ming-3.0-audio-flash)
+[![ModelScope][link-modelscope]](https://modelscope.cn/models/inclusionAI/Ming-3.0-audio-flash)
+[![Website][link-website]](https://sgl-project.github.io/sglang-omni/cookbook/ming3_audio.html)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:ming-3-0-audio-flash.md -->
+<!-- MODEL:ming-3-0-audio-tiny.md -->
+<details id="ming-3-0-audio-tiny">
+<summary>Ming-3.0-audio-tiny</summary>
+
+### Ming-3.0-audio-tiny
+
+**Description:** Ming-3.0-audio-tiny is the compact member of inclusionAI's Ming-3.0 audio family: a **9.3B-parameter Mixture-of-Experts model with 2.7B activated per inference step** (8,871,306,016 measured across 2 BF16 shards), roughly a fourteenth of Flash's footprint. It keeps the same architecture and the same task surface — audio plus a text instruction in, text or text-plus-speech out through an optional Talker — but the whole checkpoint fits on a single GPU, which is the whole point: the SGLang-Omni profile colocates the thinker, the audio encoder and speech synthesis on one device (`--talker.gpu 0`), and the validated SGLang text profile uses one GPU. Recognition quality tracks Flash closely but sits below it: Chinese CER **3.79%** averaged over AISHELL-1/2, Common Voice 15zh, FLEURS and WenetSpeech, English WER **4.36%** over LibriSpeech, Common Voice 15 en, FLEURS and VoxPopuli, and **10.29%** CER across fifteen Mandarin dialects. On audio understanding it trails Flash across the board but stays usable — BigBenchAudio 99.20, MMAU 75.90, MMSU 73.06, MMAR 67.70, MMAU-Pro 56.42, VoiceBench 74.29, URO-Bench-Pro 54.15, BFCL-V3 Audio 79.80. It is released under MIT and shares the flash repository, benchmark tables and serving scripts.
+
+**Release Date:** October 19, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 9.3B total / 2.7B active per step (8,871,306,016 safetensors-measured, 2 BF16 shards) |
+| **License** | ![MIT][license-mit] |
+| **Text** | ✅ |
+| **Video** | ❌ |
+| **Audio** | ✅ |
+| **Voice Cloning** | ✅ |
+| **Asr** | ✅ |
+| **Languages** | Chinese and English (varied accents, dialects, noisy and multi-speaker conditions) |
+| **Streaming** | ✅ |
+| **Architecture** | audio encoder (32 layers, hidden 1280, 20 heads, 128 mel bins, 3000 audio-context tokens) + projector + BailingMoeV3Audio MoE text backbone + optional Talker for speech output |
+| **Chinese Asr Avg** | CER 3.79 (AISHELL-1 1.47, AISHELL-2 Android 2.68 / iOS 2.60, Common Voice 15zh 5.64, FLEURS zh 2.99, WenetSpeech meeting 6.04 / net 5.14) |
+| **English Asr Avg** | WER 4.36 (LibriSpeech clean 1.42 / other 3.06, Multilingual LibriSpeech 4.78, Common Voice 15 en 7.89, FLEURS en 3.30, VoxPopuli 5.68) |
+| **Dialect Asr Avg** | CER 10.29 across 15 Mandarin dialects (incl. Cantonese 4.49, Sichuanese/Chongqing 4.46, Anhui 5.42) |
+| **Long Form Asr** | AA-Earnings22-clean WER 6.30, Earnings22 WER 18.29, AISHELL-4 CER 21.94, AMI WER 24.77 |
+| **Context Asr** | ContextLASR WER 2.12 / NE-WER 6.27 / NE-FNR 2.02 |
+| **Audio Intelligence** | BigBenchAudio 99.20, MMAU 75.90, MMAR 67.70, MMSU 73.06, MMAU-Pro 56.42, AudioMarathon 64.54, LongAudioSpan rubric 35.45, MuchoMusic 58.07 |
+| **Spoken Interaction** | URO-Bench-Pro 54.15, VoiceBench 74.29 |
+| **Tool Calling** | BFCL-V3 Audio 79.80, SpeechTCEval 69.80 |
+| **Voices** | built-in IP voices 灵小柔 (default), 灵楷, US_James, US_Stella; reference-audio cloning with prompt text |
+| **Serving** | SGLang-Omni (single GPU, `--talker.gpu 0` colocates speech synthesis), SGLang (text output, 1 GPU), vLLM-Omni (MING_MODEL_VARIANT=tiny), Transformers with custom code (trust_remote_code) |
+| **Sibling Model** | Ming-3.0-audio-flash (126B total / 6.5B active) — same architecture, larger, stronger |
+
+**Features:** Ming-3.0-audio-tiny is what makes the Ming-3.0 audio line *deployable* rather than merely capable: the same `BailingMoeV3Audio` MoE thinker, the same 32-layer audio encoder and the same optional Talker as the 126B Flash checkpoint, distilled down to 9.3B total and 2.7B active, and small enough that the entire pipeline — audio encoder, thinker and speech synthesis — runs on one GPU behind an OpenAI-compatible server offering `/v1/audio/transcriptions`, `/v1/audio/speech` and `/v1/chat/completions` side by side. The quality gap to Flash is real but modest where it matters most: Chinese CER 3.79% vs 3.45%, English WER 4.36% vs 3.69%, dialect CER 10.29% vs 9.40%, while BigBenchAudio is essentially tied (99.20 vs 99.40). The gap widens on the harder audio-reasoning and spoken-interaction axes (MMAU-Pro 56.42 vs 66.41, VoiceBench 74.29 vs 86.74), which is the honest dividing line between the two tiers: Tiny for on-prem transcription and spoken chat, Flash when the audio reasoning has to be right.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/inclusionAI/Ming-3.0-audio-tiny)
+[![GitHub][link-github]](https://github.com/inclusionAI/Ming-3.0-audio-flash)
+[![ModelScope][link-modelscope]](https://modelscope.cn/models/inclusionAI/Ming-3.0-audio-tiny)
+[![Website][link-website]](https://sgl-project.github.io/sglang-omni/cookbook/ming3_audio.html)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:ming-3-0-audio-tiny.md -->
 <!-- MODEL:midashenglm-gen.md -->
 <details id="midashenglm-gen">
 <summary>MiDashengLM-Gen</summary>
@@ -3356,6 +3789,84 @@ Models that can generate audio from multiple input modalities (video, text, imag
 <p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:midashenglm-gen.md -->
+<!-- MODEL:nemotronlabs-voicechat-11b.md -->
+<details id="nemotronlabs-voicechat-11b">
+<summary>NVIDIA NemotronLabs VoiceChat 11B</summary>
+
+### NVIDIA NemotronLabs VoiceChat 11B
+
+**Description:** **NVIDIA NemotronLabs VoiceChat** is an **11B end-to-end, real-time speech full-duplex (FD) model** for conversational AI that jointly performs streaming speech understanding and speech generation in **one unified architecture** — no ASR → LLM → TTS cascade, no API handoffs between models, and therefore no stacked end-to-end latency. It listens and speaks simultaneously, so it handles natural turn-taking (**~450 ms response**), **barge-in** (the user cuts in and the model yields instantly) and mid-turn pauses without a rigid request/response cycle. Architecturally it encodes audio with a **Fast Conformer** streaming encoder, feeds the audio tokens into a **Nemotron Nano V2 9B LLM backbone** to predict text tokens, and decodes those to audio codes with an **NVIDIA TTS decoder and codec** — while a **separate output channel** emits tool-calling scripts. That separate channel is what makes VoiceChat **the first open full-duplex model to support tool calling**: each tool can define an **"on-hold" message** spoken the moment the LLM emits the triggering text, so the conversation keeps flowing naturally while the tool executes. It ranks **#2 among all open full-duplex models** on VoiceBench and **#2 among all open models** on Full-Duplex-Bench 1.0.
+
+**Release Date:** August 3, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 11B (11,095,371,252 safetensors-measured) |
+| **License** | ![OpenMDW 1.1][license-openmdw-1.1] |
+| **Text** | ✅ |
+| **Video** | ❌ |
+| **Audio** | ✅ |
+| **Max Duration** | not stated |
+| **Sample Rate** | 22.05 kHz output / 16 kHz input |
+| **Architecture** | hybrid Mamba/Transformer — Fast Conformer streaming speech encoder + Nemotron Nano V2 9B LLM backbone + NVIDIA TTS decoder and codec + a separate tool-calling output channel |
+| **Encoder** | Fast Conformer from nvidia/nemotron-speech-streaming-en-0.6b |
+| **Base Model** | nvidia/NVIDIA-Nemotron-Nano-9B-v2 |
+| **Duplex** | full duplex (simultaneous listen and speak) |
+| **Turn Taking Latency** | ~450 ms (448 ms measured, smooth turn-taking) |
+| **Barge In** | yes (user interruption TOR 1.0, 480 ms latency) |
+| **Tool Calling** | yes — first open full-duplex model with tool calling; per-tool "on-hold" speech covers tool execution; `<TOOLCALL>[{...}]</TOOLCALL>` control format |
+| **Voicebench** | #2 among all open full-duplex models |
+| **Full Duplex Bench 1** | #2 among all open models |
+| **Pause Handling Tor** | 0.153 (Synthetic) / 0.255 (Candor), lower is better |
+| **Smooth Turn Taking** | TOR 0.82 / latency 448 ms |
+| **User Interruption** | TOR 1.0 / latency 480 ms / GPT-4o judge 4.33 |
+| **Au Harness Bfcl V3** | simple 58.5% / multiple 62.5% / parallel 42.5% / parallel-multiple 27.5% / irrelevance 89.6% / average 56.1% |
+| **Full Duplex Bench V3** | tool selection 82.5% / argument accuracy 42.2% / pass@1 33% |
+| **Training Data** | ~550k hours of audio plus text, real and synthetic |
+| **Training Sources** | Nemotron 5.5 pre-training and SFT text, Brainy-mantis, Greteal AI v1/v2, UltraChat, Blackwell studio recordings, Fisher, LibriVox, LibriTTS, HiFi-TTS, Riva Speakers (internal), internet-scale public data, PromptTTS, VCTK, Voxmovies, JL-Corpus, Nemotron Nano v3 function-calling data, PersonaPlex training data |
+| **Runtime** | vLLM |
+| **Hardware** | NVIDIA A100, H100, H200, B100, B200, RTX-6000 |
+| **Os** | Linux only |
+| **Deployment** | offline batch speech-to-speech from the HF checkpoint; interactive low-latency streaming via the NVIDIA inference container (bidirectional WebSocket with function calling) |
+| **Dependencies** | NeMo Speech repo (`nemotron-labs-voicechat` branch), torch 2.10.0, transformers 4.56.0, mamba-ssm 2.3.2.post1, causal-conv1d 1.6.2.post1 |
+| **Version** | v1.0 |
+| **Intended Use** | ASR, TTS and voice-assistant development for researchers and developers |
+
+**Features:** The cascade being replaced here is the whole point: **ASR → LLM → TTS** stacks
+serialize three models' latencies and hand audio off as text, which makes
+natural back-and-forth structurally impossible. VoiceChat collapses that into
+a single model that **listens and speaks at once**, and the measured
+consequences are the interesting part — 448 ms smooth turn-taking, and on
+user interruption a TOR of 1.0 with a 480 ms yield, meaning the model does
+not finish its sentence over the top of the user. The genuinely novel piece
+is **tool calling in a duplex setting**. A tool call is a latency spike in a
+conversation: the user hears silence while an API resolves. VoiceChat's fix
+is architectural rather than a prompt trick — a **dedicated output channel**
+predicts the tool-call script separately from the spoken channel, and each
+tool can declare an **"on-hold" message** that is spoken as soon as the
+triggering text is generated, so the agent *talks over its own tool
+latency* instead of stalling. That is what makes it the first open
+full-duplex model to do this. The benchmark table also deserves an honest
+read rather than a headline: tool **selection** is strong (82.5% on
+Full-Duplex-Bench v3, 89.6% irrelevance rejection on AU-Harness), but
+**argument accuracy is 42.2% and pass@1 is 33%** — spoken tool arguments are
+a genuinely hard problem (names, numbers and IDs must survive the audio
+round-trip), so the capability is real and the remaining gap is visible.
+The hybrid Mamba/Transformer backbone and reuse of NVIDIA's own streaming
+Conformer encoder and Nemotron Nano V2 LLM show the design is assembled from
+components the lab had already validated, which is why the release reads as
+an integration milestone for open voice agents rather than a single-model
+result.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/nvidia/NVIDIA-NemotronLabs-VoiceChat-11B)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.21967)
+[![GitHub][link-github]](https://github.com/NVIDIA-NeMo/Speech/tree/nemotron-labs-voicechat)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:nemotronlabs-voicechat-11b.md -->
 <!-- MODEL:scena.md -->
 <details id="scena">
 <summary>ScenA</summary>
@@ -4221,13 +4732,14 @@ source-separation model.
 | [Xiaomi-CocktailASR-1](#xiaomi-cocktailasr-1) | Chinese, English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [BuzzASR](#buzz-asr) | 102 | ❌ | ![MIT][license-mit] |
 | [VibeVoice-ASR-Streaming-7B](#vibevoice-asr-streaming-7b) | 10 | ✅ | ![MIT][license-mit] |
+| [Ruby-ASR-1.7B](#ruby-asr-1-7b) | Japanese | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Granite-Speech-5.0-470M-TurboCTC](#granite-speech-5-0-470m-turboctc) | English | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [kodama-ja-streaming-small](#kodama-ja-streaming-small) | Japanese | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [GigaAM-Multilingual](#gigaam-multilingual) | 70+ | ❌ | ![MIT][license-mit] |
 | [GigaChat3.1-Audio](#gigachat3-audio) | Russian, English | ❌ | ![MIT][license-mit] |
 | [Audio8-ASR-0.1B](#audio8-asr-0-1b) | 7 | ❌ | ![CC BY-NC 4.0][license-cc-by-nc-4.0] |
 | [MOSS-Transcribe-Diarize](#moss-transcribe-diarize) | Multilingual | ✅ | ![Apache 2.0][license-apache-2.0] |
-| [Typhoon ASR Streaming](#typhoon-asr-streaming) | Thai | ✅ | ![CC BY 4.0][license-cc-by-4.0]<br>![Other][license-other] |
+| [Typhoon ASR Streaming](#typhoon-asr-streaming) | Thai | ✅ | ![CC BY 4.0][license-cc-by-4.0]<br>![OpenMDW 1.1][license-openmdw-1.1] |
 | [ARK-ASR-3B](#ark-asr-3b) | 19 | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Mega-ASR](#mega-asr) | English, Chinese | ❌ | ![Apache 2.0][license-apache-2.0] |
 | [Higgs-Audio-v3-8B-STT-v2](#higgs-audio-v3-8b-stt-v2) | English | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -4396,6 +4908,75 @@ alone.
 <p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:vibevoice-asr-streaming-7b.md -->
+<!-- MODEL:ruby-asr-1-7b.md -->
+<details id="ruby-asr-1-7b">
+<summary>Ruby-ASR-1.7B</summary>
+
+### Ruby-ASR-1.7B
+
+**Description:** **Ruby-ASR-1.7B** is a pair of Japanese fine-tunes of [Qwen/Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B) that **carry their own pronunciation evidence**. The standard Japanese ASR target is an orthographic transcript, but the same written span can be realized with different readings — so acoustically different utterances get identical targets, and the reading distinction is destroyed before the model ever sees it. Ruby-ASR refines the target into a **span-bound orthography↔reading sequence**, binding each written span to the reading actually realized in speech (`七[なな]年間[ねんかん]でロスにも友達[ともだち]できたし、`), which lets both the orthographic and the lexical-reading view be recovered deterministically. Two variants ship in the repo: **Ruby-ASR-sub** (`subtitle/`, subtitle-style) and **Ruby-ASR-ver** (`verbatim/`). Each adds **two complementary outputs**: (1) the ruby transcript with inline furigana, and (2) a **mora reading produced by CTC directly from the audio encoder** — no LLM decoding at all. On a character-count-weighted average over B5K, CSJ, JSUT-Book, Common Voice 8 and TEDx, Ruby-ASR-sub posts the best **Raw CER at 8.51%** (21.1% relative below Qwen3-ASR) and Ruby-ASR-ver the best **SA-CER at 6.59%** and **Kana CER at 3.75%** (23.3% and 34.7% relative reductions).
+
+**Release Date:** August 27, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 1.7B (fine-tune of Qwen3-ASR-1.7B; weights shipped as a stock Qwen3-ASR checkpoint) |
+| **Languages** | Japanese only (ja) |
+| **Streaming** | ❌ |
+| **License** | ![Apache 2.0][license-apache-2.0] |
+| **Base Model** | Qwen/Qwen3-ASR-1.7B |
+| **Variants** | Ruby-ASR-sub (`subtitle/` — concise orthographic transcription) and Ruby-ASR-ver (`verbatim/` — script-aware and lexical-reading accuracy) |
+| **Output Modes** | Mode 1 mora reading via encoder + CTC (no LLM decoding); Mode 2 ruby transcription with inline furigana |
+| **Ruby Output** | every annotated word carries its reading, e.g. `七[なな]年間[ねんかん]でロスにも友達[ともだち]できたし、` |
+| **Mora Output** | actual pronunciation as katakana morae, e.g. `ナナネンカンデロスニモトモダチデキタシ` |
+| **Mora Alphabet** | katakana morae (キョ, ッ, ン, ー are single tokens) plus a–z for embedded English; long vowels unified to ー per the pyopenjtalk `g2p(kana=True)` convention |
+| **Ctc Branch** | 2-layer Transformer adapter (nhead 8) + linear head on the audio encoder, trained jointly with CTC loss, stored separately under `ctc/` |
+| **Training Objective** | joint loss 0.3·CTC + 0.7·CE (cross-entropy over the ruby transcript plus CTC over mora targets) |
+| **Decoupled Paths** | the seq2seq path never sees the CTC adapter, so ruby decoding is bit-identical to a checkpoint without the branch |
+| **Benchmarks** | character-count-weighted averages over B5K, CSJ, JSUT-Book, Common Voice 8 and TEDx |
+| **Raw Cer** | Ruby-ASR-sub 8.51 (best) / Ruby-ASR-ver 9.10 / ReazonSpeech-k2 10.35 / Qwen3-ASR-1.7B 10.78 |
+| **Sa Cer** | Ruby-ASR-ver 6.59 (best) / Ruby-ASR-sub 6.64 / ReazonSpeech-k2 8.51 / Qwen3-ASR-1.7B 8.59 |
+| **Kana Cer** | Ruby-ASR-ver 3.75 (best) / Ruby-ASR-sub 4.01 / Kana-Whisper 4.66 / Qwen3-ASR-1.7B 5.74 |
+| **Relative Gains** | 21.1% Raw CER below Qwen3-ASR (sub); 23.3% SA-CER and 34.7% Kana CER below Qwen3-ASR (ver); 19.5% Kana CER below Kana-Whisper (ver) |
+| **Metric Definitions** | Raw CER (orthographic, original script); SA-CER (kana scored by reading, kanji by orthography); Kana CER (lexical-reading transcription) |
+| **Serving** | unmodified vLLM (>= 0.14) or the official qwen-asr toolkit for Mode 2; the ruby_asr package for Mode 1 |
+| **Postprocessing** | `to_surface`, `to_reading`, `to_html`, `brackets_to_parens` helpers emit plain text, kana-only text or HTML `<ruby>` markup |
+| **Vllm Note** | use /v1/chat/completions, not /v1/audio/transcriptions — the transcriptions endpoint builds a different prompt and returns brackets-free text |
+| **Limitations** | Japanese-only fine-tune (other Qwen3-ASR languages untested); Mode 1 returns pronunciation kana with no kanji, punctuation or word boundaries; furigana is learned behaviour rather than constrained decoding, so rare formatting slips are possible |
+| **Paper** | Ruby-ASR: Evidence-Preserving Supervision for Joint Orthographic and Lexical-Reading Recognition |
+
+**Features:** The idea is a **target-representation fix, not an architecture change**, and
+it is the kind of intervention that usually matters more than either. In
+Japanese ASR, supervising on orthography throws away the acoustic evidence
+that disambiguates readings — two utterances with identical kanji but
+different pronunciations become one target, and no post-hoc text-only G2P can
+recover what the label discarded. Ruby-ASR keeps that evidence by making the
+target **span-bound**: reading is written *next to* the span that produced it
+rather than as a separate parallel sentence, so orthography and reading stay
+locally aligned and both views are deterministically recoverable. The
+interesting second move is what they do with the **auxiliary CTC branch**: it
+hangs off the audio encoder rather than the decoder, and its weights are
+shipped in a *separate* `ctc/` subfolder so the main checkpoint stays a
+**stock Qwen3-ASR file**. That is a deliberate systems compromise — reading
+extraction becomes a fast encoder-side pass with no LLM decoding, while the
+primary path remains byte-identical to a checkpoint without the branch and
+still runs on **unmodified vLLM**. The joint `0.3·CTC + 0.7·CE` weighting plus
+the explicit claim that the seq2seq path never sees the adapter is what makes
+that decoupling honest rather than lossy. Benchmark reporting is careful in a
+way most releases are not: all three metrics are defined, the two variants are
+compared on all three axes (and each wins a different one), and the comparison
+set includes both an orthographic ASR baseline and a reading-oriented one
+(Kana-Whisper) so the gain cannot be explained by metric choice.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/hshispeech/Ruby-ASR-1.7B)
+[![arXiv][link-arxiv]](https://arxiv.org/abs/2609.27289)
+[![GitHub][link-github]](https://github.com/hshi-speech/Ruby-ASR-1.7B)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:ruby-asr-1-7b.md -->
 <!-- MODEL:granite-speech-5-0-470m-turboctc.md -->
 <details id="granite-speech-5-0-470m-turboctc">
 <summary>Granite-Speech-5.0-470M-TurboCTC</summary>
@@ -4730,7 +5311,7 @@ postprocess.
 |---------|-------|
 | **Languages** | Thai (th-TH); the 0.6B tokenizer also carries English sub-word units for code-switched terms |
 | **Streaming** | ✅ |
-| **License** | ![CC BY 4.0][license-cc-by-4.0]<br>![Other][license-other]<br>![Apache 2.0][license-apache-2.0] |
+| **License** | ![CC BY 4.0][license-cc-by-4.0]<br>![OpenMDW 1.1][license-openmdw-1.1]<br>![Apache 2.0][license-apache-2.0] |
 | **Parameters** | 115M (converted) / 0.6B (adapted, best accuracy, default) |
 | **Architecture** | FastConformer-Transducer with cache-aware streaming encoders |
 | **Variants** | typhoon-asr-streaming-115m (converted from Typhoon ASR Real-time, single 2048-token Thai BPE, no prompt) and typhoon-asr-streaming-nemotron-0.6b (adapted from NVIDIA Nemotron streaming ASR, 15,135-token multilingual + Thai tokenizer, requires `target_lang="th-TH"`) |
@@ -5649,14 +6230,16 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 ---
 
-*Last Updated: September 2026*
+*Last Updated: October 2026*
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
 [license-apache-2.0]: https://img.shields.io/badge/Apache_2.0-green?style=flat-square&logo=apache "Apache 2.0"
 [license-cc-by-nc-4.0]: https://img.shields.io/badge/CC_BY--NC_4.0-orange?style=flat-square&logo=creativecommons "CC BY-NC 4.0"
 [license-cc-by-4.0]: https://img.shields.io/badge/CC_BY_4.0-green?style=flat-square&logo=creativecommons "CC BY 4.0"
+[license-openmdw-1.1]: https://img.shields.io/badge/OpenMDW_1.1-purple?style=flat-square "OpenMDW 1.1"
 [license-other]: https://img.shields.io/badge/Other-lightgrey?style=flat-square "Other"
+[license-fish-audio-community]: https://img.shields.io/badge/Fish_Audio_Community-00788a?style=flat-square "Fish Audio Community"
 [license-mpl-2.0]: https://img.shields.io/badge/MPL_2.0-blue?style=flat-square "MPL 2.0"
 [license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"

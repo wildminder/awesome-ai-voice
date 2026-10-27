@@ -39,3 +39,9 @@ rumik-oss 1 is a 3B multilingual text-to-speech model from rumik ai, trained on 
 ## Innovation
 
 Brings competitive multilingual TTS to 22 Indic languages with under 70k training hours, using a flattened mimi codec-token formulation (single autoregressive sequence for text conditioning + audio) on the tiny-aya-fire backbone. Code-switched synthesis, description-conditioned delivery, and inline vocalization tags are first-class capabilities, and its 4 voices perform equally well across all 22 languages — unusual, as most TTS voices are language-specific.
+
+## Additional Tools
+
+| Tool | Type | Link |
+|------|------|------|
+| ComfyUI-Rumik-TTS | ComfyUI node | https://github.com/dheeai/ComfyUI-Rumik-TTS |
