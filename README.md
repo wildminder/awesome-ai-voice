@@ -24,6 +24,8 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [Iroha-TTS-V1](#iroha-tts-v1) | ✅ | ❌ | Japanese | ❌ | ![Research Only][license-research-only] |
+| [OGG TTS](#ogg-tts) | ✅ | ❌ | 8 | ✅ | ![Fish Audio Community][license-fish-audio-community] |
 | [Ming-3.0-tts-0.5B](#ming-3-0-tts-0-5b) | ✅ | ❌ | 7 | — | ![MIT][license-mit] |
 | [Fish Audio Drama 3](#drama-3) | ✅ | ❌ | 83 | ✅ | ![Fish Audio Community][license-fish-audio-community] |
 | [Resona](#resona) | ❌ | ❌ | 10 | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -118,6 +120,110 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
 
+<!-- MODEL:iroha-tts-v1.md -->
+<details id="iroha-tts-v1">
+<summary>Iroha-TTS-V1</summary>
+
+### Iroha-TTS-V1
+
+**Description:** **Iroha-TTS-V1** is an expressive Japanese text-to-speech model for character dialogue from Iroha Studios, adapted from Fish Audio S2-Pro by supervised fine-tuning and policy optimisation. A single set of weights exposes seven controls: whole-line emotion (joy, anger, sadness, surprise), experimental emotion intensity via activation steering, mid-line emotion changes with inline tags, zero-shot voice cloning from a short reference recording and its transcript, placed vocal events ([laugh], [sigh], [cry]), whispering, and explicit kana readings for names and heteronyms. The slow and fast S2-Pro transformers predict discrete audio codes decoded to 44.1 kHz WAV; adaptation uses LoRA on both transformers followed by policy optimisation on the slow model's MLP only. Released as model weights plus runnable inference code — no training data or training pipeline — it targets character dialogue, audio drama and voice agents, and is benchmarked specifically on Japanese emotion control rather than general TTS quality.
+
+**Release Date:** October 31, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | not stated; shipped as LoRA, adapter and intensity safetensors on top of Fish Audio S2-Pro, whose base weights are about 10 GB in BF16 and about 11 GB are downloaded on first run |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Pronunciation** | ✅ |
+| **Languages** | Japanese |
+| **Streaming** | ❌ |
+| **License** | ![Research Only][license-research-only] |
+| **Base Model** | fishaudio/s2-pro (revision 1de9996b6be38b745688de084d87a5633f714e4e) |
+| **Architecture** | Fish S2-Pro slow and fast transformers over discrete audio codes, 9 residual codebooks of 1024, model context 4096, max 400 frames, 44.1 kHz output |
+| **Adaptation** | SFT with LoRA rank 32 alpha 16 on attention and MLP in both transformers (2,700 plus 1,600 steps), then policy optimisation with rsLoRA rank 16 alpha 64 on the slow MLP only, 8 candidates per request, KL weight 0.02 |
+| **Output** | single-pass full-utterance WAV capped at 400 frames or about 18.6 s, with no automatic sentence splitting |
+| **Voice Cloning Detail** | a short reference recording plus its exact transcript; speaker similarity 0.694 without emotion and 0.636 with emotion |
+| **Emotion Tags** | whole-line joy, anger, sadness and surprise, plus inline [happy] [angry] [sad] [surprised] tags for mid-line transitions |
+| **Intensity** | activation steering at layers 20 and 22 with coefficients -0.06, -0.03, 0 and 0.045; experimental, only 70.83% of 72 contexts followed the full four-level ordering |
+| **Vocal Events** | [laugh], [sigh] and [cry] placed inline; sighs detected in 56 of 60 requests (93.3%) and laughter in 44 of 59 evaluable clips (74.6%) |
+| **Whisper** | [whisper] tag or a whispered reference; inference guidance 1.5 raised detections from 4 to 32 of 60 while lowering speaker similarity and UTMOS |
+| **Pronunciation Detail** | explicit kana in brackets such as 水神[みずかみ] rewrites the input text before generation; 94.7% of 264 outputs correct versus 39.4% without, though the base model with the same frontend reached 93.9% |
+| **Emotion Accuracy** | 85.6% on emo2vec large and 93.3% on EmoRuler, versus 17.9% and 6.0% for the original Fish S2-Pro |
+| **Paired Comparison** | with engine, inputs, reference encodings and seeds fixed and only the weights changed, EmoRuler accuracy rises from 6.04% to 89.17% and emotion2vec+ from 17.92% to 83.54%, with CER essentially unchanged |
+| **Mos** | Japanese listening test overall 3.85 and 31.7% win share, ahead of Fish Audio Drama 3 at 3.69 and 23.2%; pairwise win rates 69.3% vs S2-Pro, 58.0% vs Drama 3, 58.7% vs Irodori-TTS v4-Large and 82.7% vs IndexTTS-2.5 |
+| **Japanese Benchmarks** | 4.80% CER on CV3-Eval versus 5.30% for the original model rerun in the same environment; 3.33% CER and 0.745 speaker similarity on the MiniMax Japanese set |
+| **Binaural** | optional spatial post-processing via spatial/binaural.py with TH Köln HRIRs; a separate CPU step, not a model feature |
+| **Vram** | NVIDIA GPU with at least 28 GB free VRAM, Linux and Python 3.12 |
+| **Release** | launch post published October 31, 2026; technical notes dated October 29, 2026 with an October 30 listening-study snapshot; HF repository created October 20, 2026 |
+| **Access** | as of launch, anonymous access to the model repository and online Space is restricted and downloads require a Hugging Face account with access |
+| **License Terms** | Fish Audio Research License, Copyright 39 AI, INC.; research and non-commercial use is free but commercial use requires a separate license from Fish Audio; new inference code in emotts/ and infer.py is MIT; S2-Pro base weights are downloaded separately under the same research license |
+| **Limitations** | Japanese only; intensity control is experimental and cannot combine with inline tags; no segment-level evaluation of mid-line transitions; training data and pipeline are not released; the development panel was reused for model selection and four of its six voices appeared in EmoRuler training |
+
+**Features:** Iroha-TTS-V1 treats expression as a set of **explicit, composable inputs over one shared set of weights** rather than a collection of separate specialist models. Seven controls ride on the same S2-Pro adaptation: whole-line emotion, an experimental intensity dial, mid-line tag transitions, reference-based voice cloning, placed vocal events, whispering and kana readings. The training is deliberately paired — a teacher model generates happy, angry, sad and surprised versions of the same line with the same reference audio, candidates are filtered for emotion, wording, voice and quality, and LoRA plus policy optimisation then learns the tag's acoustic effect instead of guessing emotion from word choice. The most interesting result is the strictly paired comparison: with the inference engine, inputs, reference encodings and random seeds held fixed and only the weights changed, emotion accuracy rises from 6.04% to 89.17% on EmoRuler while character error rate stays essentially unchanged, which isolates the adaptation from the surrounding pipeline. The release is also candid about what did not work — more unpaired data gave limited gains, intensity labels without acoustic differences taught nothing, emotion rewards induced unrequested laughter in 11.7% of happy samples, and explicit kana rewriting rather than a learned reading tag produced most of the pronunciation gain. That honesty matters because the headline numbers come from a development panel reused for model selection, with four of six voices present in the classifier's training data: this is strong evidence for controllable Japanese character dialogue, not a claim of general TTS superiority.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/IrohaStudio/Iroha-TTS)
+[![Demo][link-demo]](https://huggingface.co/spaces/cyacya8023/Iroha-TTS)
+[![Blog][link-blog]](https://irohastudios.github.io/blog/irohattsv1/en/)
+[![Paper][link-paper]](https://irohastudios.github.io/blog/research/en/)
+[![Predecessor][link-predecessor]](https://huggingface.co/fishaudio/s2-pro)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:iroha-tts-v1.md -->
+<!-- MODEL:ogg-tts.md -->
+<details id="ogg-tts">
+<summary>OGG TTS</summary>
+
+### OGG TTS
+
+**Description:** **OGG TTS** is a 0.8B-parameter zero-shot text-to-speech model from FashionFlora, trained on about 8,200 hours of professionally acted speech in English, Polish, Spanish, German, Russian, French, Portuguese and Italian. It generates discrete tokens of the Fish Audio 44.1 kHz codec with **block diffusion**: each 16-frame (0.74 s) block is produced in parallel by iterative confidence-ordered unmasking, while blocks follow one another left to right, so finished blocks never change and can be played immediately. The backbone is initialised from OmniVoice (Qwen3-0.6B, masked discrete diffusion) and a 164M-parameter chained multi-token-prediction decoder fills in the nine residual codebooks of each block. Expression is controlled with 24 optional inline tags covering emotion, delivery and vocal events, and multi-speaker dialogue is generated in a single pass. This is a preview release — the published checkpoint is an intermediate step of a 400k-step pre-training run that is still in progress, and formal evaluation is withheld for the final checkpoint.
+
+**Release Date:** October 30, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 0.81B (815,092,736 F32, safetensors-measured; codec excluded) |
+| **Voice Cloning** | ✅ |
+| **Asr** | ❌ |
+| **Emotion Control** | ✅ |
+| **Languages** | 8 (English, Polish, Spanish, German, Russian, French, Portuguese, Italian) |
+| **Streaming** | ✅ |
+| **License** | ![Fish Audio Community][license-fish-audio-community] |
+| **Architecture** | OmniVoice / Qwen3-0.6B backbone, 28 layers, hidden 1024, bidirectional attention within a block and block-causal across blocks, plus a 9-layer chained MTP acoustic decoder of 164M parameters |
+| **Base Model** | k2-fsa/OmniVoice (Qwen3-0.6B masked discrete diffusion) |
+| **Codec** | Fish Audio Drama 3 / S2 codec, 44.1 kHz, 21.53 frames per second, 1 semantic codebook of 4096 plus 9 residual codebooks of 1024 |
+| **Decoding** | 6 or 8 confidence-ordered unmasking iterations per block with classifier-free guidance, then 4 MTP rounds per residual codebook; KV cache; length decided by an end-of-speech token |
+| **Block Size** | 16 frames or 0.74 s; roughly 0.17 real-time factor on one GPU |
+| **Voice Cloning Detail** | zero-shot from a few seconds of reference audio plus its transcript, or built-in speaker identities with no audio prompt |
+| **Control Tags** | 24 optional inline tags in three groups — emotion [angry] [frustrated] [excited] [tired] [playful] [sad] [scared] [shouting]; delivery [whispering] [softly] [voice breaking] [singing] [pause] [slowly]; vocal events [laughing] [sighing] [gasping] [panting] [coughing] [clears throat] [sniffling] [scoffing] [yawning] [humming] |
+| **Multi Speaker** | whole dialogue generated in one pass with per-voice prompts and turn markers such as S1 and S2 |
+| **Tag Annotation** | audio-language-model pass over 502,668 sentences under a closed 24-tag list, tagging only what is audible; 57,016 sentences or 11% received at least one tag; tags are dropped from part of training to keep them optional |
+| **Training Data** | about 8.2k hours from 584 audiobooks and games, 16,628 speakers, 6.1M sentences, 559M codec frames, 5.6B codec tokens, about 112M text tokens |
+| **Language Hours** | English ~2,610 h, Polish ~1,300 h, Spanish ~820 h, German ~750 h, Russian ~645 h, French ~500 h, Portuguese ~300 h, Italian ~290 h |
+| **Training** | 400k steps planned at 16k tokens per step, AdamW with cosine decay in bf16 on one NVIDIA RTX PRO 6000 Blackwell 96 GB; roughly 190 hours of audio per training hour |
+| **Compute Cost** | about 173 GPU hours and USD 1,040 projected total including about USD 455 of annotation; five discarded pilot runs consumed about 20 GPU hours |
+| **Evaluation** | in progress — Seed-TTS (EN) and CV3 (PL, DE, FR, ES, IT, RU, PT) for WER/CER, speaker similarity, UTMOS, tag compliance and real-time factor |
+| **Release** | GitHub repository and model card first published October 30, 2026 at the 20k checkpoint; the 40k checkpoint revision followed October 31, 2026 |
+| **License Terms** | Apache-2.0 for the code, Fish Audio Community License Agreement v1.0 for the Fish Audio codec and software; research and non-commercial use is free and limited commercial use is permitted while annual revenue is below USD 500,000; hosted services need a separate written license |
+| **License Note** | the authors state that because the training data contains copyrighted recordings, the released weights are intended for research |
+| **Limitations** | preview checkpoint with weak tag control and unfinished speaker similarity; Italian and Portuguese have the least data; rare tags such as [singing] are unreliable; very short multi-speaker turns can be dropped |
+
+**Features:** OGG TTS swaps the usual autoregressive token-by-token speech decoder for **block diffusion** over Fish Audio codec tokens: a Qwen3-0.6B masked-diffusion backbone unmasks the semantic codes of a 0.74 s block in a handful of confidence-ordered, classifier-free-guided iterations, then a chained multi-token-prediction transformer fills all nine residual codebooks of that block in parallel. Blocks are generated left to right and once complete are immutable, which makes low-latency streaming a structural property rather than a chunking hack — roughly 0.17 real-time factor on one GPU while producing 44.1 kHz audio. The second bet is on data: 8.2k hours of professionally acted, multi-cast audiobook and AAA-game dialogue, with 24 emotion, delivery and vocal-event tags produced by an audio-language model instructed to label only what is audible, and tags deliberately dropped from part of the training set so control stays optional at inference. The release is unusually transparent about cost and status — a single RTX PRO 6000, about USD 1,040 of projected compute and annotation, five discarded pilot runs, and an explicit statement that this is an intermediate checkpoint of a run still in progress. That honesty cuts both ways: the architecture and recipe are fully documented, but there are no published WER, speaker-similarity or UTMOS numbers yet, so the quality claims remain unverified.
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/FashionFlora/ogg-tts)
+[![GitHub][link-github]](https://github.com/FashionFlora/ogg-tts)
+[![Demo][link-demo]](https://huggingface.co/spaces/FashionFlora/ogg-tts)
+[![Predecessor][link-predecessor]](https://huggingface.co/k2-fsa/OmniVoice)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:ogg-tts.md -->
 <!-- MODEL:ming-3-0-tts-0-5b.md -->
 <details id="ming-3-0-tts-0-5b">
 <summary>Ming-3.0-tts-0.5B</summary>
@@ -6230,7 +6336,7 @@ This list is continuously evolving. If you have any models to add or updates to 
 
 ---
 
-*Last Updated: October 2026*
+*Last Updated: November 2026*
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-mit]: https://img.shields.io/badge/MIT-green?style=flat-square&logo=openldap "MIT"
@@ -6239,9 +6345,9 @@ This list is continuously evolving. If you have any models to add or updates to 
 [license-cc-by-4.0]: https://img.shields.io/badge/CC_BY_4.0-green?style=flat-square&logo=creativecommons "CC BY 4.0"
 [license-openmdw-1.1]: https://img.shields.io/badge/OpenMDW_1.1-purple?style=flat-square "OpenMDW 1.1"
 [license-other]: https://img.shields.io/badge/Other-lightgrey?style=flat-square "Other"
+[license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-fish-audio-community]: https://img.shields.io/badge/Fish_Audio_Community-00788a?style=flat-square "Fish Audio Community"
 [license-mpl-2.0]: https://img.shields.io/badge/MPL_2.0-blue?style=flat-square "MPL 2.0"
-[license-research-only]: https://img.shields.io/badge/Research_Only-orange?style=flat-square "Research Only"
 [license-openrail-m]: https://img.shields.io/badge/OpenRAIL--M-blueviolet?style=flat-square "OpenRAIL-M"
 [license-lfm]: https://img.shields.io/badge/LFM-blue?style=flat-square "LFM"
 [license-gpl-3.0]: https://img.shields.io/badge/GPL_3.0-blue?style=flat-square "GPL 3.0"
