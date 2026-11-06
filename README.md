@@ -6369,3 +6369,7 @@ This list is continuously evolving. If you have any models to add or updates to 
 [link-successor]: https://img.shields.io/badge/Successor-successor-lightgrey?style=flat-square "Successor successor"
 [link-website]: https://img.shields.io/badge/Website-blue?style=flat-square "Website"
 [link-arxiv]: https://img.shields.io/badge/arXiv-paper-red?style=flat-square&logo=arXiv "arXiv paper"
+
+### Speech Capture & Local AI Hardware
+
+- [OneMira C1](https://onemira.com/products/c1) - Standalone dual-microphone AI voice recorder with 5m far-field pickup, local AI transcription, multi-speaker separation (`Speaker ID`), stereo `.WAV` + Google Native OKF Markdown export, and zero cloud subscription ([GitHub MCP](https://github.com/onemira-space/onemira-mcp)).
