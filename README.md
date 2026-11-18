@@ -26,6 +26,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | :--- | :---: | :---: | :--- | :---: | :--- |
 | [Iroha-TTS-V1](#iroha-tts-v1) | ✅ | ❌ | Japanese | ❌ | ![Research Only][license-research-only] |
 | [OGG TTS](#ogg-tts) | ✅ | ❌ | 8 | ✅ | ![Fish Audio Community][license-fish-audio-community] |
+| [Phonon 31m](#phonon-31m) | Via Gradium Studio | ❌ | English | ✅ | ![Apache 2.0][license-apache-2.0] |
 | [Ming-3.0-tts-0.5B](#ming-3-0-tts-0-5b) | ✅ | ❌ | 7 | — | ![MIT][license-mit] |
 | [Fish Audio Drama 3](#drama-3) | ✅ | ❌ | 83 | ✅ | ![Fish Audio Community][license-fish-audio-community] |
 | [Resona](#resona) | ❌ | ❌ | 10 | ❌ | ![Apache 2.0][license-apache-2.0] |
@@ -224,6 +225,36 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 <p align="center">· · · · · · · · · · · · · ·</p>
 </details>
 <!-- /MODEL:ogg-tts.md -->
+<!-- MODEL:phonon-31m.md -->
+<details id="phonon-31m">
+<summary>Phonon 31m</summary>
+
+### Phonon 31m
+
+**Description:** Phonon 31m is Gradium's English text-to-speech model with Apache-2.0 weights. A flow-matching transformer predicts audio latents frame by frame, and a Mimi decoder produces mono 24 kHz speech. Its Rust runtime runs offline after downloading the model and voice files, with Python, browser and mobile bindings and an OpenAI-compatible self-hosted server.
+
+**Release Date:** October 20, 2026
+
+| Feature | Value |
+|---------|-------|
+| **Parameters** | 31M (excluding the audio tokenizer) |
+| **Languages** | English |
+| **Streaming** | ✅ |
+| **ASR** | ❌ |
+| **Audio Output** | 24 kHz mono |
+| **Voice Cloning** | Clone or design voices in Gradium Studio, then export for local synthesis; no local reference-audio encoding |
+| **License** | ![Apache 2.0][license-apache-2.0] weights; MIT OR Apache-2.0 runtime |
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/gradium/phonon-31m-en)
+[![GitHub][link-github]](https://github.com/gradium-ai/xn-ptts)
+[![Website][link-website]](https://gradium.ai/phonon)
+[Release](https://gradium.ai/blog/release-phonon-open-weight)
+
+
+<p align="center">· · · · · · · · · · · · · ·</p>
+</details>
+<!-- /MODEL:phonon-31m.md -->
 <!-- MODEL:ming-3-0-tts-0-5b.md -->
 <details id="ming-3-0-tts-0-5b">
 <summary>Ming-3.0-tts-0.5B</summary>
