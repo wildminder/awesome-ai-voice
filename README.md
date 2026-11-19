@@ -4831,6 +4831,8 @@ source-separation model.
 
 ## Speech Recognition (ASR)
 
+For voice activity detection before transcription, [TEN VAD](https://github.com/TEN-framework/ten-vad) estimates the probability of speech in each frame of a 16 kHz audio stream.
+
 ### ASR Quick Comparison
 
 | Model | Languages | Streaming | License |
