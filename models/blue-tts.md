@@ -1,45 +1,45 @@
 ---
-release_date: "February 27, 2026"
-model_name: "Blue (Light Blue) TTS"
+release_date: "November 18, 2026"
+model_name: "BlueTTS (BlueV3)"
 category: "tts"
-summary: "BlueTTS — MIT-licensed multilingual text-to-speech (Hebrew, English, Spanish, Italian, German) via ONNX Runtime; CPU-first with optional OpenVINO / CUDA / TensorRT execution providers."
+summary: "BlueV3 — MIT-licensed multilingual text-to-speech (Hebrew, English, German, Spanish, Italian, Russian, Yiddish) via ONNX Runtime; CPU-first, 44.1 kHz, zero-shot voice cloning from a short reference clip, streaming."
 slug: "blue-tts"
 ---
 
-# Blue (Light Blue) TTS
+# BlueTTS (BlueV3)
 
-BlueTTS (project page: lightbluetts.com) is a multilingual text-to-speech library. Built around slim ONNX graphs that run on **ONNX Runtime** with first-class CPU support and optional accelerators — **OpenVINO** (Intel), **CUDA ORT** (NVIDIA), **TensorRT**, and **ONNX Runtime** stock CPU. Targets five languages — **Hebrew, English, Spanish, Italian, German** — including inline mixed-language with XML-style tags in the text prompt. Inference is deliverable as a PyPI package (`blue-onnx`), a Rust crate, or directly from the pinned ONNX graphs on the HF Hub; the v2 release ships a slimmed opset-17 ONNX bundle (notmax123/blue-onnx-v2) that's intended for both FP32 production and the experimental INT8 weight-only fallback.
+BlueTTS is a multilingual, Hebrew-first text-to-speech library. **BlueV3** (v3.0.1) is a new flow-matching checkpoint that replaces the v2 release, with more natural and expressive speech and much better voice cloning. It runs as slim ONNX graphs on **ONNX Runtime**, CPU by default, with optional **CUDA**, **OpenVINO** and **TensorRT** paths. It outputs **44.1 kHz** audio in seven languages: **Hebrew, English, German, Spanish, Italian, Russian and Yiddish**. Languages can be mixed inline with XML-style tags, e.g. `<en>…</en>` inside Hebrew text. Hebrew is read without niqqud through the RenikudPlus G2P. A voice is cloned zero-shot from a 3–10 s reference clip, or picked from 15 built-in voices. `stream()` yields audio chunk by chunk, and the repo ships an OpenAI-compatible server (`/v1/audio/speech`) plus the training code.
 
 ## Links
 
 - GitHub: https://github.com/maxmelichov/BlueTTS
-- HuggingFace: https://huggingface.co/notmax123/blue-onnx-v2
-- PyPI: https://pypi.org/project/blue-onnx/
-- Website: https://lightbluetts.com/
-- Demo: https://huggingface.co/spaces/notmax123/BlueV2
+- HuggingFace: https://huggingface.co/notmax123/BlueV3-onnx
+- HuggingFace (PyTorch): https://huggingface.co/notmax123/BlueV3
+- Website: https://bluetts.com
+- Demo: https://huggingface.co/spaces/notmax123/BlueV3
 
 ## Features
 
-- voice_cloning: yes (zero-shot voice style from a short reference JSON)
+- voice_cloning: yes (zero-shot from a 3–10 s reference clip; 15 built-in voices)
 - asr: no
-- pronunciation: yes (Hebrew G2P via renikud)
+- pronunciation: yes (Hebrew G2P via RenikudPlus, no niqqud needed; polyg2p for the European languages)
 - emotion_control: no
-- languages: Hebrew, English, Spanish, Italian, German
-- streaming: no
+- languages: Hebrew, English, German, Spanish, Italian, Russian, Yiddish
+- streaming: yes (`stream()`; OpenAI-compatible server with chunked audio / SSE)
 - license: MIT
-- runtime: ONNX Runtime (stock CPU; OpenVINO / CUDA / TensorRT optional)
-- speed: "fastest open-source TTS" (per project description)
-- graph_format: ONNX opset 17 (slim, full-precision; experimental weight-only INT8 fallback)
-- distribution: PyPI + HuggingFace + Rust
+- runtime: ONNX Runtime (CPU default; CUDA / OpenVINO / TensorRT optional)
+- sample_rate: 44.1 kHz
+- serving: OpenAI-compatible `/v1/audio/speech` server included
+- training: training code for all three stages included
 
 ## Comparison
 
 - voice_cloning: ✅
 - asr: ❌
-- languages: Hebrew, English, Spanish, Italian, German
-- streaming: ❌
+- languages: Hebrew, English, German, Spanish, Italian, Russian, Yiddish
+- streaming: ✅
 - license: MIT
 
 ## Innovation
 
-A **CPU-first multilingual TTS** that ships both slimmed ONNX graphs and a Python package where the same code path runs on **stock CPU ONNX Runtime** by default — *and* optionally accelerates on OpenVINO / CUDA ORT / TensorRT — so deployment doesn't gate on GPU availability. Languages include **Hebrew** (with explicit G2P normalization) — a comparatively rare open-source TTS target — plus standard European languages, all from MIT-licensed weights distributed via both Hugging Face and PyPI.
+A **CPU-first multilingual TTS** with MIT-licensed code and weights. The same ONNX code path runs on stock CPU ONNX Runtime and optionally on CUDA, OpenVINO or TensorRT, so you don't need a GPU to deploy it. It's one of the few open TTS models that target **Hebrew** and **Yiddish** natively, alongside five European languages, with code-switching inside a single prompt.
