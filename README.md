@@ -24,6 +24,7 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 
 | Model | Voice Cloning | ASR | Languages | Streaming | License |
 | :--- | :---: | :---: | :--- | :---: | :--- |
+| [LinnetTTS](#linnettts) | ✅ | ❌ | 1 | ✅ | ![Other][license-other] |
 | [Iroha-TTS-V1](#iroha-tts-v1) | ✅ | ❌ | Japanese | ❌ | ![Research Only][license-research-only] |
 | [OGG TTS](#ogg-tts) | ✅ | ❌ | 8 | ✅ | ![Fish Audio Community][license-fish-audio-community] |
 | [Ming-3.0-tts-0.5B](#ming-3-0-tts-0-5b) | ✅ | ❌ | 7 | — | ![MIT][license-mit] |
@@ -119,6 +120,32 @@ A curated list of open-source Text-to-Speech (TTS) and voice cloning models. Mod
 | [MeloTTS](#melotts) | ❌ | ❌ | English, Spanish, French, Chinese, Japanese, Korean | ❌ | ![MIT][license-mit] |
 | [Kimi-Audio](#kimi-audio) | ✅ | ✅ | Multi-lingual | ✅ | ![MIT][license-mit]<br>![Apache 2.0][license-apache-2.0] |
 | [eSpeak-NG](#espeak-ng) | ❌ | ❌ | 100+ | ✅ | ![Other][license-other] |
+
+<!-- MODEL:linnettts.md -->
+<details id="linnettts">
+<summary>LinnetTTS</summary>
+
+### LinnetTTS
+
+**Description:** **LinnetTTS** is a 41M-parameter on-device neural TTS from VoxRT that pairs an autoregressive flow LM (31.5M) with a Vocos-style decoder (9.9M). It streams audio in 80 ms chunks (50 ms first chunk) at 24 kHz through a Rust runtime without any PyTorch dependency at inference. Ships with two built-in American English voices (female and male), licensed free for commercial use. Custom voice cloning is a separately licensed paid service via VoxRT Studio. Benchmarked at 3.4% RTF on i9-13900K (4 threads) and real-time on a Raspberry Pi Zero 2 W (4 threads, 75% RTF).
+
+**Release Date:** November 4, 2026
+
+| Feature | Value |
+|---------|-------| 
+| **Parameters** | 41M (31.5M flow LM + 9.9M Vocos-style decoder) |
+| **Voice Cloning** | ✅ (paid service via VoxRT Studio) |
+| **Asr** | ❌ |
+| **Languages** | English (1) |
+| **Streaming** | ✅ |
+| **License** | Apache-2.0 (runtime) + Linnet Weights License 1.0 (built-in voices free for commercial use, custom cloning paid) |
+
+**Links:**
+[![HuggingFace][link-huggingface]](https://huggingface.co/VoxRT/linnet-en-35m)
+[![GitHub][link-github]](https://github.com/VoxRT/LinnetTTS)
+
+</details>
+<!-- /MODEL:linnettts.md -->
 
 <!-- MODEL:iroha-tts-v1.md -->
 <details id="iroha-tts-v1">
